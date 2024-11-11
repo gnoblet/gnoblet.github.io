@@ -14,11 +14,11 @@
     "text": "Lorem ipsum et caetera"
   },
   {
-    "objectID": "projects/index.html#good-practices-for-r-projects",
-    "href": "projects/index.html#good-practices-for-r-projects",
+    "objectID": "projects/index.html#how-to-learn-r-with-good-practices-at-start",
+    "href": "projects/index.html#how-to-learn-r-with-good-practices-at-start",
     "title": "Projects",
-    "section": "Good practices for R projects",
-    "text": "Good practices for R projects\n\nUnder construction.\n\nA good example available here"
+    "section": "How to learn R with good practices at start",
+    "text": "How to learn R with good practices at start\n\nUnder construction.\n\nA good example available here"
   },
   {
     "objectID": "about.html",
@@ -32,6 +32,6 @@
     "href": "index.html",
     "title": "Guillaume Noblet",
     "section": "",
-    "text": "Welcome to an empty website!\nThis website is a very early stage of construction. What you will find is still to be found. Blurry image, maybe forever.\n\nMy Github"
+    "text": "Welcome to an empty website!\nThis website is at very-early-stage of construction. What you will find is still to be found. Blurry image, maybe forever.\n\nMy Github"
   }
 ]
