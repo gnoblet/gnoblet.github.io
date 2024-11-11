@@ -1,0 +1,61 @@
+project:
+  type: website
+  output-dir: docs
+
+execute: 
+  freeze: auto
+
+website:
+  title: "Guillaume Noblet"
+  description: "Gandalf is an under-construction renowned wizard and scholar of Middle-earth"   # A brief slogan (optional)
+  image: img/my_image.jpg
+  site-url: "https://gnoblet.github.io/"
+  navbar:
+    pinned: true
+    logo: /img/logo.png
+    
+    # your sub-pages
+    left:
+      - href: index.qmd
+        text: Home
+      - about.qmd
+      - text: "Projects"
+        href: projects/index.qmd
+    
+    # your social media handles
+    right:
+      - icon: github
+        href: https://github.com/gnoblet
+      - icon: twitter
+        href: https://bsky.app/profile/gnoblet.bsky.social
+      - icon: linkedin
+        href: https://www.linkedin.com/in/gnoblet/
+      - icon: envelope
+        aria-label: email
+        href: "mailto:gnoblet@zaclys.net"  
+  # Don't touch unless you know what you are doing :) ------------
+  search: 
+    location: navbar
+    type: textbox
+  page-footer: 
+    left: |
+      <span class="faux-block">&#169; 2023 Guillaume Noblet CC BY-SA 4.0</span>
+    center: |
+      <span class="faux-block"><a href="https://github.com/gnoblet">View the tutorial for this template!</a></span>
+    right: |
+      <span class="faux-block"><a href="https://github.com/gnoblet/gnoblet.github.io">View source on GitHub</a></span>
+
+format:
+  html:
+    fontsize: 1.1em
+    theme: 
+      - cosmo
+      - html/styles.scss
+    toc: false
+    code-link: true
+    anchor-sections: true
+    fig-cap-location: margin
+    reference-location: margin
+    footnotes-hover: true
+
+
