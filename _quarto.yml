@@ -12,7 +12,6 @@ website:
   site-url: "https://gnoblet.github.io/"
   navbar:
     pinned: true
-    logo: /img/logo.png
     
     # your sub-pages
     left:
@@ -40,8 +39,6 @@ website:
   page-footer: 
     left: |
       <span class="faux-block">&#169; 2024 Guillaume Noblet CC BY-SA 4.0</span>
-    center: |
-      <span class="faux-block"><a href="https://github.com/gnoblet">View the tutorial for this template!</a></span>
     right: |
       <span class="faux-block"><a href="https://github.com/gnoblet/gnoblet.github.io">View source on GitHub</a></span>
 
