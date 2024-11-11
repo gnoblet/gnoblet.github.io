@@ -39,7 +39,7 @@ website:
     type: textbox
   page-footer: 
     left: |
-      <span class="faux-block">&#169; 2023 Guillaume Noblet CC BY-SA 4.0</span>
+      <span class="faux-block">&#169; 2024 Guillaume Noblet CC BY-SA 4.0</span>
     center: |
       <span class="faux-block"><a href="https://github.com/gnoblet">View the tutorial for this template!</a></span>
     right: |
@@ -49,7 +49,7 @@ format:
   html:
     fontsize: 1.1em
     theme: 
-      - cosmo
+      - jolla
       - html/styles.scss
     toc: false
     code-link: true

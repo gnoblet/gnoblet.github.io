@@ -4,7 +4,7 @@ date: last-modified
 resources:
   - .nojekyll
 about:
-  template: cosmo
+  template: jolla
   id: about-block
   image: "img/myself.jpg"
 links:
@@ -24,7 +24,7 @@ links:
 ::: {#about-block}
 :::
 
-# Welcome to this technical website!
+# Welcome to an empty website!
 
 This website is a very early stage of construction. What you will find is still to be found. Blurry image, maybe forever.
 
