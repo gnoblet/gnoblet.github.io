@@ -1,0 +1,37 @@
+[
+  {
+    "objectID": "projects/index.html",
+    "href": "projects/index.html",
+    "title": "Projects",
+    "section": "",
+    "text": "Lorem ipsum et caetera"
+  },
+  {
+    "objectID": "projects/index.html#building-checks-for-r-functions-a-nomenclature",
+    "href": "projects/index.html#building-checks-for-r-functions-a-nomenclature",
+    "title": "Projects",
+    "section": "",
+    "text": "Lorem ipsum et caetera"
+  },
+  {
+    "objectID": "projects/index.html#good-practices-for-r-projects",
+    "href": "projects/index.html#good-practices-for-r-projects",
+    "title": "Projects",
+    "section": "Good practices for R projects",
+    "text": "Good practices for R projects\n\nUnder construction.\n\nA good example available here"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site: under construction."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Guillaume Noblet",
+    "section": "",
+    "text": "Welcome to an empty website!\nThis website is a very early stage of construction. What you will find is still to be found. Blurry image, maybe forever.\n\nMy Github"
+  }
+]
