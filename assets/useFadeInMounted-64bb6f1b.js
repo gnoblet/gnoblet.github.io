@@ -1,0 +1,1 @@
+import{r as e}from"./index-021ac759.js";import{u as r}from"./useMounted-828fb08b.js";import{u as a}from"./useEventListener-e7abd34f.js";function m(){const o=r(),[t,s]=e.useState(!1);return a("scroll",()=>{t||s(o&&window.scrollY<=25)}),{animationClass:{"animate-start":o||t}}}export{m as u};

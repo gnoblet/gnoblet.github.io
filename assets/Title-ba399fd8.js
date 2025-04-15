@@ -1,0 +1,1 @@
+import{j as t,L as l}from"./index-021ac759.js";import{c as r}from"./clsx-1229b3e0.js";function a({size:e}){const s=()=>e==="lg"?"text-2xl md:text-3xl":"text-xl";return t.jsx(l,{to:"/",className:"title",children:t.jsx("p",{className:r("pb-0 font-light uppercase",s()),children:t.jsx("span",{className:"font-bold",children:"@gnoblet"})})})}export{a as default};
