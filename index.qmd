@@ -19,19 +19,34 @@ links:
       href: https://www.linkedin.com/in/gnoblet/
     - icon: envelope
       text: Email
-      href: "mailto:gnoblet@zaclys.net"  
+      href: "mailto:gnoblet@zaclys.net"
 ---
 ::: {#about-block}
 :::
 
-# Welcome to an empty website!
+# Hey👋, I'm Guillaume, exploring a switch to a data journalist avenue
 
-This website is at very-early-stage of construction. What you will find is still to be found. Blurry image, maybe forever.
+I specialized in research in humanitarian settings and data visualization.
+
+From time to time I also write poetry. I'll be sharing some of this here as well as some data (viz) projects (coming soon, although no pressure for myself).
+
+
+I was a former Research & Data Manager at [IMPACT Initiatives](https://impactinitiatives.org/).
+
+
+This website is at very-early-stage of construction using Quarto and (many) changes are expected to come. What you will eventually find is still to be found. Blurry images and relative emptiness, maybe forever.
 
 
 ```{=html}
-<div  style="margin: 30px; text-align: center;">
-<a class="btn btn-primary" href="https://github.com/gnoblet" role="button" target="_blank" style="padding: 15px 30px;">My Github</a>
+<div style="margin: 30px; text-align: center;">
+  <a href="https://github.com/gnoblet" target="_blank">
+    <img src="https://github.com/favicon.ico" alt="GitHub" style="width: 30px; height: 30px; margin: 10px;">
+  </a>
+  <a href="https://www.linkedin.com/in/your-linkedin-username" target="_blank">
+    <img src="https://www.linkedin.com/favicon.ico" alt="LinkedIn" style="width: 30px; height: 30px; margin: 10px;">
+  </a>
+  <a href="https://bsky.app/profile/your-bluesky-username" target="_blank">
+    <i class="fa-brands fa-bluesky" style="font-size: 30px; margin: 10px;"></i>
+  </a>
 </div>
 ```
-

@@ -12,15 +12,16 @@ Lorem ipsum et caetera
 
 ----
 
-## How to learn R with good practices at start
+## Tidy Tuesday
 
 <img src="project_2_banner.jpg" style="height: 100%; width: 100%; object-fit: contain" onclick="window.open('https://arxiv.org/abs/2112.08866', 'blank');"/>
 
-Under construction.
+I had done one or two TidyTuesdays last year. I expect to be doing much more in the coming months, in R, Python and most likely D3 (using Quarto).
 
+Details here: []
 
 ```{=html}
 <div  style="margin: 30px; text-align: center;">
-<a class="btn btn-primary" href="" role="button" target="_blank" style="padding: 15px 30px;">A good example available here</a>
+<a class="btn btn-primary" href="TidyTuesdays" role="button" target="_blank" style="padding: 15px 30px;">A good example available here</a>
 </div>
 ```

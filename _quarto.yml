@@ -6,8 +6,8 @@ execute:
   freeze: auto
 
 website:
-  title: "Guillaume Noblet"
-  description: "Gandalf is an under-construction renowned wizard and scholar of Middle-earth"   # A brief slogan (optional)
+  title: "@GNOBLET"
+  description: "My quarto website"
   image: img/my_image.jpg
   site-url: "https://gnoblet.github.io/"
   navbar:
@@ -19,19 +19,21 @@ website:
         text: Home
       - about.qmd
       - text: "Projects"
-        href: projects/index.qmd
+        menu:
+          - projects/TidyTuesdays.qmd
     
     # your social media handles
     right:
-      - icon: github
-        href: https://github.com/gnoblet
-      - icon: twitter
-        href: https://bsky.app/profile/gnoblet.bsky.social
-      - icon: linkedin
-        href: https://www.linkedin.com/in/gnoblet/
-      - icon: envelope
-        aria-label: email
-        href: "mailto:gnoblet@zaclys.net"  
+    - icon: github
+      href: https://github.com/gnoblet
+    - text: "{{< fa brands bluesky >}}"      
+      href: https://bsky.app/profile/gnoblet.bsky.social
+    - icon: linkedin
+      href: https://www.linkedin.com/in/gnoblet/
+    - icon: envelope
+      aria-label: email
+      href: "mailto:gnoblet@zaclys.net"
+
   # Don't touch unless you know what you are doing :) ------------
   search: 
     location: navbar
@@ -47,7 +49,6 @@ format:
     fontsize: 1.1em
     theme: 
       - jolla
-      - html/styles.scss
     toc: false
     code-link: true
     anchor-sections: true
@@ -56,3 +57,6 @@ format:
     footnotes-hover: true
 
 
+
+head:
+  - <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">

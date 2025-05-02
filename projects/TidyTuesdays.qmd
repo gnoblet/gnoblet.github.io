@@ -1,0 +1,13 @@
+---
+title: "Tidy Tuesdays"
+listing:
+  contents: TidyTuesdays
+  sort: "date desc"
+  date-format: iso
+  type: default # default / grid / table
+  #fields: [image, date, title, reading-time] # image, reading-time
+  categories: false
+  feed: false
+---
+
+I had done one or two TidyTuesdays last year. I expect to be doing much more in the coming months, in R, Python and most likely D3 (using Quarto). These will be listed below.
