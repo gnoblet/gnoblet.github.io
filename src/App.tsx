@@ -1,24 +1,27 @@
-import { lazy, useEffect } from 'react'
-import Router from '@/router'
-import checkDarkTheme from '@/utils/checkDarkTheme'
+// src/App.tsx
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Home from './pages/Home';
+import Blog from './pages/Blog';
+import Portfolio from './pages/Portfolio';
+import Contact from './pages/Contact';
+import Navbar from './components/Navbar';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
-const ScrollToTop = lazy(() => import('@/components/common/ScrollToTop'))
-const ScrollToTopFAB = lazy(() => import('@/components/common/ScrollToTopFAB'))
-
-export default function App(): JSX.Element {
-  useEffect((): void => {
-    if (checkDarkTheme()) {
-      document.documentElement.classList.add('dark')
-      return
-    }
-    document.documentElement.classList.remove('dark')
-  }, [])
-
+function App() {
   return (
-    <>
-      <Router />
-      <ScrollToTop />
-      <ScrollToTopFAB />
-    </>
-  )
+    <BrowserRouter>
+      <Navbar />
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/portfolio" element={<Portfolio />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+      <Footer />
+    </BrowserRouter>
+  );
 }
+
+export default App;
