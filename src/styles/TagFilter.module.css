@@ -1,0 +1,36 @@
+/* src/styles/TagFilter.module.css */
+.filterContainer {
+    margin-bottom: 30px;
+}
+
+.filterTitle {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.tagList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tagButton {
+    background: #f0f0f0;
+    color: #555;
+    padding: 6px 12px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.tagButton:hover {
+    background: #e0e0e0;
+}
+
+.tagButton.active {
+    background: #646cff;
+    color: white;
+}

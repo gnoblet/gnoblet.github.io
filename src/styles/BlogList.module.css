@@ -1,0 +1,107 @@
+/* src/styles/BlogList.module.css */
+.blogList {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.blogCard {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.blogCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.coverImage {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.coverImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.blogCard:hover .coverImage img {
+    transform: scale(1.05);
+}
+
+.cardContent {
+    padding: 25px;
+}
+
+.postTitle {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+}
+
+.postTitle a {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.postTitle a:hover {
+    color: #646cff;
+}
+
+.postMeta {
+    display: flex;
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.postDate {
+    margin-right: 10px;
+}
+
+.postAuthor {
+    font-style: italic;
+}
+
+.postExcerpt {
+    color: #444;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.postTags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.tag {
+    background: #f0f0f0;
+    color: #555;
+    padding: 4px 10px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+}
+
+.readMoreLink {
+    display: inline-block;
+    color: #646cff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.readMoreLink:hover {
+    color: #535bf2;
+    text-decoration: underline;
+}

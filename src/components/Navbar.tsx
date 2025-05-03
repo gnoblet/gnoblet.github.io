@@ -1,23 +1,37 @@
 // src/components/Navbar.tsx
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import styles from "../styles/Navbar.module.css";
 
 function Navbar() {
   return (
-    <nav className="navbar">
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/blog">Blog</Link>
-        </li>
-        <li>
-          <Link to="/portfolio">Portfolio</Link>
-        </li>
-        <li>
-          <Link to="/contact">Contact</Link>
-        </li>
-      </ul>
+    <nav className={styles.navbar}>
+      <div className={styles.navbarContainer}>
+        <div className={styles.navbarLogo}>
+          <Link to="/">@GNOBLET</Link>
+        </div>
+        <ul className={styles.navbarMenu}>
+          <li className={styles.navbarItem}>
+            <Link to="/" className={styles.navbarLink}>
+              Home
+            </Link>
+          </li>
+          <li className={styles.navbarItem}>
+            <Link to="/blog" className={styles.navbarLink}>
+              Blog
+            </Link>
+          </li>
+          <li className={styles.navbarItem}>
+            <Link to="/portfolio" className={styles.navbarLink}>
+              Portfolio
+            </Link>
+          </li>
+          <li className={styles.navbarItem}>
+            <Link to="/contact" className={styles.navbarLink}>
+              Contact
+            </Link>
+          </li>
+        </ul>
+      </div>
     </nav>
   );
 }

@@ -1,0 +1,10 @@
+/* src/styles/LeafNetwork.module.css */
+.canvasBackground {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; /* Limit height to viewport height */
+    z-index: -1;
+    background-color: #051008; /* Very dark green background */
+}
