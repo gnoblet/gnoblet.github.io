@@ -1,0 +1,80 @@
+/* src/styles/Footer.module.css */
+.footer {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    position: relative; /* Added for positioning the scroll button */
+}
+
+.footerContent {
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 20px;
+    text-align: center;
+    position: relative; /* For button positioning */
+}
+
+/* Scroll to top button styles */
+.scrollTopButton {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #646cff;
+    color: white;
+    border: none;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease,
+        background-color 0.3s ease;
+    z-index: 99;
+}
+
+.scrollTopButton.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.scrollTopButton:hover {
+    background-color: #535bf2;
+}
+
+/* Animation for the button */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(100, 108, 255, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(100, 108, 255, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(100, 108, 255, 0);
+    }
+}
+
+.scrollTopButton.visible:hover {
+    animation: pulse 1.5s infinite;
+}
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+    .scrollTopButton {
+        bottom: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+    }
+}

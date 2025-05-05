@@ -1,0 +1,62 @@
+/* src/styles/BlogPostPage.module.css */
+.blogPostPageContainer {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.loadingContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+}
+
+.loader {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #646cff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.errorContainer {
+    text-align: center;
+    padding: 40px;
+    background: #fff1f1;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.errorMessage {
+    color: #e53935;
+    margin-bottom: 20px;
+}
+
+.backButton {
+    background: #646cff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.backButton:hover {
+    background: #535bf2;
+}

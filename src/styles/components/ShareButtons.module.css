@@ -1,0 +1,61 @@
+/* src/styles/ShareButtons.module.css */
+.shareContainer {
+    margin: 40px 0;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+.shareTitle {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    color: #555;
+}
+
+.shareButtons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.shareButton {
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+    border-radius: 4px;
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: opacity 0.3s ease;
+}
+
+.shareButton:hover {
+    opacity: 0.9;
+}
+
+.shareButton svg {
+    margin-right: 8px;
+}
+
+.twitter {
+    background-color: #1da1f2;
+}
+
+.facebook {
+    background-color: #4267b2;
+}
+
+.linkedin {
+    background-color: #0077b5;
+}
+
+.reddit {
+    background-color: #ff5700;
+}
+
+@media (max-width: 480px) {
+    .shareButtons {
+        flex-direction: column;
+    }
+}

@@ -1,23 +1,13 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import path from 'path'
+// vite.config.ts
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
+  assetsInclude: ["**/*.md"], // Include Markdown files as assets
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src')
-    }
+      "@": "/src", // Optional: add path alias for cleaner imports
+    },
   },
-  server: {
-    proxy: {
-      '/blog/rss': {
-        target: 'https://medium.com/@leejhlouis/feed',
-        changeOrigin: true,
-        rewrite: path => path.replace(/^\/blog\/rss/, '')
-      }
-    }
-  },
-  assetsInclude: ['**/*.md']
-})
+});

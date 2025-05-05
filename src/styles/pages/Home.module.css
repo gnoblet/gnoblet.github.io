@@ -1,0 +1,54 @@
+/* Add this to src/styles/Home.module.css */
+.homeContainer {
+    width: 100%;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* New standalone container for leaf animation */
+.fullWidthLeafContainer {
+    width: 100vw; /* Full viewport width */
+    height: 60vh; /* 60% viewport height as requested */
+    position: relative;
+    overflow: hidden;
+}
+
+.section {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 0;
+    scroll-margin-top: 60px;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+.heroSection {
+    text-align: center;
+    color: white;
+    min-height: auto; /* No need for full height since leaf animation is separate */
+    margin-top: -60vh; /* Overlap with leaf animation */
+    padding-top: 0;
+    background: transparent;
+}
+
+.heroContent {
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+    margin-top: 15vh; /* Center content in the leaf area */
+}
+
+.heroContent h1,
+.heroContent p {
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+}
+
+.aboutSection {
+    background: linear-gradient(to bottom, #051008, #f9f9f9);
+    color: #333;
+    margin-top: 0;
+    padding-top: 60px;
+}

@@ -1,0 +1,48 @@
+/* src/styles/TagCloud.module.css */
+.tagCloudContainer {
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+.tagCloudTitle {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.tagCloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tagButton {
+    background: #f0f0f0;
+    color: #555;
+    padding: 6px 12px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+}
+
+.tagButton:hover {
+    background: #e0e0e0;
+}
+
+.tagButton.active {
+    background: #646cff;
+    color: white;
+}
+
+.tagCount {
+    margin-left: 5px;
+    font-size: 0.8rem;
+    opacity: 0.8;
+}

@@ -1,0 +1,136 @@
+/* src/styles/BlogPost.module.css */
+.blogPost {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.backLink {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: #646cff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.backLink:hover {
+    text-decoration: underline;
+}
+
+.postHeader {
+    margin-bottom: 40px;
+}
+
+.postTitle {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.postMeta {
+    display: flex;
+    color: #666;
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+.postDate {
+    margin-right: 10px;
+}
+
+.postAuthor {
+    font-style: italic;
+}
+
+.coverImageContainer {
+    margin-bottom: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.coverImage {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+}
+
+.postTags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tag {
+    background: #f0f0f0;
+    color: #555;
+    padding: 5px 12px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+}
+
+.postContent {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #333;
+}
+
+/* Markdown content styling */
+.postContent h1 {
+    font-size: 2.2rem;
+    margin: 1.5em 0 0.8em;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.3em;
+}
+
+.postContent h2 {
+    font-size: 1.8rem;
+    margin: 1.4em 0 0.8em;
+}
+
+.postContent h3 {
+    font-size: 1.5rem;
+    margin: 1.3em 0 0.7em;
+}
+
+.postContent p {
+    margin: 1em 0;
+}
+
+.postContent img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+    margin: 1.5em 0;
+}
+
+.postContent ul,
+.postContent ol {
+    margin: 1em 0;
+    padding-left: 2em;
+}
+
+.postContent li {
+    margin-bottom: 0.5em;
+}
+
+.postContent blockquote {
+    border-left: 4px solid #646cff;
+    padding-left: 1em;
+    margin-left: 0;
+    color: #555;
+    font-style: italic;
+}
+
+.postContent pre {
+    background: #f5f5f5;
+    padding: 1em;
+    border-radius: 6px;
+    overflow-x: auto;
+}
+
+.postContent code {
+    background: #f0f0f0;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-family: monospace;
+}

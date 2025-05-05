@@ -1,0 +1,123 @@
+/* src/styles/Portfolio.module.css */
+.portfolioContainer {
+    width: 100%;
+    padding-top: 20px; /* Reduced padding since we have it in main-content */
+}
+
+.headerSection {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.title {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: #666;
+}
+
+.controlsSection {
+    margin-bottom: 40px;
+}
+
+.projectsGrid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 30px;
+    width: 100%;
+}
+
+.projectItem {
+    height: 100%;
+}
+
+.noResults {
+    text-align: center;
+    padding: 40px;
+    background: #f9f9f9;
+    border-radius: 8px;
+}
+
+.noResults p {
+    color: #666;
+    font-size: 1.1rem;
+}
+
+.activeFilter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+    font-size: 1rem;
+    color: #666;
+}
+
+.activeTag {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 8px;
+    background: #646cff;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease;
+}
+
+.activeTag:hover {
+    background: #535bf2;
+}
+
+/* Responsive grid layout - 2 per row on most screens */
+.projectsGrid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 30px;
+    width: 100%;
+}
+
+/* Responsive grid layout - 2 per row on most screens */
+@media (min-width: 768px) {
+    .projectsGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Keep 2 per row even on larger screens */
+@media (min-width: 1200px) {
+    .projectsGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .title {
+        font-size: 2rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+}
+
+.clearFilterButton {
+    background: #646cff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.clearFilterButton:hover {
+    background: #535bf2;
+}
