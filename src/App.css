@@ -6,19 +6,20 @@
 
 .main-content {
     padding-top: 60px; /* This should match your navbar height */
+    padding-bottom: 40px; /* This should match your footer height */
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
-    max-width: 100%;
+    background-color: #1a0f2e;
 }
 
-/* Content container that will be used across all pages */
 .content-container {
     width: 100%;
     max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+    position: relative; /* Add this */
+    overflow: visible; /* Add this to allow children to exceed width */
+    background-color: #1a0f2e;
 }
 
 .logo {

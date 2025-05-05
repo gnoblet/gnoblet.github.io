@@ -11,7 +11,7 @@ import { motion } from "framer-motion";
 const Portfolio: React.FC = () => {
   const [filteredProjects, setFilteredProjects] = useState<Project[]>(projects);
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedTag, setSelectedTag] = useState<string | null>(null);
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [allTags, setAllTags] = useState<string[]>([]);
 
   // Extract all unique tags from projects
@@ -23,7 +23,7 @@ const Portfolio: React.FC = () => {
     setAllTags(Array.from(tags).sort());
   }, []);
 
-  // Filter projects based on search term and selected tag
+  // Filter projects based on search term and selected tags
   useEffect(() => {
     let results = projects;
 
@@ -38,13 +38,15 @@ const Portfolio: React.FC = () => {
       );
     }
 
-    // Filter by selected tag
-    if (selectedTag) {
-      results = results.filter((project) => project.tags.includes(selectedTag));
+    // Filter by selected tags - project must have ALL selected tags
+    if (selectedTags.length > 0) {
+      results = results.filter((project) =>
+        selectedTags.every((tag) => project.tags.includes(tag)),
+      );
     }
 
     setFilteredProjects(results);
-  }, [searchTerm, selectedTag]);
+  }, [searchTerm, selectedTags]);
 
   const handleSearchChange = (term: string) => {
     setSearchTerm(term);
@@ -54,13 +56,30 @@ const Portfolio: React.FC = () => {
     setSearchTerm("");
   };
 
-  const handleTagSelect = (tag: string | null) => {
-    setSelectedTag(tag);
+  const handleTagSelect = (tag: string) => {
+    setSelectedTags((prevTags) => {
+      // Toggle tag
+      if (prevTags.includes(tag)) {
+        return prevTags.filter((t) => t !== tag);
+      } else {
+        return [...prevTags, tag];
+      }
+    });
   };
 
-  // Consistent tag click handler for both filters and project tags
+  const handleClearAllTags = () => {
+    setSelectedTags([]);
+  };
+
+  // Handle tag click from ProjectCard
   const handleTagClick = (tag: string) => {
-    setSelectedTag(tag === selectedTag ? null : tag);
+    // If it's not selected, just add it (don't toggle off)
+    if (!selectedTags.includes(tag)) {
+      setSelectedTags((prev) => [...prev, tag]);
+    } else {
+      // If already selected, toggle it off
+      setSelectedTags((prev) => prev.filter((t) => t !== tag));
+    }
   };
 
   return (
@@ -90,20 +109,21 @@ const Portfolio: React.FC = () => {
 
         <TagFilter
           tags={allTags}
-          selectedTag={selectedTag}
+          selectedTags={selectedTags}
           onTagSelect={handleTagSelect}
+          onClearAll={handleClearAllTags}
         />
       </motion.div>
 
       {filteredProjects.length === 0 ? (
         <div className={styles.noResults}>
           <p>No projects found. Try adjusting your search or filters.</p>
-          {selectedTag && (
+          {selectedTags.length > 0 && (
             <button
               className={styles.clearFilterButton}
-              onClick={() => setSelectedTag(null)}
+              onClick={handleClearAllTags}
             >
-              Clear Filter
+              Clear Filters
             </button>
           )}
         </div>
@@ -121,22 +141,6 @@ const Portfolio: React.FC = () => {
             </motion.div>
           ))}
         </div>
-      )}
-
-      {selectedTag && (
-        <motion.div
-          className={styles.activeFilter}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-        >
-          <span>Filtering by: </span>
-          <button
-            className={styles.activeTag}
-            onClick={() => setSelectedTag(null)}
-          >
-            #{selectedTag} ×
-          </button>
-        </motion.div>
       )}
     </div>
   );

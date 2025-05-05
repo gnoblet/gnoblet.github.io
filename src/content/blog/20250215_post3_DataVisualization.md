@@ -3,7 +3,7 @@ title: "Interactive Data Visualizations with Python"
 date: "2025-02-15"
 author: "Data Science Team"
 excerpt: "Learn how to create interactive data visualizations using Python and Plotly."
-tags: ["python", "data-visualization", "plotly", "tutorial"]
+tags: [python, data-visualization, plotly, tutorial]
 coverImage: "https://via.placeholder.com/800x400?text=Data+Visualization"
 ---
 

@@ -5,18 +5,27 @@ import { motion } from "framer-motion";
 
 interface TagFilterProps {
   tags: string[];
-  selectedTag: string | null;
-  onTagSelect: (tag: string | null) => void;
+  selectedTags: string[];
+  onTagSelect: (tag: string) => void;
+  onClearAll: () => void;
 }
 
 const TagFilter: React.FC<TagFilterProps> = ({
   tags,
-  selectedTag,
+  selectedTags,
   onTagSelect,
+  onClearAll,
 }) => {
   return (
     <div className={styles.filterContainer}>
-      <h3 className={styles.filterTitle}>Filter by tag</h3>
+      <div className={styles.filterHeader}>
+        <h3 className={styles.filterTitle}>Filter by tag</h3>
+        {selectedTags.length > 0 && (
+          <button className={styles.clearAllButton} onClick={onClearAll}>
+            Clear all filters
+          </button>
+        )}
+      </div>
       <motion.div
         className={styles.tagList}
         initial={{ opacity: 0 }}
@@ -24,8 +33,8 @@ const TagFilter: React.FC<TagFilterProps> = ({
         transition={{ staggerChildren: 0.1, delayChildren: 0.2 }}
       >
         <motion.button
-          className={`${styles.tagButton} ${selectedTag === null ? styles.active : ""}`}
-          onClick={() => onTagSelect(null)}
+          className={`${styles.tagButton} ${selectedTags.length === 0 ? styles.active : ""}`}
+          onClick={onClearAll}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
@@ -34,8 +43,8 @@ const TagFilter: React.FC<TagFilterProps> = ({
         {tags.map((tag) => (
           <motion.button
             key={tag}
-            className={`${styles.tagButton} ${selectedTag === tag ? styles.active : ""}`}
-            onClick={() => onTagSelect(tag === selectedTag ? null : tag)} // Toggle on/off
+            className={`${styles.tagButton} ${selectedTags.includes(tag) ? styles.active : ""}`}
+            onClick={() => onTagSelect(tag)}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -43,6 +52,14 @@ const TagFilter: React.FC<TagFilterProps> = ({
           </motion.button>
         ))}
       </motion.div>
+      {selectedTags.length > 0 && (
+        <div className={styles.filterSummary}>
+          <p>
+            Showing items with {selectedTags.length > 1 ? "all" : "the"}{" "}
+            selected {selectedTags.length > 1 ? "tags" : "tag"}
+          </p>
+        </div>
+      )}
     </div>
   );
 };
