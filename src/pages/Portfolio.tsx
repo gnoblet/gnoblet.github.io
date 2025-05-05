@@ -1,11 +1,11 @@
 // src/pages/Portfolio.tsx
 import React, { useState, useEffect } from "react";
 import ProjectCard from "../components/ProjectCard";
-import ProjectSearch from "../components/ProjectSearch";
+import SearchBar from "../components/SearchBar";
 import TagFilter from "../components/TagFilter";
 import { projects } from "../data/projects";
 import { Project } from "../types/project";
-import styles from "../styles/Portfolio.module.css";
+import styles from "../styles/pages/Portfolio.module.css";
 import { motion } from "framer-motion";
 
 const Portfolio: React.FC = () => {
@@ -58,14 +58,9 @@ const Portfolio: React.FC = () => {
     setSelectedTag(tag);
   };
 
-  // Modified to toggle tags
+  // Consistent tag click handler for both filters and project tags
   const handleTagClick = (tag: string) => {
-    if (selectedTag === tag) {
-      // If the same tag is clicked again, remove the filter
-      setSelectedTag(null);
-    } else {
-      setSelectedTag(tag);
-    }
+    setSelectedTag(tag === selectedTag ? null : tag);
   };
 
   return (
@@ -86,10 +81,11 @@ const Portfolio: React.FC = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.2 }}
       >
-        <ProjectSearch
+        <SearchBar
           searchTerm={searchTerm}
           onSearchChange={handleSearchChange}
           onClearSearch={handleClearSearch}
+          placeholder="Search projects..."
         />
 
         <TagFilter
@@ -102,6 +98,14 @@ const Portfolio: React.FC = () => {
       {filteredProjects.length === 0 ? (
         <div className={styles.noResults}>
           <p>No projects found. Try adjusting your search or filters.</p>
+          {selectedTag && (
+            <button
+              className={styles.clearFilterButton}
+              onClick={() => setSelectedTag(null)}
+            >
+              Clear Filter
+            </button>
+          )}
         </div>
       ) : (
         <div className={styles.projectsGrid}>

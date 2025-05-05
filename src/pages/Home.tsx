@@ -1,10 +1,10 @@
 // src/pages/Home.tsx
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
-import styles from "../styles/Home.module.css";
-import LeafNetwork from "../components/LeafNetwork";
-import FeaturedProjects from "../components/FeaturedProjects"; // Keep this import
-import { projects } from "../data/projects"; // Also keep this for the projects data
+import styles from "../styles/pages/Home.module.css";
+import LeafAnimation from "../components/LeafAnimation";
+import FeaturedProjects from "../components/FeaturedProjects";
+import { projects } from "../data/projects";
 import { Link } from "react-scroll";
 
 const Home: React.FC = () => {
@@ -23,11 +23,13 @@ const Home: React.FC = () => {
 
   return (
     <div className={styles.homeContainer}>
-      {/* Hero Section */}
-      <section id="hero" className={`${styles.section} ${styles.heroSection}`}>
-        {/* Add the LeafNetwork only inside the hero section */}
-        <LeafNetwork />
+      {/* Standalone Leaf Animation Container - full width, 60vh height */}
+      <div className={styles.fullWidthLeafContainer}>
+        <LeafAnimation />
+      </div>
 
+      {/* Hero Section - now separate from leaf animation */}
+      <section id="hero" className={`${styles.section} ${styles.heroSection}`}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -48,6 +50,7 @@ const Home: React.FC = () => {
           </Link>
         </motion.div>
       </section>
+
       {/* About Section */}
       <section
         id="about"
@@ -64,15 +67,18 @@ const Home: React.FC = () => {
           <p>This is the about section of my website.</p>
         </motion.div>
       </section>
-      a{/* Services Section */}
+
+      {/* Services Section */}
       <section
         id="services"
         className={`${styles.section} ${styles.servicesSection}`}
       >
         {/* Services content */}
       </section>
-      {/* Featured Projects Section - keep this */}
+
+      {/* Featured Projects Section */}
       <FeaturedProjects projects={latestProjects} />
+
       {/* Contact Section */}
       <section
         id="contact"

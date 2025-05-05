@@ -1,6 +1,6 @@
 // src/components/TagCloud.tsx
 import React from "react";
-import styles from "../styles/TagCloud.module.css";
+import styles from "../styles/components/TagCloud.module.css";
 import { motion } from "framer-motion";
 
 interface TagCloudProps {

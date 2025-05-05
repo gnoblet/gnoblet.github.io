@@ -1,7 +1,7 @@
-// src/components/Footer.tsx
+// src/components/layout/Footer.tsx
 import { useState, useEffect } from "react";
 import { animateScroll as scroll } from "react-scroll";
-import styles from "../styles/Footer.module.css";
+import styles from "../styles/components/Footer.module.css";
 
 function Footer() {
   const [isVisible, setIsVisible] = useState(false);

@@ -1,34 +1,29 @@
-// src/components/BlogPost.tsx - Simplified version
+// src/components/BlogPost.tsx
 import React, { useEffect } from "react";
 import { BlogPost } from "../types/blog";
 import { formatDate } from "../utils/blogUtils";
-import styles from "../styles/BlogPost.module.css";
-import { motion } from "framer-motion";
+import styles from "../styles/components/BlogPost.module.css";
 import { Link } from "react-router-dom";
-import ShareButtons from "./ShareButtons";
 import Prism from "prismjs";
 import "prismjs/themes/prism.css";
+import ShareButtons from "./ShareButtons";
+import { marked } from "marked"; // Import the marked library
 
 interface BlogPostProps {
   post: BlogPost;
 }
 
 const BlogPostComponent: React.FC<BlogPostProps> = ({ post }) => {
-  // Initialize syntax highlighting when component mounts
+  // Convert markdown to HTML
+  const htmlContent = post.content ? marked(post.content) : "";
+
+  // Initialize syntax highlighting
   useEffect(() => {
     Prism.highlightAll();
   }, [post]);
 
-  // Get the current URL for sharing
-  const currentUrl = window.location.href;
-
   return (
-    <motion.article
-      className={styles.blogPost}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-    >
+    <article className={styles.blogPost}>
       <Link to="/blog" className={styles.backLink}>
         ← Back to all posts
       </Link>
@@ -61,12 +56,11 @@ const BlogPostComponent: React.FC<BlogPostProps> = ({ post }) => {
 
       <div
         className={styles.postContent}
-        dangerouslySetInnerHTML={{ __html: post.content }}
+        dangerouslySetInnerHTML={{ __html: htmlContent }}
       />
 
-      {/* Share buttons */}
-      <ShareButtons title={post.title} url={currentUrl} />
-    </motion.article>
+      <ShareButtons title={post.title} url={window.location.href} />
+    </article>
   );
 };
 

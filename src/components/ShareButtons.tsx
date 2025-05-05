@@ -1,6 +1,6 @@
 // src/components/ShareButtons.tsx
 import React from "react";
-import styles from "../styles/ShareButtons.module.css";
+import styles from "../styles/components/ShareButtons.module.css";
 
 interface ShareButtonsProps {
   title: string;

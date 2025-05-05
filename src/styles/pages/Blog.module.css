@@ -1,7 +1,7 @@
-/* src/styles/Portfolio.module.css */
-.portfolioContainer {
+/* src/styles/pages/Blog.module.css */
+.blogContainer {
     width: 100%;
-    padding-top: 20px; /* Reduced padding since we have it in main-content */
+    padding-top: 20px;
 }
 
 .headerSection {
@@ -24,15 +24,20 @@
     margin-bottom: 40px;
 }
 
-.projectsGrid {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    gap: 30px;
-    width: 100%;
+.loading {
+    text-align: center;
+    padding: 50px;
+    font-size: 1.2rem;
+    color: #666;
 }
 
-.projectItem {
-    height: 100%;
+.error {
+    text-align: center;
+    padding: 40px;
+    background: #fff1f1;
+    border-radius: 8px;
+    margin-top: 20px;
+    color: #e53935;
 }
 
 .noResults {
@@ -74,18 +79,19 @@
     background: #535bf2;
 }
 
-/* Responsive grid layout - 2 per row on most screens */
-@media (min-width: 768px) {
-    .projectsGrid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+.clearFilterButton {
+    background: #646cff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-/* Keep 2 per row even on larger screens */
-@media (min-width: 1200px) {
-    .projectsGrid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+.clearFilterButton:hover {
+    background: #535bf2;
 }
 
 /* Mobile adjustments */

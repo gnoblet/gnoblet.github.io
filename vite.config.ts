@@ -4,21 +4,10 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
+  assetsInclude: ["**/*.md"], // Include Markdown files as assets
   resolve: {
     alias: {
-      "@": "/src",
-    },
-  },
-  assetsInclude: ["**/*.md"],
-  build: {
-    rollupOptions: {
-      onwarn(warning, warn) {
-        // Ignore specific warnings
-        if (warning.code === "EVAL" && warning.id?.includes("gray-matter")) {
-          return;
-        }
-        warn(warning);
-      },
+      "@": "/src", // Optional: add path alias for cleaner imports
     },
   },
 });

@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { BlogPostMetadata } from "../types/blog";
 import { formatDate } from "../utils/blogUtils";
-import styles from "../styles/BlogList.module.css";
+import styles from "../styles/components/BlogList.module.css";
 import { motion } from "framer-motion";
 
 interface BlogListProps {
@@ -12,7 +12,7 @@ interface BlogListProps {
 
 const BlogList: React.FC<BlogListProps> = ({ posts }) => {
   return (
-    <div className={styles.blogList}>
+    <div className={styles.blogGrid}>
       {posts.map((post, index) => (
         <motion.article
           key={post.id}

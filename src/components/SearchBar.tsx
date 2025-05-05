@@ -1,23 +1,25 @@
-// src/components/ProjectSearch.tsx
+// src/components/SearchBar.tsx
 import React from "react";
-import styles from "../styles/components/ProjectSearch.module.css";
+import styles from "../styles/components/SearchBar.module.css";
 
-interface ProjectSearchProps {
+interface SearchBarProps {
   searchTerm: string;
   onSearchChange: (searchTerm: string) => void;
   onClearSearch: () => void;
+  placeholder?: string;
 }
 
-const ProjectSearch: React.FC<ProjectSearchProps> = ({
+const SearchBar: React.FC<SearchBarProps> = ({
   searchTerm,
   onSearchChange,
   onClearSearch,
+  placeholder = "Search...",
 }) => {
   return (
     <div className={styles.searchContainer}>
       <input
         type="text"
-        placeholder="Search projects..."
+        placeholder={placeholder}
         value={searchTerm}
         onChange={(e) => onSearchChange(e.target.value)}
         className={styles.searchInput}
@@ -35,4 +37,4 @@ const ProjectSearch: React.FC<ProjectSearchProps> = ({
   );
 };
 
-export default ProjectSearch;
+export default SearchBar;

@@ -3,7 +3,7 @@ import React from "react";
 import { Project } from "../types/project";
 import ProjectCard from "./ProjectCard";
 import { Link } from "react-router-dom";
-import styles from "../styles/FeaturedProjects.module.css";
+import styles from "../styles/components/FeaturedProjects.module.css";
 import { motion } from "framer-motion";
 
 interface FeaturedProjectsProps {

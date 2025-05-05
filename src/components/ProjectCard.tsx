@@ -1,8 +1,8 @@
 // src/components/ProjectCard.tsx
 import React from "react";
 import { Project } from "../types/project";
-import styles from "../styles/ProjectCard.module.css";
-import { motion } from "framer-motion"; // Import framer-motion for animations
+import styles from "../styles/components/ProjectCard.module.css";
+import { motion } from "framer-motion";
 
 interface ProjectCardProps {
   project: Project;
@@ -25,8 +25,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onTagClick }) => {
           className={styles.image}
         />
       </div>
-      <div className={styles.content}>
-        <h3 className={styles.title}>{project.title}</h3>
+      <div className={styles.cardContent}>
+        <h2 className={styles.title}>{project.title}</h2>
         <p className={styles.description}>{project.description}</p>
         <div className={styles.tags}>
           {project.tags.map((tag) => (

@@ -1,6 +1,6 @@
 // src/components/TagFilter.tsx
 import React from "react";
-import styles from "../styles/TagFilter.module.css";
+import styles from "../styles/components/TagFilter.module.css";
 import { motion } from "framer-motion";
 
 interface TagFilterProps {

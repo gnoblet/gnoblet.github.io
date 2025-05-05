@@ -1,6 +1,6 @@
-// src/components/Navbar.tsx
+// src/components/layout/Navbar.tsx
 import { Link } from "react-router-dom";
-import styles from "../styles/Navbar.module.css";
+import styles from "../styles/components/Navbar.module.css";
 
 function Navbar() {
   return (

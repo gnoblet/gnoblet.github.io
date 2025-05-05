@@ -1,6 +1,6 @@
 // src/pages/Contact.tsx
 import React from "react";
-import styles from "../styles/Contact.module.css"; // Create this file
+import styles from "../styles/pages/Contact.module.css"; // Create this file
 import { motion } from "framer-motion";
 
 function Contact() {

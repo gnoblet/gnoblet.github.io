@@ -1,6 +1,6 @@
-// src/types/blog.ts - Simplified types
+// src/types/blog.ts
 export interface BlogPost {
-  id: string;
+  id?: string;
   slug: string;
   title: string;
   date: string;
@@ -9,17 +9,6 @@ export interface BlogPost {
   author: string;
   tags: string[];
   coverImage?: string;
-  format?: string;
 }
 
-export interface BlogPostMetadata {
-  id: string;
-  slug: string;
-  title: string;
-  date: string;
-  excerpt: string;
-  author: string;
-  tags: string[];
-  coverImage?: string;
-  format?: string;
-}
+export type BlogPostMetadata = Omit<BlogPost, "content">;
