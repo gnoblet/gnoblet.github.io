@@ -44,17 +44,18 @@ const LeafAnimation: React.FC = () => {
     window.addEventListener("resize", handleResize);
     handleResize();
 
-    // Leaf colors
+    // Blue-Purple leaf colors - inspired by colasdroin.github.io
     const leafColors = [
-      "rgba(45, 120, 80, 0.8)", // Dark green
-      "rgba(75, 160, 65, 0.8)", // Medium green
-      "rgba(120, 180, 60, 0.8)", // Light green
-      "rgba(150, 200, 80, 0.8)",
+      "rgba(100, 130, 255, 0.8)", // Bright blue
+      "rgba(80, 100, 220, 0.8)", // Medium blue
+      "rgba(120, 100, 240, 0.8)", // Purple-blue
+      "rgba(150, 110, 250, 0.8)", // Light purple
+      "rgba(170, 130, 255, 0.8)", // Lavender
     ];
 
     // Initialize leaves
     const leaves: Leaf[] = [];
-    const leafCount = 120;
+    const leafCount = 200;
 
     // Gravity and wind settings - slightly faster than before
     const gravity = 0.015; // Increased from 0.01
@@ -77,7 +78,7 @@ const LeafAnimation: React.FC = () => {
         tiltSpeed: (Math.random() - 0.5) * 0.007, // Slightly faster tilt
         color: leafColors[Math.floor(Math.random() * leafColors.length)],
         alpha: 0.7 + Math.random() * 0.3,
-        type: Math.floor(Math.random() * 3), // 3 different leaf types
+        type: Math.floor(Math.random() * 3), // 3 different leaf shapes
         wobble: Math.random() * Math.PI * 2, // Random starting phase
         wobbleSpeed: 0.015 + Math.random() * 0.025, // Faster wobble
         wobbleAmplitude: 0.3 + Math.random() * 0.7, // Different amplitude for each leaf
@@ -323,7 +324,7 @@ const LeafAnimation: React.FC = () => {
     <canvas
       ref={canvasRef}
       className={styles.canvasBackground}
-      aria-label="Gently falling leaves animation"
+      aria-label="Gently falling particles animation"
     />
   );
 };

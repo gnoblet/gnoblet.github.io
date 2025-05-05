@@ -13,7 +13,7 @@ const Blog: React.FC = () => {
   const [postsMetadata, setPostsMetadata] = useState<BlogPostMetadata[]>([]);
   const [filteredPosts, setFilteredPosts] = useState<BlogPostMetadata[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedTag, setSelectedTag] = useState<string | null>(null);
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [allTags, setAllTags] = useState<string[]>([]);
 
   // Transform full posts to metadata (remove content)
@@ -32,7 +32,7 @@ const Blog: React.FC = () => {
     }
   }, [posts]);
 
-  // Filter posts based on search term and selected tag
+  // Filter posts based on search term and selected tags
   useEffect(() => {
     let results = postsMetadata;
 
@@ -47,13 +47,15 @@ const Blog: React.FC = () => {
       );
     }
 
-    // Filter by selected tag
-    if (selectedTag) {
-      results = results.filter((post) => post.tags.includes(selectedTag));
+    // Filter by selected tags - post must have ALL selected tags
+    if (selectedTags.length > 0) {
+      results = results.filter((post) =>
+        selectedTags.every((tag) => post.tags.includes(tag)),
+      );
     }
 
     setFilteredPosts(results);
-  }, [searchTerm, selectedTag, postsMetadata]);
+  }, [searchTerm, selectedTags, postsMetadata]);
 
   const handleSearchChange = (term: string) => {
     setSearchTerm(term);
@@ -63,12 +65,19 @@ const Blog: React.FC = () => {
     setSearchTerm("");
   };
 
-  const handleTagSelect = (tag: string | null) => {
-    setSelectedTag(tag);
+  const handleTagSelect = (tag: string) => {
+    setSelectedTags((prevTags) => {
+      // Toggle tag
+      if (prevTags.includes(tag)) {
+        return prevTags.filter((t) => t !== tag);
+      } else {
+        return [...prevTags, tag];
+      }
+    });
   };
 
-  const handleTagClick = (tag: string) => {
-    setSelectedTag(tag === selectedTag ? null : tag);
+  const handleClearAllTags = () => {
+    setSelectedTags([]);
   };
 
   if (loading) {
@@ -106,41 +115,26 @@ const Blog: React.FC = () => {
 
         <TagFilter
           tags={allTags}
-          selectedTag={selectedTag}
+          selectedTags={selectedTags}
           onTagSelect={handleTagSelect}
+          onClearAll={handleClearAllTags}
         />
       </motion.div>
 
       {filteredPosts.length === 0 ? (
         <div className={styles.noResults}>
           <p>No posts found. Try adjusting your search or filters.</p>
-          {selectedTag && (
+          {selectedTags.length > 0 && (
             <button
               className={styles.clearFilterButton}
-              onClick={() => setSelectedTag(null)}
+              onClick={handleClearAllTags}
             >
-              Clear Filter
+              Clear Filters
             </button>
           )}
         </div>
       ) : (
         <BlogList posts={filteredPosts} />
-      )}
-
-      {selectedTag && (
-        <motion.div
-          className={styles.activeFilter}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-        >
-          <span>Filtering by: </span>
-          <button
-            className={styles.activeTag}
-            onClick={() => setSelectedTag(null)}
-          >
-            #{selectedTag} ×
-          </button>
-        </motion.div>
       )}
     </div>
   );

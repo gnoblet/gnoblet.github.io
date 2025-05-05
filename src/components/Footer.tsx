@@ -1,10 +1,13 @@
-// src/components/layout/Footer.tsx
+// src/components/Footer.tsx
 import { useState, useEffect } from "react";
 import { animateScroll as scroll } from "react-scroll";
 import styles from "../styles/components/Footer.module.css";
+import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import BlueSkyLogo from "../assets/logo/Bluesky_Logo.svg"; // Import the logo
 
 function Footer() {
   const [isVisible, setIsVisible] = useState(false);
+  const currentYear = new Date().getFullYear();
 
   // Show button when page is scrolled down
   const toggleVisibility = () => {
@@ -32,8 +35,43 @@ function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.footerContent}>
-        <p>
-          &copy; {new Date().getFullYear()} My Website. All rights reserved.
+        <div className={styles.socialLinks}>
+          <a
+            href="https://bsky.app/profile/gnoblet.bsky.social"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Bluesky"
+            className={styles.blueskyLink}
+          >
+            <img
+              src={BlueSkyLogo}
+              alt="Bluesky"
+              className={styles.blueskyIcon}
+            />
+          </a>
+          <a
+            href="https://github.com/gnoblet"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+          >
+            <FaGithub />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/gnoblet/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+          >
+            <FaLinkedin />
+          </a>
+          <a href="mailto:gnoblet@zaclys.net" aria-label="Email">
+            <FaEnvelope />
+          </a>
+        </div>
+
+        <p className={styles.copyright}>
+          &copy; {currentYear} Guillaume Noblet
         </p>
 
         {/* Scroll to Top Button */}

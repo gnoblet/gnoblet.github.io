@@ -121,3 +121,25 @@
 .clearFilterButton:hover {
     background: #535bf2;
 }
+
+.activeTags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.clearAllButton {
+    background: none;
+    border: 1px solid #646cff;
+    color: #646cff;
+    padding: 4px 10px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.clearAllButton:hover {
+    background: #646cff;
+    color: white;
+}

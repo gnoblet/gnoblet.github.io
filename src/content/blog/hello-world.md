@@ -3,7 +3,7 @@ title: "Hello World: My First Blog Post"
 date: "2023-07-15"
 author: "Your Name"
 excerpt: "An introduction to my new blog built with React and Markdown."
-tags: ["intro", "react", "markdown"]
+tags: [intro, react, markdown]
 coverImage: "https://via.placeholder.com/800x400?text=Hello+World"
 ---
 

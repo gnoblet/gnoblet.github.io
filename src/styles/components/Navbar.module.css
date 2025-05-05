@@ -1,5 +1,5 @@
 .navbar {
-    background-color: #333;
+    background-color: #0a060f;
     height: 60px;
     display: flex;
     justify-content: center;
@@ -53,10 +53,38 @@
     padding: 0 1rem;
     height: 100%;
     transition: all 0.3s ease;
+    position: relative;
+}
+
+/* Create the underline effect */
+.navbarLink::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #966efa;
+    transition: width 0.3s ease;
+}
+
+/* Show the underline on hover */
+.navbarLink:hover::after {
+    width: 100%;
+}
+
+/* For active/selected state */
+.navbarLink.active {
+    color: #966efa;
+}
+
+/* Keep the underline visible for active links */
+.navbarLink.active::after {
+    width: 100%;
 }
 
 .navbarLink:hover {
-    color: #646cff;
+    color: #966efa;
 }
 
 /* Mobile responsiveness */
@@ -70,14 +98,6 @@
         left: -100%;
         opacity: 1;
         transition: all 0.5s ease;
-    }
-
-    .navbarMenu.active {
-        background: #333;
-        left: 0;
-        opacity: 1;
-        transition: all 0.5s ease;
-        z-index: 1;
     }
 
     .navbarItem {

@@ -2,21 +2,18 @@
 import React from "react";
 import { Project } from "../types/project";
 import styles from "../styles/components/ProjectCard.module.css";
-import { motion } from "framer-motion";
 
 interface ProjectCardProps {
   project: Project;
-  onTagClick: (tag: string) => void;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ project, onTagClick }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   return (
-    <motion.div
+    <a
+      href={project.projectUrl}
+      target="_blank"
+      rel="noopener noreferrer"
       className={styles.card}
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: 0.1 }}
-      whileHover={{ y: -5 }}
     >
       <div className={styles.imageContainer}>
         <img
@@ -30,25 +27,13 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onTagClick }) => {
         <p className={styles.description}>{project.description}</p>
         <div className={styles.tags}>
           {project.tags.map((tag) => (
-            <span
-              key={tag}
-              className={styles.tag}
-              onClick={() => onTagClick(tag)}
-            >
+            <span key={tag} className={styles.tag}>
               #{tag}
             </span>
           ))}
         </div>
-        <a
-          href={project.projectUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={styles.link}
-        >
-          View Project
-        </a>
       </div>
-    </motion.div>
+    </a>
   );
 };
 
