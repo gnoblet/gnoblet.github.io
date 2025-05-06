@@ -5,6 +5,7 @@ import styles from "../styles/components/ProjectCard.module.css";
 
 interface ProjectCardProps {
   project: Project;
+  onTagClick: (tag: string) => void;
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
@@ -26,11 +27,15 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         <h2 className={styles.title}>{project.title}</h2>
         <p className={styles.description}>{project.description}</p>
         <div className={styles.tags}>
-          {project.tags.map((tag) => (
-            <span key={tag} className={styles.tag}>
-              #{tag}
-            </span>
-          ))}
+        {project.tags.map((tag) => (
+          <span
+            key={tag}
+            className={styles.tag}
+            onClick={() => onTagClick(tag)}
+          >
+            #{tag}
+          </span>
+        ))}
         </div>
       </div>
     </a>

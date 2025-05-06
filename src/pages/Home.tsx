@@ -31,7 +31,7 @@ const Home: React.FC = () => {
         <LeafAnimation />
       </div>
 
-      {/* Hero Section - separate from leaf animation */}
+      {/* Hero Section - on top of the leaf animation */}
       <section id="hero" className={`${styles.section} ${styles.heroSection}`}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}

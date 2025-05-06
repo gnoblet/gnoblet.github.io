@@ -1,4 +1,4 @@
-/* src/styles/pages/Home.module.css */
+
 .homeContainer {
     width: 100%; /* Ensure it spans the full width */
     height: 100%; /* Ensure it spans the full height */
@@ -6,17 +6,13 @@
     position: relative; /* Allow positioning of child elements */
 }
 
-/* src/styles/pages/Home.module.css */
 .fullWidthLeafContainer {
     width: 100vw; /* Full viewport width */
-    height: 60vh; /* 60% of viewport height */
-    position: relative;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
-    overflow: hidden;
-    z-index: 0;
+    height: 70vh; /* 60% of viewport height */
+    position: absolute; /* Position absolutely to overlap with hero section */
+    top: 0; /* Start from the top of the container */
+    left: 0; /* Start from the left of the container */
+    z-index: 0; /* Ensure it's behind the hero section */
     background: linear-gradient(
         to bottom,
         #0a060f,
@@ -25,8 +21,7 @@
 }
 
 .section {
-    min-height: 80vh;
-    max-width: 60vw;
+    min-height: 70vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -34,24 +29,24 @@
     scroll-margin-top: 60px;
     width: 100%;
     position: relative;
-    z-index: 1;
+    z-index: 1; /* Ensure it's on top of the leaf container */
 }
 
 .heroSection {
     text-align: center;
     color: white;
     min-height: auto;
-    margin-top: -60vh; /* Position hero on top of the leaf animation */
     padding-top: 0;
-    background: transparent;
+    background: transparent; /* Make the hero section transparent */
     position: relative;
-    z-index: 1;
+    z-index: 1; /* Ensure it's on top of the leaf container */
 }
+
 .heroContent {
     position: relative;
     z-index: 2;
     padding: 20px;
-    margin-top: 15vh; /* Center content in the leaf area */
+    margin-top: 1vh; /* Center content in the leaf area */
     max-width: 800px;
 }
 
@@ -124,14 +119,14 @@
 }
 
 .aboutSection {
-    background: linear-gradient(to bottom, #2d184a, #f9f9f9);
-    color: #333;
+    background: linear-gradient(to bottom, #0a060f, #2d184a);
+    color: white;
     margin-top: 0;
     padding-top: 60px;
 }
 
+
 .sectionContent {
-    max-width: 800px;
     margin: 0 auto;
     padding: 0 20px;
     text-align: center;
