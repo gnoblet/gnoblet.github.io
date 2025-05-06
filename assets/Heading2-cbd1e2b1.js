@@ -1,1 +1,0 @@
-import{j as x}from"./index-021ac759.js";import{c as e}from"./clsx-1229b3e0.js";function m({id:t,className:o,children:s}){return x.jsx("h2",{id:t,className:e(o,"py-4","text-2xl font-bold md:text-3xl"),children:s})}export{m as default};

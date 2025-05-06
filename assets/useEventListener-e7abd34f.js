@@ -1,1 +1,0 @@
-import{r as u}from"./index-021ac759.js";function E(r,o,s){const t=(s==null?void 0:s.current)??window;u.useEffect(()=>(t.addEventListener(r,o),()=>{t.removeEventListener(r,o)}),[t,r,o])}export{E as u};

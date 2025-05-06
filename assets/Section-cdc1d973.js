@@ -1,1 +1,0 @@
-import{j as t}from"./index-021ac759.js";import{c as n}from"./clsx-1229b3e0.js";function m({id:o,className:r,maxWidthClass:e,children:s}){return t.jsx("section",{id:o||"",className:n(r,e,{"xl:max-w-screen-xl":!e},"container py-6 sm:py-12"),children:s})}export{m as default};
