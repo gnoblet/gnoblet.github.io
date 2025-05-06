@@ -8,7 +8,14 @@ interface ProjectCardProps {
   onTagClick: (tag: string) => void;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({ project, onTagClick  }) => {
+
+  const handleTagClick = (tag: string) => {
+    if (onTagClick) {
+      onTagClick(tag);
+    }
+  };
+
   return (
     <a
       href={project.projectUrl}
@@ -31,7 +38,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           <span
             key={tag}
             className={styles.tag}
-            onClick={() => onTagClick(tag)}
+            onClick={() => handleTagClick(tag)}
           >
             #{tag}
           </span>
