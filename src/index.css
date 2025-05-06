@@ -7,6 +7,12 @@
     padding: 0;
 }
 
+@font-face{
+    font-family: "Nunito";
+    src:local("Nunito-Regular"),
+    url('./assets/fonts/Nunito-Regular.ttf') 
+  }
+
 html,
 body,
 #root {

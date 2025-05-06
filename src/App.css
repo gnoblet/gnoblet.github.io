@@ -2,6 +2,7 @@
     width: 100%;
     margin: 0 auto;
     text-align: center;
+    font-family: 'Nunito';
 }
 
 .main-content {
@@ -17,8 +18,8 @@
 .content-container {
     width: 100%;
     max-width: 1200px;
-    position: relative; /* Add this */
-    overflow: visible; /* Add this to allow children to exceed width */
+    position: relative;
+    overflow: visible; 
 }
 
 .logo {
