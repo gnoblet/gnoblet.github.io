@@ -1,0 +1,42 @@
+* src/styles/variables.css */ :root {
+    /* Colors */
+    --color-primary: #646cff;
+    --color-primary-hover: #535bf2;
+    --color-primary-light: rgba(100, 108, 255, 0.4);
+    --color-primary-translucent: rgba(100, 108, 255, 0.1);
+
+    /* Background colors */
+    --color-dark-bg: #0a060f;
+    --color-dark-bg-secondary: #1a0f2e;
+    --color-purple-bg: #2d184a;
+
+    /* Text colors */
+    --color-text-light: rgba(255, 255, 255, 0.87);
+    --color-text-dark: #333;
+    --color-text-secondary: #666;
+
+    /* Card and UI elements */
+    --card-bg: rgba(255, 255, 255, 0.85);
+    --card-bg-translucent: rgba(255, 255, 255, 0.15);
+    --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --card-shadow-hover: 0 10px 20px rgba(0, 0, 0, 0.15);
+
+    /* Layout */
+    --navbar-height: 60px;
+    --content-max-width: 1200px;
+    --border-radius: 8px;
+    --border-radius-large: 12px;
+    --border-radius-pill: 50px;
+
+    /* Transitions */
+    --transition-standard: all 0.3s ease;
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --card-bg: rgba(30, 30, 30, 0.85);
+        --card-bg-translucent: rgba(30, 30, 30, 0.2);
+        --color-text-dark: var(--color-text-light);
+    }
+}
