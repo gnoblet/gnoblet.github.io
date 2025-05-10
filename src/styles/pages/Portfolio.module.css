@@ -1,27 +1,39 @@
-/* src/styles/Portfolio.module.css */
+/* src/styles/pages/Portfolio.module.css */
 .portfolioContainer {
     width: 100%;
     padding-top: 20px; /* Reduced padding since we have it in main-content */
+    position: relative;
 }
 
 .headerSection {
     text-align: center;
     margin-bottom: 40px;
+    position: relative;
+    z-index: 1;
 }
 
 .title {
     font-size: 2.5rem;
     margin-bottom: 10px;
-    color: #333;
+    color: var(--color-text-dark);
+    position: relative;
 }
 
 .subtitle {
     font-size: 1.1rem;
-    color: #666;
+    color: var(--color-text-secondary);
 }
 
 .controlsSection {
     margin-bottom: 40px;
+    position: relative;
+    z-index: 2;
+    background: var(--card-bg-translucent);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: var(--card-shadow);
 }
 
 .projectsGrid {
@@ -38,12 +50,15 @@
 .noResults {
     text-align: center;
     padding: 40px;
-    background: #f9f9f9;
-    border-radius: 8px;
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--card-shadow);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .noResults p {
-    color: #666;
+    color: var(--color-text-secondary);
     font-size: 1.1rem;
 }
 
@@ -53,25 +68,26 @@
     justify-content: center;
     margin: 20px 0;
     font-size: 1rem;
-    color: #666;
+    color: var(--color-text-secondary);
 }
 
 .activeTag {
     display: inline-flex;
     align-items: center;
     margin-left: 8px;
-    background: #646cff;
+    background: var(--color-primary);
     color: white;
     padding: 4px 12px;
-    border-radius: 50px;
+    border-radius: var(--border-radius-pill);
     border: none;
     cursor: pointer;
     font-size: 0.9rem;
-    transition: background-color 0.2s ease;
+    transition: all 0.2s ease;
 }
 
 .activeTag:hover {
-    background: #535bf2;
+    background: var(--color-primary-hover);
+    transform: translateY(-2px);
 }
 
 /* Responsive grid layout - 2 per row on most screens */
@@ -108,18 +124,19 @@
 }
 
 .clearFilterButton {
-    background: #646cff;
+    background: var(--color-primary);
     color: white;
     border: none;
     padding: 8px 16px;
-    border-radius: 4px;
+    border-radius: var(--border-radius);
     margin-top: 15px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .clearFilterButton:hover {
-    background: #535bf2;
+    background: var(--color-primary-hover);
+    transform: translateY(-2px);
 }
 
 .activeTags {
@@ -130,16 +147,17 @@
 
 .clearAllButton {
     background: none;
-    border: 1px solid #646cff;
-    color: #646cff;
+    border: 1px solid var(--color-primary);
+    color: var(--color-primary);
     padding: 4px 10px;
-    border-radius: 50px;
+    border-radius: var(--border-radius-pill);
     font-size: 0.9rem;
     cursor: pointer;
     transition: all 0.2s ease;
 }
 
 .clearAllButton:hover {
-    background: #646cff;
+    background: var(--color-primary);
     color: white;
+    transform: translateY(-2px);
 }

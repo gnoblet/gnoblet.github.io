@@ -15,10 +15,27 @@
     background-color: var(--color-dark-bg-secondary);
 }
 
+/* Adjust main content for full-width pages like Home2 */
+.full-width-page {
+    padding-top: 0;
+    width: 100%;
+    max-width: 100%;
+}
+
 .content-container {
     align-items: center;
     position: relative;
     overflow: visible; 
+    width: 100%;
+    max-width: var(--content-max-width);
+}
+
+/* For full-width pages like Home2 */
+.content-container-full {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+    width: 100%;
 }
 
 .logo {

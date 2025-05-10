@@ -1,0 +1,145 @@
+/* src/styles/pages/Home2.module.css */
+.fullWidthContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Section styling */
+.section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 80px 20px;
+}
+
+.sectionContent {
+    width: 100%;
+    max-width: var(--content-max-width);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* About Me section */
+.aboutMeSection {
+    background-color: var(--color-dark-bg); /* Same color as navbar */
+    color: var(--color-text-light);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: calc(var(--navbar-height) + 40px); /* Account for navbar height */
+}
+
+/* About Website section */
+.aboutWebsiteSection {
+    background-color: var(--color-dark-bg-secondary);
+    color: var(--color-text-light);
+    min-height: 80vh;
+}
+
+/* Profile image */
+.profileImage {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 30px;
+    border: 3px solid var(--color-primary);
+    box-shadow: var(--color-primary-glow);
+}
+
+/* Typography */
+.title {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.subtitle {
+    font-size: 1.3rem;
+    max-width: 800px;
+    text-align: center;
+    margin-bottom: 20px;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+.aboutText {
+    max-width: 800px;
+    text-align: left;
+}
+
+/* Social links */
+.socialLinks {
+    display: flex;
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.socialLinks a {
+    color: var(--color-text-light);
+    font-size: 1.8rem;
+    transition: all 0.3s ease;
+}
+
+.socialLinks a:hover {
+    color: var(--color-primary);
+    transform: translateY(-5px);
+}
+
+/* Features list */
+.featuresList {
+    list-style: none;
+    padding: 0;
+    margin-top: 30px;
+    width: 100%;
+    max-width: 800px;
+}
+
+.featureItem {
+    margin: 15px 0;
+    padding: 20px;
+    border-radius: var(--border-radius);
+    background-color: var(--color-primary-translucent);
+    border-left: 4px solid var(--color-primary);
+    transition: all 0.3s ease;
+}
+
+.featureItem:hover {
+    transform: translateX(5px);
+    background-color: var(--color-primary-glass);
+}
+
+/* Bluesky icon */
+.blueskyIcon {
+    width: 28px;
+    height: 28px;
+    filter: brightness(0) invert(1); /* Make it white */
+    transition: filter 0.3s ease;
+}
+
+.blueskyLink:hover .blueskyIcon {
+    filter: brightness(0) invert(0.9) sepia(1) saturate(5) hue-rotate(180deg); /* Blue tint on hover */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .title {
+        font-size: 2.2rem;
+    }
+    
+    .subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .profileImage {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .section {
+        padding: 60px 15px;
+    }
+}

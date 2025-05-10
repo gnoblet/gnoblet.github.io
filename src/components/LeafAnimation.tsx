@@ -18,6 +18,7 @@ interface Leaf {
   wobble: number;
   wobbleSpeed: number;
   wobbleAmplitude: number; // Controls how much a leaf sways
+  lastMouseForce?: number; // Track last time mouse force was applied
 }
 
 const LeafAnimation: React.FC = () => {
@@ -231,6 +232,65 @@ const LeafAnimation: React.FC = () => {
       ctx.restore();
     };
 
+    // Track mouse position
+    let mouseX = -100;
+    let mouseY = -100;
+    let isMouseMoving = false;
+    let mouseSpeedX = 0;
+    let mouseSpeedY = 0;
+
+    // Mouse event handlers
+    const handleMouseMove = (e: MouseEvent) => {
+      // Calculate mouse speed
+      const newMouseX = e.clientX;
+      const newMouseY = e.clientY;
+
+      mouseSpeedX = newMouseX - mouseX;
+      mouseSpeedY = newMouseY - mouseY;
+
+      // Update mouse position
+      mouseX = newMouseX;
+      mouseY = newMouseY;
+      isMouseMoving = true;
+
+      // Auto-reset mouse moving flag after 100ms of inactivity
+      setTimeout(() => {
+        if (mouseX === newMouseX && mouseY === newMouseY) {
+          isMouseMoving = false;
+        }
+      }, 100);
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      if (e.touches.length > 0) {
+        // Calculate mouse speed
+        const newMouseX = e.touches[0].clientX;
+        const newMouseY = e.touches[0].clientY;
+
+        mouseSpeedX = newMouseX - mouseX;
+        mouseSpeedY = newMouseY - mouseY;
+
+        // Update mouse position
+        mouseX = newMouseX;
+        mouseY = newMouseY;
+        isMouseMoving = true;
+
+        // Prevent scrolling while interacting with leaves
+        e.preventDefault();
+
+        // Auto-reset mouse moving flag after 100ms of inactivity
+        setTimeout(() => {
+          if (mouseX === newMouseX && mouseY === newMouseY) {
+            isMouseMoving = false;
+          }
+        }, 100);
+      }
+    };
+
+    // Add event listeners
+    canvas.addEventListener("mousemove", handleMouseMove);
+    canvas.addEventListener("touchmove", handleTouchMove, { passive: false });
+
     // Animation function
     const animate = () => {
       // Clear canvas completely - no trails
@@ -266,6 +326,44 @@ const LeafAnimation: React.FC = () => {
           1.0 + ((canvas.height - leaf.y) / canvas.height) * 0.5;
         const currentWind =
           baseWind * windDirection * windStrength * heightFactor;
+
+        // Mouse interaction - push leaves away when mouse is nearby
+        const mouseForce = isMouseMoving ? 5.0 : 2.5; // Stronger force when mouse is moving
+        const mouseFalloff = 200; // How far the mouse influence reaches
+        const dx = leaf.x - mouseX;
+        const dy = leaf.y - mouseY;
+        const distSquared = dx * dx + dy * dy;
+        const dist = Math.sqrt(distSquared);
+
+        // Only apply force if the leaf is within range
+        if (dist < mouseFalloff) {
+          // Calculate force direction (normalized vector)
+          let forceX = dx / dist;
+          let forceY = dy / dist;
+
+          // Force is stronger the closer the leaf is to the mouse
+          // Use inverse square falloff for natural-looking physics with a minimum threshold to ensure visibility
+          const forceMagnitude =
+            mouseForce * Math.pow(1 - dist / mouseFalloff, 2.5);
+
+          // Add mouse velocity influence for more dynamic interaction
+          const mouseInfluence = 0.2;
+          forceX += mouseSpeedX * mouseInfluence;
+          forceY += mouseSpeedY * mouseInfluence;
+
+          // Apply the force with increased effect
+          leaf.speedX += forceX * forceMagnitude * 0.2;
+          leaf.speedY += forceY * forceMagnitude * 0.2;
+
+          // Increase rotation based on mouse proximity
+          leaf.rotationSpeed += forceMagnitude * 0.005 * (Math.random() - 0.5);
+
+          // Add a slight color shift effect when pushed by mouse
+          leaf.alpha = Math.min(1.0, leaf.alpha + 0.1);
+
+          // Mark when we last applied mouse force
+          leaf.lastMouseForce = Date.now();
+        }
 
         // Apply gravity and wind with wobble effect
         leaf.speedY += gravity;
@@ -317,6 +415,8 @@ const LeafAnimation: React.FC = () => {
     // Cleanup
     return () => {
       window.removeEventListener("resize", handleResize);
+      canvas.removeEventListener("mousemove", handleMouseMove);
+      canvas.removeEventListener("touchmove", handleTouchMove);
     };
   }, []);
 

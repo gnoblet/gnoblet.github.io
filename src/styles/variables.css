@@ -1,23 +1,30 @@
-* src/styles/variables.css */ :root {
+/* src/styles/variables.css */
+:root {
     /* Colors */
     --color-primary: #646cff;
     --color-primary-hover: #535bf2;
     --color-primary-light: rgba(100, 108, 255, 0.4);
     --color-primary-translucent: rgba(100, 108, 255, 0.1);
+    --color-primary-glass: rgba(100, 108, 255, 0.2);
+    --color-primary-glow: 0 0 15px rgba(100, 108, 255, 0.5);
 
     /* Background colors */
     --color-dark-bg: #0a060f;
     --color-dark-bg-secondary: #1a0f2e;
     --color-purple-bg: #2d184a;
+    --color-dark-translucent: rgba(10, 6, 15, 0.8);
+    --color-dark-glass: rgba(26, 15, 46, 0.6);
 
     /* Text colors */
     --color-text-light: rgba(255, 255, 255, 0.87);
     --color-text-dark: #333;
     --color-text-secondary: #666;
+    --color-text-muted: rgba(255, 255, 255, 0.6);
 
     /* Card and UI elements */
     --card-bg: rgba(255, 255, 255, 0.85);
     --card-bg-translucent: rgba(255, 255, 255, 0.15);
+    --card-bg-glass: rgba(255, 255, 255, 0.25);
     --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     --card-shadow-hover: 0 10px 20px rgba(0, 0, 0, 0.15);
 

@@ -32,6 +32,14 @@ function Navbar() {
           </li>
           <li className={styles.navbarItem}>
             <Link
+              to="/home2"
+              className={`${styles.navbarLink} ${isActive("/home2") ? styles.active : ""}`}
+            >
+              Home2
+            </Link>
+          </li>
+          <li className={styles.navbarItem}>
+            <Link
               to="/blog"
               className={`${styles.navbarLink} ${isActive("/blog") ? styles.active : ""}`}
             >

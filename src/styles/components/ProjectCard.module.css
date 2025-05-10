@@ -2,26 +2,31 @@
 .card {
     display: flex;
     flex-direction: column;
-    background: #ffffff;
-    border-radius: 8px;
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    border-radius: var(--border-radius);
     overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--card-shadow);
     transition:
         transform 0.3s ease,
-        box-shadow 0.3s ease;
+        box-shadow 0.3s ease,
+        background-color 0.3s ease;
     text-decoration: none;
     color: inherit;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: var(--card-shadow-hover);
+    background: rgba(255, 255, 255, 0.9);
 }
 
 .imageContainer {
     width: 100%;
     height: 200px;
     overflow: hidden;
+    position: relative;
 }
 
 .image {
@@ -29,10 +34,12 @@
     height: 100%;
     object-fit: cover;
     transition: transform 0.3s ease;
+    filter: brightness(0.95);
 }
 
 .card:hover .image {
     transform: scale(1.05);
+    filter: brightness(1);
 }
 
 .cardContent {
@@ -40,17 +47,20 @@
     display: flex;
     flex-direction: column;
     flex-grow: 1;
+    position: relative;
+    z-index: 1;
 }
 
 .title {
     font-size: 1.5rem;
     margin: 0 0 10px;
-    color: #333;
+    color: var(--color-text-dark);
+    font-weight: 600;
 }
 
 .description {
     font-size: 1rem;
-    color: #444;
+    color: var(--color-text-secondary);
     line-height: 1.5;
     margin-bottom: 15px;
 }
@@ -59,12 +69,21 @@
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
+    margin-top: auto;
 }
 
 .tag {
-    background: #f0f0f0;
-    color: #555;
-    padding: 4px 10px;
-    border-radius: 50px;
+    background: var(--color-primary-translucent);
+    color: var(--color-primary);
+    padding: 4px 12px;
+    border-radius: var(--border-radius-pill);
     font-size: 0.8rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.tag:hover {
+    background: var(--color-primary-light);
+    transform: translateY(-2px);
+    cursor: pointer;
 }

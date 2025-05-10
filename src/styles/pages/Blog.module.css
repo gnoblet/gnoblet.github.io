@@ -2,55 +2,73 @@
 .blogContainer {
     width: 100%;
     padding-top: 20px;
+    position: relative;
 }
 
 .headerSection {
     text-align: center;
     margin-bottom: 40px;
+    position: relative;
+    z-index: 1;
 }
 
 .title {
     font-size: 2.5rem;
     margin-bottom: 10px;
-    color: #333;
+    color: var(--color-text-dark);
+    position: relative;
 }
 
 .subtitle {
     font-size: 1.1rem;
-    color: #666;
+    color: var(--color-text-secondary);
 }
 
 .controlsSection {
     margin-bottom: 40px;
+    position: relative;
+    z-index: 2;
+    background: var(--card-bg-translucent);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: var(--card-shadow);
 }
 
 .loading {
     text-align: center;
     padding: 50px;
     font-size: 1.2rem;
-    color: #666;
+    color: var(--color-text-secondary);
 }
 
 .error {
     text-align: center;
     padding: 40px;
-    background: #fff1f1;
-    border-radius: 8px;
+    background: rgba(229, 57, 53, 0.1);
+    border-radius: var(--border-radius);
     margin-top: 20px;
     color: #e53935;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(229, 57, 53, 0.2);
 }
 
 .noResults {
     text-align: center;
     padding: 40px;
-    background: #f9f9f9;
-    border-radius: 8px;
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--card-shadow);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .noResults p {
-    color: #666;
+    color: var(--color-text-secondary);
     font-size: 1.1rem;
 }
+
 
 .activeFilter {
     display: flex;
@@ -58,40 +76,42 @@
     justify-content: center;
     margin: 20px 0;
     font-size: 1rem;
-    color: #666;
+    color: var(--color-text-secondary);
 }
 
 .activeTag {
     display: inline-flex;
     align-items: center;
     margin-left: 8px;
-    background: #646cff;
+    background: var(--color-primary);
     color: white;
     padding: 4px 12px;
-    border-radius: 50px;
+    border-radius: var(--border-radius-pill);
     border: none;
     cursor: pointer;
     font-size: 0.9rem;
-    transition: background-color 0.2s ease;
+    transition: all 0.2s ease;
 }
 
 .activeTag:hover {
-    background: #535bf2;
+    background: var(--color-primary-hover);
+    transform: translateY(-2px);
 }
 
 .clearFilterButton {
-    background: #646cff;
+    background: var(--color-primary);
     color: white;
     border: none;
     padding: 8px 16px;
-    border-radius: 4px;
+    border-radius: var(--border-radius);
     margin-top: 15px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .clearFilterButton:hover {
-    background: #535bf2;
+    background: var(--color-primary-hover);
+    transform: translateY(-2px);
 }
 
 /* Mobile adjustments */

@@ -9,7 +9,6 @@ import { Link } from "react-scroll";
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import BlueSkyLogo from "../assets/logo/Bluesky_Logo.svg"; // Import the logo
 
-
 const Home: React.FC = () => {
   // Get the last two projects for the featured section
   const latestProjects = [...projects].sort((a, b) => b.id - a.id).slice(0, 2);
@@ -48,9 +47,13 @@ const Home: React.FC = () => {
           </div>
           <h1>Hey👋, I'm Guillaume Noblet</h1>
           <h2 className={styles.subtitle}>
-            I am humanitarian researcher who specializes in policy decision-making and data visualization.
+            I am humanitarian researcher who specializes in policy
+            decision-making and data visualization.
           </h2>
-
+          <h3>
+            Previously, I was a Data & Research Specialist at{" "}
+            <a href="https://www.impact-initiatives.org">IMPACT Initiatives</a>.
+          </h3>
           <div className={styles.socialLinks}>
             <a
               href="https://bsky.app/profile/gnoblet.bsky.social"
@@ -122,11 +125,11 @@ const Home: React.FC = () => {
 
             <h3>What I Do</h3>
             <p>
-              Currently, I'm the Research Manager for the Global Research &
+              Previously, I was the Research Manager for a Global Research &
               Development team at IMPACT Initiatives in Geneva. My team and I
-              orchestrate Multi-Sector Needs Assessments (MSNAs)—think
+              orchestrated Multi-Sector Needs Assessments (MSNAs)—think
               nationwide surveys in over 20 countries, designed to inform
-              humanitarian action where it matters most. I get to:
+              humanitarian yearly planning and prioritisation. I got to:
             </p>
             <ul>
               <li>
@@ -152,23 +155,6 @@ const Home: React.FC = () => {
               ministries, UN agencies, and coordination bodies.
             </p>
 
-            <h3>Academic Adventures</h3>
-            <p>
-              I hold a fully funded doctorate in economics from the University
-              of Paris 1 Panthéon-Sorbonne, where I explored the history of
-              agricultural economics in the interwar United States. My research
-              has been published in peer-reviewed journals, including:
-            </p>
-            <p>
-              "The Making of a Science of Agricultural Economics in the Interwar
-              United States: Methods, Experiments, and Statistics" (Œconomia,
-              2021)
-            </p>
-            <p>
-              "The Emergence of Agricultural Economics as a Discipline in the
-              United States" (Revue d'Histoire des Sciences Humaines, 2020)
-            </p>
-
             <h3>Skills & Superpowers</h3>
             <ul>
               <li>
@@ -185,9 +171,6 @@ const Home: React.FC = () => {
                 interactive viz), Python, Julia, STATA, QGIS, Kobo Toolbox,
                 Qualtrics, Microsoft Office, InDesign, LaTeX
               </li>
-              <li>
-                <strong>Languages:</strong> French (native), English (fluent)
-              </li>
             </ul>
 
             <h3>Interests</h3>
@@ -198,19 +181,6 @@ const Home: React.FC = () => {
               <li>Socio-ecological analysis</li>
               <li>Participatory assessment</li>
             </ul>
-
-            <p>
-              From time to time I also write poetry. I'll be sharing some of
-              this here as well as some data (viz) projects (coming soon,
-              although no pressure for myself).
-            </p>
-
-            <p>
-              This website is at very-early-stage of construction and (many)
-              changes are expected to come. What you will eventually find is
-              still to be found. Blurry images and relative emptiness, maybe
-              forever.
-            </p>
           </div>
         </motion.div>
       </section>
