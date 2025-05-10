@@ -8,13 +8,12 @@ import projectStyles from "../styles/pages/ProjectsSection.module.css";
 import { Link as RouterLink } from "react-router-dom";
 import { projects } from "../data/projects";
 import LeafAnimationGentle from "../components/LeafAnimationGentle";
-import { Link as ScrollLink } from "react-scroll";
 
 const Home2: React.FC = () => {
   return (
     <div className={styles.fullWidthContainer}>
-      {/* About Me Section */}
-      <section className={`${styles.section} ${styles.aboutMeSection}`}>
+      {/* Intro Section */}
+      <section className={`${styles.section} ${styles.introSection}`}>
         {/* Leaf animation container positioned right under the navbar */}
         <div className={styles.leafContainer}>
           <LeafAnimationGentle />

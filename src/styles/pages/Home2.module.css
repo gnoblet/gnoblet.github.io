@@ -22,15 +22,17 @@
     align-items: center;
 }
 
-/* About Me section */
-.aboutMeSection {
+/* Intro section */
+.introSection {
     background-color: transparent; /* Make transparent to show leaf animation */
     color: var(--color-text-light);
     min-height: 100vh;
     height: calc(100vh - var(--navbar-height));
     display: flex;
     align-items: center;
-    padding-top: calc(var(--navbar-height) + 40px); /* Account for navbar height */
+    padding-top: calc(
+        var(--navbar-height) + 40px
+    ); /* Account for navbar height */
     position: relative;
 }
 
@@ -195,20 +197,20 @@
     .title {
         font-size: 2.2rem;
     }
-    
+
     .subtitle {
         font-size: 1.1rem;
     }
-    
+
     .profileImage {
         width: 150px;
         height: 150px;
     }
-    
+
     .section {
         padding: 60px 15px;
     }
-    
+
     .leafContainer {
         height: 100%;
     }
