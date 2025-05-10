@@ -173,6 +173,32 @@ const Home2: React.FC = () => {
           </div>
         </motion.div>
       </section>
+
+      {/* Contact Me Section */}
+      <section className={`${styles.section} ${styles.aboutWebsiteSection}`}>
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className={styles.sectionContent}
+        >
+          <h2 className={styles.title}>Contact Me</h2>
+          
+          <div className={styles.aboutText}>
+            <p className={styles.subtitle}>
+              Do you want to get in touch? Have a project on data or surveys and need support, 
+              advice, or just another mind to discuss? Feel free to reach out!
+            </p>
+            
+            <div className={styles.contactButtonContainer}>
+              <a href="mailto:gnoblet@zaclys.net" className={styles.contactButton}>
+                Get in Touch
+              </a>
+            </div>
+          </div>
+        </motion.div>
+      </section>
     </div>
   );
 };

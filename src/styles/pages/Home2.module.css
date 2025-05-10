@@ -112,6 +112,31 @@
     background-color: var(--color-primary-glass);
 }
 
+/* Contact section styles */
+.contactButtonContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.contactButton {
+    display: inline-block;
+    background-color: var(--color-primary);
+    color: white;
+    padding: 14px 32px;
+    border-radius: var(--border-radius);
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.contactButton:hover {
+    background-color: var(--color-primary-hover);
+    transform: translateY(-5px);
+    box-shadow: var(--color-primary-glow);
+}
+
 /* Bluesky icon */
 .blueskyIcon {
     width: 28px;
