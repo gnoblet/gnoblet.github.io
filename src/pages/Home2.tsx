@@ -84,7 +84,7 @@ const Home2: React.FC = () => {
 
           <button
             onClick={() => {
-              const aboutSection = document.getElementById("aboutWebsite");
+              const aboutSection = document.getElementById("aboutMe");
               if (aboutSection) {
                 aboutSection.scrollIntoView({ behavior: "smooth" });
               }
@@ -96,10 +96,10 @@ const Home2: React.FC = () => {
         </motion.div>
       </section>
 
-      {/* About This Website Section */}
+      {/* About Me Section */}
       <section
-        id="aboutWebsite"
-        className={`${styles.section} ${styles.aboutWebsiteSection}`}
+        id="aboutMe"
+        className={`${styles.section} ${styles.aboutMeSection}`}
       >
         <motion.div
           initial={{ opacity: 0 }}
@@ -108,13 +108,13 @@ const Home2: React.FC = () => {
           transition={{ duration: 0.8 }}
           className={styles.sectionContent}
         >
-          <h2 className={styles.title}>About This Website</h2>
+          <h2 className={styles.title}>About Me</h2>
 
           <div className={styles.aboutText}>
             <p className={styles.subtitle}>
-              This website serves as my personal portfolio and blog where I
-              share my projects, thoughts on data visualization, humanitarian
-              research, and technology.
+              I'm a humanitarian researcher who thrives where academic curiosity meets real-world impact. 
+              Whether wrangling massive datasets from crisis zones or debating economic history, 
+              I love turning complex problems into actionable insights. This website serves as my personal portfolio and blog where I share my projects, thoughts on data visualization, humanitarian research, and technology.
             </p>
 
             <ul className={styles.featuresList}>
@@ -204,7 +204,7 @@ const Home2: React.FC = () => {
       </section>
 
       {/* Contact Me Section */}
-      <section className={`${styles.section} ${styles.aboutWebsiteSection}`}>
+      <section className={`${styles.section} ${styles.aboutMeSection}`}>
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}

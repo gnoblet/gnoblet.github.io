@@ -36,8 +36,8 @@
     position: relative;
 }
 
-/* About Website section */
-.aboutWebsiteSection {
+/* About Me section */
+.aboutMeSection {
     background-color: var(--color-dark-bg-secondary);
     color: var(--color-text-light);
     min-height: 80vh;
