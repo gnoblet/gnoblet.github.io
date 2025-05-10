@@ -112,10 +112,46 @@ const Home2: React.FC = () => {
 
           <div className={styles.aboutText}>
             <p className={styles.subtitle}>
-              I'm a humanitarian researcher who thrives where academic curiosity meets real-world impact. 
-              Whether wrangling massive datasets from crisis zones or debating economic history, 
-              I love turning complex problems into actionable insights. This website serves as my personal portfolio and blog where I share my projects, thoughts on data visualization, humanitarian research, and technology.
+              I'm a humanitarian researcher who thrives where academic curiosity
+              meets real-world impact. Whether wrangling massive datasets from
+              crisis zones or debating economic history, I love turning complex
+              problems into actionable insights.
             </p>
+
+            <div className={styles.experienceBox}>
+              <p>
+                Previously, I was the Research Manager for a Global Research &
+                Development team at IMPACT Initiatives in Geneva. My team and I
+                orchestrated Multi-Sector Needs Assessments (MSNAs)—think
+                nationwide surveys in over 20 countries, designed to inform
+                humanitarian yearly planning and prioritisation.
+              </p>
+              <br></br>
+              <p>
+                Before Geneva, I led the MSNA in Haiti, managing a team of 80+
+                and co-chairing the Information Management Working Group to
+                improve the humanitarian information landscape. In Burkina Faso,
+                I managed data and GIS teams, led field research, and
+                collaborated with ministries, UN agencies, and coordination
+                bodies.
+              </p>
+
+              <ul className={styles.experienceList}>
+                <li className={styles.experienceItem}>
+                  Dive into data from around the globe and build composite
+                  indicators that help shape humanitarian funding.
+                </li>
+                <li className={styles.experienceItem}>
+                  Champion best practices in research design, from sampling to
+                  analysis, and coordinate a squad of specialists to keep our
+                  methods sharp.
+                </li>
+                <li className={styles.experienceItem}>
+                  Liaise with country teams and foreign offices to make sure our
+                  research translates into real-world change.
+                </li>
+              </ul>
+            </div>
 
             <ul className={styles.featuresList}>
               <li className={styles.featureItem}>
