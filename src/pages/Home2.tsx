@@ -19,7 +19,7 @@ const Home2: React.FC = () => {
         <div className={styles.leafContainer}>
           <LeafAnimationGentle />
         </div>
-        
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -82,7 +82,7 @@ const Home2: React.FC = () => {
               <FaEnvelope />
             </a>
           </div>
-          
+
           <button
             onClick={() => {
               const aboutSection = document.getElementById("aboutWebsite");
@@ -98,7 +98,10 @@ const Home2: React.FC = () => {
       </section>
 
       {/* About This Website Section */}
-      <section id="aboutWebsite" className={`${styles.section} ${styles.aboutWebsiteSection}`}>
+      <section
+        id="aboutWebsite"
+        className={`${styles.section} ${styles.aboutWebsiteSection}`}
+      >
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -148,9 +151,10 @@ const Home2: React.FC = () => {
         >
           <h2 className={projectStyles.sectionTitle}>My Latest Projects</h2>
           <p className={projectStyles.sectionSubtitle}>
-            Here are some of my recent projects and works that showcase my skills and interests
+            Here are some of my recent projects and works that showcase my
+            skills and interests
           </p>
-          
+
           <div className={projectStyles.projectsGrid}>
             {projects.slice(0, 3).map((project, index) => (
               <motion.div
@@ -160,23 +164,27 @@ const Home2: React.FC = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <a 
+                <a
                   href={project.projectUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={projectStyles.projectCard}
                 >
-                  <img 
-                    src={project.imageUrl} 
-                    alt={project.title} 
-                    className={projectStyles.cardImage} 
+                  <img
+                    src={project.imageUrl}
+                    alt={project.title}
+                    className={projectStyles.cardImage}
                   />
                   <div className={projectStyles.cardContent}>
                     <h3 className={projectStyles.cardTitle}>{project.title}</h3>
-                    <p className={projectStyles.cardDescription}>{project.description}</p>
+                    <p className={projectStyles.cardDescription}>
+                      {project.description}
+                    </p>
                     <div className={projectStyles.cardTags}>
-                      {project.tags.slice(0, 3).map(tag => (
-                        <span key={tag} className={projectStyles.cardTag}>#{tag}</span>
+                      {project.tags.slice(0, 3).map((tag) => (
+                        <span key={tag} className={projectStyles.cardTag}>
+                          #{tag}
+                        </span>
                       ))}
                     </div>
                   </div>
@@ -184,9 +192,12 @@ const Home2: React.FC = () => {
               </motion.div>
             ))}
           </div>
-          
+
           <div className={projectStyles.viewMoreContainer}>
-            <RouterLink to="/portfolio" className={projectStyles.viewMoreButton}>
+            <RouterLink
+              to="/portfolio"
+              className={projectStyles.viewMoreButton}
+            >
               View All Projects
             </RouterLink>
           </div>
@@ -203,15 +214,19 @@ const Home2: React.FC = () => {
           className={styles.sectionContent}
         >
           <h2 className={styles.title}>Contact Me</h2>
-          
+
           <div className={styles.aboutText}>
             <p className={styles.subtitle}>
-              Do you want to get in touch? Have a project on data or surveys and need support, 
-              advice, or just another mind to discuss? Feel free to reach out!
+              Do you want to get in touch? Have a project on data or surveys and
+              need support, advice, or just another mind to discuss? Feel free
+              to reach out!
             </p>
-            
+
             <div className={styles.contactButtonContainer}>
-              <a href="mailto:gnoblet@zaclys.net" className={styles.contactButton}>
+              <a
+                href="mailto:gnoblet@zaclys.net"
+                className={styles.contactButton}
+              >
                 Get in Touch
               </a>
             </div>
