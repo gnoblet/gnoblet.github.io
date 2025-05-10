@@ -5,14 +5,21 @@ import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import BlueSkyLogo from "../assets/logo/Bluesky_Logo.svg";
 import styles from "../styles/pages/Home2.module.css";
 import projectStyles from "../styles/pages/ProjectsSection.module.css";
-import { Link } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 import { projects } from "../data/projects";
+import LeafAnimationGentle from "../components/LeafAnimationGentle";
+import { Link as ScrollLink } from "react-scroll";
 
 const Home2: React.FC = () => {
   return (
     <div className={styles.fullWidthContainer}>
       {/* About Me Section */}
       <section className={`${styles.section} ${styles.aboutMeSection}`}>
+        {/* Leaf animation container positioned right under the navbar */}
+        <div className={styles.leafContainer}>
+          <LeafAnimationGentle />
+        </div>
+        
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -75,11 +82,23 @@ const Home2: React.FC = () => {
               <FaEnvelope />
             </a>
           </div>
+          
+          <button
+            onClick={() => {
+              const aboutSection = document.getElementById("aboutWebsite");
+              if (aboutSection) {
+                aboutSection.scrollIntoView({ behavior: "smooth" });
+              }
+            }}
+            className={styles.scrollDownButton}
+          >
+            ↓ Scroll Down
+          </button>
         </motion.div>
       </section>
 
       {/* About This Website Section */}
-      <section className={`${styles.section} ${styles.aboutWebsiteSection}`}>
+      <section id="aboutWebsite" className={`${styles.section} ${styles.aboutWebsiteSection}`}>
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -167,9 +186,9 @@ const Home2: React.FC = () => {
           </div>
           
           <div className={projectStyles.viewMoreContainer}>
-            <Link to="/portfolio" className={projectStyles.viewMoreButton}>
+            <RouterLink to="/portfolio" className={projectStyles.viewMoreButton}>
               View All Projects
-            </Link>
+            </RouterLink>
           </div>
         </motion.div>
       </section>

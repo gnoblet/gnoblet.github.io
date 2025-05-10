@@ -24,12 +24,14 @@
 
 /* About Me section */
 .aboutMeSection {
-    background-color: var(--color-dark-bg); /* Same color as navbar */
+    background-color: transparent; /* Make transparent to show leaf animation */
     color: var(--color-text-light);
     min-height: 100vh;
+    height: calc(100vh - var(--navbar-height));
     display: flex;
     align-items: center;
     padding-top: calc(var(--navbar-height) + 40px); /* Account for navbar height */
+    position: relative;
 }
 
 /* About Website section */
@@ -112,6 +114,26 @@
     background-color: var(--color-primary-glass);
 }
 
+/* Scroll down button */
+.scrollDownButton {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.2rem;
+    margin-top: 30px;
+    border: none;
+    outline: none;
+}
+
+.scrollDownButton:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(3px);
+}
+
 /* Contact section styles */
 .contactButtonContainer {
     display: flex;
@@ -149,6 +171,25 @@
     filter: brightness(0) invert(0.9) sepia(1) saturate(5) hue-rotate(180deg); /* Blue tint on hover */
 }
 
+/* Leaf animation container */
+.leafContainer {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    overflow: hidden;
+    background-color: var(--color-dark-bg); /* Same as navbar */
+}
+
+/* Ensure content stays above leaves */
+.sectionContent {
+    position: relative;
+    z-index: 3;
+}
+
 /* Responsive styles */
 @media (max-width: 768px) {
     .title {
@@ -166,5 +207,9 @@
     
     .section {
         padding: 60px 15px;
+    }
+    
+    .leafContainer {
+        height: 100%;
     }
 }
