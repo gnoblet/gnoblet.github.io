@@ -118,6 +118,47 @@ const Home2: React.FC = () => {
               problems into actionable insights.
             </p>
 
+            <div className={styles.timelineContainer}>
+              <div className={styles.timelineEntry}>
+                <span className={styles.timelineYear}>2022 - Present</span>
+                <span className={styles.timelineCompany}>Independent Consultant</span>
+                <span className={styles.timelineRole}>Data Visualization & Research</span>
+                <p className={styles.timelineDescription}>
+                  Providing expertise in data visualization, survey design, and research methodology.
+                </p>
+              </div>
+              
+              <div className={styles.timelineEntry}>
+                <span className={styles.timelineYear}>2020 - 2022</span>
+                <span className={styles.timelineCompany}>IMPACT Initiatives</span>
+                <span className={styles.timelineRole}>Research Manager, Global R&D Team</span>
+                <p className={styles.timelineDescription}>
+                  Led a global research team orchestrating Multi-Sector Needs Assessments (MSNAs) in 20+ countries, 
+                  designed to inform humanitarian yearly planning and prioritisation.
+                </p>
+              </div>
+              
+              <div className={styles.timelineEntry}>
+                <span className={styles.timelineYear}>2019 - 2020</span>
+                <span className={styles.timelineCompany}>IMPACT Initiatives</span>
+                <span className={styles.timelineRole}>Assessment Specialist, Haiti</span>
+                <p className={styles.timelineDescription}>
+                  Led the MSNA in Haiti, managing a team of 80+ and co-chairing the Information Management 
+                  Working Group to improve the humanitarian information landscape.
+                </p>
+              </div>
+              
+              <div className={styles.timelineEntry}>
+                <span className={styles.timelineYear}>2018 - 2019</span>
+                <span className={styles.timelineCompany}>IMPACT Initiatives</span>
+                <span className={styles.timelineRole}>Data & GIS Specialist, Burkina Faso</span>
+                <p className={styles.timelineDescription}>
+                  Managed data and GIS teams, led field research, and collaborated with ministries, 
+                  UN agencies, and coordination bodies.
+                </p>
+              </div>
+            </div>
+            
             <div className={styles.experienceBox}>
               <p>
                 Previously, I was the Research Manager for a Global Research &
@@ -135,7 +176,6 @@ const Home2: React.FC = () => {
                 collaborated with ministries, UN agencies, and coordination
                 bodies.
               </p>
-
               <ul className={styles.experienceList}>
                 <li className={styles.experienceItem}>
                   Dive into data from around the globe and build composite
@@ -155,20 +195,20 @@ const Home2: React.FC = () => {
 
             <ul className={styles.featuresList}>
               <li className={styles.featureItem}>
-                <strong>Portfolio</strong> - Showcasing my professional work and
-                personal projects
+                <strong>Research & Analysis</strong> - Statistical analysis, economic modeling, 
+                data visualization, participatory assessment
               </li>
               <li className={styles.featureItem}>
-                <strong>Blog</strong> - Articles about data visualization,
-                research methods, and humanitarian work
+                <strong>Project Management</strong> - Horizontal project management, capacity building, 
+                community resilience initiatives
               </li>
               <li className={styles.featureItem}>
-                <strong>Technical Skills</strong> - Examples of my work with R,
-                Python, and other technologies
+                <strong>Technical Toolbox</strong> - R (Tidyverse, Shiny, interactive viz), 
+                Python, QGIS, Kobo Toolbox, Microsoft Office
               </li>
               <li className={styles.featureItem}>
-                <strong>Contact Information</strong> - Ways to get in touch for
-                collaboration or questions
+                <strong>Interests</strong> - Data visualization, open source projects, 
+                community resilience, socio-ecological analysis
               </li>
             </ul>
           </div>
