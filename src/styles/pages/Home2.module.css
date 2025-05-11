@@ -123,13 +123,13 @@
     width: 100%;
     max-width: 800px;
     overflow: hidden;
-    max-height: 240px;
+    max-height: 500px;
     transition: max-height 0.5s ease-in-out;
     padding-bottom: 30px;
 }
 
 .timelineContainerExpanded {
-    max-height: 800px;
+    max-height: 850px;
     margin-bottom: 30px;
     padding-bottom: 30px;
 }
