@@ -123,15 +123,24 @@
     width: 100%;
     max-width: 800px;
     overflow: hidden;
+    max-height: 240px;
+    transition: max-height 0.5s ease-in-out;
+    padding-bottom: 30px;
+}
+
+.timelineContainerExpanded {
+    max-height: 800px;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
 }
 
 .timelineContainer::before {
     content: "";
     position: absolute;
-    left: 0;
-    top: 24px;
-    width: 100%;
-    height: 2px;
+    left: 70px;
+    top: 0;
+    height: 100%;
+    width: 2px;
     background: var(--color-primary);
     z-index: 1;
 }
@@ -149,12 +158,57 @@
 /* Timeline entry */
 .timelineEntry {
     position: relative;
-    padding-top: 50px;
-    display: inline-block;
-    width: calc(20% - 10px);
-    text-align: center;
-    vertical-align: top;
-    margin: 0 5px 30px;
+    padding-left: 90px;
+    display: block;
+    width: 100%;
+    text-align: left;
+    margin: 0 0 40px 0;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.timelineEntry:nth-child(4) {
+    opacity: 0.5;
+    position: relative;
+    overflow: hidden;
+    mask-image: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(0, 0, 0, 0) 90%
+    );
+    -webkit-mask-image: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(0, 0, 0, 0) 90%
+    );
+    margin-bottom: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.timelineEntry:nth-child(n + 5) {
+    max-height: 0;
+    opacity: 0;
+    margin: 0;
+    pointer-events: none;
+    transition: all 0.5s ease-in-out;
+    overflow: hidden;
+}
+
+.timelineContainerExpanded .timelineEntry:nth-child(4) {
+    opacity: 1;
+    mask-image: none;
+    -webkit-mask-image: none;
+}
+
+.timelineContainerExpanded .timelineEntry:nth-child(n + 5) {
+    max-height: 200px;
+    opacity: 1;
+    margin: 0 0 40px 0;
+    pointer-events: all;
+}
+
+.timelineContainerExpanded .timelineEntry:last-of-type {
+    margin-bottom: 50px;
 }
 
 .timelineEntry::before {
@@ -164,21 +218,23 @@
     height: 20px;
     background-color: var(--color-primary);
     border-radius: 50%;
-    left: calc(50% - 10px);
-    top: 15px;
+    left: 61px;
+    top: 5px;
     border: 2px solid white;
     z-index: 2;
 }
 
 .timelineYear {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
+    display: block;
     color: white;
     font-weight: bold;
     font-size: 1rem;
-    text-align: center;
+    margin-bottom: 5px;
+    position: absolute;
+    left: 0;
+    top: 5px;
+    width: 55px;
+    text-align: right;
 }
 
 .timelineCompany {
@@ -187,7 +243,6 @@
     font-size: 1rem;
     margin-bottom: 4px;
     color: var(--color-primary);
-    min-height: 45px;
 }
 
 .timelineRole {
@@ -196,27 +251,50 @@
     margin-bottom: 8px;
     color: white;
     opacity: 0.85;
-    min-height: 40px;
 }
 
 .timelineDescription {
     font-size: 0.85rem;
     color: rgba(255, 255, 255, 0.7);
     line-height: 1.4;
-    display: none;
+    display: block;
+    margin-top: 5px;
 }
 
 .timelineEntry:hover .timelineDescription {
-    display: block;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.timelineExpandButton {
     position: absolute;
-    top: 120px;
-    left: -100%;
-    width: 300%;
-    background: rgba(0, 0, 0, 0.7);
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid var(--color-primary-translucent);
-    z-index: 10;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+    border-radius: 20px;
+    padding: 5px 15px;
+    cursor: pointer;
+    z-index: 5;
+    transition: all 0.5s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+}
+
+.timelineExpandButton:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.expandArrow {
+    margin-left: 5px;
+    transition: transform 0.5s ease-in-out;
+}
+
+.expandArrowRotated {
+    transform: rotate(180deg);
 }
 
 .experienceList {
@@ -339,23 +417,7 @@
         height: 100%;
     }
 
-    .timelineContainer {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    
-    .timelineEntry {
-        width: calc(33.33% - 20px);
-        margin: 0 10px 40px;
-    }
-    
     .timelineYear {
         font-size: 0.9rem;
-    }
-    
-    .timelineEntry:hover .timelineDescription {
-        left: -50%;
-        width: 200%;
     }
 }

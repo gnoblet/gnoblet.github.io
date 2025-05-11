@@ -1,5 +1,5 @@
 // src/pages/Home2.tsx
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import BlueSkyLogo from "../assets/logo/Bluesky_Logo.svg";
@@ -11,6 +11,8 @@ import { projects } from "../data/projects";
 import LeafAnimationGentle from "../components/LeafAnimationGentle";
 
 const Home2: React.FC = () => {
+  const [isTimelineExpanded, setIsTimelineExpanded] = useState(false);
+
   return (
     <div className={styles.fullWidthContainer}>
       {/* Intro Section */}
@@ -119,42 +121,92 @@ const Home2: React.FC = () => {
               problems into actionable insights.
             </p>
 
-            <div className={styles.timelineContainer}>
-              <div className={styles.timelineEntry}>
-                <p className={styles.timelineDescription}>
-
-                </p>
-              </div>
-
+            <div
+              className={`${styles.timelineContainer} ${isTimelineExpanded ? styles.timelineContainerExpanded : ""}`}
+            >
               <div className={styles.timelineEntry}>
                 <span className={styles.timelineYear}>2020 - 2022</span>
-                <span className={styles.timelineCompany}>IMPACT Initiatives</span>
-                <span className={styles.timelineRole}>Research Manager, Global R&D Team</span>
+                <span className={styles.timelineCompany}>
+                  IMPACT Initiatives
+                </span>
+                <span className={styles.timelineRole}>
+                  Research Manager, Global R&D Team
+                </span>
                 <p className={styles.timelineDescription}>
-                  Led a global research team orchestrating Multi-Sector Needs Assessments (MSNAs) in 20+ countries, 
-                  designed to inform humanitarian yearly planning and prioritisation.
+                  Led a global research team orchestrating Multi-Sector Needs
+                  Assessments (MSNAs) in 20+ countries, designed to inform
+                  humanitarian yearly planning and prioritisation.
                 </p>
               </div>
 
               <div className={styles.timelineEntry}>
                 <span className={styles.timelineYear}>2019 - 2020</span>
-                <span className={styles.timelineCompany}>IMPACT Initiatives</span>
-                <span className={styles.timelineRole}>Assessment Specialist, Haiti</span>
+                <span className={styles.timelineCompany}>
+                  IMPACT Initiatives
+                </span>
+                <span className={styles.timelineRole}>
+                  Assessment Specialist, Haiti
+                </span>
                 <p className={styles.timelineDescription}>
-                  Led the MSNA in Haiti, managing a team of 80+ and co-chairing the Information Management 
-                  Working Group to improve the humanitarian information landscape.
+                  Led the MSNA in Haiti, managing a team of 80+ and co-chairing
+                  the Information Management Working Group to improve the
+                  humanitarian information landscape.
                 </p>
               </div>
 
               <div className={styles.timelineEntry}>
                 <span className={styles.timelineYear}>2018 - 2019</span>
-                <span className={styles.timelineCompany}>IMPACT Initiatives</span>
-                <span className={styles.timelineRole}>Data & GIS Specialist, Burkina Faso</span>
+                <span className={styles.timelineCompany}>
+                  IMPACT Initiatives
+                </span>
+                <span className={styles.timelineRole}>
+                  Data & GIS Specialist, Burkina Faso
+                </span>
                 <p className={styles.timelineDescription}>
-                  Managed data and GIS teams, led field research, and collaborated with ministries, 
-                  UN agencies, and coordination bodies.
+                  Managed data and GIS teams, led field research, and
+                  collaborated with ministries, UN agencies, and coordination
+                  bodies.
                 </p>
               </div>
+
+              <div className={styles.timelineEntry}>
+                <span className={styles.timelineYear}>2017 - 2018</span>
+                <span className={styles.timelineCompany}>
+                  IMPACT Initiatives
+                </span>
+                <span className={styles.timelineRole}>
+                  Research & Assessment Intern
+                </span>
+                <p className={styles.timelineDescription}>
+                  Supported global research initiatives, contributed to
+                  methodology development, and analyzed data for humanitarian
+                  response planning.
+                </p>
+              </div>
+
+              <div className={styles.timelineEntry}>
+                <span className={styles.timelineYear}>2016 - 2017</span>
+                <span className={styles.timelineCompany}>
+                  University of Geneva
+                </span>
+                <span className={styles.timelineRole}>Teaching Assistant</span>
+                <p className={styles.timelineDescription}>
+                  Assisted with teaching economics courses, provided student
+                  support, and contributed to curriculum development.
+                </p>
+              </div>
+
+              <button
+                className={styles.timelineExpandButton}
+                onClick={() => setIsTimelineExpanded(!isTimelineExpanded)}
+              >
+                {isTimelineExpanded ? "Show Less" : "Show More"}
+                <span
+                  className={`${styles.expandArrow} ${isTimelineExpanded ? styles.expandArrowRotated : ""}`}
+                >
+                  ↓
+                </span>
+              </button>
             </div>
 
             <div className={styles.experienceBox}>
@@ -193,20 +245,20 @@ const Home2: React.FC = () => {
 
             <ul className={styles.featuresList}>
               <li className={styles.featureItem}>
-                <strong>Research & Analysis</strong> - Statistical analysis, economic modeling, 
-                data visualization, participatory assessment
+                <strong>Research & Analysis</strong> - Statistical analysis,
+                economic modeling, data visualization, participatory assessment
               </li>
               <li className={styles.featureItem}>
-                <strong>Project Management</strong> - Horizontal project management, capacity building, 
-                community resilience initiatives
+                <strong>Project Management</strong> - Horizontal project
+                management, capacity building, community resilience initiatives
               </li>
               <li className={styles.featureItem}>
-                <strong>Technical Toolbox</strong> - R (Tidyverse, Shiny, interactive viz), 
-                Python, QGIS, Kobo Toolbox, Microsoft Office
+                <strong>Technical Toolbox</strong> - R (Tidyverse, Shiny,
+                interactive viz), Python, QGIS, Kobo Toolbox, Microsoft Office
               </li>
               <li className={styles.featureItem}>
-                <strong>Interests</strong> - Data visualization, open source projects, 
-                community resilience, socio-ecological analysis
+                <strong>Interests</strong> - Data visualization, open source
+                projects, community resilience, socio-ecological analysis
               </li>
             </ul>
           </div>
