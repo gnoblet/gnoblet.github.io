@@ -121,79 +121,59 @@ const Home2: React.FC = () => {
 
             <div className={styles.timelineContainer}>
               <div className={styles.timelineEntry}>
-                <span className={styles.timelineYear}>2022+</span>
-                <span className={styles.timelineCompany}>
-                  Independent Consultant
-                </span>
-                <span className={styles.timelineRole}>
-                  Data Visualization & Research
-                </span>
                 <p className={styles.timelineDescription}>
-                  Providing expertise in data visualization, survey design, and
-                  research methodology for various organizations.
+
                 </p>
               </div>
 
               <div className={styles.timelineEntry}>
-                <span className={styles.timelineYear}>2020-2022</span>
-                <span className={styles.timelineCompany}>
-                  IMPACT Initiatives
-                </span>
-                <span className={styles.timelineRole}>
-                  Research Manager, Global R&D Team
-                </span>
+                <span className={styles.timelineYear}>2020 - 2022</span>
+                <span className={styles.timelineCompany}>IMPACT Initiatives</span>
+                <span className={styles.timelineRole}>Research Manager, Global R&D Team</span>
                 <p className={styles.timelineDescription}>
-                  Led a global research team in Geneva orchestrating
-                  Multi-Sector Needs Assessments (MSNAs) in 20+ countries,
-                  designed to inform yearly planning and prioritisation in
-                  humanitarian crises.
+                  Led a global research team orchestrating Multi-Sector Needs Assessments (MSNAs) in 20+ countries, 
+                  designed to inform humanitarian yearly planning and prioritisation.
                 </p>
               </div>
 
               <div className={styles.timelineEntry}>
-                <span className={styles.timelineYear}>2019-2020</span>
-                <span className={styles.timelineCompany}>
-                  IMPACT Initiatives
-                </span>
-                <span className={styles.timelineRole}>
-                  Assessment Specialist, Haiti
-                </span>
+                <span className={styles.timelineYear}>2019 - 2020</span>
+                <span className={styles.timelineCompany}>IMPACT Initiatives</span>
+                <span className={styles.timelineRole}>Assessment Specialist, Haiti</span>
                 <p className={styles.timelineDescription}>
-                  Led the MSNA in Haiti, managing a team of 80+ and co-chairing the Information Management Working Group
-                  to improve the humanitarian information landscape.
+                  Led the MSNA in Haiti, managing a team of 80+ and co-chairing the Information Management 
+                  Working Group to improve the humanitarian information landscape.
                 </p>
               </div>
 
               <div className={styles.timelineEntry}>
-                <span className={styles.timelineYear}>2018-2019</span>
-                <span className={styles.timelineCompany}>
-                  IMPACT Initiatives
-                </span>
-                <span className={styles.timelineRole}>
-                  Data Specialist, Burkina Faso
-                </span>
+                <span className={styles.timelineYear}>2018 - 2019</span>
+                <span className={styles.timelineCompany}>IMPACT Initiatives</span>
+                <span className={styles.timelineRole}>Data & GIS Specialist, Burkina Faso</span>
                 <p className={styles.timelineDescription}>
                   Managed data and GIS teams, led field research, and collaborated with ministries, 
                   UN agencies, and coordination bodies.
                 </p>
               </div>
-
-              <div className={styles.timelineEntry}>
-                <span className={styles.timelineYear}>2016-2018</span>
-                <span className={styles.timelineCompany}>
-                  University of Paris 1
-                </span>
-                <span className={styles.timelineRole}>
-                  PhD Candidate
-                </span>
-                <p className={styles.timelineDescription}>
-                  My research focused on the history of agricultural economics in the United States around the 1920s.
-                </p>
-              </div>
             </div>
 
             <div className={styles.experienceBox}>
-              <p>Overall, I got to:</p>
+              <p>
+                Previously, I was the Research Manager for a Global Research &
+                Development team at IMPACT Initiatives in Geneva. My team and I
+                orchestrated Multi-Sector Needs Assessments (MSNAs)—think
+                nationwide surveys in over 20 countries, designed to inform
+                humanitarian yearly planning and prioritisation.
+              </p>
+              <br></br>
+              <p>
+                Before Geneva, I led the MSNA in Haiti, managing a team of 80+
+                and co-chairing the Information Management Working Group to
+                improve the humanitarian information landscape. In Burkina Faso,
+                I managed data and GIS teams, led field research, and
+                collaborated with ministries, UN agencies, and coordination
+                bodies.
+              </p>
               <ul className={styles.experienceList}>
                 <li className={styles.experienceItem}>
                   Dive into data from around the globe and build composite
@@ -213,20 +193,20 @@ const Home2: React.FC = () => {
 
             <ul className={styles.featuresList}>
               <li className={styles.featureItem}>
-                <strong>Research & Analysis</strong> - Statistical analysis,
-                economic modeling, data visualization, participatory assessment
+                <strong>Research & Analysis</strong> - Statistical analysis, economic modeling, 
+                data visualization, participatory assessment
               </li>
               <li className={styles.featureItem}>
-                <strong>Project Management</strong> - Horizontal project
-                management, capacity building, community resilience initiatives
+                <strong>Project Management</strong> - Horizontal project management, capacity building, 
+                community resilience initiatives
               </li>
               <li className={styles.featureItem}>
-                <strong>Technical Toolbox</strong> - R (Tidyverse, Shiny,
-                interactive viz), Python, QGIS, Kobo Toolbox, Microsoft Office
+                <strong>Technical Toolbox</strong> - R (Tidyverse, Shiny, interactive viz), 
+                Python, QGIS, Kobo Toolbox, Microsoft Office
               </li>
               <li className={styles.featureItem}>
-                <strong>Interests</strong> - Data visualization, open source
-                projects, community resilience, socio-ecological analysis
+                <strong>Interests</strong> - Data visualization, open source projects, 
+                community resilience, socio-ecological analysis
               </li>
             </ul>
           </div>
