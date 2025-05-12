@@ -1,5 +1,5 @@
 // src/components/ProjectCard.tsx
-import React, { useState } from "react";
+import React from "react";
 import { Project } from "../types/project";
 import styles from "../styles/components/ProjectCard.module.css";
 import placeholderImage from "../assets/placeholders/project-placeholder.svg";
@@ -10,8 +10,7 @@ interface ProjectCardProps {
   onTagClick: (tag: string) => void;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ project, onTagClick  }) => {
-
+const ProjectCard: React.FC<ProjectCardProps> = ({ project, onTagClick }) => {
   const handleTagClick = (tag: string) => {
     if (onTagClick) {
       onTagClick(tag);
@@ -39,15 +38,15 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onTagClick  }) => {
         <h2 className={styles.title}>{project.title}</h2>
         <p className={styles.description}>{project.description}</p>
         <div className={styles.tags}>
-        {project.tags.map((tag) => (
-          <span
-            key={tag}
-            className={styles.tag}
-            onClick={() => handleTagClick(tag)}
-          >
-            #{tag}
-          </span>
-        ))}
+          {project.tags.map((tag) => (
+            <span
+              key={tag}
+              className={styles.tag}
+              onClick={() => handleTagClick(tag)}
+            >
+              #{tag}
+            </span>
+          ))}
         </div>
       </div>
     </a>
