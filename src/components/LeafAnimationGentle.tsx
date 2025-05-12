@@ -31,16 +31,30 @@ const LeafAnimationGentle: React.FC = () => {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    // Set canvas to full window width/height
+    // Set canvas to full window width/height with pixel ratio adjustment for sharp rendering
     const handleResize = () => {
       const parent = canvas.parentElement;
+      const devicePixelRatio = window.devicePixelRatio || 1;
+
+      let width, height;
       if (parent) {
-        canvas.width = parent.clientWidth;
-        canvas.height = parent.clientHeight;
+        width = parent.clientWidth;
+        height = parent.clientHeight;
       } else {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        width = window.innerWidth;
+        height = window.innerHeight;
       }
+
+      // Set display size (css pixels)
+      canvas.style.width = width + "px";
+      canvas.style.height = height + "px";
+
+      // Set actual size in memory (scaled to device pixel ratio)
+      canvas.width = width * devicePixelRatio;
+      canvas.height = height * devicePixelRatio;
+
+      // Scale all drawing operations by the device pixel ratio
+      ctx.scale(devicePixelRatio, devicePixelRatio);
     };
     window.addEventListener("resize", handleResize);
     handleResize();
@@ -79,7 +93,7 @@ const LeafAnimationGentle: React.FC = () => {
         tiltSpeed: (Math.random() - 0.5) * 0.007, // Slightly faster tilt
         color: leafColors[Math.floor(Math.random() * leafColors.length)],
         alpha: 0.7 + Math.random() * 0.3,
-        type: Math.floor(Math.random() * 3), // 3 different leaf shapes
+        type: Math.floor(Math.random() * 5), // 5 different leaf shapes
         wobble: Math.random() * Math.PI * 2, // Random starting phase
         wobbleSpeed: 0.015 + Math.random() * 0.025, // Faster wobble
         wobbleAmplitude: 0.3 + Math.random() * 0.7, // Different amplitude for each leaf
@@ -227,6 +241,93 @@ const LeafAnimationGentle: React.FC = () => {
           ctx.lineTo(-halfSize * 0.7, halfSize * 0.2);
           ctx.stroke();
           break;
+
+        case 3: // Fern leaf
+          const fernSize = leaf.size * 1.2;
+          const fernWidth = halfSize * 0.7;
+          ctx.beginPath();
+
+          // Main stem
+          ctx.moveTo(0, fernSize);
+          ctx.lineTo(0, -fernSize);
+
+          // Draw leaflets
+          const leafletCount = 10;
+          const leafletSpacing = (fernSize * 2) / leafletCount;
+
+          for (let i = 0; i < leafletCount; i++) {
+            const y = fernSize - i * leafletSpacing;
+            const leafletSize =
+              fernWidth *
+              (i < leafletCount / 2
+                ? i / (leafletCount / 2)
+                : (leafletCount - i) / (leafletCount / 2));
+
+            // Right leaflet
+            ctx.moveTo(0, y);
+            ctx.bezierCurveTo(
+              leafletSize * 0.5,
+              y - leafletSize * 0.2,
+              leafletSize,
+              y - leafletSize * 0.5,
+              leafletSize * 0.8,
+              y - leafletSize,
+            );
+
+            // Left leaflet
+            ctx.moveTo(0, y);
+            ctx.bezierCurveTo(
+              -leafletSize * 0.5,
+              y - leafletSize * 0.2,
+              -leafletSize,
+              y - leafletSize * 0.5,
+              -leafletSize * 0.8,
+              y - leafletSize,
+            );
+          }
+
+          ctx.strokeStyle = leaf.color;
+          ctx.lineWidth = 1;
+          ctx.stroke();
+          break;
+
+        case 4: // Star-shaped leaf
+          ctx.beginPath();
+
+          const numPoints = 4;
+          const outerRadius = leaf.size;
+          const innerRadius = leaf.size * 0.4;
+
+          for (let i = 0; i < numPoints * 2; i++) {
+            const radius = i % 2 === 0 ? outerRadius : innerRadius;
+            const angle = (Math.PI * 2 * i) / (numPoints * 2);
+
+            const x = Math.cos(angle) * radius;
+            const y = Math.sin(angle) * radius;
+
+            if (i === 0) {
+              ctx.moveTo(x, y);
+            } else {
+              ctx.lineTo(x, y);
+            }
+          }
+
+          ctx.closePath();
+          ctx.fill();
+
+          // Add details
+          ctx.strokeStyle = "rgba(255, 255, 255, 0.25)";
+          ctx.lineWidth = 0.5;
+          for (let i = 0; i < numPoints; i++) {
+            const angle = (Math.PI * 2 * i * 2) / (numPoints * 2);
+            const x = Math.cos(angle) * outerRadius;
+            const y = Math.sin(angle) * outerRadius;
+            ctx.beginPath();
+            ctx.moveTo(0, 0);
+            ctx.lineTo(x, y);
+            ctx.stroke();
+          }
+          break;
       }
 
       ctx.restore();
@@ -294,7 +395,13 @@ const LeafAnimationGentle: React.FC = () => {
     // Animation function
     const animate = () => {
       // Clear canvas completely - no trails
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const devicePixelRatio = window.devicePixelRatio || 1;
+      ctx.clearRect(
+        0,
+        0,
+        canvas.width / devicePixelRatio,
+        canvas.height / devicePixelRatio,
+      );
 
       // Wind changes - more dynamic now
       windChangeTimer++;

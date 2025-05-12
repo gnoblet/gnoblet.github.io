@@ -49,7 +49,7 @@ src/
 The application supports various ways to specify project images:
 
 - **Remote URLs**: Use a full URL starting with `http://` or `https://`
-- **Absolute paths**: Use paths starting with `/` 
+- **Absolute paths**: Use paths starting with `/`
 - **Local images**: Simply provide the filename (e.g., `image.jpg`), and it will be resolved to `/src/assets/projects/image.jpg`
 
 The system includes fallback images that will be shown if:
@@ -66,13 +66,13 @@ The website utilizes several reusable components, including:
 - **BlogList**: Renders a list of blog posts with filtering
 - **Navbar**: Site navigation with responsive menu
 - **Footer**: Site footer with links and information
-- **LeafAnimation**: Decorative animated elements
+- **LeafAnimation**: Decorative animated leaves with multiple types and interactive physics
 - **TagCloud/TagFilter**: Interactive tag filtering
 - **Timeline**: Interactive experience timeline with hover effects
 
 ### Interactive Timeline
 
-The timeline component features a hover interaction system:
+The timeline component features an advanced hover interaction system:
 
 - Each timeline entry has its own line segment that connects to the next entry
 - Hovering on any entry creates coordinated visual effects:
@@ -82,6 +82,16 @@ The timeline component features a hover interaction system:
   - All other entries dim simultaneously
 - State-based approach ensures consistent behavior with expanded entries
 - "Show More/Less" toggle for displaying additional timeline entries
+
+### LeafAnimation
+
+The background animation creates an immersive experience:
+
+- Five different leaf types (oval, heart-shaped, maple, fern, and star)
+- High-resolution rendering with device pixel ratio support for crisp visuals
+- Interactive physics: leaves respond to mouse/touch movement
+- Dynamic wind patterns that create natural, never-repeating motion
+- Subtle color palette that complements the site's theme
 
 ## 🛠️ Development
 
@@ -126,7 +136,7 @@ Edit the file `src/data/projects.ts` to add new projects:
 ```typescript
 {
   id: 9,  // Unique ID
-  title: "Project Name", 
+  title: "Project Name",
   slug: "project-name",  // URL-friendly name
   description: "Project description goes here",
   imageUrl: "project-image.jpg",  // Can be a URL or local file
