@@ -68,6 +68,20 @@ The website utilizes several reusable components, including:
 - **Footer**: Site footer with links and information
 - **LeafAnimation**: Decorative animated elements
 - **TagCloud/TagFilter**: Interactive tag filtering
+- **Timeline**: Interactive experience timeline with hover effects
+
+### Interactive Timeline
+
+The timeline component features a hover interaction system:
+
+- Each timeline entry has its own line segment that connects to the next entry
+- Hovering on any entry creates coordinated visual effects:
+  - The entry background highlights
+  - The dot marker enlarges and glows
+  - The line segment brightens
+  - All other entries dim simultaneously
+- State-based approach ensures consistent behavior with expanded entries
+- "Show More/Less" toggle for displaying additional timeline entries
 
 ## 🛠️ Development
 
