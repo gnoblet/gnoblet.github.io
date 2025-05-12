@@ -87,7 +87,7 @@ The timeline component features an advanced hover interaction system:
 
 The background animation creates an immersive experience:
 
-- Five different leaf types (oval, heart-shaped, maple, fern, and star)
+- Seven different leaf types (oval, heart-shaped, maple, fern, ginkgo, oak, and detailed maple)
 - High-resolution rendering with device pixel ratio support for crisp visuals
 - Interactive physics: leaves respond to mouse/touch movement
 - Dynamic wind patterns that create natural, never-repeating motion

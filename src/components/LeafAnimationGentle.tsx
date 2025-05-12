@@ -93,7 +93,7 @@ const LeafAnimationGentle: React.FC = () => {
         tiltSpeed: (Math.random() - 0.5) * 0.007, // Slightly faster tilt
         color: leafColors[Math.floor(Math.random() * leafColors.length)],
         alpha: 0.7 + Math.random() * 0.3,
-        type: Math.floor(Math.random() * 5), // 5 different leaf shapes
+        type: Math.floor(Math.random() * 7), // 7 different leaf shapes
         wobble: Math.random() * Math.PI * 2, // Random starting phase
         wobbleSpeed: 0.015 + Math.random() * 0.025, // Faster wobble
         wobbleAmplitude: 0.3 + Math.random() * 0.7, // Different amplitude for each leaf
@@ -291,42 +291,343 @@ const LeafAnimationGentle: React.FC = () => {
           ctx.stroke();
           break;
 
-        case 4: // Star-shaped leaf
+        case 4: // Ginkgo-inspired leaf
           ctx.beginPath();
-
-          const numPoints = 4;
-          const outerRadius = leaf.size;
-          const innerRadius = leaf.size * 0.4;
-
-          for (let i = 0; i < numPoints * 2; i++) {
-            const radius = i % 2 === 0 ? outerRadius : innerRadius;
-            const angle = (Math.PI * 2 * i) / (numPoints * 2);
-
-            const x = Math.cos(angle) * radius;
-            const y = Math.sin(angle) * radius;
-
-            if (i === 0) {
-              ctx.moveTo(x, y);
-            } else {
-              ctx.lineTo(x, y);
-            }
-          }
-
-          ctx.closePath();
+          
+          // Create a fan/ginkgo shaped leaf
+          const fanWidth = leaf.size * 1.2;
+          const fanHeight = leaf.size * 1.1;
+          
+          // Draw the leaf outline
+          ctx.moveTo(0, leaf.size * 0.3); // Start at stem
+          
+          // Right side curve
+          ctx.bezierCurveTo(
+            fanWidth * 0.4, 0,
+            fanWidth * 0.7, -fanHeight * 0.5,
+            fanWidth * 0.5, -fanHeight
+          );
+          
+          // Top curve
+          ctx.bezierCurveTo(
+            fanWidth * 0.3, -fanHeight * 1.1,
+            -fanWidth * 0.3, -fanHeight * 1.1,
+            -fanWidth * 0.5, -fanHeight
+          );
+          
+          // Left side curve
+          ctx.bezierCurveTo(
+            -fanWidth * 0.7, -fanHeight * 0.5,
+            -fanWidth * 0.4, 0,
+            0, leaf.size * 0.3
+          );
+          
           ctx.fill();
-
-          // Add details
+          
+          // Add veins
           ctx.strokeStyle = "rgba(255, 255, 255, 0.25)";
           ctx.lineWidth = 0.5;
-          for (let i = 0; i < numPoints; i++) {
-            const angle = (Math.PI * 2 * i * 2) / (numPoints * 2);
-            const x = Math.cos(angle) * outerRadius;
-            const y = Math.sin(angle) * outerRadius;
+          
+          // Main center vein
+          ctx.beginPath();
+          ctx.moveTo(0, leaf.size * 0.3);
+          ctx.lineTo(0, -fanHeight * 0.9);
+          ctx.stroke();
+          
+          // Side veins
+          const veins = 5;
+          for (let i = 1; i <= veins; i++) {
+            const yPos = -fanHeight * 0.2 * i;
+            const xWidth = (fanWidth * 0.5) * (i / veins);
+            
+            // Right vein
             ctx.beginPath();
-            ctx.moveTo(0, 0);
-            ctx.lineTo(x, y);
+            ctx.moveTo(0, yPos);
+            ctx.bezierCurveTo(
+              xWidth * 0.3, yPos,
+              xWidth * 0.6, yPos - 0.1 * leaf.size,
+              xWidth, yPos - 0.05 * leaf.size
+            );
+            ctx.stroke();
+            
+            // Left vein
+            ctx.beginPath();
+            ctx.moveTo(0, yPos);
+            ctx.bezierCurveTo(
+              -xWidth * 0.3, yPos,
+              -xWidth * 0.6, yPos - 0.1 * leaf.size,
+              -xWidth, yPos - 0.05 * leaf.size
+            );
             ctx.stroke();
           }
+          break;
+          
+        case 5: // Oak leaf
+          ctx.beginPath();
+          const oakSize = leaf.size * 1.2;
+          const lobeFactor = 0.3; // How deep the lobes go
+          
+          // Starting point at the stem
+          ctx.moveTo(0, oakSize * 0.4);
+
+          // Right side lobes - each is a small curve in and out
+          for (let i = 5; i >= 0; i--) {
+            const progress = i / 5; // 1 to 0
+            const width = oakSize * 0.7 * progress;
+            const height = -oakSize * 0.8 * progress;
+            
+            // In for the lobe
+            ctx.bezierCurveTo(
+              width - width * lobeFactor * 0.5, height + oakSize * 0.2 * (1-progress),
+              width - width * lobeFactor, height,
+              width, height
+            );
+            
+            // Out for the next lobe
+            if (i > 0) {
+              const nextProgress = (i-1) / 5;
+              const nextWidth = oakSize * 0.7 * nextProgress;
+              const nextHeight = -oakSize * 0.8 * nextProgress;
+              
+              ctx.bezierCurveTo(
+                width + width * lobeFactor * 0.3, height - oakSize * 0.05 * (1-progress),
+                nextWidth + nextWidth * lobeFactor * 0.3, nextHeight + oakSize * 0.05 * nextProgress,
+                nextWidth, nextHeight
+              );
+            }
+          }
+          
+          // Top of the leaf
+          ctx.bezierCurveTo(
+            0, -oakSize,
+            0, -oakSize,
+            0, -oakSize
+          );
+          
+          // Left side lobes - mirror of right side
+          for (let i = 0; i <= 5; i++) {
+            const progress = i / 5; // 0 to 1
+            const width = -oakSize * 0.7 * progress;
+            const height = -oakSize * 0.8 * (1-progress);
+            
+            // In for the lobe
+            ctx.bezierCurveTo(
+              width - width * lobeFactor * 0.5, height + oakSize * 0.2 * progress,
+              width - width * lobeFactor, height,
+              width, height
+            );
+            
+            // Out for the next lobe
+            if (i < 5) {
+              const nextProgress = (i+1) / 5;
+              const nextWidth = -oakSize * 0.7 * nextProgress;
+              const nextHeight = -oakSize * 0.8 * (1-nextProgress);
+              
+              ctx.bezierCurveTo(
+                width + width * lobeFactor * 0.3, height - oakSize * 0.05 * progress,
+                nextWidth + nextWidth * lobeFactor * 0.3, nextHeight + oakSize * 0.05 * (1-nextProgress),
+                nextWidth, nextHeight
+              );
+            }
+          }
+          
+          // Back to stem
+          ctx.bezierCurveTo(
+            -oakSize * 0.1, oakSize * 0.2,
+            -oakSize * 0.05, oakSize * 0.3,
+            0, oakSize * 0.4
+          );
+          
+          ctx.fill();
+          
+          // Add main vein
+          ctx.strokeStyle = "rgba(255, 255, 255, 0.25)";
+          ctx.lineWidth = 0.5;
+          ctx.beginPath();
+          ctx.moveTo(0, oakSize * 0.4);
+          ctx.lineTo(0, -oakSize * 0.8);
+          ctx.stroke();
+          
+          // Add side veins
+          for (let i = 1; i <= 5; i++) {
+            const progress = i / 6; // Spread out the veins
+            const height = -oakSize * progress;
+            const width = oakSize * 0.5 * progress;
+            
+            // Right vein
+            ctx.beginPath();
+            ctx.moveTo(0, height);
+            ctx.lineTo(width * 0.7, height + height * 0.1);
+            ctx.stroke();
+            
+            // Left vein
+            ctx.beginPath();
+            ctx.moveTo(0, height);
+            ctx.lineTo(-width * 0.7, height + height * 0.1);
+            ctx.stroke();
+          }
+          break;
+          
+        case 6: // Detailed maple leaf
+          ctx.beginPath();
+          const mapleSize = leaf.size * 1.3;
+          
+          // Define the main points of the maple leaf
+          // Stem base
+          ctx.moveTo(0, mapleSize * 0.5);
+          
+          // Right side - 3 points with curves between
+          // First (bottom) lobe
+          ctx.bezierCurveTo(
+            mapleSize * 0.1, mapleSize * 0.2,
+            mapleSize * 0.4, mapleSize * 0.1,
+            mapleSize * 0.5, 0
+          );
+          
+          // Curve inward for the indent
+          ctx.bezierCurveTo(
+            mapleSize * 0.45, -mapleSize * 0.1,
+            mapleSize * 0.3, -mapleSize * 0.15,
+            mapleSize * 0.3, -mapleSize * 0.2
+          );
+          
+          // Second (middle) lobe - extend out
+          ctx.bezierCurveTo(
+            mapleSize * 0.35, -mapleSize * 0.3,
+            mapleSize * 0.6, -mapleSize * 0.4,
+            mapleSize * 0.6, -mapleSize * 0.5
+          );
+          
+          // Curve inward for the second indent
+          ctx.bezierCurveTo(
+            mapleSize * 0.55, -mapleSize * 0.55,
+            mapleSize * 0.35, -mapleSize * 0.6,
+            mapleSize * 0.25, -mapleSize * 0.65
+          );
+          
+          // Third (top) lobe
+          ctx.bezierCurveTo(
+            mapleSize * 0.3, -mapleSize * 0.75,
+            mapleSize * 0.3, -mapleSize * 0.9,
+            mapleSize * 0.2, -mapleSize * 0.95
+          );
+          
+          // Center top point
+          ctx.bezierCurveTo(
+            mapleSize * 0.1, -mapleSize * 1.05,
+            -mapleSize * 0.1, -mapleSize * 1.05,
+            -mapleSize * 0.2, -mapleSize * 0.95
+          );
+          
+          // Left side - mirror of right side
+          // Third (top) lobe
+          ctx.bezierCurveTo(
+            -mapleSize * 0.3, -mapleSize * 0.9,
+            -mapleSize * 0.3, -mapleSize * 0.75,
+            -mapleSize * 0.25, -mapleSize * 0.65
+          );
+          
+          // Curve inward for the second indent
+          ctx.bezierCurveTo(
+            -mapleSize * 0.35, -mapleSize * 0.6,
+            -mapleSize * 0.55, -mapleSize * 0.55,
+            -mapleSize * 0.6, -mapleSize * 0.5
+          );
+          
+          // Second (middle) lobe - extend out
+          ctx.bezierCurveTo(
+            -mapleSize * 0.6, -mapleSize * 0.4,
+            -mapleSize * 0.35, -mapleSize * 0.3,
+            -mapleSize * 0.3, -mapleSize * 0.2
+          );
+          
+          // Curve inward for the indent
+          ctx.bezierCurveTo(
+            -mapleSize * 0.3, -mapleSize * 0.15,
+            -mapleSize * 0.45, -mapleSize * 0.1,
+            -mapleSize * 0.5, 0
+          );
+          
+          // First (bottom) lobe
+          ctx.bezierCurveTo(
+            -mapleSize * 0.4, mapleSize * 0.1,
+            -mapleSize * 0.1, mapleSize * 0.2,
+            0, mapleSize * 0.5
+          );
+          
+          ctx.fill();
+          
+          // Add main vein
+          ctx.strokeStyle = "rgba(255, 255, 255, 0.25)";
+          ctx.lineWidth = 0.5;
+          
+          // Central vein
+          ctx.beginPath();
+          ctx.moveTo(0, mapleSize * 0.5);
+          ctx.lineTo(0, -mapleSize * 0.8);
+          ctx.stroke();
+          
+          // Right veins - one to each lobe
+          // Bottom lobe
+          ctx.beginPath();
+          ctx.moveTo(0, 0);
+          ctx.bezierCurveTo(
+            mapleSize * 0.1, -mapleSize * 0.05,
+            mapleSize * 0.2, -mapleSize * 0.05,
+            mapleSize * 0.4, -mapleSize * 0.02
+          );
+          ctx.stroke();
+          
+          // Middle lobe
+          ctx.beginPath();
+          ctx.moveTo(0, -mapleSize * 0.3);
+          ctx.bezierCurveTo(
+            mapleSize * 0.1, -mapleSize * 0.35,
+            mapleSize * 0.2, -mapleSize * 0.4,
+            mapleSize * 0.4, -mapleSize * 0.45
+          );
+          ctx.stroke();
+          
+          // Top lobe
+          ctx.beginPath();
+          ctx.moveTo(0, -mapleSize * 0.6);
+          ctx.bezierCurveTo(
+            mapleSize * 0.05, -mapleSize * 0.7,
+            mapleSize * 0.1, -mapleSize * 0.8,
+            mapleSize * 0.15, -mapleSize * 0.9
+          );
+          ctx.stroke();
+          
+          // Left veins - mirror of right
+          // Bottom lobe
+          ctx.beginPath();
+          ctx.moveTo(0, 0);
+          ctx.bezierCurveTo(
+            -mapleSize * 0.1, -mapleSize * 0.05,
+            -mapleSize * 0.2, -mapleSize * 0.05,
+            -mapleSize * 0.4, -mapleSize * 0.02
+          );
+          ctx.stroke();
+          
+          // Middle lobe
+          ctx.beginPath();
+          ctx.moveTo(0, -mapleSize * 0.3);
+          ctx.bezierCurveTo(
+            -mapleSize * 0.1, -mapleSize * 0.35,
+            -mapleSize * 0.2, -mapleSize * 0.4,
+            -mapleSize * 0.4, -mapleSize * 0.45
+          );
+          ctx.stroke();
+          
+          // Top lobe
+          ctx.beginPath();
+          ctx.moveTo(0, -mapleSize * 0.6);
+          ctx.bezierCurveTo(
+            -mapleSize * 0.05, -mapleSize * 0.7,
+            -mapleSize * 0.1, -mapleSize * 0.8,
+            -mapleSize * 0.15, -mapleSize * 0.9
+          );
+          ctx.stroke();
           break;
       }
 
