@@ -9,7 +9,7 @@ function Navbar() {
   const isActive = (path: string) => {
     // For home path, we want exact matching
     if (path === "/") {
-      return location.pathname === path;
+      return location.pathname === path || location.pathname === "/home";
     }
     // For other paths, we check if location.pathname starts with the path
     return location.pathname.startsWith(path);
@@ -28,14 +28,6 @@ function Navbar() {
               className={`${styles.navbarLink} ${isActive("/") ? styles.active : ""}`}
             >
               Home
-            </Link>
-          </li>
-          <li className={styles.navbarItem}>
-            <Link
-              to="/home2"
-              className={`${styles.navbarLink} ${isActive("/home2") ? styles.active : ""}`}
-            >
-              Home2
             </Link>
           </li>
           <li className={styles.navbarItem}>

@@ -2,7 +2,7 @@
     width: 100%;
     margin: 0 auto;
     text-align: center;
-    font-family: 'Nunito';
+    font-family: "Nunito";
 }
 
 .main-content {
@@ -15,7 +15,7 @@
     background-color: var(--color-dark-bg-secondary);
 }
 
-/* Adjust main content for full-width pages like Home2 */
+/* Adjust main content for full-width pages like Home */
 .full-width-page {
     padding-top: 0;
     width: 100%;
@@ -25,12 +25,12 @@
 .content-container {
     align-items: center;
     position: relative;
-    overflow: visible; 
+    overflow: visible;
     width: 100%;
     max-width: var(--content-max-width);
 }
 
-/* For full-width pages like Home2 */
+/* For full-width pages like Home */
 .content-container-full {
     max-width: 100%;
     padding: 0;

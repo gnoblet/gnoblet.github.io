@@ -39,8 +39,7 @@ src/
 
 ## 📋 Pages
 
-- **Home**: Standard landing page with summary information
-- **Home2**: Alternative landing page with full-width design
+- **Home**: Full-width landing page with timeline and project showcase
 - **Portfolio**: Showcase of projects with filtering options
 - **Blog**: Blog posts with search functionality
 - **Contact**: Contact form and information
