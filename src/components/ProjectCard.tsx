@@ -1,7 +1,9 @@
 // src/components/ProjectCard.tsx
-import React from "react";
+import React, { useState } from "react";
 import { Project } from "../types/project";
 import styles from "../styles/components/ProjectCard.module.css";
+import placeholderImage from "../assets/placeholders/project-placeholder.svg";
+import { resolveImagePath } from "../utils/imageUtils";
 
 interface ProjectCardProps {
   project: Project;
@@ -25,9 +27,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onTagClick  }) => {
     >
       <div className={styles.imageContainer}>
         <img
-          src={project.imageUrl}
+          src={resolveImagePath(project.imageUrl, placeholderImage)}
           alt={project.title}
           className={styles.image}
+          onError={(e) => {
+            e.currentTarget.src = placeholderImage;
+          }}
         />
       </div>
       <div className={styles.cardContent}>

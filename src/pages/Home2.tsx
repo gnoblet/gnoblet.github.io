@@ -3,12 +3,14 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import BlueSkyLogo from "../assets/logo/Bluesky_Logo.svg";
+import placeholderImage from "../assets/placeholders/project-placeholder.svg";
 import styles from "../styles/pages/Home2.module.css";
 import projectStyles from "../styles/pages/ProjectsSection.module.css";
 import blogStyles from "../styles/pages/BlogSection.module.css";
 import { Link as RouterLink } from "react-router-dom";
 import { projects } from "../data/projects";
 import LeafAnimationGentle from "../components/LeafAnimationGentle";
+import { resolveImagePath } from "../utils/imageUtils";
 
 const Home2: React.FC = () => {
   const [isTimelineExpanded, setIsTimelineExpanded] = useState(false);
@@ -296,9 +298,12 @@ const Home2: React.FC = () => {
                   className={projectStyles.projectCard}
                 >
                   <img
-                    src={project.imageUrl}
+                    src={resolveImagePath(project.imageUrl, placeholderImage)}
                     alt={project.title}
                     className={projectStyles.cardImage}
+                    onError={(e) => {
+                      e.currentTarget.src = placeholderImage;
+                    }}
                   />
                   <div className={projectStyles.cardContent}>
                     <h3 className={projectStyles.cardTitle}>{project.title}</h3>
@@ -361,9 +366,12 @@ const Home2: React.FC = () => {
                   className={projectStyles.projectCard}
                 >
                   <img
-                    src={project.imageUrl}
+                    src={resolveImagePath(project.imageUrl, placeholderImage)}
                     alt={project.title}
                     className={projectStyles.cardImage}
+                    onError={(e) => {
+                      e.currentTarget.src = placeholderImage;
+                    }}
                   />
                   <div className={projectStyles.cardContent}>
                     <h3 className={projectStyles.cardTitle}>{project.title}</h3>

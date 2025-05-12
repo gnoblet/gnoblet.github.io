@@ -9,8 +9,8 @@
     z-index: 2;
     background: linear-gradient(
         to bottom,
-        #0a060f,
-        #1a0f2e
+        var(--color-dark-bg),
+        var(--color-dark-bg-secondary)
     ); /* Blue-purple gradient */
     touch-action: none;
     pointer-events: auto;

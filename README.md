@@ -2,6 +2,20 @@
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
+## Image Handling
+
+The application supports various ways to specify project images:
+
+- Remote URLs: Use a full URL starting with `http://` or `https://`
+- Absolute paths: Use paths starting with `/` 
+- Local images: Simply provide the filename (e.g., `image.jpg`), and it will be resolved to `/src/assets/projects/image.jpg`
+
+The system also includes fallback images that will be shown if:
+- The specified image URL is empty or invalid
+- The image fails to load for any reason
+
+Local project images should be placed in the `/src/assets/projects/` directory.
+
 Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh

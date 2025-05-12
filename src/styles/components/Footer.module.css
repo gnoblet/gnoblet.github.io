@@ -1,6 +1,6 @@
 /* src/styles/components/Footer.module.css */
 .footer {
-    background-color: #0a060f;
+    background-color: var(--color-dark-bg);
     color: white;
     padding: 40px 0 20px;
     width: 100%;
