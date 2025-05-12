@@ -18,10 +18,10 @@
     --color-dark-glass: rgba(26, 15, 46, 0.6);
 
     /* Text colors */
-    --color-text-light: rgba(255, 255, 255, 0.87);
+    --color-text-light: #ffffff;
     --color-text-dark: #333;
     --color-text-secondary: #666;
-    --color-text-muted: rgba(255, 255, 255, 0.6);
+    --color-text-muted: rgba(255, 255, 255, 0.7);
 
     /* Card and UI elements */
     --card-bg: rgba(255, 255, 255, 0.85);

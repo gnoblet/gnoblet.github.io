@@ -65,7 +65,7 @@ export const timelineEntries: TimelineEntry[] = [
   {
     period: "2021",
     company: "University of Paris 1 Panthéon-Sorbonne",
-    role: "Fully-Funded PhD Candidate in (History of) Economics & Teaching Assistant",
+    role: "PhD Candidate in (History of) Economics",
     description:
       "Managed data and GIS teams, led field research, and collaborated with ministries, UN agencies, and coordination bodies.",
     companyUrl: "https://www.impact-initiatives.org",

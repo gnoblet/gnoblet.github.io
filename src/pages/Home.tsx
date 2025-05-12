@@ -130,26 +130,30 @@ const Home: React.FC = () => {
               {timelineEntries.map((entry, index) => (
                 <div key={index} className={styles.timelineEntry}>
                   <span className={styles.timelineYear}>{entry.period}</span>
-                  <span className={styles.timelineCompany}>
-                    {entry.companyUrl ? (
-                      <a
-                        href={entry.companyUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {entry.company}
-                      </a>
-                    ) : (
-                      entry.company
-                    )}
+                  <div className={styles.timelineContent}>
+                    <div className={styles.timelineHeader}>
+                      <span className={styles.timelineRole}>{entry.role}</span>
+                      <span className={styles.timelineDot}>•</span>
+                      <span className={styles.timelineCompany}>
+                        {entry.companyUrl ? (
+                          <a
+                            href={entry.companyUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {entry.company}
+                          </a>
+                        ) : (
+                          entry.company
+                        )}
+                      </span>
+                    </div>
                     {entry.location && (
                       <span className={styles.timelineLocation}>
-                        {" "}
-                        • {entry.location}
+                        {entry.location}
                       </span>
                     )}
-                  </span>
-                  <span className={styles.timelineRole}>{entry.role}</span>
+                  </div>
                   <p className={styles.timelineDescription}>
                     {entry.description}
                   </p>
