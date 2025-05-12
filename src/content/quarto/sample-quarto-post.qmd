@@ -1,11 +1,15 @@
 ---
-title: "Sample Quarto Blog Post"
+title: "Sample Quarto Blog Post with Interactive Visualizations"
 author: "Your Name"
 date: "2023-07-15"
-categories: [data-science, visualization]
+categories: [data-science, visualization, interactive]
 image: "image.jpg"
-tags: [quarto, r, statistics]
-excerpt: "This is a sample Quarto blog post with code and visualizations."
+tags: [quarto, r, statistics, observable, javascript]
+excerpt: "This is a sample Quarto blog post with code, visualizations, and interactive Observable JS elements."
+format:
+  html:
+    code-fold: false
+    code-tools: true
 ---
 
 # Introduction to Quarto
@@ -50,7 +54,63 @@ $$
 
 ## Interactive Features
 
-Quarto enables interactive visualizations and applications with various JavaScript libraries.
+Quarto enables interactive visualizations and applications with various JavaScript libraries. Here's an example using Observable JS with a slider to create an interactive visualization:
+
+```{ojs}
+//| label: interactive-chart
+//| echo: true
+
+viewof sliderValue = Inputs.range(
+  [10, 100],
+  {value: 50, step: 5, label: "Number of points:"}
+)
+
+// Generate random data based on the slider value
+function generateData(n) {
+  const data = [];
+  for (let i = 0; i < n; i++) {
+    data.push({
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      size: Math.random() * 20 + 5
+    });
+  }
+  return data;
+}
+
+// Create a scatter plot with the data
+Plot.plot({
+  grid: true,
+  width: 600,
+  height: 400,
+  marginRight: 40,
+  x: {label: "X Axis"},
+  y: {label: "Y Axis"},
+  color: {
+    type: "linear",
+    domain: [0, 100],
+    range: ["steelblue", "orange"]
+  },
+  marks: [
+    Plot.dot(
+      generateData(sliderValue),
+      {
+        x: "x",
+        y: "y",
+        r: "size",
+        fill: "x",
+        fillOpacity: 0.7,
+        stroke: "white",
+        strokeWidth: 1
+      }
+    ),
+    Plot.ruleY([0]),
+    Plot.ruleX([0])
+  ]
+})
+```
+
+You can adjust the slider above to change the number of points in the visualization. This demonstrates how Observable JS provides interactive capabilities directly within Quarto documents.
 
 ## Conclusion
 
