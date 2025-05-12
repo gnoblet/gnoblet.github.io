@@ -15,6 +15,11 @@ import { resolveImagePath } from "../utils/imageUtils";
 
 const Home: React.FC = () => {
   const [isTimelineExpanded, setIsTimelineExpanded] = useState(false);
+  const [hoveredEntry, setHoveredEntry] = useState<number | null>(null);
+
+  const handleEntryHover = (index: number | null) => {
+    setHoveredEntry(index);
+  };
 
   return (
     <div className={styles.fullWidthContainer}>
@@ -128,7 +133,12 @@ const Home: React.FC = () => {
               className={`${styles.timelineContainer} ${isTimelineExpanded ? styles.timelineContainerExpanded : ""}`}
             >
               {timelineEntries.map((entry, index) => (
-                <div key={index} className={styles.timelineEntry}>
+                <div 
+                  key={index} 
+                  className={`${styles.timelineEntry} ${hoveredEntry !== null && hoveredEntry !== index ? styles.dimmedEntry : ''}`}
+                  onMouseEnter={() => handleEntryHover(index)}
+                  onMouseLeave={() => handleEntryHover(null)}
+                >
                   <span className={styles.timelineYear}>{entry.period}</span>
                   <div className={styles.timelineLineSegment}></div>
                   <div className={styles.timelineHalo}></div>

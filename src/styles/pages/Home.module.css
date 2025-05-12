@@ -170,6 +170,13 @@
     background-color: rgba(100, 108, 255, 0.1);
     border-left: 3px solid var(--color-primary);
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+    opacity: 1 !important;
+    z-index: 5;
+}
+
+.dimmedEntry {
+    opacity: 0.5;
+    transition: all 0.3s ease;
 }
 
 /* When hovering an entry, dim subsequent entries */
@@ -177,7 +184,14 @@
     z-index: 5;
 }
 
-.timelineEntry:hover ~ .timelineEntry {
+/* When hovering an entry, dim all other entries */
+.timelineContainer .timelineEntry:hover ~ .timelineEntry,
+.timelineContainer:not(.timelineContainerExpanded) .timelineEntry:hover ~ .timelineEntry,
+.timelineContainer .timelineEntry:hover ~ .timelineEntry {
+    opacity: 0.5;
+}
+
+.timelineContainerExpanded .timelineEntry:hover ~ .timelineEntry {
     opacity: 0.5;
 }
 
@@ -186,6 +200,11 @@
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
     transform: scale(1.2);
     border-color: var(--color-primary);
+}
+
+.dimmedEntry::before {
+    opacity: 0.7;
+    box-shadow: 0 0 5px rgba(100, 108, 255, 0.3);
 }
 
 .timelineContainer:not(.timelineContainerExpanded) .timelineEntry:nth-child(4) {
@@ -230,6 +249,7 @@
     margin: 0 0 40px 0;
     pointer-events: all;
     overflow: visible;
+    transition: all 0.3s ease;
 }
 
 .timelineContainerExpanded .timelineEntry:last-of-type {
@@ -288,7 +308,11 @@
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
     width: 4px;
     z-index: 1; /* Move above non-hovered line segments */
-    height: calc(100% + 22px); /* Ensure it still connects when glowing */
+    height: calc(100% + 31px); /* Ensure it still connects when glowing */
+}
+
+.dimmedEntry .timelineLineSegment {
+    opacity: 0.3;
 }
 
 .timelineEntry:last-child .timelineLineSegment {
@@ -348,6 +372,10 @@
     color: var(--color-primary-light);
 }
 
+.dimmedEntry .timelineHeader {
+    opacity: 0.7;
+}
+
 .timelineCompany {
     display: inline;
     font-weight: bold;
@@ -358,6 +386,10 @@
 
 .timelineEntry:hover .timelineCompany {
     color: white;
+}
+
+.dimmedEntry .timelineCompany {
+    opacity: 0.7;
 }
 
 .timelineCompany a {
@@ -385,6 +417,10 @@
     opacity: 0.9;
 }
 
+.dimmedEntry .timelineLocation {
+    opacity: 0.5;
+}
+
 .timelineRole {
     display: inline;
     font-weight: bold;
@@ -395,6 +431,10 @@
 
 .timelineEntry:hover .timelineRole {
     text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+.dimmedEntry .timelineRole {
+    opacity: 0.7;
 }
 
 .timelineDot {
@@ -437,6 +477,10 @@
     border-color: var(--color-primary);
 }
 
+.dimmedEntry .timelineSkill {
+    opacity: 0.5;
+}
+
 .timelineSkill:hover {
     background-color: var(--color-primary-translucent);
     color: white;
@@ -445,6 +489,10 @@
 .timelineEntry:hover .timelineDescription {
     opacity: 1;
     color: #ffffff;
+}
+
+.dimmedEntry .timelineDescription {
+    opacity: 0.5;
 }
 
 .timelineExpandButton {
