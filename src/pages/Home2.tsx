@@ -9,6 +9,7 @@ import projectStyles from "../styles/pages/ProjectsSection.module.css";
 import blogStyles from "../styles/pages/BlogSection.module.css";
 import { Link as RouterLink } from "react-router-dom";
 import { projects } from "../data/projects";
+import { timelineEntries } from "../data/timeline";
 import LeafAnimationGentle from "../components/LeafAnimationGentle";
 import { resolveImagePath } from "../utils/imageUtils";
 
@@ -126,77 +127,43 @@ const Home2: React.FC = () => {
             <div
               className={`${styles.timelineContainer} ${isTimelineExpanded ? styles.timelineContainerExpanded : ""}`}
             >
-              <div className={styles.timelineEntry}>
-                <span className={styles.timelineYear}>2020 - 2022</span>
-                <span className={styles.timelineCompany}>
-                  IMPACT Initiatives
-                </span>
-                <span className={styles.timelineRole}>
-                  Research Manager, Global R&D Team
-                </span>
-                <p className={styles.timelineDescription}>
-                  Led a global research team orchestrating Multi-Sector Needs
-                  Assessments (MSNAs) in 20+ countries, designed to inform
-                  humanitarian yearly planning and prioritisation.
-                </p>
-              </div>
-
-              <div className={styles.timelineEntry}>
-                <span className={styles.timelineYear}>2019 - 2020</span>
-                <span className={styles.timelineCompany}>
-                  IMPACT Initiatives
-                </span>
-                <span className={styles.timelineRole}>
-                  Assessment Specialist, Haiti
-                </span>
-                <p className={styles.timelineDescription}>
-                  Led the MSNA in Haiti, managing a team of 80+ and co-chairing
-                  the Information Management Working Group to improve the
-                  humanitarian information landscape.
-                </p>
-              </div>
-
-              <div className={styles.timelineEntry}>
-                <span className={styles.timelineYear}>2018 - 2019</span>
-                <span className={styles.timelineCompany}>
-                  IMPACT Initiatives
-                </span>
-                <span className={styles.timelineRole}>
-                  Data & GIS Specialist, Burkina Faso
-                </span>
-                <p className={styles.timelineDescription}>
-                  Managed data and GIS teams, led field research, and
-                  collaborated with ministries, UN agencies, and coordination
-                  bodies.
-                </p>
-              </div>
-
-              <div className={styles.timelineEntry}>
-                <span className={styles.timelineYear}>2017 - 2018</span>
-                <span className={styles.timelineCompany}>
-                  IMPACT Initiatives
-                </span>
-                <span className={styles.timelineRole}>
-                  Research & Assessment Intern
-                </span>
-                <p className={styles.timelineDescription}>
-                  Supported global research initiatives, contributed to
-                  methodology development, and analyzed data for humanitarian
-                  response planning.
-                </p>
-              </div>
-
-              <div className={styles.timelineEntry}>
-                <span className={styles.timelineYear}>2016 - 2017</span>
-                <span className={styles.timelineCompany}>
-                  University of Geneva
-                </span>
-                <span className={styles.timelineRole}>Teaching Assistant</span>
-                <p className={styles.timelineDescription}>
-                  Assisted with teaching economics courses, provided student
-                  support, and contributed to curriculum development.
-                </p>
-              </div>
+              {timelineEntries.map((entry, index) => (
+                <div key={index} className={styles.timelineEntry}>
+                  <span className={styles.timelineYear}>{entry.period}</span>
+                  <span className={styles.timelineCompany}>
+                    {entry.companyUrl ? (
+                      <a
+                        href={entry.companyUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {entry.company}
+                      </a>
+                    ) : (
+                      entry.company
+                    )}
+                    {entry.location && (
+                      <span className={styles.timelineLocation}>
+                        {" "}
+                        • {entry.location}
+                      </span>
+                    )}
+                  </span>
+                  <span className={styles.timelineRole}>{entry.role}</span>
+                  <p className={styles.timelineDescription}>
+                    {entry.description}
+                  </p>
+                  {entry.skills && entry.skills.length > 0 && (
+                    <div className={styles.timelineSkills}>
+                      {entry.skills.map((skill, skillIndex) => (
+                        <span key={skillIndex} className={styles.timelineSkill}>
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
 
               <button
                 className={styles.timelineExpandButton}

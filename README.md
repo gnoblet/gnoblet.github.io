@@ -28,7 +28,7 @@ src/
 ├── components/      # Reusable UI components
 ├── content/         # Static content
 │   └── blog/        # Blog post content
-├── data/            # Data files (projects, blog posts)
+├── data/            # Data files (projects, blog posts, timeline)
 ├── pages/           # Page components
 ├── styles/          # CSS modules
 │   ├── components/  # Component-specific styles
@@ -119,6 +119,23 @@ Edit the file `src/data/projects.ts` to add new projects:
   imageUrl: "project-image.jpg",  // Can be a URL or local file
   projectUrl: "https://example.com/project",
   tags: ["react", "typescript", "frontend"]  // Relevant tags
+}
+```
+
+### Adding Timeline Entries
+
+Edit the file `src/data/timeline.ts` to add or modify timeline experiences:
+
+```typescript
+{
+  period: "2023 - Present",
+  company: "Company Name",
+  role: "Your Job Title",
+  description: "Brief description of your responsibilities and achievements.",
+  companyUrl: "https://example.com",  // Optional
+  location: "City, Country",  // Optional
+  skills: ["Skill 1", "Skill 2"],  // Optional
+  achievements: ["Achievement 1", "Achievement 2"]  // Optional
 }
 ```
 
