@@ -137,12 +137,13 @@
 .timelineContainer::before {
     content: "";
     position: absolute;
-    left: 70px;
+    left: 90px;
     top: 0;
     height: 100%;
     width: 2px;
     background: var(--color-primary);
     z-index: 1;
+    box-shadow: 0 0 5px rgba(100, 108, 255, 0.5);
 }
 
 /* Experience box */
@@ -158,13 +159,23 @@
 /* Timeline entry */
 .timelineEntry {
     position: relative;
-    padding-left: 90px;
+    padding-left: 130px;
     display: block;
     width: 100%;
     text-align: left;
-    margin: 0 0 40px 0;
+    margin: 0 0 50px 0;
     opacity: 1;
     transition: all 0.5s ease-in-out;
+    cursor: default;
+}
+
+.timelineEntry:hover {
+    transform: translateX(5px);
+}
+
+.timelineEntry:hover::before {
+    background-color: white;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
 }
 
 .timelineContainer:not(.timelineContainerExpanded) .timelineEntry:nth-child(4) {
@@ -222,10 +233,12 @@
     height: 20px;
     background-color: var(--color-primary);
     border-radius: 50%;
-    left: 61px;
+    left: 81px;
     top: 5px;
     border: 2px solid white;
     z-index: 2;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
 }
 
 .timelineYear {
@@ -236,7 +249,7 @@
     position: absolute;
     left: 0;
     top: 5px;
-    width: 55px;
+    width: 70px;
     text-align: right;
 }
 
@@ -248,7 +261,12 @@
 .timelineHeader {
     display: flex;
     align-items: center;
-    margin-bottom: 4px;
+    margin-bottom: 8px;
+    transition: all 0.3s ease;
+}
+
+.timelineEntry:hover .timelineHeader {
+    color: var(--color-primary-light);
 }
 
 .timelineCompany {
@@ -256,6 +274,11 @@
     font-weight: bold;
     font-size: 1rem;
     color: var(--color-primary);
+    transition: all 0.3s ease;
+}
+
+.timelineEntry:hover .timelineCompany {
+    color: white;
 }
 
 .timelineCompany a {
@@ -275,7 +298,12 @@
     color: #ffffff;
     opacity: 0.7;
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
+    transition: all 0.3s ease;
+}
+
+.timelineEntry:hover .timelineLocation {
+    opacity: 0.9;
 }
 
 .timelineRole {
@@ -283,11 +311,16 @@
     font-weight: bold;
     font-size: 1rem;
     color: white;
+    transition: all 0.3s ease;
+}
+
+.timelineEntry:hover .timelineRole {
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
 }
 
 .timelineDot {
     display: inline-block;
-    margin: 0 8px;
+    margin: 0 10px;
     color: white;
     opacity: 0.7;
 }
@@ -318,13 +351,18 @@
     transition: all 0.3s ease;
 }
 
+.timelineEntry:hover .timelineSkill {
+    background-color: var(--color-primary-translucent);
+    border-color: var(--color-primary);
+}
+
 .timelineSkill:hover {
     background-color: var(--color-primary-translucent);
     color: white;
 }
 
 .timelineEntry:hover .timelineDescription {
-    opacity: 0.9;
+    opacity: 1;
 }
 
 .timelineExpandButton {
