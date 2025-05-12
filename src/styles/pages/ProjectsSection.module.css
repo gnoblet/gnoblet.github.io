@@ -76,7 +76,9 @@
 
 /* Custom card styling for dark theme */
 .projectCard {
-    background-color: var(--color-dark-tertiary);
+    background-color: rgba(20, 20, 30, 0.85);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: var(--border-radius);
     overflow: hidden;
@@ -88,8 +90,9 @@
 
 .projectCard:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
     border-color: var(--color-primary-translucent);
+    background-color: rgba(30, 30, 45, 0.9);
 }
 
 .cardImage {
@@ -108,6 +111,7 @@
     flex-grow: 1;
     display: flex;
     flex-direction: column;
+    background-color: rgba(10, 10, 20, 0.5);
 }
 
 .cardTitle {
@@ -132,9 +136,10 @@
 }
 
 .cardTag {
-    background-color: var(--color-primary-translucent);
+    background-color: rgba(var(--color-primary-rgb), 0.2);
     color: var(--color-primary);
     padding: 4px 12px;
     border-radius: 20px;
     font-size: 0.8rem;
+    border: 1px solid rgba(var(--color-primary-rgb), 0.3);
 }

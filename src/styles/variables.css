@@ -2,6 +2,7 @@
 :root {
     /* Colors */
     --color-primary: #646cff;
+    --color-primary-rgb: 100, 108, 255;
     --color-primary-hover: #535bf2;
     --color-primary-light: rgba(100, 108, 255, 0.4);
     --color-primary-translucent: rgba(100, 108, 255, 0.1);
