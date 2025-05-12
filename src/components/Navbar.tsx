@@ -1,6 +1,7 @@
-// src/components/layout/Navbar.tsx
+// src/components/Navbar.tsx
 import { Link, useLocation } from "react-router-dom";
 import styles from "../styles/components/Navbar.module.css";
+import { FaChartBar } from "react-icons/fa";
 
 function Navbar() {
   const location = useLocation();
@@ -36,6 +37,22 @@ function Navbar() {
               className={`${styles.navbarLink} ${isActive("/blog") ? styles.active : ""}`}
             >
               Blog
+            </Link>
+          </li>
+          <li className={styles.navbarItem}>
+            <Link
+              to="/quarto"
+              className={`${styles.navbarLink} ${isActive("/quarto") ? styles.active : ""}`}
+            >
+              <FaChartBar /> Quarto
+            </Link>
+          </li>
+          <li className={styles.navbarItem}>
+            <Link
+              to="/quarto"
+              className={`${styles.navbarLink} ${isActive("/quarto") ? styles.active : ""}`}
+            >
+              <FaChartBar className={styles.navIcon} /> Quarto
             </Link>
           </li>
           <li className={styles.navbarItem}>

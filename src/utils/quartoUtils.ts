@@ -1,16 +1,24 @@
-// src/utils/blogUtils.ts
+// src/utils/quartoUtils.ts
 import { useState, useEffect } from "react";
-import { BlogPost } from "../types/blog";
-import { mockBlogPosts } from "../data/blogPosts";
 
-// Define content sources
-const CONTENT_SOURCES = {
-  MD: "markdown",
-  QUARTO: "quarto",
-};
+// Define QuartoPost interface
+export interface QuartoPost {
+  id: string;
+  slug: string;
+  title: string;
+  date: string;
+  excerpt: string;
+  content: string;
+  author: string;
+  tags: string[];
+  categories: string[];
+  coverImage?: string;
+}
 
-// Cache for loaded blog posts
-const postCache = new Map<string, BlogPost>();
+export type QuartoPostMetadata = Omit<QuartoPost, "content">;
+
+// Cache for loaded Quarto posts
+const quartoPostCache = new Map<string, QuartoPost>();
 
 // Helper function to parse frontmatter from markdown
 function parseFrontmatter(markdown: string): {
@@ -54,64 +62,17 @@ function parseFrontmatter(markdown: string): {
   return { frontmatter, content };
 }
 
-// Load all blog posts
-export const loadBlogPosts = async (): Promise<BlogPost[]> => {
+// Load all Quarto posts
+export const loadQuartoPosts = async (): Promise<QuartoPost[]> => {
   try {
-    // Load regular markdown blog posts
-    const mdPostModules = import.meta.glob("../content/blog/*.md", {
-      as: "raw",
-      eager: true,
-    });
-    
-    // Load rendered Quarto posts (which are also markdown)
+    // Use Vite's import.meta.glob to get the raw content of all rendered Quarto markdown files
     const quartoPostModules = import.meta.glob("../content/quarto-md/*.md", {
       as: "raw",
       eager: true,
     });
     
-    const allPosts: BlogPost[] = [];
+    const allQuartoPosts: QuartoPost[] = [];
 
-    // Process markdown blog posts
-    for (const path in mdPostModules) {
-      try {
-        const rawContent = mdPostModules[path] as string;
-
-        // Parse frontmatter and content
-        const { frontmatter, content } = parseFrontmatter(rawContent);
-
-        // Extract slug from filename
-        const filename = path.split("/").pop() || "";
-        const slug = filename.replace(/\.md$/, "");
-
-        // Create post object
-        const post: BlogPost = {
-          id: slug,
-          slug,
-          title: frontmatter.title || "Untitled Post",
-          date: frontmatter.date || new Date().toISOString(),
-          author: frontmatter.author || "Anonymous",
-          excerpt: frontmatter.excerpt || "",
-          content: content, // This is the markdown content without frontmatter
-          tags: Array.isArray(frontmatter.tags)
-            ? frontmatter.tags
-            : typeof frontmatter.tags === "string"
-              ? frontmatter.tags.split(",").map((tag: string) => tag.trim())
-              : [],
-          coverImage: frontmatter.coverImage || "",
-          source: CONTENT_SOURCES.MD,
-        };
-
-        console.log(
-          `Loaded MD post: ${post.title} with tags: ${post.tags.join(", ")}`,
-        );
-        allPosts.push(post);
-        postCache.set(slug, post);
-      } catch (err) {
-        console.error(`Error processing markdown file: ${path}`, err);
-      }
-    }
-    
-    // Process Quarto blog posts (already rendered to markdown)
     for (const path in quartoPostModules) {
       try {
         const rawContent = quartoPostModules[path] as string;
@@ -123,95 +84,92 @@ export const loadBlogPosts = async (): Promise<BlogPost[]> => {
         const filename = path.split("/").pop() || "";
         const slug = filename.replace(/\.md$/, "");
         
-        // Handle Quarto-specific frontmatter
-        const tags = frontmatter.tags || frontmatter.categories || [];
+        // Handle tags and categories (Quarto uses both)
+        const tags = frontmatter.tags || [];
+        const categories = frontmatter.categories || [];
         
-        // Create post object
-        const post: BlogPost = {
-          id: `quarto-${slug}`,
-          slug: `quarto-${slug}`, // Prefix with 'quarto-' to avoid slug collisions
+        // Create Quarto post object
+        const post: QuartoPost = {
+          id: slug,
+          slug,
           title: frontmatter.title || "Untitled Quarto Post",
           date: frontmatter.date || new Date().toISOString(),
           author: frontmatter.author || "Anonymous",
-          excerpt: frontmatter.excerpt || "",
-          content: content, // This is the markdown content without frontmatter
+          excerpt: frontmatter.excerpt || frontmatter.description || "",
+          content: content, 
           tags: Array.isArray(tags)
             ? tags
             : typeof tags === "string"
               ? tags.split(",").map((tag: string) => tag.trim())
               : [],
+          categories: Array.isArray(categories)
+            ? categories
+            : typeof categories === "string"
+              ? categories.split(",").map((cat: string) => cat.trim())
+              : [],
           coverImage: frontmatter.image || "",
-          source: CONTENT_SOURCES.QUARTO,
         };
 
         console.log(
           `Loaded Quarto post: ${post.title} with tags: ${post.tags.join(", ")}`,
         );
-        allPosts.push(post);
-        postCache.set(post.slug, post);
+        allQuartoPosts.push(post);
+        quartoPostCache.set(slug, post);
       } catch (err) {
         console.error(`Error processing Quarto file: ${path}`, err);
       }
     }
 
-    // If no posts were loaded, use mock data as fallback
-    if (allPosts.length === 0) {
-      console.warn("No markdown posts found, using mock data");
-      return mockBlogPosts;
-    }
-
     // Sort posts by date (newest first)
-    return allPosts.sort(
+    return allQuartoPosts.sort(
       (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
     );
   } catch (err) {
-    console.error("Failed to load blog posts:", err);
-    return mockBlogPosts; // Return mock data as fallback
+    console.error("Failed to load Quarto posts:", err);
+    return []; // Return empty array if there's an error
   }
 };
 
-// Get a specific blog post by slug
-export const getBlogPostBySlug = async (
+// Get a specific Quarto post by slug
+export const getQuartoPostBySlug = async (
   slug: string,
-): Promise<BlogPost | null> => {
+): Promise<QuartoPost | null> => {
   try {
     // Check cache first
-    if (postCache.has(slug)) {
-      return postCache.get(slug) || null;
+    if (quartoPostCache.has(slug)) {
+      return quartoPostCache.get(slug) || null;
     }
 
-    // If not in cache, load all posts first (this helps with SSG)
-    const allPosts = await loadBlogPosts();
+    // If not in cache, load all posts first
+    const allPosts = await loadQuartoPosts();
     const post = allPosts.find((p) => p.slug === slug) || null;
 
     if (post) {
-      postCache.set(slug, post);
+      quartoPostCache.set(slug, post);
     }
 
     return post;
   } catch (err) {
-    console.error("Error loading blog post:", err);
-    // Try to find in mock data as fallback
-    const mockPost = mockBlogPosts.find((p) => p.slug === slug) || null;
-    return mockPost;
+    console.error("Error loading Quarto post:", err);
+    return null;
   }
 };
 
-// Load all blog posts (React hook)
-export const useBlogPosts = () => {
-  const [posts, setPosts] = useState<BlogPost[]>([]);
+// Load all Quarto posts (React hook)
+export const useQuartoPosts = () => {
+  const [posts, setPosts] = useState<QuartoPost[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const allPosts = await loadBlogPosts();
+        const allPosts = await loadQuartoPosts();
         setPosts(allPosts);
         setLoading(false);
       } catch (err) {
-        console.error("Error in useBlogPosts:", err);
-        setError("Failed to load blog posts");
+        console.error("Error in useQuartoPosts:", err);
+        setError("Failed to load Quarto posts");
         setPosts([]);
         setLoading(false);
       }
@@ -223,21 +181,21 @@ export const useBlogPosts = () => {
   return { posts, loading, error };
 };
 
-// Get a single post by slug (React hook)
-export const useBlogPost = (slug: string) => {
-  const [post, setPost] = useState<BlogPost | null>(null);
+// Get a single Quarto post by slug (React hook)
+export const useQuartoPost = (slug: string) => {
+  const [post, setPost] = useState<QuartoPost | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const postData = await getBlogPostBySlug(slug);
+        const postData = await getQuartoPostBySlug(slug);
         setPost(postData);
         setLoading(false);
       } catch (err) {
-        console.error("Error in useBlogPost:", err);
-        setError("Failed to load blog post");
+        console.error("Error in useQuartoPost:", err);
+        setError("Failed to load Quarto post");
         setPost(null);
         setLoading(false);
       }
@@ -259,9 +217,9 @@ export const formatDate = (dateString: string): string => {
   });
 };
 
-// Get all unique tags with counts
-export const useBlogTags = () => {
-  const { posts, loading, error } = useBlogPosts();
+// Get all unique tags with counts from Quarto posts
+export const useQuartoTags = () => {
+  const { posts, loading, error } = useQuartoPosts();
   const [tags, setTags] = useState<{ name: string; count: number }[]>([]);
 
   useEffect(() => {
@@ -286,4 +244,33 @@ export const useBlogTags = () => {
   }, [posts, loading, error]);
 
   return { tags, loading, error };
+};
+
+// Get all unique categories with counts
+export const useQuartoCategories = () => {
+  const { posts, loading, error } = useQuartoPosts();
+  const [categories, setCategories] = useState<{ name: string; count: number }[]>([]);
+
+  useEffect(() => {
+    if (!loading && !error && posts.length > 0) {
+      const categoryCounts = new Map<string, number>();
+
+      posts.forEach((post) => {
+        post.categories.forEach((category) => {
+          categoryCounts.set(category, (categoryCounts.get(category) || 0) + 1);
+        });
+      });
+
+      const categoryArray = Array.from(categoryCounts.entries()).map(([name, count]) => ({
+        name,
+        count,
+      }));
+
+      setCategories(categoryArray);
+    } else {
+      setCategories([]);
+    }
+  }, [posts, loading, error]);
+
+  return { categories, loading, error };
 };

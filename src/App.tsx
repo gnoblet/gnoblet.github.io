@@ -3,6 +3,8 @@ import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import Home from "./pages/Home";
 import Blog from "./pages/Blog";
 import BlogPostPage from "./pages/BlogPostPage";
+import QuartoList from "./pages/QuartoList";
+import QuartoPage from "./pages/QuartoPage";
 import Portfolio from "./pages/Portfolio";
 import Contact from "./pages/Contact";
 import Navbar from "./components/Navbar";
@@ -69,6 +71,30 @@ function App() {
           element={
             <AppLayout>
               <BlogPostPage />
+            </AppLayout>
+          }
+        />
+        <Route
+          path="/quarto"
+          element={
+            <AppLayout>
+              <QuartoList />
+            </AppLayout>
+          }
+        />
+        <Route
+          path="/quarto/:slug"
+          element={
+            <AppLayout>
+              <QuartoPage />
+            </AppLayout>
+          }
+        />
+        <Route
+          path="/quarto"
+          element={
+            <AppLayout>
+              <QuartoList />
             </AppLayout>
           }
         />

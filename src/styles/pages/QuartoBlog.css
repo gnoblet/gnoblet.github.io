@@ -1,0 +1,237 @@
+/* QuartoBlog.css - Minimal styling for Quarto components */
+
+.quarto-blog-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.header-section {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.title {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.controls-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.search-bar {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.search-bar input {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.clear-button, .clear-filter-button, .clear-all-button {
+  padding: 0.5rem 1rem;
+  background-color: #f1f1f1;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.tag-filter {
+  margin-top: 1rem;
+}
+
+.tag-filter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag-button {
+  padding: 0.3rem 0.6rem;
+  background-color: #f1f1f1;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.tag-button.selected {
+  background-color: #007bff;
+  color: white;
+}
+
+.no-results {
+  text-align: center;
+  padding: 2rem;
+}
+
+.quarto-post-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.quarto-post-card {
+  border: 1px solid #eee;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.quarto-post-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.post-image img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.post-content {
+  padding: 1rem;
+}
+
+.post-title {
+  margin-top: 0;
+  font-size: 1.5rem;
+}
+
+.post-title a {
+  color: #333;
+  text-decoration: none;
+}
+
+.post-title a:hover {
+  color: #007bff;
+}
+
+.post-meta {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.post-excerpt {
+  margin-bottom: 1rem;
+}
+
+.post-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.post-tag {
+  padding: 0.2rem 0.5rem;
+  background-color: #f1f1f1;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+
+/* Styles for individual post page */
+.loading, .error {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.2rem;
+}
+
+.error-container {
+  text-align: center;
+  padding: 2rem;
+}
+
+.back-button {
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.post-header {
+  margin-bottom: 2rem;
+}
+
+.post-cover-image {
+  margin-bottom: 2rem;
+}
+
+.post-cover-image img {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.post-content {
+  line-height: 1.6;
+}
+
+.post-content img {
+  max-width: 100%;
+  border-radius: 4px;
+}
+
+.post-content pre {
+  background-color: #f5f5f5;
+  padding: 1rem;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+.post-footer {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #eee;
+}
+
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.tags-list, .categories-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.tag, .category {
+  padding: 0.3rem 0.8rem;
+  background-color: #f1f1f1;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.post-navigation {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}

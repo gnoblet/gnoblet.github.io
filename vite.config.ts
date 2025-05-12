@@ -5,7 +5,7 @@ import svgr from "vite-plugin-svgr";
 
 export default defineConfig({
   plugins: [react(), svgr()],
-  assetsInclude: ["**/*.md"], // Include Markdown files as assets
+  assetsInclude: ["**/*.md", "**/*.qmd"], // Include Markdown and Quarto files as assets
   resolve: {
     alias: {
       "@": "/src", // Optional: add path alias for cleaner imports

@@ -9,6 +9,7 @@ export interface BlogPost {
   author: string;
   tags: string[];
   coverImage?: string;
+  source?: string;
 }
 
 export type BlogPostMetadata = Omit<BlogPost, "content">;
