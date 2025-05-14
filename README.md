@@ -1,6 +1,6 @@
 # Guillaume Noblet's Personal Website
 
-This repository contains the source code for my personal website built with React, TypeScript, and Vite. The website showcases my professional profile, projects, blog, and contact information.
+This repository contains the source code for my personal website built with React, TypeScript, and Vite. The website showcases my professional profile, projects, blog, and contact information. It features a modular theming system and efficient Quarto document rendering with caching.
 
 ## 🚀 Live Site
 
@@ -9,11 +9,13 @@ Visit the site at [gnoblet.github.io](https://gnoblet.github.io/)
 ## ✨ Features
 
 - **Modern UI**: Built with React 19 and styled with CSS modules
+- **Modular Theming**: Comprehensive theming system with semantic variables
 - **Responsive Design**: Optimized viewing experience across all devices
 - **Animations**: Smooth transitions and animations using Framer Motion
 - **Dynamic Content**: Blog and portfolio with filtering capabilities
 - **Type Safety**: Developed with TypeScript for robust code quality
 - **Fast Performance**: Built with Vite for optimal development and production performance
+- **Quarto Integration**: Support for Quarto documents with efficient caching
 - **SEO Friendly**: Properly structured content for better search engine visibility
 
 ## 📁 Project Structure
@@ -27,12 +29,19 @@ src/
 │   └── projects/    # Project images
 ├── components/      # Reusable UI components
 ├── content/         # Static content
-│   └── blog/        # Blog post content
+│   ├── blog/        # Blog post content
+│   └── quarto/      # Quarto documents
 ├── data/            # Data files (projects, blog posts, timeline)
 ├── pages/           # Page components
 ├── styles/          # CSS modules
 │   ├── components/  # Component-specific styles
-│   └── pages/       # Page-specific styles
+│   ├── pages/       # Page-specific styles
+│   └── theme/       # Theming system
+│       ├── colors.css      # Base color definitions
+│       ├── semantic.css    # Semantic variables
+│       ├── layout.css      # Layout and spacing
+│       ├── typography.css  # Typography settings
+│       └── index.css       # Theme exports
 ├── types/           # TypeScript type definitions
 └── utils/           # Utility functions
 ```
@@ -120,6 +129,9 @@ pnpm dev
 # Build for production
 pnpm build
 
+# Render Quarto documents only
+pnpm render-quarto
+
 # Preview production build
 pnpm preview
 
@@ -182,6 +194,99 @@ Your content goes here...
 ```
 
 The file `src/data/blogPosts.ts` contains fallback blog posts that are used if no Markdown files are found.
+
+## 🎨 Theming System
+
+The website implements a comprehensive theming system divided into logical modules:
+
+### Theme Structure
+
+- **Colors**: Base color definitions in `colors.css`
+- **Semantic Variables**: Context-specific variables in `semantic.css`
+- **Layout**: Spacing, breakpoints, and layout variables in `layout.css`
+- **Typography**: Font sizes, weights, and text styling in `typography.css`
+
+### Key Features
+
+- **Semantic Variable Names**: Variables describe their purpose (e.g., `--button-primary-background` instead of just a color value)
+- **Consistent Spacing Scale**: Based on 8px units (e.g., `--spacing-sm: 8px`, `--spacing-md: 16px`)
+- **Responsive Breakpoints**: Standard breakpoints for consistent media queries
+- **Component Base Styles**: Reusable styles for common UI elements
+- **Utility Classes**: Helper classes for common styling patterns
+
+### Usage
+
+```css
+/* Example of using theme variables */
+.my-component {
+  background-color: var(--card-background);
+  color: var(--text-primary);
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius-md);
+  transition: var(--transition-standard);
+}
+```
+
+### Customizing Themes
+
+To customize the theming system:
+
+1. **Color Changes**: 
+   - Edit `src/styles/theme/colors.css` to change base color values
+   - Add new color variables for additional palette options
+
+2. **Component Styling**:
+   - Modify `src/styles/theme/semantic.css` to change how components look
+   - Update component mappings to use different base colors
+
+3. **Layout and Spacing**:
+   - Adjust `src/styles/theme/layout.css` to change spacing scale, container sizes, or breakpoints
+   - Modify z-index values for layering components
+
+4. **Typography**:
+   - Update `src/styles/theme/typography.css` to change font families, sizes, or weights
+   - Adjust line heights and letter spacing for better readability
+
+5. **Utility Classes**:
+   - Add custom utility classes to `src/styles/utilities.css` for common patterns
+   - Use utility classes with components for quick styling
+
+## 📄 Quarto Integration
+
+The website supports [Quarto](https://quarto.org/) documents with efficient rendering and caching:
+
+### Features
+
+- **Automatic Rendering**: Quarto documents in `src/content/quarto/` are automatically rendered during build
+- **Caching System**: Only re-renders documents that have changed since the last build
+- **HTML Output**: Documents are rendered to standalone HTML for embedding
+- **Fallback Mode**: Creates simple HTML when Quarto is not installed
+
+### How It Works
+
+1. During build, the script checks each Quarto document against a cache
+2. Only changed files (based on MD5 hash) are re-rendered
+3. Previously rendered files are reused if unchanged
+4. A `.quarto-cache.json` file tracks document hashes and render dates
+
+### Adding Quarto Documents
+
+1. Place `.qmd` files in the `src/content/quarto/` directory
+2. Run `pnpm render-quarto` or `pnpm build` to render them
+3. Documents will be rendered to `/public/quarto-html/`
+4. Access rendered documents from your React components via their URL path
+
+### Force Re-rendering
+
+If you need to force re-rendering of all Quarto documents:
+
+```bash
+# Delete the cache file
+rm .quarto-cache.json
+
+# Re-render all documents
+pnpm render-quarto
+```
 
 ## 🚀 Deployment
 

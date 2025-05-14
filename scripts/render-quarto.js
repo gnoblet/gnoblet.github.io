@@ -3,12 +3,14 @@
 /**
  * Script to render Quarto files directly to HTML format
  * This script uses the Quarto CLI to render .qmd files to .html format
+ * Includes caching to only re-render files that have changed since the last build
  */
 
 import { execSync } from 'child_process';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import crypto from 'crypto';
 
 // Get the directory of the current script
 const __filename = fileURLToPath(import.meta.url);
@@ -18,6 +20,7 @@ const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, '..');
 const quartoDir = path.join(rootDir, 'src', 'content', 'quarto');
 const outputDir = path.join(rootDir, 'public', 'quarto-html');
+const cacheFilePath = path.join(rootDir, '.quarto-cache.json');
 
 // Ensure output directory exists
 if (!fs.existsSync(outputDir)) {
@@ -39,8 +42,32 @@ function checkQuartoInstallation() {
   }
 }
 
+// Function to calculate a hash for a file
+function calculateFileHash(filePath) {
+  const fileContent = fs.readFileSync(filePath);
+  return crypto.createHash('md5').update(fileContent).digest('hex');
+}
+
+// Function to load the cache
+function loadCache() {
+  if (fs.existsSync(cacheFilePath)) {
+    try {
+      return JSON.parse(fs.readFileSync(cacheFilePath, 'utf8'));
+    } catch (error) {
+      console.warn(`Error reading cache file: ${error.message}`);
+      return {};
+    }
+  }
+  return {};
+}
+
+// Function to save the cache
+function saveCache(cache) {
+  fs.writeFileSync(cacheFilePath, JSON.stringify(cache, null, 2));
+}
+
 // Function to render a single Quarto file
-function renderQuartoFile(filePath) {
+function renderQuartoFile(filePath, cache) {
   const relativePath = path.relative(quartoDir, filePath);
   const slugName = path.basename(relativePath, '.qmd');
   const outputPath = path.join(outputDir, `${slugName}.html`);
@@ -49,6 +76,17 @@ function renderQuartoFile(filePath) {
   const outputFileDir = path.dirname(outputPath);
   if (!fs.existsSync(outputFileDir)) {
     fs.mkdirSync(outputFileDir, { recursive: true });
+  }
+  
+  // Check if the file has changed since last build
+  const currentHash = calculateFileHash(filePath);
+  const cachedInfo = cache[relativePath];
+  
+  if (cachedInfo && 
+      cachedInfo.hash === currentHash && 
+      fs.existsSync(outputPath)) {
+    console.log(`Skipping ${relativePath} (unchanged since last build)`);
+    return outputPath;
   }
   
   try {
@@ -69,6 +107,12 @@ function renderQuartoFile(filePath) {
     const tempOutputPath = path.join(fileDir, tempOutputName);
     fs.copyFileSync(tempOutputPath, outputPath);
     fs.unlinkSync(tempOutputPath); // Clean up the temp file
+    
+    // Update cache with new hash
+    cache[relativePath] = {
+      hash: currentHash,
+      lastRendered: new Date().toISOString()
+    };
     
     console.log(`Successfully rendered to ${outputPath}`);
     return outputPath;
@@ -136,6 +180,9 @@ function renderQuartoFiles() {
   
   console.log('Starting Quarto HTML rendering process...');
   
+  // Load cache from previous build
+  const cache = loadCache();
+  
   // Find all .qmd files recursively
   const findQuartoFiles = (dir) => {
     let results = [];
@@ -164,7 +211,10 @@ function renderQuartoFiles() {
   console.log(`Found ${quartoFiles.length} Quarto files.`);
   
   // Render each file
-  const renderedFiles = quartoFiles.map(renderQuartoFile).filter(Boolean);
+  const renderedFiles = quartoFiles.map(file => renderQuartoFile(file, cache)).filter(Boolean);
+  
+  // Save updated cache
+  saveCache(cache);
   
   if (renderedFiles.length > 0) {
     console.log(`Successfully rendered ${renderedFiles.length} of ${quartoFiles.length} Quarto files.`);
