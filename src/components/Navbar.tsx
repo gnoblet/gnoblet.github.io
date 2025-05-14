@@ -34,14 +34,6 @@ function Navbar() {
           </li>
           <li className={styles.navbarItem}>
             <Link
-              to="/blog"
-              className={`${styles.navbarLink} ${isActive("/blog") ? styles.active : ""}`}
-            >
-              Blog
-            </Link>
-          </li>
-          <li className={styles.navbarItem}>
-            <Link
               to="/quarto"
               className={`${styles.navbarLink} ${isActive("/quarto") ? styles.active : ""}`}
             >
