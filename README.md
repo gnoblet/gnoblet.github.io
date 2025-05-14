@@ -76,8 +76,18 @@ The website utilizes several reusable components, including:
 - **Navbar**: Site navigation with responsive menu
 - **Footer**: Site footer with links and information
 - **LeafAnimation**: Decorative animated leaves with multiple types and interactive physics
+- **MondrianBackground**: Artistic background inspired by Piet Mondrian's work
 - **TagCloud/TagFilter**: Interactive tag filtering
 - **Timeline**: Interactive experience timeline with hover effects
+
+### MondrianBackground
+
+The Mondrian-inspired background component adds artistic flair to sections:
+- Asymmetrical grid layout with varied column and row sizes
+- Pastel purple color palette with different opacities
+- Inspired by Jen Schiffer's generative Mondrian art approach
+- Subtle animations and hover effects for enhanced visual interest
+- Responsive design that adapts to different screen sizes
 
 ### Interactive Timeline
 

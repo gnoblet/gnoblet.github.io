@@ -8,6 +8,17 @@
   --color-background-tertiary: var(--color-gray-200);
   --color-background-accent: var(--color-purple);
   
+  /* Mondrian component colors - subtle pastels */
+  --mondrian-purple-primary: rgba(var(--color-mondrian-purple-1-rgb), 0.12);
+  --mondrian-purple-secondary: rgba(var(--color-mondrian-purple-2-rgb), 0.1);
+  --mondrian-purple-tertiary: rgba(var(--color-mondrian-purple-3-rgb), 0.15);
+  --mondrian-purple-light: rgba(var(--color-mondrian-purple-4-rgb), 0.08);
+  --mondrian-lavender-primary: rgba(var(--color-mondrian-lavender-1-rgb), 0.15);
+  --mondrian-lavender-light: rgba(var(--color-mondrian-lavender-2-rgb), 0.1);
+  --mondrian-periwinkle-primary: rgba(var(--color-mondrian-periwinkle-1-rgb), 0.12);
+  --mondrian-periwinkle-light: rgba(var(--color-mondrian-periwinkle-2-rgb), 0.08);
+  --mondrian-grid-line: var(--color-white-transparent-50);
+  
   /* Card & Container Styling */
   --card-background: var(--color-white);
   --card-background-dark: var(--color-gray-100);
@@ -74,6 +85,16 @@
   --color-background-secondary: var(--color-dark-bg);
   --color-background-tertiary: var(--color-dark-bg-tertiary);
   --color-background-accent: var(--color-purple);
+  
+  /* Mondrian component colors - slightly more vibrant in dark mode */
+  --mondrian-purple-primary: rgba(var(--color-mondrian-purple-1-rgb), 0.18);
+  --mondrian-purple-secondary: rgba(var(--color-mondrian-purple-2-rgb), 0.15);
+  --mondrian-purple-tertiary: rgba(var(--color-mondrian-purple-3-rgb), 0.2);
+  --mondrian-purple-light: rgba(var(--color-mondrian-purple-4-rgb), 0.12);
+  --mondrian-lavender-primary: rgba(var(--color-mondrian-lavender-1-rgb), 0.2);
+  --mondrian-lavender-light: rgba(var(--color-mondrian-lavender-2-rgb), 0.15);
+  --mondrian-periwinkle-primary: rgba(var(--color-mondrian-periwinkle-1-rgb), 0.18);
+  --mondrian-periwinkle-light: rgba(var(--color-mondrian-periwinkle-2-rgb), 0.12);
   
   /* Card & Container Styling */
   --card-background: var(--color-gray-800);

@@ -12,10 +12,10 @@ import { projects } from "../data/projects";
 import { timelineEntries } from "../data/timeline";
 import LeafAnimationGentle from "../components/LeafAnimationGentle";
 import Timeline from "../components/Timeline";
+import MondrianBackground from "../components/MondrianBackground";
 import { resolveImagePath } from "../utils/imageUtils";
 
 const Home: React.FC = () => {
-
   return (
     <div className={styles.fullWidthContainer}>
       {/* Intro Section */}
@@ -118,8 +118,8 @@ const Home: React.FC = () => {
 
           <div className={styles.aboutText}>
             <p className={styles.subtitle}>
-              I’m a humanitarian researcher who loves a good meme almost as much
-              as bouncing ideas around with others. Whether I’m digging through
+              I'm a humanitarian researcher who loves a good meme almost as much
+              as bouncing ideas around with others. Whether I'm digging through
               tricky data from crisis settings or chatting about the history of
               whatever pops up, I just enjoy turning complicated stuff into
               something (hopefully) helpful-and having a laugh along the way.
@@ -183,74 +183,76 @@ const Home: React.FC = () => {
         </motion.div>
       </section>
 
-      {/* Latest Projects Section */}
-      <section className={`${projectStyles.projectsSection}`}>
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className={projectStyles.sectionContent}
-        >
-          <h2 className={projectStyles.sectionTitle}>My Latest Projects</h2>
-          <p className={projectStyles.sectionSubtitle}>
-            Here are some of my recent projects and works that showcase my
-            skills and interests
-          </p>
+      {/* Latest Projects Section with Mondrian Background - Randomized */}
+      <MondrianBackground minBlocks={25} maxBlocks={40}>
+        <section className={`${projectStyles.projectsSection}`}>
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className={projectStyles.sectionContent}
+          >
+            <h2 className={projectStyles.sectionTitle}>My Latest Projects</h2>
+            <p className={projectStyles.sectionSubtitle}>
+              Here are some of my recent projects and works that showcase my
+              skills and interests
+            </p>
 
-          <div className={projectStyles.projectsGrid}>
-            {projects.slice(0, 3).map((project, index) => (
-              <motion.div
-                key={project.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <a
-                  href={project.projectUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={projectStyles.projectCard}
+            <div className={projectStyles.projectsGrid}>
+              {projects.slice(0, 3).map((project, index) => (
+                <motion.div
+                  key={project.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
-                  <img
-                    src={resolveImagePath(project.imageUrl, placeholderImage)}
-                    alt={project.title}
-                    className={projectStyles.cardImage}
-                    onError={(e) => {
-                      e.currentTarget.src = placeholderImage;
-                    }}
-                  />
-                  <div className={projectStyles.cardContent}>
-                    <h3 className={projectStyles.cardTitle}>{project.title}</h3>
-                    <p className={projectStyles.cardDescription}>
-                      {project.description}
-                    </p>
-                    <div className={projectStyles.cardTags}>
-                      {project.tags.slice(0, 3).map((tag) => (
-                        <span key={tag} className={projectStyles.cardTag}>
-                          #{tag}
-                        </span>
-                      ))}
+                  <a
+                    href={project.projectUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={projectStyles.projectCard}
+                  >
+                    <img
+                      src={resolveImagePath(project.imageUrl, placeholderImage)}
+                      alt={project.title}
+                      className={projectStyles.cardImage}
+                      onError={(e) => {
+                        e.currentTarget.src = placeholderImage;
+                      }}
+                    />
+                    <div className={projectStyles.cardContent}>
+                      <h3 className={projectStyles.cardTitle}>{project.title}</h3>
+                      <p className={projectStyles.cardDescription}>
+                        {project.description}
+                      </p>
+                      <div className={projectStyles.cardTags}>
+                        {project.tags.slice(0, 3).map((tag) => (
+                          <span key={tag} className={projectStyles.cardTag}>
+                            #{tag}
+                          </span>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                </a>
-              </motion.div>
-            ))}
-          </div>
+                  </a>
+                </motion.div>
+              ))}
+            </div>
 
-          <div className={projectStyles.viewMoreContainer}>
-            <RouterLink
-              to="/portfolio"
-              className={projectStyles.viewMoreButton}
-            >
-              View All Projects
-            </RouterLink>
-          </div>
-        </motion.div>
-      </section>
+            <div className={projectStyles.viewMoreContainer}>
+              <RouterLink
+                to="/portfolio"
+                className={projectStyles.viewMoreButton}
+              >
+                View All Projects
+              </RouterLink>
+            </div>
+          </motion.div>
+        </section>
+      </MondrianBackground>
 
-      {/* Latest Projects Section */}
+      {/* Blog Section */}
       <section className={`${blogStyles.blogSection}`}>
         <motion.div
           initial={{ opacity: 0 }}
