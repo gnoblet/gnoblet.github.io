@@ -1,51 +1,56 @@
 /* src/styles/variables.css */
+/* 
+   This file is maintained for backward compatibility.
+   All variables have been moved to the theme system.
+   Import the theme system components as needed.
+*/
+
+@import './theme/index.css';
+
+/* 
+   Legacy variables are now redirected to their semantic equivalents
+   in the new theming system. This ensures backwards compatibility
+   with existing code that uses these variable names.
+*/
+
 :root {
-    /* Colors */
-    --color-primary: #646cff;
-    --color-primary-rgb: 100, 108, 255;
-    --color-primary-hover: #535bf2;
-    --color-primary-light: rgba(100, 108, 255, 0.4);
-    --color-primary-translucent: rgba(100, 108, 255, 0.1);
-    --color-primary-glass: rgba(100, 108, 255, 0.2);
-    --color-primary-glow: 0 0 15px rgba(100, 108, 255, 0.5);
+  /* Colors - redirected */
+  --color-primary: var(--color-primary);
+  --color-primary-rgb: var(--color-primary-rgb);
+  --color-primary-hover: var(--color-primary-hover);
+  --color-primary-light: var(--color-primary-light);
+  --color-primary-translucent: var(--color-primary-translucent);
+  --color-primary-glass: var(--color-primary-glass);
+  --color-primary-glow: var(--glow-primary);
 
-    /* Background colors */
-    --color-dark-bg: #0a060f;
-    --color-dark-bg-secondary: #1a0f2e;
-    --color-dark-bg-tertiary: #a491fd;
-    --color-purple-bg: #2d184a;
-    --color-dark-translucent: rgba(10, 6, 15, 0.8);
-    --color-dark-glass: rgba(26, 15, 46, 0.6);
+  /* Background colors - redirected */
+  --color-dark-bg: var(--color-dark-bg);
+  --color-dark-bg-secondary: var(--color-dark-bg-secondary);
+  --color-dark-bg-tertiary: var(--color-dark-bg-tertiary);
+  --color-purple-bg: var(--color-dark-bg-tertiary);
+  --color-dark-translucent: var(--color-dark-translucent);
+  --color-dark-glass: var(--color-dark-glass);
 
-    /* Text colors */
-    --color-text-light: #ffffff;
-    --color-text-dark: #333;
-    --color-text-secondary: #666;
-    --color-text-muted: rgba(255, 255, 255, 0.7);
+  /* Text colors - redirected */
+  --color-text-light: var(--color-text-light);
+  --color-text-dark: var(--color-text-dark);
+  --color-text-secondary: var(--color-text-secondary);
+  --color-text-muted: var(--color-text-muted);
 
-    /* Card and UI elements */
-    --card-bg: rgba(255, 255, 255, 0.85);
-    --card-bg-translucent: rgba(255, 255, 255, 0.15);
-    --card-bg-glass: rgba(255, 255, 255, 0.25);
-    --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    --card-shadow-hover: 0 10px 20px rgba(0, 0, 0, 0.15);
+  /* Card and UI elements - redirected */
+  --card-bg: var(--card-background);
+  --card-bg-translucent: var(--card-background-translucent);
+  --card-bg-glass: var(--card-background-translucent);
+  --card-shadow: var(--shadow-medium);
+  --card-shadow-hover: var(--shadow-large);
 
-    /* Layout */
-    --navbar-height: 60px;
-    --content-max-width: 1200px;
-    --border-radius: 8px;
-    --border-radius-large: 12px;
-    --border-radius-pill: 50px;
+  /* Layout - redirected */
+  --navbar-height: var(--navbar-height);
+  --content-max-width: var(--content-max-width);
+  --border-radius: var(--border-radius-sm);
+  --border-radius-large: var(--border-radius-md);
+  --border-radius-pill: var(--border-radius-pill);
 
-    /* Transitions */
-    --transition-standard: all 0.3s ease;
-}
-
-/* Dark mode */
-@media (prefers-color-scheme: dark) {
-    :root {
-        --card-bg: rgba(30, 30, 30, 0.85);
-        --card-bg-translucent: rgba(30, 30, 30, 0.2);
-        --color-text-dark: var(--color-text-light);
-    }
+  /* Transitions - redirected */
+  --transition-standard: var(--transition-standard);
 }

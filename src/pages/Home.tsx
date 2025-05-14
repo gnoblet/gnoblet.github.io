@@ -45,8 +45,8 @@ const Home: React.FC = () => {
           <h1 className={styles.title}>Hey👋, I'm Guillaume Noblet</h1>
 
           <h2 className={styles.subtitle}>
-            Humanitarian researcher specializing in policy decision-making and
-            data visualization
+            A (humanitarian) researcher specialized in field research and data
+            visualization
           </h2>
 
           <p className={styles.subtitle}>
@@ -123,19 +123,20 @@ const Home: React.FC = () => {
 
           <div className={styles.aboutText}>
             <p className={styles.subtitle}>
-              I'm a humanitarian researcher who thrives where academic curiosity
-              meets real-world impact. Whether wrangling massive datasets from
-              crisis zones or debating economic history, I love turning complex
-              problems into actionable insights.
+              I’m a humanitarian researcher who loves a good meme almost as much
+              as bouncing ideas around with others. Whether I’m digging through
+              tricky data from crisis settings or chatting about the history of
+              whatever pops up, I just enjoy turning complicated stuff into
+              something (hopefully) helpful-and having a laugh along the way.
             </p>
 
             <div
               className={`${styles.timelineContainer} ${isTimelineExpanded ? styles.timelineContainerExpanded : ""}`}
             >
               {timelineEntries.map((entry, index) => (
-                <div 
-                  key={index} 
-                  className={`${styles.timelineEntry} ${hoveredEntry !== null && hoveredEntry !== index ? styles.dimmedEntry : ''}`}
+                <div
+                  key={index}
+                  className={`${styles.timelineEntry} ${hoveredEntry !== null && hoveredEntry !== index ? styles.dimmedEntry : ""}`}
                   onMouseEnter={() => handleEntryHover(index)}
                   onMouseLeave={() => handleEntryHover(null)}
                 >

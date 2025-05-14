@@ -1,0 +1,53 @@
+/* src/styles/theme/colors.css */
+/* Base colors - the foundation of our design system */
+:root {
+  /* Primary color and its variants */
+  --color-primary: #646cff;
+  --color-primary-rgb: 100, 108, 255;
+  --color-primary-hover: #535bf2;
+  --color-primary-light: rgba(100, 108, 255, 0.4);
+  --color-primary-translucent: rgba(100, 108, 255, 0.1);
+  --color-primary-glass: rgba(100, 108, 255, 0.2);
+  
+  /* Secondary purple colors */
+  --color-purple: #966efa;
+  --color-purple-light: #a491fd; 
+  --color-purple-dark: #7145e3;
+  
+  /* Background colors */
+  --color-dark-bg: #0a060f;
+  --color-dark-bg-secondary: #1a0f2e;
+  --color-dark-bg-tertiary: #2d184a;
+  --color-dark-translucent: rgba(10, 6, 15, 0.8);
+  --color-dark-glass: rgba(26, 15, 46, 0.6);
+  
+  /* Text colors */
+  --color-text-light: #ffffff;
+  --color-text-dark: #333333;
+  --color-text-secondary: #666666;
+  --color-text-muted: rgba(255, 255, 255, 0.7);
+  
+  /* Neutral colors */
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-gray-100: #f5f5f5;
+  --color-gray-200: #eeeeee;
+  --color-gray-300: #e0e0e0;
+  --color-gray-400: #bdbdbd;
+  --color-gray-500: #9e9e9e;
+  --color-gray-600: #757575;
+  --color-gray-700: #616161;
+  --color-gray-800: #424242;
+  --color-gray-900: #212121;
+  
+  /* Transparent colors */
+  --color-transparent: transparent;
+  --color-white-transparent-10: rgba(255, 255, 255, 0.1);
+  --color-white-transparent-20: rgba(255, 255, 255, 0.2);
+  --color-white-transparent-50: rgba(255, 255, 255, 0.5);
+  --color-white-transparent-80: rgba(255, 255, 255, 0.8);
+  --color-black-transparent-10: rgba(0, 0, 0, 0.1);
+  --color-black-transparent-20: rgba(0, 0, 0, 0.2);
+  --color-black-transparent-50: rgba(0, 0, 0, 0.5);
+  --color-black-transparent-80: rgba(0, 0, 0, 0.8);
+}

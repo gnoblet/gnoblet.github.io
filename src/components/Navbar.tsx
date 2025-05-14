@@ -49,14 +49,6 @@ function Navbar() {
           </li>
           <li className={styles.navbarItem}>
             <Link
-              to="/quarto"
-              className={`${styles.navbarLink} ${isActive("/quarto") ? styles.active : ""}`}
-            >
-              <FaChartBar className={styles.navIcon} /> Quarto
-            </Link>
-          </li>
-          <li className={styles.navbarItem}>
-            <Link
               to="/portfolio"
               className={`${styles.navbarLink} ${isActive("/portfolio") ? styles.active : ""}`}
             >

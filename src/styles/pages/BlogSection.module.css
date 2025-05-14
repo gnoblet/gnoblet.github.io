@@ -1,146 +1,147 @@
 /* src/styles/pages/BlogSection.module.css */
 .blogSection {
-    width: 100%;
-    background-color: var(--color-dark-bg-secondary);
-    color: var(--color-text-light);
-    padding: 80px 0;
-    display: flex;
-    justify-content: center;
+  width: 100%;
+  background-color: var(--color-background-primary);
+  color: var(--text-primary);
+  padding: var(--section-spacing) 0;
+  display: flex;
+  justify-content: center;
 }
 
 .sectionContent {
-    width: 100%;
-    max-width: var(--content-max-width);
-    padding: 0 20px;
+  width: 100%;
+  max-width: var(--content-max-width);
+  padding: 0 var(--container-padding);
 }
 
 .sectionTitle {
-    font-size: 2.5rem;
-    text-align: center;
-    margin-bottom: 15px;
+  font-size: var(--font-size-4xl);
+  text-align: center;
+  margin-bottom: var(--spacing-md);
 }
 
 .sectionSubtitle {
-    text-align: center;
-    font-size: 1.2rem;
-    opacity: 0.9;
-    margin-bottom: 40px;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+  text-align: center;
+  font-size: var(--font-size-lg);
+  opacity: 0.9;
+  margin-bottom: var(--spacing-2xl);
+  max-width: var(--content-width-narrow);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .blogGrid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 30px;
-    margin-bottom: 40px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+  margin-bottom: var(--spacing-2xl);
 }
 
 .viewMoreContainer {
-    text-align: center;
-    margin-top: 30px;
+  text-align: center;
+  margin-top: var(--spacing-xl);
 }
 
 .viewMoreButton {
-    display: inline-block;
-    background-color: var(--color-primary);
-    color: white;
-    padding: 12px 28px;
-    border-radius: var(--border-radius);
-    text-decoration: none;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    border: none;
-    cursor: pointer;
+  display: inline-block;
+  background-color: var(--button-primary-background);
+  color: var(--button-primary-text);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: var(--border-radius-md);
+  text-decoration: none;
+  font-weight: var(--font-weight-medium);
+  transition: var(--transition-standard);
+  border: none;
+  cursor: pointer;
 }
 
 .viewMoreButton:hover {
-    background-color: var(--color-primary-hover);
-    transform: translateY(-3px);
-    box-shadow: var(--color-primary-glow);
+  background-color: var(--button-primary-hover);
+  transform: translateY(-3px);
+  box-shadow: var(--glow-primary);
 }
 
 /* Responsive design */
 @media (min-width: 768px) {
-    .blogGrid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+  .blogGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (min-width: 1024px) {
-    .blogGrid {
-        grid-template-columns: repeat(3, 1fr);
-    }
+  .blogGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 /* Custom card styling for blog cards */
 .blogCard {
-    background-color: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: var(--border-radius);
-    overflow: hidden;
-    transition: all 0.3s ease;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+  background-color: var(--card-background-translucent);
+  border: 1px solid var(--card-border);
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  transition: var(--transition-standard);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .blogCard:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-    border-color: var(--color-primary-translucent);
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-large);
+  border-color: var(--color-primary-translucent);
+  background-color: var(--card-hover-background);
 }
 
 .cardImage {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    transition: transform 0.3s ease;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform var(--transition-duration) var(--transition-timing);
 }
 
 .blogCard:hover .cardImage {
-    transform: scale(1.05);
+  transform: scale(1.05);
 }
 
 .cardContent {
-    padding: 20px;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
+  padding: var(--spacing-lg);
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .cardTitle {
-    font-size: 1.3rem;
-    margin-bottom: 10px;
-    color: var(--color-text-light);
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--spacing-sm);
+  color: var(--text-heading);
 }
 
 .cardDescription {
-    font-size: 1rem;
-    margin-bottom: 15px;
-    color: var(--color-text-muted);
-    line-height: 1.5;
-    flex-grow: 1;
+  font-size: var(--font-size-md);
+  margin-bottom: var(--spacing-md);
+  color: var(--text-secondary);
+  line-height: var(--line-height-normal);
+  flex-grow: 1;
 }
 
 .cardDate {
-    font-size: 0.9rem;
-    color: var(--color-primary);
-    margin-bottom: 8px;
+  font-size: var(--font-size-sm);
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-sm);
 }
 
 .cardTags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  margin-top: auto;
 }
 
 .cardTag {
-    background-color: rgba(255, 255, 255, 0.15);
-    color: var(--color-text-light);
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 0.8rem;
+  background-color: var(--tag-background);
+  color: var(--tag-text);
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--border-radius-pill);
+  font-size: var(--font-size-sm);
 }

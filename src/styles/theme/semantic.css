@@ -1,0 +1,76 @@
+/* src/styles/theme/semantic.css */
+/* Semantic variables that map to our color system */
+:root {
+  /* UI Element Colors */
+  --color-background-primary: var(--color-dark-bg-secondary);
+  --color-background-secondary: var(--color-dark-bg);
+  --color-background-tertiary: var(--color-dark-bg-tertiary);
+  --color-background-accent: var(--color-purple);
+  
+  /* Card & Container Styling */
+  --card-background: var(--color-white-transparent-80);
+  --card-background-dark: var(--color-gray-800);
+  --card-background-translucent: var(--color-white-transparent-20);
+  --card-border: var(--color-white-transparent-10);
+  --card-hover-background: var(--color-white-transparent-80);
+  
+  /* Text Colors */
+  --text-primary: var(--color-text-light);
+  --text-secondary: var(--color-text-secondary);
+  --text-muted: var(--color-text-muted);
+  --text-accent: var(--color-primary);
+  --text-heading: var(--color-text-light);
+  --text-body: var(--color-text-light);
+  --text-link: var(--color-primary);
+  --text-link-hover: var(--color-primary-hover);
+  
+  /* Button Colors */
+  --button-primary-background: var(--color-primary);
+  --button-primary-text: var(--color-text-light);
+  --button-primary-hover: var(--color-primary-hover);
+  --button-secondary-background: var(--color-dark-glass);
+  --button-secondary-text: var(--color-text-light);
+  --button-secondary-hover: var(--color-dark-translucent);
+  
+  /* Navigation */
+  --navbar-background: var(--color-dark-bg);
+  --navbar-text: var(--color-text-light);
+  --navbar-active: var(--color-purple);
+  --navbar-hover: var(--color-purple);
+  --navbar-border: var(--color-purple);
+  
+  /* Footer */
+  --footer-background: var(--color-dark-bg);
+  --footer-text: var(--color-text-light);
+  
+  /* Tags & Badges */
+  --tag-background: var(--color-primary-translucent);
+  --tag-text: var(--color-primary);
+  --tag-hover-background: var(--color-primary-light);
+  
+  /* Shadows & Effects */
+  --shadow-small: 0 2px 5px var(--color-black-transparent-10);
+  --shadow-medium: 0 4px 6px var(--color-black-transparent-10);
+  --shadow-large: 0 10px 20px var(--color-black-transparent-20);
+  --glow-primary: 0 0 15px rgba(var(--color-primary-rgb), 0.5);
+  
+  /* Form Elements */
+  --input-background: var(--color-white-transparent-10);
+  --input-border: var(--color-white-transparent-20);
+  --input-text: var(--color-text-light);
+  --input-focus-border: var(--color-primary);
+  
+  /* Overlay & Modal */
+  --overlay-background: var(--color-black-transparent-50);
+  --modal-background: var(--card-background);
+  --modal-border: var(--card-border);
+}
+
+/* Dark mode overrides */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --card-background: var(--color-gray-800);
+    --card-background-translucent: rgba(30, 30, 30, 0.2);
+    --card-hover-background: var(--color-gray-700);
+  }
+}

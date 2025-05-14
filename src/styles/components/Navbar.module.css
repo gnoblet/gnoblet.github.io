@@ -1,107 +1,108 @@
 .navbar {
-    background-color: var(--color-dark-bg);
-    height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 999;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background-color: var(--navbar-background);
+  height: var(--navbar-height);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: var(--z-index-fixed);
+  box-shadow: var(--shadow-medium);
 }
 
 .navbarContainer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    max-width: 1200px; /* Same as content container */
-    padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: var(--content-max-width);
+  padding: 0 var(--container-padding);
 }
+
 .navbarLogo {
-    color: #fff;
-    font-size: 1.5rem;
-    font-weight: bold;
+  color: var(--navbar-text);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
 }
 
 .navbarLogo a {
-    color: #fff;
-    text-decoration: none;
+  color: var(--navbar-text);
+  text-decoration: none;
 }
 
 .navbarMenu {
-    display: flex;
-    list-style: none;
-    text-align: center;
-    margin: 0;
-    padding: 0;
+  display: flex;
+  list-style: none;
+  text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .navbarItem {
-    height: 60px;
-    display: flex;
-    align-items: center;
+  height: var(--navbar-height);
+  display: flex;
+  align-items: center;
 }
 
 .navbarLink {
-    color: #fff;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    padding: 0 1rem;
-    height: 100%;
-    transition: all 0.3s ease;
-    position: relative;
+  color: var(--navbar-text);
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  padding: 0 var(--spacing-md);
+  height: 100%;
+  transition: var(--transition-standard);
+  position: relative;
 }
 
 /* Create the underline effect */
 .navbarLink::after {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: #966efa;
-    transition: width 0.3s ease;
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--navbar-border);
+  transition: width var(--transition-duration) var(--transition-timing);
 }
 
 /* Show the underline on hover */
 .navbarLink:hover::after {
-    width: 100%;
+  width: 100%;
 }
 
 /* For active/selected state */
 .navbarLink.active {
-    color: #966efa;
+  color: var(--navbar-active);
 }
 
 /* Keep the underline visible for active links */
 .navbarLink.active::after {
-    width: 100%;
+  width: 100%;
 }
 
 .navbarLink:hover {
-    color: #966efa;
+  color: var(--navbar-hover);
 }
 
 /* Mobile responsiveness */
-@media screen and (max-width: 768px) {
-    .navbarMenu {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        position: absolute;
-        top: 60px;
-        left: -100%;
-        opacity: 1;
-        transition: all 0.5s ease;
-    }
+@media screen and (max-width: var(--breakpoint-md)) {
+  .navbarMenu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    top: var(--navbar-height);
+    left: -100%;
+    opacity: 1;
+    transition: all var(--transition-duration-slow) var(--transition-timing);
+  }
 
-    .navbarItem {
-        width: 100%;
-        height: 50px;
-    }
+  .navbarItem {
+    width: 100%;
+    height: 50px;
+  }
 }

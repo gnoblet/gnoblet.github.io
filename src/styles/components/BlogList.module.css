@@ -1,83 +1,80 @@
 /* src/styles/components/BlogList.module.css */
 .blogGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-lg);
+  padding: var(--spacing-lg);
 }
 
 .blogCard {
-    background: var(--card-bg);
-    backdrop-filter: blur(10px);
-    border-radius: var(--border-radius);
-    overflow: hidden;
-    box-shadow: var(--card-shadow);
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease,
-        background-color 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--card-background);
+  backdrop-filter: blur(10px);
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-medium);
+  transition: var(--transition-standard);
+  border: 1px solid var(--card-border);
 }
 
 .blogCard:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--card-shadow-hover);
-    background: rgba(255, 255, 255, 0.9);
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-large);
+  background: var(--card-hover-background);
 }
 
 .cardLink {
-    text-decoration: none;
-    color: inherit;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .coverImage {
-    overflow: hidden;
-    position: relative;
+  overflow: hidden;
+  position: relative;
 }
 
 .coverImage img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-    filter: brightness(0.95);
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform var(--transition-duration) var(--transition-timing);
+  filter: brightness(0.95);
 }
 
 .blogCard:hover .coverImage img {
-    transform: scale(1.05);
-    filter: brightness(1);
+  transform: scale(1.05);
+  filter: brightness(1);
 }
 
 .cardContent {
-    padding: 20px;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    z-index: 1;
+  padding: var(--spacing-lg);
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
 }
 
 .postTitle {
-    font-size: 1.5rem;
-    margin: 0 0 10px;
-    color: var(--color-text-dark);
-    font-weight: 600;
+  font-size: var(--font-size-xl);
+  margin: 0 0 var(--spacing-sm);
+  color: var(--text-heading);
+  font-weight: var(--font-weight-semibold);
 }
 
 .postMeta {
-    font-size: 0.9rem;
-    color: var(--color-text-secondary);
-    margin-bottom: 15px;
-    opacity: 0.8;
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-md);
+  opacity: 0.8;
 }
 
 .postExcerpt {
-    font-size: 1rem;
-    color: var(--color-text-secondary);
-    line-height: 1.5;
-    margin-bottom: 10px;
-    flex-grow: 1;
+  font-size: var(--font-size-md);
+  color: var(--text-secondary);
+  line-height: var(--line-height-normal);
+  margin-bottom: var(--spacing-sm);
+  flex-grow: 1;
 }

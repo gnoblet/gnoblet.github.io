@@ -1,127 +1,122 @@
 /* src/styles/components/Footer.module.css */
 .footer {
-    background-color: var(--color-dark-bg);
-    color: white;
-    padding: 40px 0 20px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-top: 40px;
-    position: relative;
+  background-color: var(--footer-background);
+  color: var(--footer-text);
+  padding: var(--spacing-2xl) 0 var(--spacing-lg);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: var(--spacing-2xl);
+  position: relative;
 }
 
 .footerContent {
-    width: 100%;
-    max-width: 1200px;
-    padding: 0 20px;
-    text-align: center;
-    position: relative;
+  width: 100%;
+  max-width: var(--content-max-width);
+  padding: 0 var(--container-padding);
+  text-align: center;
+  position: relative;
 }
 
 .socialLinks {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
 }
 
 .socialLinks a {
-    color: white;
-    font-size: 1.5rem;
-    transition:
-        transform 0.3s ease,
-        color 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  color: var(--text-primary);
+  font-size: var(--font-size-xl);
+  transition: var(--transition-standard);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .socialLinks a:hover {
-    transform: translateY(-5px);
-    color: #a3a8ff;
+  transform: translateY(-5px);
+  color: var(--color-primary);
 }
 
 .copyright {
-    font-size: 0.9rem;
-    opacity: 0.8;
+  font-size: var(--font-size-sm);
+  opacity: 0.8;
 }
 
 /* Scroll to top button styles */
 .scrollTopButton {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: #432874;
-    color: white;
-    border: none;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transform: translateY(20px);
-    transition:
-        opacity 0.3s ease,
-        transform 0.3s ease,
-        background-color 0.3s ease;
-    z-index: 99;
+  position: fixed;
+  bottom: var(--spacing-xl);
+  right: var(--spacing-xl);
+  width: 50px;
+  height: 50px;
+  border-radius: var(--border-radius-circle);
+  background-color: var(--color-background-tertiary);
+  color: var(--text-primary);
+  border: none;
+  box-shadow: var(--shadow-medium);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: var(--transition-standard);
+  z-index: var(--z-index-fixed);
 }
 
 .scrollTopButton.visible {
-    opacity: 1;
-    transform: translateY(0);
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .scrollTopButton:hover {
-    background-color: #5a3a99;
+  background-color: var(--color-background-accent);
 }
 
 /* Animation for the button */
 @keyframes pulse {
-    0% {
-        box-shadow: 0 0 0 0 rgba(67, 40, 116, 0.7);
-    }
-    70% {
-        box-shadow: 0 0 0 10px rgba(67, 40, 116, 0);
-    }
-    100% {
-        box-shadow: 0 0 0 0 rgba(67, 40, 116, 0);
-    }
+  0% {
+    box-shadow: 0 0 0 0 rgba(var(--color-primary-rgb), 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(var(--color-primary-rgb), 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(var(--color-primary-rgb), 0);
+  }
 }
 
 .scrollTopButton.visible:hover {
-    animation: pulse 1.5s infinite;
+  animation: pulse 1.5s infinite;
 }
 
 /* Media query for mobile devices */
-@media (max-width: 768px) {
-    .scrollTopButton {
-        bottom: 20px;
-        right: 20px;
-        width: 40px;
-        height: 40px;
-    }
+@media (max-width: var(--breakpoint-md)) {
+  .scrollTopButton {
+    bottom: var(--spacing-lg);
+    right: var(--spacing-lg);
+    width: 40px;
+    height: 40px;
+  }
 
-    .socialLinks {
-        gap: 15px;
-    }
+  .socialLinks {
+    gap: var(--spacing-md);
+  }
 
-    .socialLinks a {
-        font-size: 1.3rem;
-    }
+  .socialLinks a {
+    font-size: var(--font-size-lg);
+  }
 }
 
 .blueskyIcon {
-    width: 20px;
-    height: 20px;
-    filter: brightness(0) invert(1); /* Make it white */
-    transition: filter 0.3s ease;
+  width: 20px;
+  height: 20px;
+  filter: brightness(0) invert(1); /* Make it white */
+  transition: var(--transition-standard);
 }
 
 .blueskyLink:hover .blueskyIcon {
-    filter: brightness(0) invert(0.9) sepia(1) saturate(5) hue-rotate(180deg); /* Blue tint on hover */
+  filter: brightness(0) invert(0.9) sepia(1) saturate(5) hue-rotate(180deg); /* Blue tint on hover */
 }

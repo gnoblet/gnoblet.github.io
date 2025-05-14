@@ -1,75 +1,81 @@
-/* src/styles/Contact.module.css */
+/* src/styles/pages/Contact.module.css */
 .contactContainer {
-    width: 100%;
-    padding-top: 20px;
+  width: 100%;
+  padding-top: var(--spacing-lg);
 }
 
 .title {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-    color: #333;
-    text-align: center;
+  font-size: var(--font-size-4xl);
+  margin-bottom: var(--spacing-sm);
+  color: var(--text-heading);
+  text-align: center;
 }
 
 .subtitle {
-    font-size: 1.1rem;
-    color: #666;
-    text-align: center;
-    margin-bottom: 40px;
+  font-size: var(--font-size-lg);
+  color: var(--text-secondary);
+  text-align: center;
+  margin-bottom: var(--spacing-2xl);
 }
 
 .formContainer {
-    max-width: 600px;
-    margin: 0 auto;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .form {
-    background: white;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background: var(--card-background);
+  padding: var(--spacing-xl);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-medium);
+  border: 1px solid var(--card-border);
 }
 
 .formGroup {
-    margin-bottom: 20px;
+  margin-bottom: var(--spacing-lg);
 }
 
 .label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 500;
-    color: #333;
-    text-align: left;
+  display: block;
+  margin-bottom: var(--spacing-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-primary);
+  text-align: left;
 }
 
 .input,
 .textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 1rem;
-    transition: border-color 0.3s ease;
+  width: 100%;
+  padding: var(--spacing-sm);
+  border: 1px solid var(--input-border);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-md);
+  color: var(--input-text);
+  background-color: var(--input-background);
+  transition: var(--transition-standard);
 }
 
 .input:focus,
 .textarea:focus {
-    border-color: #646cff;
-    outline: none;
+  border-color: var(--input-focus-border);
+  outline: none;
+  box-shadow: 0 0 0 3px var(--color-primary-translucent);
 }
 
 .submitButton {
-    background: #646cff;
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    font-size: 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    width: 100%;
+  background: var(--button-primary-background);
+  color: var(--button-primary-text);
+  border: none;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  font-size: var(--font-size-md);
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  transition: var(--transition-standard);
+  width: 100%;
+  font-weight: var(--font-weight-medium);
 }
 
 .submitButton:hover {
-    background: #535bf2;
+  background: var(--button-primary-hover);
+  transform: translateY(-2px);
 }
