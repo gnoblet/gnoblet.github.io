@@ -1,108 +1,114 @@
 .navbar {
-  background-color: var(--navbar-background);
-  height: var(--navbar-height);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: var(--z-index-fixed);
-  box-shadow: var(--shadow-medium);
+    background-color: var(--navbar-background);
+    height: var(--navbar-height);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: var(--z-index-fixed);
+    box-shadow: var(--shadow-medium);
 }
 
 .navbarContainer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  max-width: var(--content-max-width);
-  padding: 0 var(--container-padding);
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: var(--content-max-width);
+    padding: 0 var(--container-padding);
 }
 
 .navbarLogo {
-  color: var(--navbar-text);
-  font-size: var(--font-size-xl);
-  font-weight: var(--font-weight-bold);
+    color: var(--navbar-text);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    margin-right: auto;
 }
 
 .navbarLogo a {
-  color: var(--navbar-text);
-  text-decoration: none;
+    color: var(--navbar-text);
+    text-decoration: none;
+}
+
+.navbarActions {
+    display: flex;
+    align-items: center;
+    padding-left: var(--spacing-md);
 }
 
 .navbarMenu {
-  display: flex;
-  list-style: none;
-  text-align: center;
-  margin: 0;
-  padding: 0;
+    display: flex;
+    list-style: none;
+    text-align: center;
+    margin: 0;
+    padding: 0;
 }
 
 .navbarItem {
-  height: var(--navbar-height);
-  display: flex;
-  align-items: center;
+    height: var(--navbar-height);
+    display: flex;
+    align-items: center;
 }
 
 .navbarLink {
-  color: var(--navbar-text);
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  padding: 0 var(--spacing-md);
-  height: 100%;
-  transition: var(--transition-standard);
-  position: relative;
+    color: var(--navbar-text);
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding: 0 var(--spacing-md);
+    height: 100%;
+    transition: var(--transition-standard);
+    position: relative;
 }
 
 /* Create the underline effect */
 .navbarLink::after {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: 0;
-  left: 0;
-  background-color: var(--navbar-border);
-  transition: width var(--transition-duration) var(--transition-timing);
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--navbar-border);
+    transition: width var(--transition-duration) var(--transition-timing);
 }
 
 /* Show the underline on hover */
 .navbarLink:hover::after {
-  width: 100%;
+    width: 100%;
 }
 
 /* For active/selected state */
 .navbarLink.active {
-  color: var(--navbar-active);
+    color: var(--navbar-active);
 }
 
 /* Keep the underline visible for active links */
 .navbarLink.active::after {
-  width: 100%;
+    width: 100%;
 }
 
 .navbarLink:hover {
-  color: var(--navbar-hover);
+    color: var(--navbar-hover);
 }
 
 /* Mobile responsiveness */
 @media screen and (max-width: var(--breakpoint-md)) {
-  .navbarMenu {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    position: absolute;
-    top: var(--navbar-height);
-    left: -100%;
-    opacity: 1;
-    transition: all var(--transition-duration-slow) var(--transition-timing);
-  }
+    .navbarMenu {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: var(--navbar-height);
+        left: -100%;
+        opacity: 1;
+        transition: all var(--transition-duration-slow) var(--transition-timing);
+    }
 
-  .navbarItem {
-    width: 100%;
-    height: 50px;
-  }
+    .navbarItem {
+        width: 100%;
+        height: 50px;
+    }
 }

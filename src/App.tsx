@@ -9,6 +9,7 @@ import Portfolio from "./pages/Portfolio";
 import Contact from "./pages/Contact";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import { ThemeProvider } from "./contexts/ThemeContext";
 import "./App.css";
 
 // Layout component to handle different container styles
@@ -40,82 +41,84 @@ const AppLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <AppLayout>
-              <Home />
-            </AppLayout>
-          }
-        />
-        <Route
-          path="/home"
-          element={
-            <AppLayout>
-              <Home />
-            </AppLayout>
-          }
-        />
-        <Route
-          path="/blog"
-          element={
-            <AppLayout>
-              <Blog />
-            </AppLayout>
-          }
-        />
-        <Route
-          path="/blog/:slug"
-          element={
-            <AppLayout>
-              <BlogPostPage />
-            </AppLayout>
-          }
-        />
-        <Route
-          path="/quarto"
-          element={
-            <AppLayout>
-              <QuartoList />
-            </AppLayout>
-          }
-        />
-        <Route
-          path="/quarto/:slug"
-          element={
-            <AppLayout>
-              <QuartoPage />
-            </AppLayout>
-          }
-        />
-        <Route
-          path="/quarto"
-          element={
-            <AppLayout>
-              <QuartoList />
-            </AppLayout>
-          }
-        />
-        <Route
-          path="/portfolio"
-          element={
-            <AppLayout>
-              <Portfolio />
-            </AppLayout>
-          }
-        />
-        <Route
-          path="/contact"
-          element={
-            <AppLayout>
-              <Contact />
-            </AppLayout>
-          }
-        />
-      </Routes>
-    </BrowserRouter>
+    <ThemeProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <AppLayout>
+                <Home />
+              </AppLayout>
+            }
+          />
+          <Route
+            path="/home"
+            element={
+              <AppLayout>
+                <Home />
+              </AppLayout>
+            }
+          />
+          <Route
+            path="/blog"
+            element={
+              <AppLayout>
+                <Blog />
+              </AppLayout>
+            }
+          />
+          <Route
+            path="/blog/:slug"
+            element={
+              <AppLayout>
+                <BlogPostPage />
+              </AppLayout>
+            }
+          />
+          <Route
+            path="/quarto"
+            element={
+              <AppLayout>
+                <QuartoList />
+              </AppLayout>
+            }
+          />
+          <Route
+            path="/quarto/:slug"
+            element={
+              <AppLayout>
+                <QuartoPage />
+              </AppLayout>
+            }
+          />
+          <Route
+            path="/quarto"
+            element={
+              <AppLayout>
+                <QuartoList />
+              </AppLayout>
+            }
+          />
+          <Route
+            path="/portfolio"
+            element={
+              <AppLayout>
+                <Portfolio />
+              </AppLayout>
+            }
+          />
+          <Route
+            path="/contact"
+            element={
+              <AppLayout>
+                <Contact />
+              </AppLayout>
+            }
+          />
+        </Routes>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }
 

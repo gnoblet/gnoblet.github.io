@@ -1,0 +1,56 @@
+.themeToggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-primary-translucent);
+  color: var(--color-primary);
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--border-radius-circle);
+  cursor: pointer;
+  padding: 0;
+  transition: var(--transition-standard);
+  position: relative;
+  overflow: hidden;
+}
+
+.themeToggle:hover {
+  background-color: var(--color-primary-glass);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-small);
+}
+
+.themeToggle:active {
+  transform: translateY(1px);
+}
+
+.icon {
+  font-size: 20px;
+  transition: transform var(--transition-duration) var(--transition-timing);
+}
+
+.themeToggle:hover .icon {
+  transform: rotate(12deg) scale(1.1);
+}
+
+/* Dark mode specific styles */
+.dark .themeToggle {
+  background-color: var(--color-primary-glass);
+}
+
+/* Position the toggle button when it's in the navbar */
+:global(.navbar) .themeToggle {
+  margin-left: var(--spacing-md);
+}
+
+@media (max-width: var(--breakpoint-md)) {
+  .themeToggle {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .icon {
+    font-size: 16px;
+  }
+}

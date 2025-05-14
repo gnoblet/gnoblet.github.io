@@ -1,0 +1,55 @@
+.theme-toggle {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  border-radius: 50%;
+  color: var(--navbar-text);
+  transition: var(--transition-standard);
+  position: relative;
+}
+
+.theme-toggle:hover {
+  color: var(--navbar-hover);
+}
+
+.theme-toggle:focus {
+  outline: 2px solid var(--navbar-border);
+  outline-offset: 2px;
+}
+
+.theme-toggle svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Add underline effect similar to navbar links */
+.theme-toggle::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--navbar-border);
+  transition: width var(--transition-duration) var(--transition-timing);
+}
+
+/* Show the underline on hover */
+.theme-toggle:hover::after {
+  width: 100%;
+}
+
+/* Active state styles */
+.theme-toggle.active {
+  color: var(--navbar-active);
+}
+
+/* Keep the underline visible for active state */
+.theme-toggle.active::after {
+  width: 100%;
+}
