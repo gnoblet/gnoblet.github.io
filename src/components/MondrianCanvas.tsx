@@ -7,17 +7,17 @@ interface MondrianCanvasProps {
   maxBlocks?: number;
 }
 
-// Pastel colors for the Mondrian-style blocks
+// Pastel colors for the Mondrian-style blocks - using CSS variables
 const PASTEL_COLORS = [
-  { value: 'rgba(184, 148, 250, 0.12)', weight: 3 }, // Light purple
-  { value: 'rgba(220, 200, 255, 0.1)', weight: 4 },  // Lighter pastel purple
-  { value: 'rgba(200, 178, 255, 0.15)', weight: 3 }, // Medium pastel purple
-  { value: 'rgba(230, 208, 255, 0.08)', weight: 4 }, // Very light pastel purple
-  { value: 'rgba(217, 194, 255, 0.15)', weight: 3 }, // Light lavender
-  { value: 'rgba(232, 219, 255, 0.1)', weight: 4 },  // Lighter lavender
-  { value: 'rgba(195, 199, 255, 0.12)', weight: 3 }, // Light periwinkle
-  { value: 'rgba(221, 224, 255, 0.08)', weight: 4 }, // Lighter periwinkle
-  { value: 'transparent', weight: 6 },              // Empty space (transparent)
+  { value: 'var(--color-mondrian-purple-1-alpha-12)', weight: 3 }, // Light purple
+  { value: 'var(--color-mondrian-purple-2-alpha-10)', weight: 4 },  // Lighter pastel purple
+  { value: 'var(--color-mondrian-purple-3-alpha-15)', weight: 3 }, // Medium pastel purple
+  { value: 'var(--color-mondrian-purple-4-alpha-08)', weight: 4 }, // Very light pastel purple
+  { value: 'var(--color-mondrian-lavender-1-alpha-15)', weight: 3 }, // Light lavender
+  { value: 'var(--color-mondrian-lavender-2-alpha-10)', weight: 4 },  // Lighter lavender
+  { value: 'var(--color-mondrian-periwinkle-1-alpha-12)', weight: 3 }, // Light periwinkle
+  { value: 'var(--color-mondrian-periwinkle-2-alpha-08)', weight: 4 }, // Lighter periwinkle
+  { value: 'var(--color-transparent)', weight: 6 },              // Empty space (transparent)
 ];
 
 // Function to get weighted random color
@@ -48,7 +48,7 @@ const generateMondrianGrid = (
 
   // Define line properties
   const lineWidth = Math.max(1, Math.min(2, width / 500));
-  const lineColor = 'rgba(255, 255, 255, 0.5)';
+  const lineColor = 'var(--color-mondrian-grid-line)';
 
   // Split blocks randomly to create a Mondrian-style grid
   const targetBlocks = Math.floor(minBlocks + Math.random() * (maxBlocks - minBlocks));

@@ -17,20 +17,28 @@
   /* Mondrian-specific colors - pastels */
   --color-mondrian-purple-1: #b894fa; /* Light purple */
   --color-mondrian-purple-1-rgb: 184, 148, 250;
+  --color-mondrian-purple-1-alpha-12: rgba(184, 148, 250, 0.12);
   --color-mondrian-purple-2: #dcc8ff; /* Lighter pastel purple */
   --color-mondrian-purple-2-rgb: 220, 200, 255;
+  --color-mondrian-purple-2-alpha-10: rgba(220, 200, 255, 0.1);
   --color-mondrian-purple-3: #c8b2ff; /* Medium pastel purple */
   --color-mondrian-purple-3-rgb: 200, 178, 255;
+  --color-mondrian-purple-3-alpha-15: rgba(200, 178, 255, 0.15);
   --color-mondrian-purple-4: #e6d0ff; /* Very light pastel purple */
   --color-mondrian-purple-4-rgb: 230, 208, 255;
+  --color-mondrian-purple-4-alpha-08: rgba(230, 208, 255, 0.08);
   --color-mondrian-lavender-1: #d9c2ff; /* Light lavender */
   --color-mondrian-lavender-1-rgb: 217, 194, 255;
+  --color-mondrian-lavender-1-alpha-15: rgba(217, 194, 255, 0.15);
   --color-mondrian-lavender-2: #e8dbff; /* Lighter lavender */
   --color-mondrian-lavender-2-rgb: 232, 219, 255;
+  --color-mondrian-lavender-2-alpha-10: rgba(232, 219, 255, 0.1);
   --color-mondrian-periwinkle-1: #c3c7ff; /* Light periwinkle */
   --color-mondrian-periwinkle-1-rgb: 195, 199, 255;
+  --color-mondrian-periwinkle-1-alpha-12: rgba(195, 199, 255, 0.12);
   --color-mondrian-periwinkle-2: #dde0ff; /* Lighter periwinkle */
   --color-mondrian-periwinkle-2-rgb: 221, 224, 255;
+  --color-mondrian-periwinkle-2-alpha-08: rgba(221, 224, 255, 0.08);
   
   /* Background colors */
   --color-dark-bg: #0a060f;
@@ -60,6 +68,7 @@
   
   /* Transparent colors */
   --color-transparent: transparent;
+  --color-mondrian-grid-line: rgba(255, 255, 255, 0.5);
   --color-white-transparent-10: rgba(255, 255, 255, 0.1);
   --color-white-transparent-20: rgba(255, 255, 255, 0.2);
   --color-white-transparent-50: rgba(255, 255, 255, 0.5);
