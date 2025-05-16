@@ -2,22 +2,24 @@
 .card {
   display: flex;
   flex-direction: column;
-  background: var(--card-background);
+  background: rgba(10, 10, 20, 0.5);
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border-radius: var(--border-radius-md);
   overflow: hidden;
   box-shadow: var(--shadow-medium);
   transition: var(--transition-standard);
   text-decoration: none;
   color: inherit;
-  border: 1px solid var(--card-border);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   height: 100%;
 }
 
 .card:hover {
   transform: translateY(-5px);
   box-shadow: var(--shadow-large);
-  background: var(--card-hover-background);
+  background: rgba(15, 15, 30, 0.6);
+  border-color: rgba(100, 108, 255, 0.3);
 }
 
 .imageContainer {
@@ -48,6 +50,7 @@
   position: relative;
   z-index: 1;
   height: 100%;
+  background: linear-gradient(to bottom, rgba(10, 10, 20, 0.1), rgba(10, 10, 20, 0.5));
 }
 
 .title {
@@ -73,17 +76,22 @@
 }
 
 .tag {
-  background: var(--tag-background);
+  background: rgba(100, 108, 255, 0.15);
   color: var(--tag-text);
   padding: var(--spacing-xs) var(--spacing-md);
   border-radius: var(--border-radius-pill);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
   transition: var(--transition-standard);
+  border: 1px solid rgba(100, 108, 255, 0.2);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 
 .tag:hover {
-  background: var(--tag-hover-background);
+  background: rgba(100, 108, 255, 0.25);
   transform: translateY(-2px);
   cursor: pointer;
+  box-shadow: 0 0 8px rgba(100, 108, 255, 0.3);
+  border-color: rgba(100, 108, 255, 0.4);
 }
