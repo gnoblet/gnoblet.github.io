@@ -137,7 +137,7 @@ const Portfolio: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <ProjectCard project={project} onTagClick={handleTagClick} />
+              <ProjectCard project={project} onTagClick={handleTagClick} selectedTags={selectedTags} />
             </motion.div>
           ))}
         </div>

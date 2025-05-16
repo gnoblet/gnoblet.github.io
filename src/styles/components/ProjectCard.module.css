@@ -94,6 +94,7 @@
   border: 1px solid rgba(100, 108, 255, 0.2);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
+  position: relative;
 }
 
 .tag:hover {
@@ -104,4 +105,19 @@
   border-color: rgba(100, 108, 255, 0.4);
   position: relative;
   z-index: 2;
+}
+
+.tagSelected {
+  background: rgba(100, 108, 255, 0.6);
+  color: white;
+  border-color: rgba(100, 108, 255, 0.8);
+  box-shadow: 0 0 10px rgba(100, 108, 255, 0.5);
+  font-weight: var(--font-weight-semibold);
+  transform: translateY(-2px);
+}
+
+.tagSelected:hover {
+  background: rgba(100, 108, 255, 0.7);
+  border-color: rgba(100, 108, 255, 0.9);
+  box-shadow: 0 0 12px rgba(100, 108, 255, 0.6);
 }

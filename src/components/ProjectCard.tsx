@@ -8,9 +8,10 @@ import { resolveImagePath } from "../utils/imageUtils";
 interface ProjectCardProps {
   project: Project;
   onTagClick: (tag: string) => void;
+  selectedTags?: string[];
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ project, onTagClick }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({ project, onTagClick, selectedTags = [] }) => {
   const handleTagClick = (e: React.MouseEvent, tag: string) => {
     e.preventDefault();
     e.stopPropagation();
@@ -46,7 +47,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onTagClick }) => {
         {project.tags.map((tag) => (
           <span
             key={tag}
-            className={styles.tag}
+            className={`${styles.tag} ${selectedTags.includes(tag) ? styles.tagSelected : ''}`}
             onClick={(e) => handleTagClick(e, tag)}
           >
             #{tag}
