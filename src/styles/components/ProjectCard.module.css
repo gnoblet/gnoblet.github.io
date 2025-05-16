@@ -11,6 +11,7 @@
   text-decoration: none;
   color: inherit;
   border: 1px solid var(--card-border);
+  height: 100%;
 }
 
 .card:hover {
@@ -46,6 +47,7 @@
   flex-grow: 1;
   position: relative;
   z-index: 1;
+  height: 100%;
 }
 
 .title {
@@ -60,6 +62,7 @@
   color: var(--text-secondary);
   line-height: var(--line-height-normal);
   margin-bottom: var(--spacing-md);
+  flex-grow: 1;
 }
 
 .tags {
