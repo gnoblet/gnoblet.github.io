@@ -9,7 +9,6 @@
   overflow: hidden;
   box-shadow: var(--shadow-medium);
   transition: var(--transition-standard);
-  text-decoration: none;
   color: inherit;
   border: 1px solid rgba(255, 255, 255, 0.1);
   height: 100%;
@@ -37,7 +36,7 @@
   filter: brightness(0.95);
 }
 
-.card:hover .image {
+.card:hover .image, .cardLink:hover .image {
   transform: scale(1.05);
   filter: brightness(1);
 }
@@ -68,11 +67,20 @@
   flex-grow: 1;
 }
 
+.cardLink {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  text-decoration: none;
+  color: inherit;
+}
+
 .tags {
   display: flex;
   flex-wrap: wrap;
   gap: var(--spacing-sm);
   margin-top: auto;
+  padding: 0 var(--spacing-lg) var(--spacing-lg) var(--spacing-lg);
 }
 
 .tag {
@@ -94,4 +102,6 @@
   cursor: pointer;
   box-shadow: 0 0 8px rgba(100, 108, 255, 0.3);
   border-color: rgba(100, 108, 255, 0.4);
+  position: relative;
+  z-index: 2;
 }

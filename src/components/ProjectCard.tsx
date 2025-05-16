@@ -11,45 +11,49 @@ interface ProjectCardProps {
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project, onTagClick }) => {
-  const handleTagClick = (tag: string) => {
+  const handleTagClick = (e: React.MouseEvent, tag: string) => {
+    e.preventDefault();
+    e.stopPropagation();
     if (onTagClick) {
       onTagClick(tag);
     }
   };
 
   return (
-    <a
-      href={project.projectUrl}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={styles.card}
-    >
-      <div className={styles.imageContainer}>
-        <img
-          src={resolveImagePath(project.imageUrl, placeholderImage)}
-          alt={project.title}
-          className={styles.image}
-          onError={(e) => {
-            e.currentTarget.src = placeholderImage;
-          }}
-        />
-      </div>
-      <div className={styles.cardContent}>
-        <h2 className={styles.title}>{project.title}</h2>
-        <p className={styles.description}>{project.description}</p>
-        <div className={styles.tags}>
-          {project.tags.map((tag) => (
-            <span
-              key={tag}
-              className={styles.tag}
-              onClick={() => handleTagClick(tag)}
-            >
-              #{tag}
-            </span>
-          ))}
+    <div className={styles.card}>
+      <a
+        href={project.projectUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={styles.cardLink}
+      >
+        <div className={styles.imageContainer}>
+          <img
+            src={resolveImagePath(project.imageUrl, placeholderImage)}
+            alt={project.title}
+            className={styles.image}
+            onError={(e) => {
+              e.currentTarget.src = placeholderImage;
+            }}
+          />
         </div>
+        <div className={styles.cardContent}>
+          <h2 className={styles.title}>{project.title}</h2>
+          <p className={styles.description}>{project.description}</p>
+        </div>
+      </a>
+      <div className={styles.tags}>
+        {project.tags.map((tag) => (
+          <span
+            key={tag}
+            className={styles.tag}
+            onClick={(e) => handleTagClick(e, tag)}
+          >
+            #{tag}
+          </span>
+        ))}
       </div>
-    </a>
+    </div>
   );
 };
 
