@@ -34,7 +34,7 @@
 
 .tagButton {
   background: rgba(15, 15, 30, 0.4);
-  color: var(--text-secondary);
+  color: white;
   padding: var(--spacing-xs) var(--spacing-md);
   border-radius: var(--border-radius-pill);
   font-size: var(--font-size-sm);
@@ -47,11 +47,11 @@
 }
 
 .tagButton:hover {
-  background: rgba(100, 108, 255, 0.15);
+  background: rgba(100, 108, 255, 0.25);
   transform: translateY(-2px);
-  box-shadow: 0 0 10px rgba(100, 108, 255, 0.2);
-  border-color: rgba(100, 108, 255, 0.3);
-  color: var(--color-white);
+  box-shadow: 0 0 10px rgba(100, 108, 255, 0.3);
+  border-color: rgba(100, 108, 255, 0.4);
+  color: white;
 }
 
 .tagButton.active {
