@@ -131,7 +131,7 @@
 }
 
 .timelineContainerExpanded {
-  max-height: 1500px;
+  max-height: 3000px; /* Increased to accommodate more content */
   margin-bottom: var(--spacing-xl);
   padding-bottom: var(--spacing-3xl);
 }
@@ -675,6 +675,10 @@
   .timelineEntry {
     padding-left: 80px;
     padding-right: var(--spacing-sm);
+  }
+  
+  .timelineContainerExpanded {
+    max-height: 5000px; /* Further increased for mobile to ensure all items are visible */
   }
 
   .timelineContainer::before {
