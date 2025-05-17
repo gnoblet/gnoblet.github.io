@@ -1,5 +1,5 @@
 // src/components/ProjectCard.tsx
-import React from "react";
+import React, { useState } from "react";
 import { Project } from "../types/project";
 import styles from "../styles/components/ProjectCard.module.css";
 import placeholderImage from "../assets/placeholders/project-placeholder.svg";
@@ -12,6 +12,8 @@ interface ProjectCardProps {
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project, onTagClick, selectedTags = [] }) => {
+  const [isHovered, setIsHovered] = useState(false);
+  
   const handleTagClick = (e: React.MouseEvent, tag: string) => {
     e.preventDefault();
     e.stopPropagation();
@@ -21,7 +23,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onTagClick, selected
   };
 
   return (
-    <div className={styles.card}>
+    <div 
+      className={`${styles.card} ${isHovered ? styles.cardHovered : ''}`}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       <a
         href={project.projectUrl}
         target="_blank"
