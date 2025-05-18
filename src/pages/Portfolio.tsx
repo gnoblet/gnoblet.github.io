@@ -7,46 +7,41 @@ import { projects } from "../data/projects";
 import { Project } from "../types/project";
 import styles from "../styles/pages/Portfolio.module.css";
 import { motion } from "framer-motion";
+import useTagFilter from "../hooks/useTagFilter.tsx";
 
 const Portfolio: React.FC = () => {
-  const [filteredProjects, setFilteredProjects] = useState<Project[]>(projects);
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedTags, setSelectedTags] = useState<string[]>([]);
-  const [allTags, setAllTags] = useState<string[]>([]);
+  const [displayedProjects, setDisplayedProjects] = useState<Project[]>(projects);
+  
+  // Use our custom hook for tag filtering
+  const {
+    filteredItems,
+    selectedTags,
+    allTags,
+    handleTagSelect,
+    handleTagClick,
+    handleClearAllTags
+  } = useTagFilter<Project>({
+    items: projects,
+    getItemTags: (project) => project.tags
+  });
 
-  // Extract all unique tags from projects
+  // Apply search filter
   useEffect(() => {
-    const tags = new Set<string>();
-    projects.forEach((project) => {
-      project.tags.forEach((tag) => tags.add(tag));
-    });
-    setAllTags(Array.from(tags).sort());
-  }, []);
-
-  // Filter projects based on search term and selected tags
-  useEffect(() => {
-    let results = projects;
-
-    // Filter by search term
+    let results = filteredItems;
+    
     if (searchTerm) {
       const term = searchTerm.toLowerCase();
       results = results.filter(
         (project) =>
           project.title.toLowerCase().includes(term) ||
           project.description.toLowerCase().includes(term) ||
-          project.tags.some((tag) => tag.toLowerCase().includes(term)),
+          project.tags.some((tag) => tag.toLowerCase().includes(term))
       );
     }
-
-    // Filter by selected tags - project must have ALL selected tags
-    if (selectedTags.length > 0) {
-      results = results.filter((project) =>
-        selectedTags.every((tag) => project.tags.includes(tag)),
-      );
-    }
-
-    setFilteredProjects(results);
-  }, [searchTerm, selectedTags]);
+    
+    setDisplayedProjects(results);
+  }, [searchTerm, filteredItems]);
 
   const handleSearchChange = (term: string) => {
     setSearchTerm(term);
@@ -54,32 +49,6 @@ const Portfolio: React.FC = () => {
 
   const handleClearSearch = () => {
     setSearchTerm("");
-  };
-
-  const handleTagSelect = (tag: string) => {
-    setSelectedTags((prevTags) => {
-      // Toggle tag
-      if (prevTags.includes(tag)) {
-        return prevTags.filter((t) => t !== tag);
-      } else {
-        return [...prevTags, tag];
-      }
-    });
-  };
-
-  const handleClearAllTags = () => {
-    setSelectedTags([]);
-  };
-
-  // Handle tag click from ProjectCard
-  const handleTagClick = (tag: string) => {
-    // If it's not selected, just add it (don't toggle off)
-    if (!selectedTags.includes(tag)) {
-      setSelectedTags((prev) => [...prev, tag]);
-    } else {
-      // If already selected, toggle it off
-      setSelectedTags((prev) => prev.filter((t) => t !== tag));
-    }
   };
 
   return (
@@ -115,7 +84,7 @@ const Portfolio: React.FC = () => {
         />
       </motion.div>
 
-      {filteredProjects.length === 0 ? (
+      {displayedProjects.length === 0 ? (
         <div className={styles.noResults}>
           <p>No projects found. Try adjusting your search or filters.</p>
           {selectedTags.length > 0 && (
@@ -129,7 +98,7 @@ const Portfolio: React.FC = () => {
         </div>
       ) : (
         <div className={styles.projectsGrid}>
-          {filteredProjects.map((project, index) => (
+          {displayedProjects.map((project, index) => (
             <motion.div
               key={project.id}
               className={styles.projectItem}

@@ -6,6 +6,7 @@ import SearchBar from '../components/SearchBar';
 import TagFilter from '../components/TagFilter';
 import '../styles/pages/Quarto.css';
 import '../styles/common/CardStyles.css';
+import useTagFilter from '../hooks/useTagFilter.tsx';
 
 interface QuartoDocument {
   slug: string;
@@ -17,11 +18,10 @@ interface QuartoDocument {
 
 const QuartoList: React.FC = () => {
   const [documents, setDocuments] = useState<QuartoDocument[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedTags, setSelectedTags] = useState<string[]>([]);
-  const [allTags, setAllTags] = useState<string[]>([]);
+    const [displayedDocuments, setDisplayedDocuments] = useState<QuartoDocument[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+    const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     const fetchQuartoDocuments = async () => {
@@ -104,14 +104,7 @@ const QuartoList: React.FC = () => {
         }));
         
         setDocuments(extractedDocs);
-        
-        // Extract all unique categories/tags
-        const tags = new Set<string>();
-        extractedDocs.forEach(doc => {
-          doc.categories?.forEach(category => tags.add(category));
-        });
-        setAllTags(Array.from(tags).sort());
-        
+        setDisplayedDocuments(extractedDocs);
         setLoading(false);
       } catch (err) {
         console.error('Error loading Quarto documents:', err);
@@ -123,37 +116,34 @@ const QuartoList: React.FC = () => {
     fetchQuartoDocuments();
   }, []);
   
-  // Filter documents based on search term and selected tags
-  const filteredDocuments = documents.filter(doc => {
-    // Filter by search term
-    const matchesSearch = 
-      doc.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      (doc.description && doc.description.toLowerCase().includes(searchTerm.toLowerCase())) ||
-      doc.categories?.some(cat => cat.toLowerCase().includes(searchTerm.toLowerCase()));
-    
-    // Filter by selected tags - document must have ALL selected tags
-    const matchesTags = selectedTags.length === 0 || 
-      selectedTags.every(tag => doc.categories?.includes(tag));
-    
-    return matchesSearch && matchesTags;
+  // Use our custom hook for tag filtering
+  const {
+    filteredItems,
+    selectedTags,
+    allTags,
+    handleTagSelect,
+    handleTagClick,
+    handleClearAllTags
+  } = useTagFilter<QuartoDocument>({
+    items: documents,
+    getItemTags: (doc) => doc.categories || []
   });
-  
-  // Handle tag selection
-  const handleTagSelect = (tag: string) => {
-    setSelectedTags(prevTags => {
-      // Toggle tag
-      if (prevTags.includes(tag)) {
-        return prevTags.filter(t => t !== tag);
-      } else {
-        return [...prevTags, tag];
-      }
-    });
-  };
 
-  // Handle clear all tags
-  const handleClearAllTags = () => {
-    setSelectedTags([]);
-  };
+  // Apply search filter
+  useEffect(() => {
+    let results = filteredItems;
+    
+    if (searchTerm) {
+      const term = searchTerm.toLowerCase();
+      results = results.filter(doc => 
+        doc.title.toLowerCase().includes(term) ||
+        (doc.description && doc.description.toLowerCase().includes(term)) ||
+        (doc.categories || []).some(cat => cat.toLowerCase().includes(term))
+      );
+    }
+    
+    setDisplayedDocuments(results);
+  }, [searchTerm, filteredItems]);
 
   // Handle search change
   const handleSearchChange = (term: string) => {
@@ -163,17 +153,6 @@ const QuartoList: React.FC = () => {
   // Handle clear search
   const handleClearSearch = () => {
     setSearchTerm('');
-  };
-
-  // Handle tag click from document card
-  const handleTagClick = (tag: string) => {
-    // If it's not selected, just add it (don't toggle off)
-    if (!selectedTags.includes(tag)) {
-      setSelectedTags(prev => [...prev, tag]);
-    } else {
-      // If already selected, toggle it off
-      setSelectedTags(prev => prev.filter(t => t !== tag));
-    }
   };
 
   if (loading) {
@@ -227,7 +206,7 @@ const QuartoList: React.FC = () => {
         />
       </motion.div>
       
-      {filteredDocuments.length === 0 ? (
+      {displayedDocuments.length === 0 ? (
         <div className="no-documents">
           <p>No Quarto documents found. {searchTerm || selectedTags.length > 0 ? 'Try adjusting your search or filters.' : 'Add some .qmd files to get started.'}</p>
           {(searchTerm || selectedTags.length > 0) && (
@@ -235,7 +214,7 @@ const QuartoList: React.FC = () => {
               className="clear-filter-button"
               onClick={() => {
                 setSearchTerm('');
-                setSelectedTags([]);
+                handleClearAllTags();
               }}
             >
               Clear All Filters
@@ -249,7 +228,7 @@ const QuartoList: React.FC = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          {filteredDocuments.map((doc) => (
+          {displayedDocuments.map((doc) => (
             <div
               key={doc.slug} 
               className="card document-card"
