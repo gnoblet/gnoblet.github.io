@@ -3,12 +3,14 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FaFileAlt, FaSearch, FaExternalLinkAlt } from 'react-icons/fa';
 import '../styles/pages/Quarto.css';
+import '../styles/common/CardStyles.css';
 
 interface QuartoDocument {
   slug: string;
   title: string;
   date?: string;
   description?: string;
+  categories?: string[];
 }
 
 const QuartoList: React.FC = () => {
@@ -35,16 +37,67 @@ const QuartoList: React.FC = () => {
         const doc = parser.parseFromString(html, 'text/html');
         const listItems = doc.querySelectorAll('.quarto-list li a');
         
-        const extractedDocs: QuartoDocument[] = Array.from(listItems).map((item) => {
+        // First get the basic document information
+        const extractedDocs: QuartoDocument[] = await Promise.all(Array.from(listItems).map(async (item) => {
           const href = item.getAttribute('href') || '';
           const title = item.textContent || 'Untitled Document';
+          const slug = href.replace(/\.html$/, '');
           
-          return {
-            slug: href.replace(/\.html$/, ''),
-            title: title,
-            description: 'A Quarto document',
-          };
-        });
+          // Fetch the actual HTML file to extract the categories
+          try {
+            const response = await fetch(`/quarto-html/${href}`);
+            const html = await response.text();
+            const parser = new DOMParser();
+            const docContent = parser.parseFromString(html, 'text/html');
+            
+            // Try to find categories or tags in the metadata
+            // Look for meta tags that might contain categories info
+            let categories: string[] = [];
+            const metaTags = docContent.querySelectorAll('meta');
+            metaTags.forEach(tag => {
+              const name = tag.getAttribute('name');
+              if (name && (name.includes('categories') || name.includes('tags'))) {
+                const content = tag.getAttribute('content');
+                if (content) {
+                  // Split by commas and trim whitespace
+                  categories = content.split(',').map(cat => cat.trim());
+                }
+              }
+            });
+            
+            // If we couldn't find categories in meta tags, try looking for common patterns in the content
+            if (categories.length === 0) {
+              // Look for text that might indicate categories or tags
+              const content = docContent.body.textContent || '';
+              const categoryMatch = content.match(/categories:\s*\[(.*?)\]/);
+              if (categoryMatch && categoryMatch[1]) {
+                categories = categoryMatch[1].split(',').map(cat => cat.trim().replace(/["']/g, ''));
+              }
+              
+              // Also check for tags
+              const tagMatch = content.match(/tags:\s*\[(.*?)\]/);
+              if (tagMatch && tagMatch[1]) {
+                const tags = tagMatch[1].split(',').map(tag => tag.trim().replace(/["']/g, ''));
+                categories = [...categories, ...tags];
+              }
+            }
+            
+            return {
+              slug,
+              title,
+              description: 'A Quarto document',
+              categories: categories.length > 0 ? categories : ['quarto'],
+            };
+          } catch (err) {
+            console.error(`Error fetching document ${href}:`, err);
+            return {
+              slug,
+              title,
+              description: 'A Quarto document',
+              categories: ['quarto'],
+            };
+          }
+        }));
         
         setDocuments(extractedDocs);
         setLoading(false);
@@ -127,18 +180,30 @@ const QuartoList: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
         >
           {filteredDocuments.map((doc) => (
-            <div key={doc.slug} className="document-card">
-              <div className="document-icon">
-                <FaFileAlt />
-              </div>
-              <div className="document-info">
-                <h3>{doc.title}</h3>
-                {doc.description && <p>{doc.description}</p>}
-              </div>
-              <div className="document-actions">
-                <Link to={`/quarto/${doc.slug}`} className="view-document">
-                  View <FaExternalLinkAlt />
-                </Link>
+            <div key={doc.slug} className="card document-card">
+              <Link to={`/quarto/${doc.slug}`} className="card-link document-card-link">
+                <div className="card-icon document-icon">
+                  <FaFileAlt />
+                </div>
+                <div className="card-content document-info">
+                  <h3 className="card-title">{doc.title}</h3>
+                  {doc.description && <p className="card-description">{doc.description}</p>}
+                </div>
+              </Link>
+              <div className="tags-container document-tags">
+                {doc.categories && doc.categories.map((category) => (
+                  <span 
+                    key={category} 
+                    className="tag document-tag"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      setSearchTerm(category);
+                    }}
+                  >
+                    #{category}
+                  </span>
+                ))}
               </div>
             </div>
           ))}

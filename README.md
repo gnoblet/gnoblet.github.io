@@ -34,6 +34,7 @@ src/
 ├── data/            # Data files (projects, blog posts, timeline)
 ├── pages/           # Page components
 ├── styles/          # CSS modules
+│   ├── common/      # Shared styles across components
 │   ├── components/  # Component-specific styles
 │   ├── pages/       # Page-specific styles
 │   └── theme/       # Theming system
@@ -72,6 +73,7 @@ Local project images should be placed in the `/src/assets/projects/` directory.
 The website utilizes several reusable components, including:
 
 - **ProjectCard**: Displays project information with image and tags
+- **Quarto Cards**: Uses same theming and styling as project cards
 - **BlogList**: Renders a list of blog posts with filtering
 - **Navbar**: Site navigation with responsive menu
 - **Footer**: Site footer with links and information
@@ -244,6 +246,7 @@ To customize the theming system:
 1. **Color Changes**: 
    - Edit `src/styles/theme/colors.css` to change base color values
    - Add new color variables for additional palette options
+   - Update common card styles in `src/styles/common/CardStyles.css` for consistent UI
 
 2. **Component Styling**:
    - Modify `src/styles/theme/semantic.css` to change how components look
@@ -284,7 +287,8 @@ The website supports [Quarto](https://quarto.org/) documents with efficient rend
 1. Place `.qmd` files in the `src/content/quarto/` directory
 2. Run `pnpm render-quarto` or `pnpm build` to render them
 3. Documents will be rendered to `/public/quarto-html/`
-4. Access rendered documents from your React components via their URL path
+4. Categories and tags in Quarto front matter will appear as tags on cards
+5. Access rendered documents from your React components via their URL path
 
 ### Force Re-rendering
 

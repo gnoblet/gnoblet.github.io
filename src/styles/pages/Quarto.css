@@ -93,67 +93,29 @@
   gap: var(--spacing-md);
 }
 
+/* Document card styles now use common card styles from CardStyles.css */
 .document-card {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid var(--card-border);
-  border-radius: var(--border-radius-md);
-  overflow: hidden;
-  transition: var(--transition-standard);
-  background-color: var(--card-background-translucent);
-  height: 100%;
-}
-
-.document-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-large);
-  border-color: var(--color-primary-translucent);
+  /* Additional document-card specific styles can be added here if needed */
 }
 
 .document-icon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: var(--spacing-md);
-  background-color: var(--color-primary-translucent);
-  color: var(--color-primary);
-  font-size: var(--font-size-3xl);
+  /* Any document-icon specific styles not in common styles */
 }
 
 .document-info {
-  padding: var(--spacing-md);
-  flex-grow: 1;
+  /* Any document-info specific styles not in common styles */
 }
 
-.document-info h3 {
-  margin-top: 0;
-  margin-bottom: var(--spacing-xs);
-  font-size: var(--font-size-xl);
+.document-card-link {
+  /* Any document-card-link specific styles not in common styles */
 }
 
-.document-info p {
-  color: var(--text-secondary);
-  font-size: var(--font-size-sm);
-  margin: 0;
+.document-tags {
+  /* Any document-tags specific styles not in common styles */
 }
 
-.document-actions {
-  padding: var(--spacing-md);
-  border-top: 1px solid var(--card-border);
-  text-align: right;
-}
-
-.view-document {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--spacing-xs);
-  color: var(--color-primary);
-  text-decoration: none;
-  font-weight: var(--font-weight-medium);
-}
-
-.view-document:hover {
-  text-decoration: underline;
+.document-tag {
+  /* Any document-tag specific styles not in common styles */
 }
 
 .quarto-footer {

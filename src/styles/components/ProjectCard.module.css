@@ -1,134 +1,48 @@
 /* src/styles/components/ProjectCard.module.css */
+/* This file now contains only project-card specific overrides */
+/* Most styles are now in src/styles/common/CardStyles.css */
+
+/* These classes are kept for compatibility with existing code */
 .card {
-    display: flex;
-    flex-direction: column;
-    background: rgba(10, 10, 20, 0.5);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: var(--border-radius-md);
-    overflow: hidden;
-    box-shadow: var(--shadow-medium);
-    transition: var(--transition-standard);
-    color: inherit;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    height: 100%;
-    position: relative;
-    border-left: 3px solid transparent;
-    z-index: var(--z-index-base);
+    /* Project card specific styles can be added here if needed */
 }
 
-.card:hover,
 .cardHovered {
-    transform: translateX(5px);
-    box-shadow: 0 0 25px rgba(100, 100, 255, 100);
-    background: var(--color-primary-translucent);
-    border-left: 3px solid var(--color-primary);
-    z-index: var(--z-index-dropdown);
-    opacity: 1 !important;
+    /* Project card specific hover styles can be added here if needed */
 }
 
 .imageContainer {
-    width: 100%;
-    height: 200px;
-    overflow: hidden;
-    position: relative;
+    /* Project card specific image container styles can be added here if needed */
 }
 
 .image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform var(--transition-duration) var(--transition-timing);
-    filter: brightness(0.95);
-}
-
-.card:hover .image,
-.cardLink:hover .image {
-    transform: scale(1.05);
-    filter: brightness(1);
+    /* Project card specific image styles can be added here if needed */
 }
 
 .cardContent {
-    padding: var(--spacing-lg);
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    position: relative;
-    z-index: 1;
-    height: 100%;
-    background: linear-gradient(
-        to bottom,
-        rgba(10, 10, 20, 0.1),
-        rgba(10, 10, 20, 0.5)
-    );
+    /* Project card specific content styles can be added here if needed */
 }
 
 .title {
-    font-size: var(--font-size-xl);
-    margin: 0 0 var(--spacing-sm);
-    color: var(--text-heading);
-    font-weight: var(--font-weight-semibold);
+    /* Project card specific title styles can be added here if needed */
 }
 
 .description {
-    font-size: var(--font-size-md);
-    color: var(--text-secondary);
-    line-height: var(--line-height-normal);
-    margin-bottom: var(--spacing-md);
-    flex-grow: 1;
+    /* Project card specific description styles can be added here if needed */
 }
 
 .cardLink {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    text-decoration: none;
-    color: inherit;
+    /* Project card specific link styles can be added here if needed */
 }
 
 .tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--spacing-sm);
-    margin-top: auto;
-    padding: 0 var(--spacing-lg) var(--spacing-lg) var(--spacing-lg);
+    /* Project card specific tags container styles can be added here if needed */
 }
 
 .tag {
-    background: rgba(100, 108, 255, 0.15);
-    color: var(--tag-text);
-    padding: var(--spacing-xs) var(--spacing-md);
-    border-radius: var(--border-radius-pill);
-    font-size: var(--font-size-sm);
-    font-weight: var(--font-weight-medium);
-    transition: var(--transition-standard);
-    border: 1px solid rgba(100, 108, 255, 0.2);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    position: relative;
-}
-
-.tag:hover {
-    background: rgba(100, 108, 255, 0.25);
-    transform: translateY(-2px);
-    cursor: pointer;
-    box-shadow: 0 0 8px rgba(100, 108, 255, 0.3);
-    border-color: rgba(100, 108, 255, 0.4);
-    position: relative;
-    z-index: 2;
+    /* Project card specific tag styles can be added here if needed */
 }
 
 .tagSelected {
-    background: rgba(100, 108, 255, 0.6);
-    color: white;
-    border-color: rgba(100, 108, 255, 0.8);
-    box-shadow: 0 0 10px rgba(100, 108, 255, 0.5);
-    font-weight: var(--font-weight-semibold);
-    transform: translateY(-2px);
-}
-
-.tagSelected:hover {
-    background: rgba(100, 108, 255, 0.7);
-    border-color: rgba(100, 108, 255, 0.9);
-    box-shadow: 0 0 12px rgba(100, 108, 255, 0.6);
+    /* Project card specific selected tag styles can be added here if needed */
 }

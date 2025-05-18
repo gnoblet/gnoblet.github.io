@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import '../styles/pages/Quarto.css';
+import '../styles/common/CardStyles.css';
 
 const QuartoPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();

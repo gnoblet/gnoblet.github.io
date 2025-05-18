@@ -4,6 +4,7 @@ import { Project } from "../types/project";
 import styles from "../styles/components/ProjectCard.module.css";
 import placeholderImage from "../assets/placeholders/project-placeholder.svg";
 import { resolveImagePath } from "../utils/imageUtils";
+import "../styles/common/CardStyles.css";
 
 interface ProjectCardProps {
   project: Project;
@@ -24,7 +25,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onTagClick, selected
 
   return (
     <div 
-      className={`${styles.card} ${isHovered ? styles.cardHovered : ''}`}
+      className={`card ${isHovered ? 'card-hovered' : ''} ${styles.card}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -32,28 +33,28 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onTagClick, selected
         href={project.projectUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className={styles.cardLink}
+        className={`card-link ${styles.cardLink}`}
       >
-        <div className={styles.imageContainer}>
+        <div className={`image-container ${styles.imageContainer}`}>
           <img
             src={resolveImagePath(project.imageUrl, placeholderImage)}
             alt={project.title}
-            className={styles.image}
+            className={`card-image ${styles.image}`}
             onError={(e) => {
               e.currentTarget.src = placeholderImage;
             }}
           />
         </div>
-        <div className={styles.cardContent}>
-          <h2 className={styles.title}>{project.title}</h2>
-          <p className={styles.description}>{project.description}</p>
+        <div className={`card-content ${styles.cardContent}`}>
+          <h2 className={`card-title ${styles.title}`}>{project.title}</h2>
+          <p className={`card-description ${styles.description}`}>{project.description}</p>
         </div>
       </a>
-      <div className={styles.tags}>
+      <div className={`tags-container ${styles.tags}`}>
         {project.tags.map((tag) => (
           <span
             key={tag}
-            className={`${styles.tag} ${selectedTags.includes(tag) ? styles.tagSelected : ''}`}
+            className={`tag ${selectedTags.includes(tag) ? 'tag-selected' : ''} ${styles.tag} ${selectedTags.includes(tag) ? styles.tagSelected : ''}`}
             onClick={(e) => handleTagClick(e, tag)}
           >
             #{tag}
