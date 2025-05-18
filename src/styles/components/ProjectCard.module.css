@@ -17,9 +17,10 @@
     z-index: var(--z-index-base);
 }
 
-.card:hover, .cardHovered {
+.card:hover,
+.cardHovered {
     transform: translateX(5px);
-    box-shadow: 0 0 25px rgba(100, 108, 255, 0.5);
+    box-shadow: 0 0 25px rgba(100, 100, 255, 100);
     background: var(--color-primary-translucent);
     border-left: 3px solid var(--color-primary);
     z-index: var(--z-index-dropdown);
@@ -131,5 +132,3 @@
     border-color: rgba(100, 108, 255, 0.9);
     box-shadow: 0 0 12px rgba(100, 108, 255, 0.6);
 }
-
-
