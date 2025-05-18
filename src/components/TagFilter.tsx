@@ -8,6 +8,7 @@ interface TagFilterProps {
   selectedTags: string[];
   onTagSelect: (tag: string) => void;
   onClearAll: () => void;
+  filterTitle?: string;
 }
 
 const TagFilter: React.FC<TagFilterProps> = ({
@@ -15,11 +16,12 @@ const TagFilter: React.FC<TagFilterProps> = ({
   selectedTags,
   onTagSelect,
   onClearAll,
+  filterTitle = "Filter by tag",
 }) => {
   return (
     <div className={styles.filterContainer}>
       <div className={styles.filterHeader}>
-        <h3 className={styles.filterTitle}>Filter by tag</h3>
+        <h3 className={styles.filterTitle}>{filterTitle}</h3>
         {selectedTags.length > 0 && (
           <button className={styles.clearAllButton} onClick={onClearAll}>
             Clear all filters

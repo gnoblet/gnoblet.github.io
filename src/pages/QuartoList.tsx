@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { FaFileAlt, FaSearch, FaExternalLinkAlt } from 'react-icons/fa';
+import { FaFileAlt } from 'react-icons/fa';
+import SearchBar from '../components/SearchBar';
+import TagFilter from '../components/TagFilter';
 import '../styles/pages/Quarto.css';
 import '../styles/common/CardStyles.css';
 
@@ -17,7 +19,9 @@ const QuartoList: React.FC = () => {
   const [documents, setDocuments] = useState<QuartoDocument[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const [allTags, setAllTags] = useState<string[]>([]);
 
   useEffect(() => {
     const fetchQuartoDocuments = async () => {
@@ -100,6 +104,14 @@ const QuartoList: React.FC = () => {
         }));
         
         setDocuments(extractedDocs);
+        
+        // Extract all unique categories/tags
+        const tags = new Set<string>();
+        extractedDocs.forEach(doc => {
+          doc.categories?.forEach(category => tags.add(category));
+        });
+        setAllTags(Array.from(tags).sort());
+        
         setLoading(false);
       } catch (err) {
         console.error('Error loading Quarto documents:', err);
@@ -111,12 +123,59 @@ const QuartoList: React.FC = () => {
     fetchQuartoDocuments();
   }, []);
   
-  // Filter documents based on search term
-  const filteredDocuments = documents.filter(doc => 
-    doc.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    (doc.description && doc.description.toLowerCase().includes(searchTerm.toLowerCase()))
-  );
+  // Filter documents based on search term and selected tags
+  const filteredDocuments = documents.filter(doc => {
+    // Filter by search term
+    const matchesSearch = 
+      doc.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      (doc.description && doc.description.toLowerCase().includes(searchTerm.toLowerCase())) ||
+      doc.categories?.some(cat => cat.toLowerCase().includes(searchTerm.toLowerCase()));
+    
+    // Filter by selected tags - document must have ALL selected tags
+    const matchesTags = selectedTags.length === 0 || 
+      selectedTags.every(tag => doc.categories?.includes(tag));
+    
+    return matchesSearch && matchesTags;
+  });
   
+  // Handle tag selection
+  const handleTagSelect = (tag: string) => {
+    setSelectedTags(prevTags => {
+      // Toggle tag
+      if (prevTags.includes(tag)) {
+        return prevTags.filter(t => t !== tag);
+      } else {
+        return [...prevTags, tag];
+      }
+    });
+  };
+
+  // Handle clear all tags
+  const handleClearAllTags = () => {
+    setSelectedTags([]);
+  };
+
+  // Handle search change
+  const handleSearchChange = (term: string) => {
+    setSearchTerm(term);
+  };
+
+  // Handle clear search
+  const handleClearSearch = () => {
+    setSearchTerm('');
+  };
+
+  // Handle tag click from document card
+  const handleTagClick = (tag: string) => {
+    // If it's not selected, just add it (don't toggle off)
+    if (!selectedTags.includes(tag)) {
+      setSelectedTags(prev => [...prev, tag]);
+    } else {
+      // If already selected, toggle it off
+      setSelectedTags(prev => prev.filter(t => t !== tag));
+    }
+  };
+
   if (loading) {
     return (
       <div className="quarto-container loading">
@@ -147,30 +206,41 @@ const QuartoList: React.FC = () => {
         <p>Interactive data science documents powered by Quarto</p>
       </motion.div>
       
-      <div className="quarto-search">
-        <div className="search-input-container">
-          <FaSearch className="search-icon" />
-          <input 
-            type="text"
-            placeholder="Search documents..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="search-input"
-          />
-          {searchTerm && (
-            <button 
-              onClick={() => setSearchTerm('')}
-              className="clear-search"
-            >
-              Clear
-            </button>
-          )}
-        </div>
-      </div>
+      <motion.div
+        className="quarto-controls-section"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+      >
+        <SearchBar
+          searchTerm={searchTerm}
+          onSearchChange={handleSearchChange}
+          onClearSearch={handleClearSearch}
+          placeholder="Search Quarto documents..."
+        />
+
+        <TagFilter
+          tags={allTags}
+          selectedTags={selectedTags}
+          onTagSelect={handleTagSelect}
+          onClearAll={handleClearAllTags}
+        />
+      </motion.div>
       
       {filteredDocuments.length === 0 ? (
         <div className="no-documents">
-          <p>No Quarto documents found. {searchTerm ? 'Try a different search term.' : 'Add some .qmd files to get started.'}</p>
+          <p>No Quarto documents found. {searchTerm || selectedTags.length > 0 ? 'Try adjusting your search or filters.' : 'Add some .qmd files to get started.'}</p>
+          {(searchTerm || selectedTags.length > 0) && (
+            <button
+              className="clear-filter-button"
+              onClick={() => {
+                setSearchTerm('');
+                setSelectedTags([]);
+              }}
+            >
+              Clear All Filters
+            </button>
+          )}
         </div>
       ) : (
         <motion.div 
@@ -180,7 +250,10 @@ const QuartoList: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
         >
           {filteredDocuments.map((doc) => (
-            <div key={doc.slug} className="card document-card">
+            <div
+              key={doc.slug} 
+              className="card document-card"
+            >
               <Link to={`/quarto/${doc.slug}`} className="card-link document-card-link">
                 <div className="card-icon document-icon">
                   <FaFileAlt />
@@ -194,11 +267,11 @@ const QuartoList: React.FC = () => {
                 {doc.categories && doc.categories.map((category) => (
                   <span 
                     key={category} 
-                    className="tag document-tag"
+                    className={`tag document-tag ${selectedTags.includes(category) ? 'tag-selected' : ''}`}
                     onClick={(e) => {
                       e.preventDefault();
                       e.stopPropagation();
-                      setSearchTerm(category);
+                      handleTagClick(category);
                     }}
                   >
                     #{category}
