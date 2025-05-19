@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import styles from "../styles/components/Navbar.module.css";
 import { FaChartBar } from "react-icons/fa";
 import ThemeToggle from "./ThemeToggle";
+import ColorPaletteToggle from "./ColorPaletteToggle";
 
 function Navbar() {
   const location = useLocation();
@@ -58,6 +59,7 @@ function Navbar() {
           </li>
         </ul>
         <div className={styles.navbarActions}>
+          <ColorPaletteToggle />
           <ThemeToggle />
         </div>
       </div>

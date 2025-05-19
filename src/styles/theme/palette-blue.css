@@ -1,40 +1,39 @@
-/* src/styles/theme/colors.css */
-/* Default color palette - these are fallbacks if no palette is applied */
-/* Most color definitions are now in palette-blue.css and palette-autumn.css */
-
-:root {
-  /* Transparent colors that are not palette-specific */
-  --color-transparent: transparent;
-  
-  /* Default color values (used only if no palette class is applied) */
-  /* These are duplicated from palette-blue.css since blue is the default palette */
+/* src/styles/theme/palette-blue.css */
+/* Blue color palette - cool, calm tones */
+:root.palette-blue {
+  /* Primary color - blue */
   --color-primary: #5B6FE9;
   --color-primary-rgb: 91, 111, 233;
   --color-primary-hover: #4A5ED8;
   --color-primary-light: rgba(91, 111, 233, 0.2);
   --color-primary-translucent: rgba(91, 111, 233, 0.1);
   
+  /* Accent color */
   --color-accent: #8AA9F4;
   --color-accent-rgb: 138, 169, 244;
   --color-accent-hover: #7998E7;
   --color-accent-light: rgba(138, 169, 244, 0.2);
   
+  /* Background colors - light mode */
   --color-light-bg: #FFFFFF;
   --color-light-bg-secondary: #F5F7FA;
   --color-light-bg-tertiary: #E9ECF3;
   --color-light-translucent: rgba(245, 247, 250, 0.8);
   
+  /* Background colors - dark mode */
   --color-dark-bg: #1A1B26;
   --color-dark-bg-secondary: #24283B;
   --color-dark-bg-tertiary: #2E3348;
   --color-dark-translucent: rgba(26, 27, 38, 0.8);
   
+  /* Text colors */
   --color-text-light: #FFFFFF;
   --color-text-dark: #24283B;
   --color-text-secondary: #596080;
   --color-text-muted-light: rgba(255, 255, 255, 0.7);
   --color-text-muted-dark: rgba(36, 40, 59, 0.7);
   
+  /* Neutral colors */
   --color-white: #FFFFFF;
   --color-black: #000000;
   --color-gray-100: #F0F2F5;
@@ -43,11 +42,13 @@
   --color-gray-700: #4A5173;
   --color-gray-900: #1A1B26;
   
+  /* Transparent colors */
   --color-white-transparent-20: rgba(255, 255, 255, 0.2);
   --color-white-transparent-50: rgba(255, 255, 255, 0.5);
   --color-black-transparent-20: rgba(0, 0, 0, 0.2);
   --color-black-transparent-50: rgba(0, 0, 0, 0.5);
   
+  /* Status colors */
   --color-success: #5DADAD;
   --color-warning: #E0AF68;
   --color-error: #DB6161;

@@ -1,0 +1,81 @@
+/* src/styles/components/ColorPaletteToggle.module.css */
+.paletteToggle {
+  background-color: var(--color-background-secondary);
+  color: var(--color-accent);
+  border: 1px solid var(--button-secondary-background);
+  border-radius: var(--border-radius-pill);
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: var(--spacing-sm);
+  cursor: pointer;
+  transition: all var(--transition-standard);
+  position: relative;
+  overflow: hidden;
+}
+
+.paletteToggle:hover {
+  background-color: var(--color-accent-light);
+  color: var(--navbar-active);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(var(--color-accent-rgb), 0.15);
+  border-color: var(--color-accent-light);
+}
+
+.paletteToggle:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.icon {
+  font-size: var(--font-size-lg);
+  position: relative;
+  z-index: 2;
+}
+
+/* Palette-specific styles */
+.blue {
+  box-shadow: 0 0 0 2px rgba(91, 111, 233, 0.3);
+}
+
+.autumn {
+  box-shadow: 0 0 0 2px rgba(164, 93, 64, 0.3);
+}
+
+/* Dot indicator for current palette */
+.dot {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.blue .dot {
+  background-color: #5B6FE9;
+}
+
+.autumn .dot {
+  background-color: #A45D40;
+}
+
+/* When in navbar */
+.inNavbar {
+  margin-left: var(--spacing-sm);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .paletteToggle {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .icon {
+    font-size: var(--font-size-md);
+  }
+}

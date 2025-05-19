@@ -1,8 +1,12 @@
 /* src/styles/theme/index.css */
 /* Main theme file that imports all theme components */
 
-/* Import base colors */
+/* Import base colors (default variables) first */
 @import './colors.css';
+
+/* Import color palettes - these should override base colors */
+@import './palette-blue.css';
+@import './palette-autumn.css';
 
 /* Import semantic theme variables */
 @import './semantic.css';

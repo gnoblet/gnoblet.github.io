@@ -10,6 +10,7 @@ import Contact from "./pages/Contact";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import { ColorPaletteProvider } from "./contexts/ColorPaletteContext";
 import "./App.css";
 
 // Layout component to handle different container styles
@@ -42,7 +43,8 @@ const AppLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 function App() {
   return (
     <ThemeProvider>
-      <BrowserRouter>
+      <ColorPaletteProvider>
+        <BrowserRouter>
         <Routes>
           <Route
             path="/"
@@ -117,7 +119,8 @@ function App() {
             }
           />
         </Routes>
-      </BrowserRouter>
+        </BrowserRouter>
+      </ColorPaletteProvider>
     </ThemeProvider>
   );
 }

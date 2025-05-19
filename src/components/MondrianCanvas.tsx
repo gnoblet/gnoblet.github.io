@@ -7,19 +7,31 @@ interface MondrianCanvasProps {
   maxBlocks?: number;
 }
 
-// Subtle colors for the Zen Browser-inspired blocks - fixed colors, no CSS variables
+interface Block {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  color: string;
+}
+
+interface MondrianGrid {
+  blocks: Block[];
+  lineWidth: number;
+  lineColor: string;
+}
+
+// Colors for the blocks using theme variables
 const PASTEL_COLORS = [
-  { value: 'rgba(138, 169, 244, 0.02)', weight: 3 }, // Very subtle blue
-  { value: 'rgba(138, 169, 244, 0.04)', weight: 2 }, // Light blue
-  { value: 'rgba(91, 111, 233, 0.02)', weight: 2 }, // Very subtle primary
-  { value: 'rgba(91, 111, 233, 0.04)', weight: 1 }, // Light primary
-  { value: 'rgba(108, 142, 239, 0.02)', weight: 3 }, // Very subtle secondary
-  { value: 'rgba(108, 142, 239, 0.03)', weight: 2 }, // Light secondary
+  { value: `rgba(var(--color-accent-rgb), 0.02)`, weight: 3 }, // Very subtle accent
+  { value: `rgba(var(--color-accent-rgb), 0.04)`, weight: 2 }, // Light accent
+  { value: `rgba(var(--color-primary-rgb), 0.02)`, weight: 2 }, // Very subtle primary
+  { value: `rgba(var(--color-primary-rgb), 0.04)`, weight: 1 }, // Light primary
   { value: 'transparent', weight: 15 }, // Empty space (transparent)
 ];
 
 // Function to get weighted random color
-const getRandomColor = () => {
+const getRandomColor = (): string => {
   const totalWeight = PASTEL_COLORS.reduce((acc, color) => acc + color.weight, 0);
   let random = Math.random() * totalWeight;
   
@@ -38,15 +50,11 @@ const generateMondrianGrid = (
   height: number, 
   minBlocks: number = 20, 
   maxBlocks: number = 40
-) => {
+): Block[] => {
   // Start with a single block covering the entire canvas
-  const blocks: any[] = [
+  const blocks: Block[] = [
     { x: 0, y: 0, width, height, color: getRandomColor() }
   ];
-
-  // Define line properties
-  const lineWidth = Math.max(0.5, Math.min(0.8, width / 1000));
-  const lineColor = 'rgba(138, 169, 244, 0.06)';
 
   // Split blocks randomly to create a Mondrian-style grid
   const targetBlocks = Math.floor(minBlocks + Math.random() * (maxBlocks - minBlocks));
@@ -56,75 +64,62 @@ const generateMondrianGrid = (
     const blockIndex = Math.floor(Math.random() * blocks.length);
     const block = blocks[blockIndex];
     
-    // Don't split blocks that are too small
-    const minSize = Math.min(width, height) / 12;
-    if (block.width < minSize * 1.5 && block.height < minSize * 1.5) {
-      continue;
-    }
-    
-    // Choose split direction based on block proportions
-    const splitHorizontally = block.width > block.height;
-    
-    if (splitHorizontally) {
-      // Split position (avoid very thin slices)
-      const minSplit = Math.max(block.x + minSize, block.x + block.width * 0.2);
-      const maxSplit = Math.min(block.x + block.width - minSize, block.x + block.width * 0.8);
+    // Decide whether to split horizontally or vertically
+    if (block.width > 20 && block.height > 20) {
+      const splitHorizontal = Math.random() > 0.5;
       
-      if (maxSplit <= minSplit) continue;
-      
-      const splitAt = minSplit + Math.random() * (maxSplit - minSplit);
-      
-      // Create new blocks
-      const block1 = {
-        x: block.x,
-        y: block.y,
-        width: splitAt - block.x,
-        height: block.height,
-        color: getRandomColor()
-      };
-      
-      const block2 = {
-        x: splitAt,
-        y: block.y,
-        width: block.x + block.width - splitAt,
-        height: block.height,
-        color: getRandomColor()
-      };
-      
-      // Replace the original block with the two new blocks
-      blocks.splice(blockIndex, 1, block1, block2);
-    } else {
-      // Split position (avoid very thin slices)
-      const minSplit = Math.max(block.y + minSize, block.y + block.height * 0.2);
-      const maxSplit = Math.min(block.y + block.height - minSize, block.y + block.height * 0.8);
-      
-      if (maxSplit <= minSplit) continue;
-      
-      const splitAt = minSplit + Math.random() * (maxSplit - minSplit);
-      
-      // Create new blocks
-      const block1 = {
-        x: block.x,
-        y: block.y,
-        width: block.width,
-        height: splitAt - block.y,
-        color: getRandomColor()
-      };
-      
-      const block2 = {
-        x: block.x,
-        y: splitAt,
-        width: block.width,
-        height: block.y + block.height - splitAt,
-        color: getRandomColor()
-      };
-      
-      // Replace the original block with the two new blocks
-      blocks.splice(blockIndex, 1, block1, block2);
+      if (splitHorizontal && block.width > 40) {
+        // Split horizontally at a random position
+        const splitAt = Math.floor(block.width * 0.3 + Math.random() * block.width * 0.4);
+        
+        // Create two new blocks
+        const newBlock1: Block = {
+          x: block.x,
+          y: block.y,
+          width: splitAt,
+          height: block.height,
+          color: getRandomColor()
+        };
+        
+        const newBlock2: Block = {
+          x: block.x + splitAt,
+          y: block.y,
+          width: block.width - splitAt,
+          height: block.height,
+          color: getRandomColor()
+        };
+        
+        // Replace the original block with the new blocks
+        blocks.splice(blockIndex, 1, newBlock1, newBlock2);
+      } 
+      else if (!splitHorizontal && block.height > 40) {
+        // Split vertically at a random position
+        const splitAt = Math.floor(block.height * 0.3 + Math.random() * block.height * 0.4);
+        
+        // Create two new blocks
+        const newBlock1: Block = {
+          x: block.x,
+          y: block.y,
+          width: block.width,
+          height: splitAt,
+          color: getRandomColor()
+        };
+        
+        const newBlock2: Block = {
+          x: block.x,
+          y: block.y + splitAt,
+          width: block.width,
+          height: block.height - splitAt,
+          color: getRandomColor()
+        };
+        
+        // Replace the original block with the new blocks
+        blocks.splice(blockIndex, 1, newBlock1, newBlock2);
+      }
     }
   }
-
-  return { blocks, lineWidth, lineColor };
+  
+  return blocks;
 };
 
 const MondrianCanvas: React.FC<MondrianCanvasProps> = ({ 
@@ -135,23 +130,24 @@ const MondrianCanvas: React.FC<MondrianCanvasProps> = ({
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
-  const [grid, setGrid] = useState<any>(null);
+  const [grid, setGrid] = useState<MondrianGrid | null>(null);
   
   // Get container dimensions and generate grid
   useEffect(() => {
-    const updateDimensions = () => {
+    const updateSize = () => {
       if (containerRef.current) {
         const { width, height } = containerRef.current.getBoundingClientRect();
         setDimensions({ width, height });
-        setGrid(generateMondrianGrid(width, height, minBlocks, maxBlocks));
+        const lineWidth = Math.max(0.5, Math.min(0.8, width / 1000));
+        const lineColor = 'rgba(138, 169, 244, 0.06)';
+        const blocks = generateMondrianGrid(width, height, minBlocks, maxBlocks);
+        setGrid({ blocks, lineWidth, lineColor });
       }
     };
     
-    updateDimensions();
-    
-    // Update when window is resized
-    window.addEventListener('resize', updateDimensions);
-    return () => window.removeEventListener('resize', updateDimensions);
+    updateSize();
+    window.addEventListener('resize', updateSize);
+    return () => window.removeEventListener('resize', updateSize);
   }, [minBlocks, maxBlocks]);
   
   // Draw the Mondrian grid when the canvas or grid changes
@@ -162,35 +158,34 @@ const MondrianCanvas: React.FC<MondrianCanvasProps> = ({
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
     
-    // Set canvas dimensions with pixel ratio for high DPI screens
-    const pixelRatio = window.devicePixelRatio || 1;
-    canvas.width = dimensions.width * pixelRatio;
-    canvas.height = dimensions.height * pixelRatio;
+    // Set canvas size to match container
+    canvas.width = dimensions.width;
+    canvas.height = dimensions.height;
     
-    // Scale all drawing operations
-    ctx.scale(pixelRatio, pixelRatio);
+    // Clear the canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     
-    // Clear canvas
-    ctx.clearRect(0, 0, dimensions.width, dimensions.height);
-    
-    // Draw blocks
-    grid.blocks.forEach((block: any) => {
+    // Draw each block
+    grid.blocks.forEach(block => {
       ctx.fillStyle = block.color;
       ctx.fillRect(block.x, block.y, block.width, block.height);
     });
     
-    // Draw grid lines on top of blocks
+    // Draw the grid lines on top
     ctx.strokeStyle = grid.lineColor;
     ctx.lineWidth = grid.lineWidth;
     
-    grid.blocks.forEach((block: any) => {
+    grid.blocks.forEach(block => {
       ctx.strokeRect(block.x, block.y, block.width, block.height);
     });
     
-  }, [dimensions, grid]);
+  }, [grid, dimensions]);
   
   return (
-    <div ref={containerRef} className={`${styles.canvasContainer} ${className}`}>
+    <div 
+      ref={containerRef} 
+      className={`${styles.canvasContainer} ${className}`}
+    >
       <canvas 
         ref={canvasRef} 
         className={styles.mondrianCanvas}

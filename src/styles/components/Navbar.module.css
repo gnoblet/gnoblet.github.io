@@ -51,6 +51,7 @@
     align-items: center;
     padding-left: var(--spacing-md);
     gap: var(--spacing-sm);
+    margin-left: var(--spacing-md);
 }
 
 .navbarMenu {

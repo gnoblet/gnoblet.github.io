@@ -1,0 +1,46 @@
+/* src/styles/theme/palette-autumn.css */
+/* Autumn color palette - warm, earthy tones */
+:root.palette-autumn {
+  /* Primary color - warm brown */
+  --color-primary: #A45D40;
+  --color-primary-rgb: 164, 93, 64;
+  --color-primary-hover: #8C4E36;
+  --color-primary-light: rgba(164, 93, 64, 0.2);
+  --color-primary-translucent: rgba(164, 93, 64, 0.1);
+  
+  /* Accent color - rusty orange */
+  --color-accent: #D67D3E;
+  --color-accent-rgb: 214, 125, 62;
+  --color-accent-hover: #C06933;
+  --color-accent-light: rgba(214, 125, 62, 0.2);
+  
+  /* Background colors - light mode (warm cream/beige) */
+  --color-light-bg: #FFF9F0;
+  --color-light-bg-secondary: #F5EFE6;
+  --color-light-bg-tertiary: #ECE3DA;
+  --color-light-translucent: rgba(245, 239, 230, 0.8);
+  
+  /* Background colors - dark mode (deep browns) */
+  --color-dark-bg: #2D2016;
+  --color-dark-bg-secondary: #382A20;
+  --color-dark-bg-tertiary: #48372C;
+  --color-dark-translucent: rgba(45, 32, 22, 0.8);
+  
+  /* Text colors remain mostly the same but with warmer undertones */
+  --color-text-dark: #3A2E22;
+  --color-text-secondary: #6A5948;
+  --color-text-muted-dark: rgba(58, 46, 34, 0.7);
+  
+  /* Neutral colors - warmer gray variants */
+  --color-gray-100: #F3EDE4;
+  --color-gray-300: #D6CEC3;
+  --color-gray-500: #A49A8C;
+  --color-gray-700: #6E6255;
+  --color-gray-900: #433930;
+  
+  /* Status colors - autumn versions */
+  --color-success: #5D9E6E;
+  --color-warning: #E8A44C;
+  --color-error: #C2594C;
+  --color-info: #6C8B9B;
+}
