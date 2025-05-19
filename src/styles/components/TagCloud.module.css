@@ -13,19 +13,23 @@
   border-radius: var(--border-radius-pill);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
-  transition: var(--transition-standard);
+  transition: all 0.2s var(--transition-timing);
   cursor: pointer;
-  border: none;
+  border: 1px solid rgba(var(--color-primary-rgb), 0.1);
+  box-shadow: 0 1px 2px rgba(var(--color-primary-rgb), 0.05);
 }
 
 .tagButton:hover {
   background: var(--tag-hover-background);
-  transform: translateY(-2px);
+  transform: translateY(-1px);
+  border-color: rgba(var(--color-primary-rgb), 0.2);
+  box-shadow: 0 2px 4px rgba(var(--color-primary-rgb), 0.1);
 }
 
 .tagButton.active {
-  background: var(--color-primary);
+  background: var(--color-accent);
   color: var(--color-white);
   font-weight: var(--font-weight-medium);
-  box-shadow: 0 3px 8px var(--color-primary-translucent);
+  box-shadow: 0 2px 4px rgba(var(--color-accent-rgb), 0.2);
+  border-color: var(--color-accent);
 }

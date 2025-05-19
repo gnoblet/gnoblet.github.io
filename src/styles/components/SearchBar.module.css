@@ -8,26 +8,26 @@
 
 .searchInput {
   width: 100%;
-  padding: var(--spacing-sm) var(--spacing-2xl) var(--spacing-sm) var(--spacing-lg);
+  padding: var(--spacing-sm) var(--spacing-xl) var(--spacing-sm) var(--spacing-lg);
   border-radius: var(--border-radius-pill);
-  border: 2px solid #646cff !important;
+  border: 1px solid var(--card-border);
   font-size: var(--font-size-md);
   outline: none;
-  transition: all 0.3s ease;
-  background-color: #1a1a2e !important;
-  color: #ffffff !important;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.25s var(--transition-timing);
+  background-color: var(--input-background);
+  color: var(--input-text);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .searchInput::placeholder {
-  color: #a0a0a0 !important;
-  opacity: 1 !important;
+  color: var(--text-muted);
+  opacity: 0.7;
 }
 
 .searchInput:focus {
-  border-color: #535bf2 !important;
-  box-shadow: 0 0 15px rgba(100, 108, 255, 0.5);
-  background-color: #202040 !important;
+  border-color: var(--input-focus-border);
+  box-shadow: 0 0 0 2px rgba(var(--color-accent-rgb), 0.15);
+  background-color: var(--input-background);
 }
 
 .clearButton {
@@ -35,36 +35,49 @@
   top: 50%;
   right: var(--spacing-md);
   transform: translateY(-50%);
-  background: rgba(100, 108, 255, 0.3);
+  background: transparent;
   border: none;
-  font-size: var(--font-size-xl);
-  color: #ffffff;
+  font-size: var(--font-size-md);
+  color: var(--text-secondary);
   cursor: pointer;
   padding: 2px 8px;
   line-height: 1;
-  transition: all 0.3s ease;
+  transition: all 0.2s var(--transition-timing);
   border-radius: 50%;
   z-index: 2;
+  opacity: 0.7;
 }
 
 .clearButton:hover {
-  color: #ffffff;
+  color: var(--color-accent);
   transform: translateY(-50%) scale(1.1);
-  background: rgba(100, 108, 255, 0.6);
-  box-shadow: 0 0 12px rgba(100, 108, 255, 0.7);
+  opacity: 1;
 }
 
-/* Ensuring contrast and visibility across browsers */
-@media (prefers-color-scheme: dark) {
-  .searchInput {
-    background-color: #1a1a2e !important;
-    color: #ffffff !important;
+/* Dark mode specific styles */
+.dark .searchInput {
+  background-color: rgba(var(--color-accent-rgb), 0.1);
+  border-color: var(--card-border);
+}
+
+.dark .searchInput:focus {
+  background-color: rgba(var(--color-accent-rgb), 0.15);
+  border-color: var(--color-accent);
+}
+
+/* Media query for mobile screens */
+@media (max-width: 768px) {
+  .searchContainer {
+    max-width: 100%;
   }
-}
-
-@media (prefers-color-scheme: light) {
+  
   .searchInput {
-    background-color: #1a1a2e !important;
-    color: #ffffff !important;
+    font-size: var(--font-size-sm);
+    padding: var(--spacing-xs) var(--spacing-lg) var(--spacing-xs) var(--spacing-md);
+  }
+  
+  .clearButton {
+    font-size: var(--font-size-sm);
+    right: var(--spacing-sm);
   }
 }

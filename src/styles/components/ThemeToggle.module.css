@@ -2,49 +2,57 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--color-primary-translucent);
-  color: var(--color-primary);
-  border: none;
-  width: 36px;
-  height: 36px;
+  background-color: transparent;
+  color: var(--navbar-text);
+  border: 1px solid var(--card-border);
+  width: 34px;
+  height: 34px;
   border-radius: var(--border-radius-circle);
   cursor: pointer;
   padding: 0;
-  transition: var(--transition-standard);
+  transition: all 0.2s var(--transition-timing);
   position: relative;
   overflow: hidden;
 }
 
 .themeToggle:hover {
-  background-color: var(--color-primary-glass);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-small);
+  background-color: var(--color-accent-translucent);
+  color: var(--navbar-active);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(var(--color-accent-rgb), 0.15);
+  border-color: var(--color-accent-translucent);
 }
 
 .themeToggle:active {
-  transform: translateY(1px);
+  transform: translateY(0);
 }
 
 .icon {
-  font-size: 20px;
-  transition: transform var(--transition-duration) var(--transition-timing);
+  font-size: 18px;
+  transition: transform 0.25s var(--transition-timing);
 }
 
 .themeToggle:hover .icon {
-  transform: rotate(12deg) scale(1.1);
+  transform: rotate(20deg);
 }
 
 /* Dark mode specific styles */
 .dark .themeToggle {
-  background-color: var(--color-primary-glass);
+  background-color: transparent;
+  border-color: var(--card-border);
+}
+
+.dark .themeToggle:hover {
+  background-color: var(--color-accent-translucent);
+  border-color: var(--color-accent-translucent);
 }
 
 /* Position the toggle button when it's in the navbar */
 :global(.navbar) .themeToggle {
-  margin-left: var(--spacing-md);
+  margin-left: var(--spacing-sm);
 }
 
-@media (max-width: var(--breakpoint-md)) {
+@media (max-width: 768px) {
   .themeToggle {
     width: 32px;
     height: 32px;
@@ -53,4 +61,14 @@
   .icon {
     font-size: 16px;
   }
+}
+
+/* Animation for theme toggle */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.themeToggle.animating .icon {
+  animation: spin 0.5s var(--transition-timing);
 }

@@ -7,17 +7,15 @@ interface MondrianCanvasProps {
   maxBlocks?: number;
 }
 
-// Pastel colors for the Mondrian-style blocks - using CSS variables
+// Subtle colors for the Zen Browser-inspired blocks - fixed colors, no CSS variables
 const PASTEL_COLORS = [
-  { value: 'var(--color-mondrian-purple-1-alpha-12)', weight: 3 }, // Light purple
-  { value: 'var(--color-mondrian-purple-2-alpha-10)', weight: 4 },  // Lighter pastel purple
-  { value: 'var(--color-mondrian-purple-3-alpha-15)', weight: 3 }, // Medium pastel purple
-  { value: 'var(--color-mondrian-purple-4-alpha-08)', weight: 4 }, // Very light pastel purple
-  { value: 'var(--color-mondrian-lavender-1-alpha-15)', weight: 3 }, // Light lavender
-  { value: 'var(--color-mondrian-lavender-2-alpha-10)', weight: 4 },  // Lighter lavender
-  { value: 'var(--color-mondrian-periwinkle-1-alpha-12)', weight: 3 }, // Light periwinkle
-  { value: 'var(--color-mondrian-periwinkle-2-alpha-08)', weight: 4 }, // Lighter periwinkle
-  { value: 'var(--color-transparent)', weight: 6 },              // Empty space (transparent)
+  { value: 'rgba(138, 169, 244, 0.02)', weight: 3 }, // Very subtle blue
+  { value: 'rgba(138, 169, 244, 0.04)', weight: 2 }, // Light blue
+  { value: 'rgba(91, 111, 233, 0.02)', weight: 2 }, // Very subtle primary
+  { value: 'rgba(91, 111, 233, 0.04)', weight: 1 }, // Light primary
+  { value: 'rgba(108, 142, 239, 0.02)', weight: 3 }, // Very subtle secondary
+  { value: 'rgba(108, 142, 239, 0.03)', weight: 2 }, // Light secondary
+  { value: 'transparent', weight: 15 }, // Empty space (transparent)
 ];
 
 // Function to get weighted random color
@@ -47,8 +45,8 @@ const generateMondrianGrid = (
   ];
 
   // Define line properties
-  const lineWidth = Math.max(1, Math.min(2, width / 500));
-  const lineColor = 'var(--color-mondrian-grid-line)';
+  const lineWidth = Math.max(0.5, Math.min(0.8, width / 1000));
+  const lineColor = 'rgba(138, 169, 244, 0.06)';
 
   // Split blocks randomly to create a Mondrian-style grid
   const targetBlocks = Math.floor(minBlocks + Math.random() * (maxBlocks - minBlocks));
@@ -59,7 +57,7 @@ const generateMondrianGrid = (
     const block = blocks[blockIndex];
     
     // Don't split blocks that are too small
-    const minSize = Math.min(width, height) / 15;
+    const minSize = Math.min(width, height) / 12;
     if (block.width < minSize * 1.5 && block.height < minSize * 1.5) {
       continue;
     }
@@ -131,8 +129,8 @@ const generateMondrianGrid = (
 
 const MondrianCanvas: React.FC<MondrianCanvasProps> = ({ 
   className = '', 
-  minBlocks = 20,
-  maxBlocks = 40
+  minBlocks = 15,
+  maxBlocks = 30
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);

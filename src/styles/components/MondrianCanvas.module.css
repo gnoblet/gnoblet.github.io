@@ -7,6 +7,7 @@
   height: 100%;
   z-index: 0;
   overflow: hidden;
+  filter: none;
 }
 
 .mondrianCanvas {
@@ -16,16 +17,22 @@
   width: 100%;
   height: 100%;
   z-index: 0;
-  transition: opacity 0.5s ease-in-out;
-  opacity: 0.5;
+  transition: opacity 0.3s var(--transition-timing);
+  opacity: 0.3;
 }
 
 .mondrianCanvas:hover {
-  opacity: 0.65;
+  opacity: 0.45;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .mondrianCanvas {
     transition: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .mondrianCanvas {
+    opacity: 0.25;
   }
 }

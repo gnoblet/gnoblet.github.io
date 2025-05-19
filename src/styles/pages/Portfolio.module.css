@@ -8,42 +8,47 @@
 
 .headerSection {
   text-align: center;
-  margin-bottom: var(--spacing-2xl);
+  margin-bottom: var(--spacing-xl);
   position: relative;
   z-index: var(--z-index-base);
-  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2));
 }
 
 .title {
-  font-size: var(--font-size-4xl);
+  font-size: var(--font-size-3xl);
   margin-bottom: var(--spacing-sm);
   color: var(--text-heading);
   position: relative;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-tight);
 }
 
 .subtitle {
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-md);
   color: var(--text-secondary);
+  letter-spacing: var(--letter-spacing-wide);
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .controlsSection {
-  margin-bottom: var(--spacing-2xl);
+  margin-bottom: var(--spacing-xl);
   position: relative;
   z-index: var(--z-index-base);
-  background: rgba(10, 10, 20, 0.5);
+  background: var(--card-background);
   padding: var(--spacing-lg);
   border-radius: var(--border-radius-md);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--shadow-small);
+  transition: box-shadow 0.25s var(--transition-timing);
 }
 
 .projectsGrid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 30px;
+  gap: var(--spacing-lg);
   width: 100%;
   height: fit-content;
 }
@@ -55,18 +60,18 @@
 
 .noResults {
   text-align: center;
-  padding: var(--spacing-2xl);
-  background: rgba(10, 10, 20, 0.5);
+  padding: var(--spacing-xl);
+  background: var(--card-background);
   border-radius: var(--border-radius-md);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: var(--shadow-small);
+  border: 1px solid var(--card-border);
 }
 
 .noResults p {
   color: var(--text-secondary);
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-md);
 }
 
 .activeFilter {
@@ -74,7 +79,7 @@
   align-items: center;
   justify-content: center;
   margin: var(--spacing-lg) 0;
-  font-size: var(--font-size-md);
+  font-size: var(--font-size-sm);
   color: var(--text-secondary);
 }
 
@@ -82,22 +87,22 @@
   display: inline-flex;
   align-items: center;
   margin-left: var(--spacing-sm);
-  background: rgba(100, 108, 255, 0.6);
+  background: var(--color-accent);
   color: var(--color-white);
   padding: var(--spacing-xs) var(--spacing-md);
   border-radius: var(--border-radius-pill);
-  border: 1px solid rgba(100, 108, 255, 0.5);
+  border: 1px solid var(--color-accent);
   cursor: pointer;
   font-size: var(--font-size-sm);
-  transition: var(--transition-standard);
-  box-shadow: 0 0 12px rgba(100, 108, 255, 0.3);
+  transition: all 0.2s var(--transition-timing);
+  box-shadow: 0 2px 4px rgba(var(--color-accent-rgb), 0.2);
 }
 
 .activeTag:hover {
-  background: rgba(100, 108, 255, 0.7);
-  transform: translateY(-2px);
-  box-shadow: 0 0 15px rgba(100, 108, 255, 0.4);
-  border-color: rgba(100, 108, 255, 0.7);
+  background: var(--color-accent-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 3px 6px rgba(var(--color-accent-rgb), 0.3);
+  border-color: var(--color-accent-hover);
 }
 
 /* Responsive grid layout */
@@ -114,35 +119,41 @@
 }
 
 /* Mobile adjustments */
-@media (max-width: var(--breakpoint-md)) {
+@media (max-width: 768px) {
   .title {
-    font-size: var(--font-size-3xl);
+    font-size: var(--font-size-2xl);
   }
 
   .subtitle {
-    font-size: var(--font-size-md);
+    font-size: var(--font-size-sm);
+  }
+
+  .controlsSection {
+    padding: var(--spacing-md);
   }
 }
 
 .clearFilterButton {
-  background: rgba(100, 108, 255, 0.4);
-  color: var(--color-white);
-  border: 1px solid rgba(100, 108, 255, 0.3);
-  padding: var(--spacing-sm) var(--spacing-md);
-  border-radius: var(--border-radius-md);
+  background: var(--color-accent-translucent);
+  color: var(--color-accent);
+  border: 1px solid rgba(var(--color-accent-rgb), 0.2);
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--border-radius-pill);
   margin-top: var(--spacing-md);
   cursor: pointer;
-  transition: var(--transition-standard);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: all 0.2s var(--transition-timing);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: var(--shadow-small);
+  font-size: var(--font-size-sm);
 }
 
 .clearFilterButton:hover {
-  background: rgba(100, 108, 255, 0.6);
-  transform: translateY(-2px);
-  box-shadow: 0 0 15px rgba(100, 108, 255, 0.4);
-  border-color: rgba(100, 108, 255, 0.7);
+  background: var(--color-accent);
+  color: var(--color-white);
+  transform: translateY(-1px);
+  box-shadow: 0 3px 6px rgba(var(--color-accent-rgb), 0.2);
+  border-color: var(--color-accent);
 }
 
 .activeTags {
@@ -152,22 +163,26 @@
 }
 
 .clearAllButton {
-  background: rgba(10, 10, 20, 0.3);
-  border: 1px solid rgba(100, 108, 255, 0.3);
-  color: var(--color-primary);
+  background: transparent;
+  border: 1px solid var(--card-border);
+  color: var(--text-secondary);
   padding: var(--spacing-xs) var(--spacing-sm);
   border-radius: var(--border-radius-pill);
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-xs);
   cursor: pointer;
-  transition: var(--transition-standard);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.2s var(--transition-timing);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }
 
 .clearAllButton:hover {
-  background: rgba(100, 108, 255, 0.5);
-  color: var(--color-white);
-  transform: translateY(-2px);
-  box-shadow: 0 0 12px rgba(100, 108, 255, 0.3);
-  border-color: rgba(100, 108, 255, 0.6);
+  background: var(--color-accent-translucent);
+  color: var(--color-accent);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(var(--color-accent-rgb), 0.15);
+  border-color: var(--color-accent-translucent);
+}
+
+.controlsSection:hover {
+  box-shadow: var(--shadow-medium);
 }

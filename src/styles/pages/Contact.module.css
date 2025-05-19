@@ -5,17 +5,23 @@
 }
 
 .title {
-  font-size: var(--font-size-4xl);
+  font-size: var(--font-size-3xl);
   margin-bottom: var(--spacing-sm);
   color: var(--text-heading);
   text-align: center;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-tight);
 }
 
 .subtitle {
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-md);
   color: var(--text-secondary);
   text-align: center;
-  margin-bottom: var(--spacing-2xl);
+  margin-bottom: var(--spacing-xl);
+  letter-spacing: var(--letter-spacing-wide);
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .formContainer {
@@ -27,8 +33,11 @@
   background: var(--card-background);
   padding: var(--spacing-xl);
   border-radius: var(--border-radius-md);
-  box-shadow: var(--shadow-medium);
+  box-shadow: var(--shadow-small);
   border: 1px solid var(--card-border);
+  transition: box-shadow 0.25s var(--transition-timing);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .formGroup {
@@ -59,7 +68,7 @@
 .textarea:focus {
   border-color: var(--input-focus-border);
   outline: none;
-  box-shadow: 0 0 0 3px var(--color-primary-translucent);
+  box-shadow: 0 0 0 2px rgba(var(--color-accent-rgb), 0.15);
 }
 
 .submitButton {
@@ -68,14 +77,35 @@
   border: none;
   padding: var(--spacing-sm) var(--spacing-lg);
   font-size: var(--font-size-md);
-  border-radius: var(--border-radius-md);
+  border-radius: var(--border-radius-pill);
   cursor: pointer;
-  transition: var(--transition-standard);
+  transition: all 0.25s var(--transition-timing);
   width: 100%;
   font-weight: var(--font-weight-medium);
+  box-shadow: var(--shadow-small);
+  letter-spacing: var(--letter-spacing-wide);
 }
 
 .submitButton:hover {
   background: var(--button-primary-hover);
   transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(var(--color-primary-rgb), 0.3);
+}
+
+.form:hover {
+  box-shadow: var(--shadow-medium);
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: var(--font-size-2xl);
+  }
+
+  .subtitle {
+    font-size: var(--font-size-sm);
+  }
+  
+  .form {
+    padding: var(--spacing-lg);
+  }
 }

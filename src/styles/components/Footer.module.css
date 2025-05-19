@@ -2,12 +2,13 @@
 .footer {
   background-color: var(--footer-background);
   color: var(--footer-text);
-  padding: var(--spacing-2xl) 0 var(--spacing-lg);
+  padding: var(--spacing-xl) 0 var(--spacing-lg);
   width: 100%;
   display: flex;
   justify-content: center;
   margin-top: var(--spacing-2xl);
   position: relative;
+  border-top: 1px solid var(--card-border);
 }
 
 .footerContent {
@@ -21,27 +22,37 @@
 .socialLinks {
   display: flex;
   justify-content: center;
-  gap: var(--spacing-lg);
+  gap: var(--spacing-md);
   margin-bottom: var(--spacing-lg);
 }
 
 .socialLinks a {
-  color: var(--text-primary);
-  font-size: var(--font-size-xl);
-  transition: var(--transition-standard);
+  color: var(--text-secondary);
+  font-size: var(--font-size-lg);
+  transition: all 0.2s var(--transition-timing);
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--border-radius-circle);
+  background-color: transparent;
+  border: 1px solid var(--card-border);
 }
 
 .socialLinks a:hover {
-  transform: translateY(-5px);
-  color: var(--color-primary);
+  transform: translateY(-2px);
+  color: var(--color-accent);
+  background-color: var(--color-accent-translucent);
+  border-color: var(--color-accent-translucent);
+  box-shadow: 0 2px 4px rgba(var(--color-accent-rgb), 0.15);
 }
 
 .copyright {
   font-size: var(--font-size-sm);
   opacity: 0.8;
+  color: var(--text-secondary);
+  margin-top: var(--spacing-md);
 }
 
 /* Scroll to top button styles */
@@ -49,21 +60,23 @@
   position: fixed;
   bottom: var(--spacing-xl);
   right: var(--spacing-xl);
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border-radius: var(--border-radius-circle);
-  background-color: var(--color-background-tertiary);
-  color: var(--text-primary);
-  border: none;
-  box-shadow: var(--shadow-medium);
+  background-color: var(--card-background);
+  color: var(--text-secondary);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--shadow-small);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
   transform: translateY(20px);
-  transition: var(--transition-standard);
+  transition: all 0.25s var(--transition-timing);
   z-index: var(--z-index-fixed);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .scrollTopButton.visible {
@@ -72,51 +85,44 @@
 }
 
 .scrollTopButton:hover {
-  background-color: var(--color-background-accent);
-}
-
-/* Animation for the button */
-@keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(var(--color-primary-rgb), 0.7);
-  }
-  70% {
-    box-shadow: 0 0 0 10px rgba(var(--color-primary-rgb), 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(var(--color-primary-rgb), 0);
-  }
-}
-
-.scrollTopButton.visible:hover {
-  animation: pulse 1.5s infinite;
+  background-color: var(--color-accent-translucent);
+  color: var(--color-accent);
+  border-color: var(--color-accent-translucent);
+  box-shadow: 0 3px 6px rgba(var(--color-accent-rgb), 0.2);
+  transform: translateY(-2px);
 }
 
 /* Media query for mobile devices */
-@media (max-width: var(--breakpoint-md)) {
+@media (max-width: 768px) {
+  .footer {
+    padding: var(--spacing-lg) 0 var(--spacing-md);
+  }
+
   .scrollTopButton {
     bottom: var(--spacing-lg);
     right: var(--spacing-lg);
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
   }
 
   .socialLinks {
-    gap: var(--spacing-md);
+    gap: var(--spacing-sm);
   }
 
   .socialLinks a {
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-md);
+    width: 32px;
+    height: 32px;
   }
 }
 
 .blueskyIcon {
-  width: 20px;
-  height: 20px;
-  filter: brightness(0) invert(1); /* Make it white */
-  transition: var(--transition-standard);
+  width: 18px;
+  height: 18px;
+  filter: brightness(0) invert(0.6);
+  transition: all 0.2s var(--transition-timing);
 }
 
 .blueskyLink:hover .blueskyIcon {
-  filter: brightness(0) invert(0.9) sepia(1) saturate(5) hue-rotate(180deg); /* Blue tint on hover */
+  filter: brightness(0) invert(0.4) sepia(1) saturate(5) hue-rotate(180deg);
 }

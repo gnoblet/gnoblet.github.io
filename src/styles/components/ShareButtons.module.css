@@ -1,40 +1,53 @@
 /* src/styles/components/ShareButtons.module.css */
 .shareContainer {
-  margin: var(--spacing-2xl) 0;
+  margin: var(--spacing-xl) 0;
   padding: var(--spacing-lg);
-  background-color: var(--card-background-translucent);
+  background-color: var(--card-background-alt);
   border-radius: var(--border-radius-md);
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--card-border);
+  transition: all 0.25s var(--transition-timing);
+}
+
+.shareContainer:hover {
+  box-shadow: var(--shadow-small);
 }
 
 .shareTitle {
   margin-top: 0;
   margin-bottom: var(--spacing-md);
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-md);
   color: var(--text-secondary);
   font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-wide);
 }
 
 .shareButtons {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--spacing-sm);
+  gap: var(--spacing-md);
 }
 
 .shareButton {
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: var(--spacing-sm) var(--spacing-md);
-  border-radius: var(--border-radius-sm);
+  border-radius: var(--border-radius-pill);
   color: var(--color-white);
   text-decoration: none;
   font-size: var(--font-size-sm);
-  transition: var(--transition-standard);
+  transition: all 0.2s var(--transition-timing);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  font-weight: var(--font-weight-medium);
+  min-width: 120px;
+  border: none;
 }
 
 .shareButton:hover {
-  opacity: 0.9;
-  transform: translateY(-2px);
+  transform: translateY(-1px);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.15);
 }
 
 .shareButton svg {
@@ -42,23 +55,74 @@
 }
 
 .twitter {
+  background-color: rgba(29, 161, 242, 0.9);
+}
+
+.twitter:hover {
   background-color: #1da1f2;
 }
 
 .facebook {
+  background-color: rgba(66, 103, 178, 0.9);
+}
+
+.facebook:hover {
   background-color: #4267b2;
 }
 
 .linkedin {
+  background-color: rgba(0, 119, 181, 0.9);
+}
+
+.linkedin:hover {
   background-color: #0077b5;
 }
 
 .reddit {
+  background-color: rgba(255, 87, 0, 0.9);
+}
+
+.reddit:hover {
   background-color: #ff5700;
 }
 
-@media (max-width: var(--breakpoint-sm)) {
+.copyLink {
+  background-color: var(--color-accent);
+  position: relative;
+}
+
+.copyLink:hover {
+  background-color: var(--color-accent-hover);
+}
+
+.copySuccess {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--color-success);
+  color: var(--color-white);
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--border-radius-pill);
+  font-size: var(--font-size-xs);
+  opacity: 0;
+  transition: opacity 0.2s var(--transition-timing);
+  pointer-events: none;
+}
+
+.copySuccess.visible {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
   .shareButtons {
     flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+  
+  .shareButton {
+    width: 100%;
+    padding: var(--spacing-sm);
+    justify-content: center;
   }
 }

@@ -1,237 +1,254 @@
-/* QuartoBlog.css - Minimal styling for Quarto components */
+/* QuartoBlog.css - Styling for Quarto blog components */
 
 .quarto-blog-container {
-  max-width: 1200px;
+  max-width: var(--content-max-width);
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: var(--spacing-2xl) var(--spacing-lg);
 }
 
 .header-section {
-  margin-bottom: 2rem;
+  margin-bottom: var(--spacing-2xl);
   text-align: center;
 }
 
 .title {
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
+  font-size: var(--font-size-4xl);
+  margin-bottom: var(--spacing-sm);
 }
 
 .subtitle {
-  font-size: 1.2rem;
-  color: #666;
+  font-size: var(--font-size-lg);
+  color: var(--text-secondary);
 }
 
 .controls-section {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  margin-bottom: 2rem;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-2xl);
 }
 
 .search-bar {
   display: flex;
-  gap: 0.5rem;
+  gap: var(--spacing-sm);
 }
 
 .search-bar input {
   flex: 1;
-  padding: 0.5rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  padding: var(--spacing-sm);
+  border: 1px solid var(--input-border);
+  border-radius: var(--border-radius-sm);
+  background-color: var(--input-background);
+  color: var(--input-text);
 }
 
 .clear-button, .clear-filter-button, .clear-all-button {
-  padding: 0.5rem 1rem;
-  background-color: #f1f1f1;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  background-color: var(--button-secondary-background);
+  color: var(--button-secondary-text);
   border: none;
-  border-radius: 4px;
+  border-radius: var(--border-radius-sm);
   cursor: pointer;
+  transition: var(--transition-standard);
 }
 
 .tag-filter {
-  margin-top: 1rem;
+  margin-top: var(--spacing-lg);
 }
 
 .tag-filter-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.5rem;
+  margin-bottom: var(--spacing-sm);
 }
 
 .tags-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: var(--spacing-sm);
 }
 
 .tag-button {
-  padding: 0.3rem 0.6rem;
-  background-color: #f1f1f1;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background-color: var(--tag-background);
+  color: var(--tag-text);
+  border: 1px solid var(--card-border);
+  border-radius: var(--border-radius-sm);
   cursor: pointer;
+  transition: var(--transition-standard);
 }
 
 .tag-button.selected {
-  background-color: #007bff;
-  color: white;
+  background-color: var(--color-primary);
+  color: var(--color-text-light);
 }
 
 .no-results {
   text-align: center;
-  padding: 2rem;
+  padding: var(--spacing-2xl);
 }
 
 .quarto-post-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2rem;
+  gap: var(--spacing-2xl);
 }
 
 .quarto-post-card {
-  border: 1px solid #eee;
-  border-radius: 8px;
+  border: 1px solid var(--card-border);
+  border-radius: var(--border-radius-md);
+  background: var(--card-background);
   overflow: hidden;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.25s var(--transition-timing), 
+              box-shadow 0.25s var(--transition-timing);
 }
 
 .quarto-post-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  box-shadow: var(--shadow-medium);
+  background: var(--card-hover-background);
 }
 
 .post-image img {
   width: 100%;
   height: 200px;
   object-fit: cover;
+  transition: transform 0.3s var(--transition-timing);
 }
 
 .post-content {
-  padding: 1rem;
+  padding: var(--spacing-lg);
 }
 
 .post-title {
   margin-top: 0;
-  font-size: 1.5rem;
+  font-size: var(--font-size-xl);
 }
 
 .post-title a {
-  color: #333;
+  color: var(--text-heading);
   text-decoration: none;
+  transition: var(--transition-standard);
 }
 
 .post-title a:hover {
-  color: #007bff;
+  color: var(--text-link);
 }
 
 .post-meta {
   display: flex;
-  gap: 1rem;
-  margin-bottom: 0.5rem;
-  font-size: 0.9rem;
-  color: #666;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
 }
 
 .post-excerpt {
-  margin-bottom: 1rem;
+  margin-bottom: var(--spacing-lg);
+  color: var(--text-secondary);
 }
 
 .post-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: var(--spacing-sm);
 }
 
 .post-tag {
-  padding: 0.2rem 0.5rem;
-  background-color: #f1f1f1;
-  border-radius: 4px;
-  font-size: 0.8rem;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background-color: var(--tag-background);
+  color: var(--tag-text);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-sm);
+  transition: var(--transition-standard);
 }
 
 /* Styles for individual post page */
 .loading, .error {
   text-align: center;
-  padding: 2rem;
-  font-size: 1.2rem;
+  padding: var(--spacing-2xl);
+  font-size: var(--font-size-lg);
 }
 
 .error-container {
   text-align: center;
-  padding: 2rem;
+  padding: var(--spacing-2xl);
 }
 
 .back-button {
-  padding: 0.5rem 1rem;
-  background-color: #007bff;
-  color: white;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  background-color: var(--button-primary-background);
+  color: var(--button-primary-text);
   border: none;
-  border-radius: 4px;
+  border-radius: var(--border-radius-sm);
   cursor: pointer;
-  margin-top: 1rem;
+  margin-top: var(--spacing-lg);
+  transition: var(--transition-standard);
 }
 
 .post-header {
-  margin-bottom: 2rem;
+  margin-bottom: var(--spacing-2xl);
 }
 
 .post-cover-image {
-  margin-bottom: 2rem;
+  margin-bottom: var(--spacing-2xl);
 }
 
 .post-cover-image img {
   width: 100%;
   max-height: 400px;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: var(--border-radius-md);
 }
 
 .post-content {
-  line-height: 1.6;
+  line-height: var(--line-height-relaxed);
 }
 
 .post-content img {
   max-width: 100%;
-  border-radius: 4px;
+  border-radius: var(--border-radius-sm);
 }
 
 .post-content pre {
-  background-color: #f5f5f5;
-  padding: 1rem;
-  border-radius: 4px;
+  background-color: var(--color-background-secondary);
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius-sm);
   overflow-x: auto;
 }
 
 .post-footer {
-  margin-top: 3rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid #eee;
+  margin-top: var(--spacing-3xl);
+  padding-top: var(--spacing-xl);
+  border-top: 1px solid var(--card-border);
 }
 
 .section-label {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.5rem;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
 }
 
 .tags-list, .categories-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1.5rem;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-xl);
 }
 
 .tag, .category {
-  padding: 0.3rem 0.8rem;
-  background-color: #f1f1f1;
-  border-radius: 4px;
-  font-size: 0.9rem;
+  padding: var(--spacing-xs) var(--spacing-md);
+  background-color: var(--tag-background);
+  color: var(--tag-text);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-sm);
+  transition: var(--transition-standard);
 }
 
 .post-navigation {
   display: flex;
   justify-content: center;
-  margin-top: 2rem;
+  margin-top: var(--spacing-2xl);
 }

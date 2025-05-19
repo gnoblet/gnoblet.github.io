@@ -12,8 +12,8 @@ interface MondrianBackgroundProps {
 const MondrianBackground: React.FC<MondrianBackgroundProps> = ({ 
   children, 
   className = '',
-  minBlocks = 25,
-  maxBlocks = 45
+  minBlocks = 10,
+  maxBlocks = 15
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   

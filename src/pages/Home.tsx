@@ -183,23 +183,26 @@ const Home: React.FC = () => {
         </motion.div>
       </section>
 
-      {/* Latest Projects Section with Mondrian Background - Randomized */}
-      <MondrianBackground minBlocks={25} maxBlocks={40}>
-        <section className={`${projectStyles.projectsSection}`}>
+      {/* Latest Projects Section with Mondrian Background - No Blur */}
+      <section
+        className={styles.section}
+        style={{ backgroundColor: "var(--color-background-primary)" }}
+      >
+        <section className={`${styles.section}`}>
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className={projectStyles.sectionContent}
+            className={styles.sectionContent}
           >
-            <h2 className={projectStyles.sectionTitle}>My Latest Projects</h2>
-            <p className={projectStyles.sectionSubtitle}>
+            <h2 className={styles.title}>My Latest Projects</h2>
+            <p className={styles.subtitle}>
               Here are some of my recent projects and works that showcase my
               skills and interests
             </p>
 
-            <div className={projectStyles.projectsGrid}>
+            <div className={styles.projectsGrid}>
               {projects.slice(0, 3).map((project, index) => (
                 <motion.div
                   key={project.id}
@@ -212,24 +215,24 @@ const Home: React.FC = () => {
                     href={project.projectUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={projectStyles.projectCard}
+                    className={`${styles.projectCard} card`}
                   >
                     <img
                       src={resolveImagePath(project.imageUrl, placeholderImage)}
                       alt={project.title}
-                      className={projectStyles.cardImage}
+                      className={styles.cardImage}
                       onError={(e) => {
                         e.currentTarget.src = placeholderImage;
                       }}
                     />
-                    <div className={projectStyles.cardContent}>
-                      <h3 className={projectStyles.cardTitle}>{project.title}</h3>
-                      <p className={projectStyles.cardDescription}>
+                    <div className={styles.cardContent}>
+                      <h3 className={styles.cardTitle}>{project.title}</h3>
+                      <p className={styles.cardDescription}>
                         {project.description}
                       </p>
-                      <div className={projectStyles.cardTags}>
+                      <div className={styles.cardTags}>
                         {project.tags.slice(0, 3).map((tag) => (
-                          <span key={tag} className={projectStyles.cardTag}>
+                          <span key={tag} className={styles.cardTag}>
                             #{tag}
                           </span>
                         ))}
@@ -240,17 +243,14 @@ const Home: React.FC = () => {
               ))}
             </div>
 
-            <div className={projectStyles.viewMoreContainer}>
-              <RouterLink
-                to="/portfolio"
-                className={projectStyles.viewMoreButton}
-              >
+            <div className={styles.viewMoreContainer}>
+              <RouterLink to="/portfolio" className={styles.viewMoreButton}>
                 View All Projects
               </RouterLink>
             </div>
           </motion.div>
         </section>
-      </MondrianBackground>
+      </section>
 
       {/* Blog Section */}
       <section className={`${blogStyles.blogSection}`}>
@@ -261,7 +261,7 @@ const Home: React.FC = () => {
           transition={{ duration: 0.8 }}
           className={projectStyles.sectionContent}
         >
-          <h2 className={projectStyles.sectionTitle}>My Latest Projects</h2>
+          <h2 className={projectStyles.sectionTitle}>My Latest Quarto Blogs</h2>
           <p className={projectStyles.sectionSubtitle}>
             Here you will see the latest blog posts if I ever take the time to
             blog. Or find any subject I would feel both confident enough to

@@ -2,25 +2,31 @@
 .blogPost {
   max-width: var(--content-width-narrow);
   margin: 0 auto;
-  padding: var(--spacing-lg);
+  padding: var(--spacing-xl);
   background: var(--card-background);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border-radius: var(--border-radius-md);
-  box-shadow: var(--shadow-medium);
+  box-shadow: var(--shadow-small);
   border: 1px solid var(--card-border);
+  transition: box-shadow 0.3s var(--transition-timing);
 }
 
 .backLink {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
   margin-bottom: var(--spacing-lg);
   color: var(--text-link);
   text-decoration: none;
   font-weight: var(--font-weight-medium);
-  transition: var(--transition-standard);
+  transition: all 0.2s var(--transition-timing);
+  position: relative;
 }
 
 .backLink:hover {
-  text-decoration: underline;
+  color: var(--text-link-hover);
+  transform: translateX(-3px);
 }
 
 .postHeader {
@@ -28,18 +34,21 @@
 }
 
 .postTitle {
-  font-size: var(--font-size-4xl);
+  font-size: var(--font-size-3xl);
   margin-bottom: var(--spacing-md);
   color: var(--text-heading);
   font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-tight);
+  line-height: var(--line-height-tight);
 }
 
 .postMeta {
   display: flex;
   color: var(--text-secondary);
-  font-size: var(--font-size-md);
+  font-size: var(--font-size-sm);
   margin-bottom: var(--spacing-lg);
-  opacity: 0.8;
+  opacity: 0.7;
+  letter-spacing: var(--letter-spacing-wide);
 }
 
 .postDate {
@@ -51,17 +60,24 @@
 }
 
 .coverImageContainer {
-  margin-bottom: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
   border-radius: var(--border-radius-md);
   overflow: hidden;
-  box-shadow: var(--shadow-medium);
+  box-shadow: var(--shadow-small);
+  position: relative;
 }
 
 .coverImage {
   width: 100%;
   max-height: 400px;
   object-fit: cover;
-  transition: transform var(--transition-duration) var(--transition-timing);
+  transition: transform 0.4s var(--transition-timing);
+  filter: brightness(0.98);
+}
+
+.coverImageContainer:hover .coverImage {
+  transform: scale(1.02);
+  filter: brightness(1);
 }
 
 .postTags {
@@ -78,23 +94,25 @@
   border-radius: var(--border-radius-pill);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
-  transition: var(--transition-standard);
+  transition: all 0.2s var(--transition-timing);
+  border: 1px solid rgba(var(--color-primary-rgb), 0.1);
 }
 
 .tag:hover {
   background: var(--tag-hover-background);
-  transform: translateY(-2px);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(var(--color-primary-rgb), 0.15);
+  border-color: rgba(var(--color-primary-rgb), 0.2);
 }
 
 .postContent {
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-md);
   line-height: var(--line-height-relaxed);
   color: var(--text-body);
   background: var(--card-background);
-  padding: var(--spacing-lg);
+  padding: 0;
   border-radius: var(--border-radius-md);
-  backdrop-filter: blur(5px);
-  margin-top: var(--spacing-lg);
+  margin-top: var(--spacing-xl);
 }
 
 /* Markdown content styling */
@@ -104,6 +122,7 @@
   border-bottom: 1px solid var(--card-border);
   padding-bottom: 0.3em;
   color: var(--text-heading);
+  letter-spacing: var(--letter-spacing-tight);
 }
 
 .postContent h2 {
@@ -138,26 +157,29 @@
 }
 
 .postContent blockquote {
-  border-left: 4px solid var(--color-primary);
+  border-left: 3px solid var(--color-accent);
   padding-left: 1em;
   margin-left: 0;
   color: var(--text-secondary);
   font-style: italic;
-  background: var(--color-primary-translucent);
+  background: rgba(var(--color-accent-rgb), 0.07);
   padding: 1em;
-  border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0;
+  border-radius: 0 var(--border-radius-sm) var(--border-radius-sm) 0;
 }
 
 .postContent pre {
-  background: var(--color-black-transparent-10);
+  background: rgba(var(--color-primary-rgb), 0.05);
   padding: 1em;
-  border-radius: var(--border-radius-md);
+  border-radius: var(--border-radius-sm);
   overflow-x: auto;
+  margin: 1.2em 0;
+  border: 1px solid rgba(var(--color-primary-rgb), 0.1);
 }
 
 .postContent code {
-  background: var(--color-black-transparent-10);
-  padding: 2px 4px;
-  border-radius: 3px;
+  background: rgba(var(--color-primary-rgb), 0.05);
+  padding: 2px 5px;
+  border-radius: var(--border-radius-xs);
   font-family: var(--font-mono);
+  font-size: 0.9em;
 }

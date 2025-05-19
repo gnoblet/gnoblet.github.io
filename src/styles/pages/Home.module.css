@@ -47,29 +47,59 @@
 
 /* Profile image */
 .profileImage {
-  width: 180px;
-  height: 180px;
+  width: 160px;
+  height: 160px;
   border-radius: var(--border-radius-circle);
   object-fit: cover;
   margin-bottom: var(--spacing-xl);
-  border: 3px solid var(--color-primary);
-  box-shadow: var(--glow-primary);
+  border: 2px solid var(--color-accent);
+  box-shadow: 0 0 15px rgba(var(--color-accent-rgb), 0.2);
+  transition: all 0.3s var(--transition-timing);
+}
+
+.profileImage:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 20px rgba(var(--color-accent-rgb), 0.3);
 }
 
 /* Typography */
 .title {
-  font-size: var(--font-size-5xl);
-  margin-bottom: var(--spacing-lg);
+  font-size: var(--font-size-3xl);
+  margin-bottom: var(--spacing-md);
   text-align: center;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-tight);
 }
 
 .subtitle {
-  font-size: var(--font-size-xl);
+  font-size: var(--font-size-lg);
   max-width: var(--content-width-narrow);
   text-align: center;
   margin-bottom: var(--spacing-lg);
   line-height: var(--line-height-relaxed);
-  opacity: 0.9;
+  color: var(--text-secondary);
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+/* Projects Grid */
+.projectsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-xl);
+  width: 100%;
+  margin-top: var(--spacing-xl);
+}
+
+@media (min-width: 768px) {
+  .projectsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .projectsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .aboutText {
@@ -80,19 +110,30 @@
 /* Social links */
 .socialLinks {
   display: flex;
-  gap: var(--spacing-lg);
+  gap: var(--spacing-md);
   margin-top: var(--spacing-xl);
 }
 
 .socialLinks a {
-  color: var(--text-primary);
-  font-size: var(--font-size-2xl);
-  transition: var(--transition-standard);
+  color: var(--text-secondary);
+  font-size: var(--font-size-xl);
+  transition: all 0.2s var(--transition-timing);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--border-radius-circle);
+  background-color: transparent;
+  border: 1px solid var(--card-border);
 }
 
 .socialLinks a:hover {
-  color: var(--color-primary);
-  transform: translateY(-5px);
+  color: var(--color-accent);
+  transform: translateY(-2px);
+  background-color: var(--color-accent-translucent);
+  border-color: var(--color-accent-translucent);
+  box-shadow: 0 2px 5px rgba(var(--color-accent-rgb), 0.15);
 }
 
 /* Features list */
@@ -108,26 +149,29 @@
   margin: var(--spacing-md) 0;
   padding: var(--spacing-lg);
   border-radius: var(--border-radius-md);
-  background-color: var(--color-primary-translucent);
-  border-left: 4px solid var(--color-primary);
-  transition: var(--transition-standard);
+  background-color: rgba(var(--color-accent-rgb), 0.07);
+  border-left: 3px solid var(--color-accent);
+  transition: all 0.25s var(--transition-timing);
+  box-shadow: var(--shadow-small);
 }
 
 .featureItem:hover {
-  transform: translateX(5px);
-  background-color: var(--color-primary-glass);
+  transform: translateY(-2px);
+  background-color: rgba(var(--color-accent-rgb), 0.1);
+  box-shadow: var(--shadow-medium);
 }
 
 /* Timeline container */
 .timelineContainer {
   position: relative;
-  margin: var(--spacing-2xl) 0;
+  margin: var(--spacing-xl) 0;
   width: 100%;
   max-width: var(--content-width-narrow);
   overflow: hidden;
-  max-height: 450px;
-  transition: all 0.5s ease-in-out;
+  max-height: 460px;
+  transition: all 0.4s var(--transition-timing);
   padding-bottom: var(--spacing-xl);
+  border-radius: var(--border-radius-lg);
 }
 
 .timelineContainerExpanded {
@@ -156,21 +200,23 @@
   display: block;
   width: 100%;
   text-align: left;
-  margin: 0 0 var(--spacing-xl) 0;
+  margin: 0 0 var(--spacing-lg) 0;
   opacity: 1;
-  transition: var(--transition-standard);
+  transition: all 0.25s var(--transition-timing);
   cursor: default;
   padding: var(--spacing-md) var(--spacing-lg) var(--spacing-md) 130px;
   border-radius: var(--border-radius-md);
-  background-color: var(--color-white-transparent-10);
-  border-left: 3px solid transparent;
+  background-color: var(--card-background);
+  border-left: 2px solid transparent;
   z-index: var(--z-index-base);
+  box-shadow: var(--shadow-small);
+  border: 1px solid var(--card-border);
 }
 
 .timelineEntry:hover {
-  transform: translateX(5px);
-  background-color: var(--color-primary-translucent);
-  border-left: 3px solid var(--color-primary);
+  transform: translateY(-2px);
+  background-color: var(--card-hover-background);
+  border-left: 2px solid var(--color-accent);
   box-shadow: var(--shadow-medium);
   opacity: 1 !important;
   z-index: var(--z-index-dropdown);
@@ -261,16 +307,16 @@
 .timelineEntry::before {
   content: "";
   position: absolute;
-  width: 20px;
-  height: 20px;
-  background-color: var(--color-primary);
+  width: 16px;
+  height: 16px;
+  background-color: var(--color-accent);
   border-radius: var(--border-radius-circle);
   left: 81px;
   top: 20px;
-  border: 3px solid var(--color-white);
+  border: 2px solid var(--color-white);
   z-index: 3;
-  box-shadow: 0 0 10px var(--color-primary-translucent);
-  transition: var(--transition-standard);
+  box-shadow: 0 0 8px rgba(var(--color-accent-rgb), 0.2);
+  transition: all 0.25s var(--transition-timing);
 }
 
 /* We use actual DOM elements instead of pseudo-elements for better control */
@@ -279,36 +325,36 @@
 .timelineEntry::before {
   content: "";
   position: absolute;
-  width: 20px;
-  height: 20px;
-  background-color: var(--color-primary);
+  width: 16px;
+  height: 16px;
+  background-color: var(--color-accent);
   border-radius: var(--border-radius-circle);
   left: 81px;
   top: 20px;
-  border: 3px solid var(--color-white);
+  border: 2px solid var(--color-white);
   z-index: 3;
-  box-shadow: 0 0 10px var(--color-primary-translucent);
-  transition: var(--transition-standard);
+  box-shadow: 0 0 8px rgba(var(--color-accent-rgb), 0.2);
+  transition: all 0.25s var(--transition-timing);
 }
 
 .timelineLineSegment {
   position: absolute;
-  width: 3px;
+  width: 2px;
   height: calc(100% + 22px); /* Extend to reach the next dot marker */
-  background: var(--color-primary);
-  left: 90px;
+  background: var(--color-accent);
+  left: 89px;
   top: 29px; /* Start just below the dot */
-  opacity: 0.8;
+  opacity: 0.6;
   z-index: 0; /* Below the halo and dot */
-  transition: var(--transition-standard);
+  transition: all 0.25s var(--transition-timing);
   pointer-events: none;
 }
 
 .timelineEntry:hover .timelineLineSegment {
-  background: var(--color-white);
+  background: var(--color-accent);
   opacity: 1;
-  box-shadow: 0 0 15px var(--color-white-transparent-50);
-  width: 4px;
+  box-shadow: 0 0 8px rgba(var(--color-accent-rgb), 0.2);
+  width: 3px;
   z-index: 1; /* Move above non-hovered line segments */
   height: calc(100% + 31px); /* Ensure it still connects when glowing */
 }
@@ -324,38 +370,39 @@
 /* Create a white gap/halo around the dot to separate it from the line */
 .timelineHalo {
   position: absolute;
-  width: 14px;
-  height: 14px;
+  width: 12px;
+  height: 12px;
   background-color: var(--color-background-primary);
   border-radius: var(--border-radius-circle);
   left: 84px;
-  top: 23px;
+  top: 22px;
   z-index: 2;
-  transition: var(--transition-standard);
-  box-shadow: 0 0 0 3px var(--color-background-primary);
+  transition: all 0.25s var(--transition-timing);
+  box-shadow: 0 0 0 2px var(--color-background-primary);
 }
 
 .timelineEntry:hover .timelineHalo {
   background-color: var(--color-background-primary);
-  transform: scale(1.3);
-  box-shadow: 0 0 10px var(--color-background-primary);
+  transform: scale(1.2);
+  box-shadow: 0 0 6px var(--color-background-primary);
   z-index: 2;
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
   left: 83px;
-  top: 22px;
+  top: 21px;
 }
 
 .timelineYear {
   display: block;
-  color: var(--color-white);
-  font-weight: var(--font-weight-bold);
+  color: var(--color-accent);
+  font-weight: var(--font-weight-semibold);
   font-size: var(--font-size-md);
   position: absolute;
   left: 0;
-  top: 20px;
+  top: 18px;
   width: 70px;
   text-align: right;
+  letter-spacing: var(--letter-spacing-tight);
 }
 
 .timelineContent {
@@ -380,14 +427,15 @@
 
 .timelineCompany {
   display: inline;
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-semibold);
   font-size: var(--font-size-md);
-  color: var(--color-primary);
-  transition: var(--transition-standard);
+  color: var(--color-accent);
+  transition: all 0.25s var(--transition-timing);
+  letter-spacing: var(--letter-spacing-tight);
 }
 
 .timelineEntry:hover .timelineCompany {
-  color: var(--color-white);
+  color: var(--text-link-hover);
 }
 
 .dimmedEntry .timelineCompany {
@@ -395,24 +443,42 @@
 }
 
 .timelineCompany a {
-  color: var(--color-primary);
+  color: var(--color-accent);
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: all 0.2s var(--transition-timing);
+  position: relative;
 }
 
 .timelineCompany a:hover {
-  color: var(--text-primary);
-  text-decoration: underline;
+  color: var(--text-link-hover);
+}
+
+.timelineCompany a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  background-color: var(--text-link-hover);
+  transform: scaleX(0);
+  transition: transform 0.2s var(--transition-timing);
+  transform-origin: bottom right;
+}
+
+.timelineCompany a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
 }
 
 .timelineLocation {
   font-weight: var(--font-weight-normal);
   font-size: var(--font-size-sm);
-  color: var(--color-white);
-  opacity: 0.7;
+  color: var(--text-secondary);
+  opacity: 0.8;
   display: block;
   margin-bottom: var(--spacing-md);
-  transition: var(--transition-standard);
+  transition: all 0.25s var(--transition-timing);
 }
 
 .timelineEntry:hover .timelineLocation {
@@ -425,14 +491,14 @@
 
 .timelineRole {
   display: inline;
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-semibold);
   font-size: var(--font-size-md);
-  color: var(--color-white);
-  transition: var(--transition-standard);
+  color: var(--text-heading);
+  transition: all 0.25s var(--transition-timing);
 }
 
 .timelineEntry:hover .timelineRole {
-  text-shadow: 0 0 8px var(--color-white-transparent-50);
+  color: var(--text-heading);
 }
 
 .dimmedEntry .timelineRole {
@@ -448,8 +514,7 @@
 
 .timelineDescription {
   font-size: var(--font-size-sm);
-  color: var(--color-white);
-  opacity: 0.7;
+  color: var(--text-primary);
   line-height: var(--line-height-normal);
   display: block;
   margin-top: var(--spacing-xs);
@@ -465,18 +530,19 @@
 
 .timelineSkill {
   font-size: var(--font-size-xs);
-  background-color: var(--color-white-transparent-10);
-  color: var(--color-white);
+  background-color: var(--tag-background);
+  color: var(--text-secondary);
   padding: 3px var(--spacing-sm);
-  border-radius: var(--border-radius-md);
-  border: 1px solid var(--color-primary-translucent);
-  transition: var(--transition-standard);
+  border-radius: var(--border-radius-pill);
+  border: 1px solid rgba(var(--color-primary-rgb), 0.1);
+  transition: all 0.2s var(--transition-timing);
   margin-bottom: var(--spacing-xs);
 }
 
 .timelineEntry:hover .timelineSkill {
-  background-color: var(--color-primary-translucent);
-  border-color: var(--color-primary);
+  background-color: rgba(var(--color-accent-rgb), 0.1);
+  border-color: rgba(var(--color-accent-rgb), 0.2);
+  color: var(--color-accent);
 }
 
 .dimmedEntry .timelineSkill {
@@ -502,24 +568,27 @@
   bottom: var(--spacing-sm);
   left: 50%;
   transform: translateX(-50%);
-  background: var(--color-black-transparent-80);
-  color: var(--color-primary);
-  border: 1px solid var(--color-primary);
+  background: var(--card-background);
+  color: var(--text-secondary);
+  border: 1px solid var(--card-border);
   border-radius: var(--border-radius-pill);
-  padding: var(--spacing-sm) var(--spacing-lg);
+  padding: var(--spacing-xs) var(--spacing-lg);
   cursor: pointer;
   z-index: var(--z-index-dropdown);
-  transition: var(--transition-standard);
+  transition: all 0.2s var(--transition-timing);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: var(--font-size-sm);
+  box-shadow: var(--shadow-small);
 }
 
 .timelineExpandButton:hover {
-  background: var(--color-white-transparent-20);
+  background-color: var(--color-accent-translucent);
+  color: var(--color-accent);
   transform: translateX(-50%) translateY(-2px);
-  box-shadow: var(--shadow-large);
+  box-shadow: var(--shadow-medium);
+  border-color: var(--color-accent-translucent);
 }
 
 .expandArrow {
@@ -576,25 +645,123 @@
 .contactButtonContainer {
   display: flex;
   justify-content: center;
-  margin-top: var(--spacing-2xl);
+  margin-top: var(--spacing-xl);
 }
 
 .contactButton {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background-color: var(--button-primary-background);
   color: var(--button-primary-text);
-  padding: var(--spacing-md) var(--spacing-xl);
-  border-radius: var(--border-radius-md);
-  font-size: var(--font-size-lg);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: var(--border-radius-pill);
+  font-size: var(--font-size-md);
   font-weight: var(--font-weight-medium);
-  transition: var(--transition-standard);
+  transition: all 0.25s var(--transition-timing);
   text-decoration: none;
+  box-shadow: var(--shadow-small);
+  letter-spacing: var(--letter-spacing-wide);
 }
 
 .contactButton:hover {
   background-color: var(--button-primary-hover);
-  transform: translateY(-5px);
-  box-shadow: var(--glow-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(var(--color-primary-rgb), 0.3);
+}
+
+/* Project Card Styles */
+.projectCard {
+  display: flex;
+  flex-direction: column;
+  background: var(--card-background);
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-small);
+  transition: all 0.25s var(--transition-timing);
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+  border: 1px solid var(--card-border);
+}
+
+.projectCard:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+}
+
+.cardImage {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.projectCard:hover .cardImage {
+  transform: scale(1.03);
+  filter: brightness(1.05);
+}
+
+.cardContent {
+  padding: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.cardTitle {
+  font-size: var(--font-size-lg);
+  margin: 0 0 var(--spacing-sm);
+  color: var(--text-heading);
+  font-weight: var(--font-weight-semibold);
+}
+
+.cardDescription {
+  font-size: var(--font-size-md);
+  color: var(--text-secondary);
+  line-height: var(--line-height-normal);
+  margin-bottom: var(--spacing-md);
+  flex-grow: 1;
+}
+
+.cardTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+}
+
+.cardTag {
+  background: var(--tag-background);
+  color: var(--text-secondary);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius-pill);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+}
+
+.viewMoreContainer {
+  text-align: center;
+  margin-top: var(--spacing-xl);
+}
+
+.viewMoreButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--button-primary-background);
+  color: var(--button-primary-text);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: var(--border-radius-pill);
+  text-decoration: none;
+  font-weight: var(--font-weight-medium);
+  transition: all 0.25s var(--transition-timing);
+  box-shadow: var(--shadow-small);
+}
+
+.viewMoreButton:hover {
+  background: var(--button-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 3px 8px rgba(var(--color-primary-rgb), 0.3);
 }
 
 /* Bluesky icon */

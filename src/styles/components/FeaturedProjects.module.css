@@ -2,9 +2,11 @@
 .featuredSection {
   width: 100%;
   padding: var(--section-spacing) 0;
-  background-color: var(--card-background);
+  background-color: var(--color-background-primary);
   display: flex;
   justify-content: center;
+  border-top: 1px solid var(--card-border);
+  border-bottom: 1px solid var(--card-border);
 }
 
 .featuredContent {
@@ -16,49 +18,76 @@
 
 .sectionTitle {
   text-align: center;
-  font-size: var(--font-size-3xl);
+  font-size: var(--font-size-2xl);
   margin-bottom: var(--spacing-sm);
   color: var(--text-heading);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-tight);
 }
 
 .sectionSubtitle {
   text-align: center;
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-md);
   color: var(--text-secondary);
-  margin-bottom: var(--spacing-2xl);
+  margin-bottom: var(--spacing-xl);
+  letter-spacing: var(--letter-spacing-wide);
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .projectsGrid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--spacing-xl);
+  gap: var(--spacing-lg);
   width: 100%;
   box-sizing: border-box;
 }
 
 .viewMoreContainer {
   text-align: center;
-  margin-top: var(--spacing-2xl);
+  margin-top: var(--spacing-xl);
 }
 
 .viewMoreButton {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background: var(--button-primary-background);
   color: var(--button-primary-text);
   padding: var(--spacing-sm) var(--spacing-lg);
-  border-radius: var(--border-radius-sm);
+  border-radius: var(--border-radius-pill);
   text-decoration: none;
   font-weight: var(--font-weight-medium);
-  transition: var(--transition-standard);
+  transition: all 0.25s var(--transition-timing);
+  box-shadow: var(--shadow-small);
+  letter-spacing: var(--letter-spacing-wide);
 }
 
 .viewMoreButton:hover {
   background: var(--button-primary-hover);
   transform: translateY(-2px);
+  box-shadow: 0 3px 8px rgba(var(--color-primary-rgb), 0.3);
 }
 
-@media (min-width: var(--breakpoint-md)) {
+@media (min-width: 768px) {
   .projectsGrid {
     grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-xl);
+  }
+}
+
+@media (max-width: 768px) {
+  .sectionTitle {
+    font-size: var(--font-size-xl);
+  }
+  
+  .sectionSubtitle {
+    font-size: var(--font-size-sm);
+  }
+  
+  .viewMoreButton {
+    padding: var(--spacing-xs) var(--spacing-md);
+    font-size: var(--font-size-sm);
   }
 }
