@@ -106,7 +106,7 @@
 .projectCard:hover {
   transform: translateY(-5px);
   box-shadow: var(--shadow-large);
-  border-color: var(--color-primary-translucent);
+  border-color: var(--color-primary-light);
   background-color: var(--card-hover-background);
 }
 
@@ -158,5 +158,5 @@
   padding: var(--spacing-xs) var(--spacing-md);
   border-radius: var(--border-radius-pill);
   font-size: var(--font-size-sm);
-  border: 1px solid var(--color-primary-translucent);
+  border: 1px solid var(--color-primary-light);
 }

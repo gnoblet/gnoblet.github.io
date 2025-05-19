@@ -16,11 +16,11 @@
 }
 
 .themeToggle:hover {
-  background-color: var(--color-accent-translucent);
+  background-color: var(--color-accent-light);
   color: var(--navbar-active);
   transform: translateY(-1px);
   box-shadow: 0 2px 4px rgba(var(--color-accent-rgb), 0.15);
-  border-color: var(--color-accent-translucent);
+  border-color: var(--color-accent-light);
 }
 
 .themeToggle:active {
@@ -43,8 +43,8 @@
 }
 
 .dark .themeToggle:hover {
-  background-color: var(--color-accent-translucent);
-  border-color: var(--color-accent-translucent);
+  background-color: var(--color-accent-light);
+  border-color: var(--color-accent-light);
 }
 
 /* Position the toggle button when it's in the navbar */

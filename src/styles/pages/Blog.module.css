@@ -112,7 +112,7 @@
 }
 
 .clearFilterButton {
-  background: var(--color-accent-translucent);
+  background: var(--color-accent-light);
   color: var(--color-accent);
   border: 1px solid rgba(var(--color-accent-rgb), 0.2);
   padding: var(--spacing-xs) var(--spacing-md);
@@ -122,8 +122,6 @@
   transition: all 0.2s var(--transition-timing);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
-  box-shadow: var(--shadow-small);
-  font-size: var(--font-size-sm);
 }
 
 .clearFilterButton:hover {

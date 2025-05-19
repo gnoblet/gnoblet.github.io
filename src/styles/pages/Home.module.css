@@ -131,8 +131,8 @@
 .socialLinks a:hover {
   color: var(--color-accent);
   transform: translateY(-2px);
-  background-color: var(--color-accent-translucent);
-  border-color: var(--color-accent-translucent);
+  background-color: var(--color-accent-light);
+  border-color: var(--color-accent-light);
   box-shadow: 0 2px 5px rgba(var(--color-accent-rgb), 0.15);
 }
 
@@ -252,7 +252,7 @@
 
 .dimmedEntry::before {
   opacity: 0.7;
-  box-shadow: 0 0 5px var(--color-primary-translucent);
+  box-shadow: 0 0 5px var(--color-primary-light);
 }
 
 .timelineContainer:not(.timelineContainerExpanded) .timelineEntry:nth-child(4) {
@@ -550,7 +550,7 @@
 }
 
 .timelineSkill:hover {
-  background-color: var(--color-primary-translucent);
+  background-color: var(--color-primary-light);
   color: var(--color-white);
 }
 
@@ -584,11 +584,11 @@
 }
 
 .timelineExpandButton:hover {
-  background-color: var(--color-accent-translucent);
+  background-color: var(--color-accent-light);
   color: var(--color-accent);
   transform: translateX(-50%) translateY(-2px);
   box-shadow: var(--shadow-medium);
-  border-color: var(--color-accent-translucent);
+  border-color: var(--color-accent-light);
 }
 
 .expandArrow {

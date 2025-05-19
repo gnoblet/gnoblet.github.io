@@ -10,9 +10,9 @@
   
   /* Card & Container Styling */
   --card-background: var(--color-white);
-  --card-background-alt: var(--color-gray-50);
+  --card-background-alt: var(--color-gray-100);
   --card-background-translucent: rgba(255, 255, 255, 0.7);
-  --card-border: var(--color-gray-200);
+  --card-border: var(--color-gray-300);
   --card-hover-background: var(--color-gray-100);
   
   /* Text Colors */
@@ -29,12 +29,12 @@
   --button-primary-background: var(--color-primary);
   --button-primary-text: var(--color-text-light);
   --button-primary-hover: var(--color-primary-hover);
-  --button-secondary-background: var(--color-gray-200);
+  --button-secondary-background: var(--color-gray-300);
   --button-secondary-text: var(--color-text-dark);
-  --button-secondary-hover: var(--color-gray-300);
+  --button-secondary-hover: var(--color-gray-500);
   
   /* Navigation */
-  --navbar-background: rgba(255, 255, 255, 0.8);
+  --navbar-background: var(--color-white-transparent-50);
   --navbar-text: var(--color-text-dark);
   --navbar-active: var(--color-primary);
   --navbar-hover: var(--color-primary);
@@ -50,9 +50,9 @@
   --tag-hover-background: var(--color-primary-light);
   
   /* Shadows & Effects */
-  --shadow-small: 0 2px 5px rgba(0, 0, 0, 0.05);
-  --shadow-medium: 0 4px 6px rgba(0, 0, 0, 0.07);
-  --shadow-large: 0 10px 20px rgba(0, 0, 0, 0.1);
+  --shadow-small: 0 2px 5px var(--color-black-transparent-20);
+  --shadow-medium: 0 4px 6px var(--color-black-transparent-20);
+  --shadow-large: 0 10px 20px var(--color-black-transparent-20);
   --glow-primary: 0 0 15px rgba(var(--color-primary-rgb), 0.3);
   
   /* Form Elements */
@@ -75,22 +75,22 @@
 
 /* Dark mode overrides */
 .dark {
-  /* UI Element Colors */
-  --color-background-primary: var(--color-dark-bg);
-  --color-background-secondary: var(--color-dark-bg-secondary);
-  --color-background-tertiary: var(--color-dark-bg-tertiary);
-  --color-background-accent: var(--color-accent);
+/* UI Element Colors */
+--color-background-primary: var(--color-dark-bg);
+--color-background-secondary: var(--color-dark-bg-secondary);
+--color-background-tertiary: var(--color-dark-bg-tertiary);
+--color-background-accent: var(--color-accent);
   
-  /* Card & Container Styling */
-  --card-background: var(--color-dark-bg-secondary);
-  --card-background-alt: var(--color-dark-bg-tertiary);
-  --card-background-translucent: rgba(36, 40, 59, 0.7);
-  --card-border: var(--color-white-transparent-10);
-  --card-hover-background: var(--color-gray-800);
+/* Card & Container Styling */
+--card-background: var(--color-dark-bg-secondary);
+--card-background-alt: var(--color-dark-bg-tertiary);
+--card-background-translucent: var(--color-dark-translucent);
+--card-border: var(--color-white-transparent-20);
+--card-hover-background: var(--color-gray-700);
   
   /* Text Colors */
   --text-primary: var(--color-text-light);
-  --text-secondary: var(--color-gray-400);
+  --text-secondary: var(--color-gray-300);
   --text-muted: var(--color-text-muted-light);
   --text-accent: var(--color-accent);
   --text-heading: var(--color-text-light);
@@ -102,9 +102,9 @@
   --button-primary-background: var(--color-primary);
   --button-primary-text: var(--color-text-light);
   --button-primary-hover: var(--color-primary-hover);
-  --button-secondary-background: var(--color-dark-glass);
+  --button-secondary-background: var(--color-dark-translucent);
   --button-secondary-text: var(--color-text-light);
-  --button-secondary-hover: var(--color-dark-translucent);
+  --button-secondary-hover: var(--color-dark-bg-tertiary);
   
   /* Navigation */
   --navbar-background: var(--color-dark-bg);
@@ -123,15 +123,15 @@
   --tag-hover-background: var(--color-primary-light);
   
   /* Form Elements */
-  --input-background: var(--color-white-transparent-10);
-  --input-border: var(--color-white-transparent-20);
+  --input-background: var(--color-white-transparent-20);
+  --input-border: var(--color-white-transparent-50);
   --input-text: var(--color-text-light);
   --input-focus-border: var(--color-accent);
   
   /* Shadows & Effects */
-  --shadow-small: 0 2px 5px rgba(0, 0, 0, 0.2);
-  --shadow-medium: 0 4px 6px rgba(0, 0, 0, 0.3);
-  --shadow-large: 0 10px 20px rgba(0, 0, 0, 0.4);
+  --shadow-small: 0 2px 5px var(--color-black-transparent-50);
+  --shadow-medium: 0 4px 6px var(--color-black-transparent-50);
+  --shadow-large: 0 10px 20px var(--color-black-transparent-50);
   --glow-primary: 0 0 15px rgba(var(--color-accent-rgb), 0.3);
   
   /* Status Colors - slightly muted for dark mode */
@@ -148,7 +148,7 @@
     --color-background-secondary: var(--color-dark-bg-secondary);
     --color-background-tertiary: var(--color-dark-bg-tertiary);
     --card-background: var(--color-dark-bg-secondary);
-    --card-background-translucent: rgba(36, 40, 59, 0.7);
-    --card-hover-background: var(--color-gray-800);
+    --card-background-translucent: var(--color-dark-translucent);
+    --card-hover-background: var(--color-gray-700);
   }
 }

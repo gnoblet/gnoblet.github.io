@@ -8,42 +8,12 @@
 @import './theme/index.css';
 
 /* 
-   Legacy variables are now redirected to their semantic equivalents
-   in the new theming system. This ensures backwards compatibility
-   with existing code that uses these variable names.
+   Legacy variables are redirected to their semantic equivalents
+   in the new theming system. This preserves reference to the main
+   theme file while maintaining a clean structure.
 */
 
 :root {
-  /* Colors - redirected */
-  --color-primary: var(--color-primary);
-  --color-primary-rgb: var(--color-primary-rgb);
-  --color-primary-hover: var(--color-primary-hover);
-  --color-primary-light: var(--color-primary-light);
-  --color-primary-translucent: var(--color-primary-translucent);
-  --color-primary-glass: var(--color-primary-glass);
-  --color-primary-glow: var(--glow-primary);
-
-  /* Background colors - redirected */
-  --color-dark-bg: var(--color-dark-bg);
-  --color-dark-bg-secondary: var(--color-dark-bg-secondary);
-  --color-dark-bg-tertiary: var(--color-dark-bg-tertiary);
-  --color-purple-bg: var(--color-dark-bg-tertiary);
-  --color-dark-translucent: var(--color-dark-translucent);
-  --color-dark-glass: var(--color-dark-glass);
-
-  /* Text colors - redirected */
-  --color-text-light: var(--color-text-light);
-  --color-text-dark: var(--color-text-dark);
-  --color-text-secondary: var(--color-text-secondary);
-  --color-text-muted: var(--color-text-muted);
-
-  /* Card and UI elements - redirected */
-  --card-bg: var(--card-background);
-  --card-bg-translucent: var(--card-background-translucent);
-  --card-bg-glass: var(--card-background-translucent);
-  --card-shadow: var(--shadow-medium);
-  --card-shadow-hover: var(--shadow-large);
-
   /* Layout - redirected */
   --navbar-height: var(--navbar-height);
   --content-max-width: var(--content-max-width);

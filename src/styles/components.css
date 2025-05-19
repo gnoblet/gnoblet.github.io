@@ -22,7 +22,7 @@
 }
 
 .btn:focus {
-  outline: 2px solid var(--color-accent-translucent);
+  outline: 2px solid var(--color-accent-light);
   outline-offset: 2px;
 }
 
@@ -57,7 +57,7 @@
 }
 
 .btn-outline:hover, .btn-outline:focus {
-  background-color: var(--color-primary-translucent);
+  background-color: var(--color-primary-light);
   color: var(--button-primary-background);
   border-color: var(--button-primary-hover);
 }

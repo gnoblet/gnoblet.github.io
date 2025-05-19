@@ -134,7 +134,7 @@
 }
 
 .clearFilterButton {
-  background: var(--color-accent-translucent);
+  background: var(--color-accent-light);
   color: var(--color-accent);
   border: 1px solid rgba(var(--color-accent-rgb), 0.2);
   padding: var(--spacing-xs) var(--spacing-md);
@@ -176,11 +176,11 @@
 }
 
 .clearAllButton:hover {
-  background: var(--color-accent-translucent);
+  background: var(--color-accent-light);
   color: var(--color-accent);
   transform: translateY(-1px);
   box-shadow: 0 2px 4px rgba(var(--color-accent-rgb), 0.15);
-  border-color: var(--color-accent-translucent);
+  border-color: var(--color-accent-light);
 }
 
 .controlsSection:hover {

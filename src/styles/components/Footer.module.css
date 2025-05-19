@@ -43,8 +43,8 @@
 .socialLinks a:hover {
   transform: translateY(-2px);
   color: var(--color-accent);
-  background-color: var(--color-accent-translucent);
-  border-color: var(--color-accent-translucent);
+  background-color: var(--color-accent-light);
+  border-color: var(--color-accent-light);
   box-shadow: 0 2px 4px rgba(var(--color-accent-rgb), 0.15);
 }
 
@@ -85,9 +85,9 @@
 }
 
 .scrollTopButton:hover {
-  background-color: var(--color-accent-translucent);
+  background-color: var(--color-accent-light);
   color: var(--color-accent);
-  border-color: var(--color-accent-translucent);
+  border-color: var(--color-accent-light);
   box-shadow: 0 3px 6px rgba(var(--color-accent-rgb), 0.2);
   transform: translateY(-2px);
 }

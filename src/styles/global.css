@@ -61,7 +61,7 @@ img {
 
 /* Selection styles */
 ::selection {
-  background-color: var(--color-accent-translucent);
+  background-color: var(--color-accent-light);
   color: var(--text-primary);
 }
 
@@ -86,9 +86,9 @@ img {
 
 /* Accessibility focus outline - more subtle */
 :focus-visible {
-  outline: 2px solid var(--color-accent-translucent);
+  outline: 2px solid var(--color-accent-light);
   outline-offset: 3px;
-  box-shadow: 0 0 0 3px var(--color-accent-translucent);
+  box-shadow: 0 0 0 3px var(--color-accent-light);
   border-radius: var(--border-radius-xs);
 }
 

@@ -89,7 +89,7 @@
 .blogCard:hover {
   transform: translateY(-5px);
   box-shadow: var(--shadow-large);
-  border-color: var(--color-primary-translucent);
+  border-color: var(--color-primary-light);
   background-color: var(--card-hover-background);
 }
 
