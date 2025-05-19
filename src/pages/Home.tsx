@@ -12,7 +12,6 @@ import { projects } from "../data/projects";
 import { timelineEntries } from "../data/timeline";
 import LeafAnimationGentle from "../components/LeafAnimationGentle";
 import Timeline from "../components/Timeline";
-import MondrianBackground from "../components/MondrianBackground";
 import { resolveImagePath } from "../utils/imageUtils";
 
 const Home: React.FC = () => {
