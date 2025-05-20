@@ -1,8 +1,6 @@
 // src/App.tsx
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import Home from "./pages/Home";
-import Blog from "./pages/Blog";
-import BlogPostPage from "./pages/BlogPostPage";
 import QuartoList from "./pages/QuartoList";
 import QuartoPage from "./pages/QuartoPage";
 import Portfolio from "./pages/Portfolio";
@@ -45,80 +43,56 @@ function App() {
     <ThemeProvider>
       <ColorPaletteProvider>
         <BrowserRouter>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <AppLayout>
-                <Home />
-              </AppLayout>
-            }
-          />
-          <Route
-            path="/home"
-            element={
-              <AppLayout>
-                <Home />
-              </AppLayout>
-            }
-          />
-          <Route
-            path="/blog"
-            element={
-              <AppLayout>
-                <Blog />
-              </AppLayout>
-            }
-          />
-          <Route
-            path="/blog/:slug"
-            element={
-              <AppLayout>
-                <BlogPostPage />
-              </AppLayout>
-            }
-          />
-          <Route
-            path="/quarto"
-            element={
-              <AppLayout>
-                <QuartoList />
-              </AppLayout>
-            }
-          />
-          <Route
-            path="/quarto/:slug"
-            element={
-              <AppLayout>
-                <QuartoPage />
-              </AppLayout>
-            }
-          />
-          <Route
-            path="/quarto"
-            element={
-              <AppLayout>
-                <QuartoList />
-              </AppLayout>
-            }
-          />
-          <Route
-            path="/portfolio"
-            element={
-              <AppLayout>
-                <Portfolio />
-              </AppLayout>
-            }
-          />
-          <Route
-            path="/contact"
-            element={
-              <AppLayout>
-                <Contact />
-              </AppLayout>
-            }
-          />
-        </Routes>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <AppLayout>
+                  <Home />
+                </AppLayout>
+              }
+            />
+            <Route
+              path="/home"
+              element={
+                <AppLayout>
+                  <Home />
+                </AppLayout>
+              }
+            />
+            <Route
+              path="/quarto"
+              element={
+                <AppLayout>
+                  <QuartoList />
+                </AppLayout>
+              }
+            />
+            <Route
+              path="/quarto/:slug"
+              element={
+                <AppLayout>
+                  <QuartoPage />
+                </AppLayout>
+              }
+            />
+            <Route
+              path="/portfolio"
+              element={
+                <AppLayout>
+                  <Portfolio />
+                </AppLayout>
+              }
+            />
+            <Route
+              path="/contact"
+              element={
+                <AppLayout>
+                  <Contact />
+                </AppLayout>
+              }
+            />
+          </Routes>
         </BrowserRouter>
       </ColorPaletteProvider>
     </ThemeProvider>

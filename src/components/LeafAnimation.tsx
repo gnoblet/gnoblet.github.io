@@ -106,7 +106,7 @@ const LeafAnimation: React.FC = () => {
       } else {
         leafColorsRef.current = [
           "rgba(100, 130, 255, 0.6)", // Bright blue
-          "rgba(80, 100, 220, 0.6)",  // Medium blue
+          "rgba(80, 100, 220, 0.6)", // Medium blue
           "rgba(120, 100, 240, 0.6)", // Purple-blue
           "rgba(150, 110, 250, 0.6)", // Light purple
           "rgba(170, 130, 255, 0.6)", // Lavender
@@ -484,7 +484,7 @@ const LeafAnimation: React.FC = () => {
       canvas.removeEventListener("mousemove", handleMouseMove);
       canvas.removeEventListener("touchmove", handleTouchMove);
     };
-  }, []); // No palette dependency to prevent animation reset
+  }, [palette]);
 
   return (
     <canvas
