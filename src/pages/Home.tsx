@@ -10,7 +10,7 @@ import blogStyles from "../styles/pages/BlogSection.module.css";
 import { Link as RouterLink } from "react-router-dom";
 import { projects } from "../data/projects";
 import { timelineEntries } from "../data/timeline";
-import LeafAnimationGentle from "../components/LeafAnimationGentle";
+import LeafAnimation from "../components/LeafAnimation";
 import Timeline from "../components/Timeline";
 import { resolveImagePath } from "../utils/imageUtils";
 
@@ -21,7 +21,7 @@ const Home: React.FC = () => {
       <section className={`${styles.section} ${styles.introSection}`}>
         {/* Leaf animation container positioned right under the navbar */}
         <div className={styles.leafContainer}>
-          <LeafAnimationGentle />
+          <LeafAnimation />
         </div>
 
         <motion.div

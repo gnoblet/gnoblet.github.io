@@ -1,5 +1,6 @@
 // src/components/LeafAnimation.tsx
 import React, { useRef, useEffect } from "react";
+import { useColorPalette } from "../contexts/ColorPaletteContext";
 import styles from "../styles/components/LeafAnimation.module.css";
 
 interface Leaf {
@@ -23,6 +24,39 @@ interface Leaf {
 
 const LeafAnimation: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const { palette } = useColorPalette();
+  const leafColorsRef = useRef<string[]>([]);
+  const leavesRef = useRef<Leaf[]>([]);
+  const prevPaletteRef = useRef<string>(palette);
+  const colorUpdateCounterRef = useRef<number>(0);
+
+  // Update colors when palette changes
+  useEffect(() => {
+    // Update color palette reference
+    if (palette === "autumn") {
+      leafColorsRef.current = [
+        "rgba(214, 125, 62, 0.6)", // Autumn orange
+        "rgba(164, 93, 64, 0.6)", // Autumn brown
+        "rgba(186, 110, 64, 0.6)", // Autumn medium brown
+        "rgba(232, 164, 76, 0.6)", // Autumn gold
+        "rgba(157, 95, 59, 0.6)", // Autumn dark orange
+      ];
+    } else {
+      leafColorsRef.current = [
+        "rgba(100, 130, 255, 0.6)", // Bright blue
+        "rgba(80, 100, 220, 0.6)", // Medium blue
+        "rgba(120, 100, 240, 0.6)", // Purple-blue
+        "rgba(150, 110, 250, 0.6)", // Light purple
+        "rgba(170, 130, 255, 0.6)", // Lavender
+      ];
+    }
+
+    // Detect actual palette changes
+    if (prevPaletteRef.current !== palette) {
+      prevPaletteRef.current = palette;
+      colorUpdateCounterRef.current = 0; // Reset counter to start color transition
+    }
+  }, [palette]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -31,41 +65,70 @@ const LeafAnimation: React.FC = () => {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    // Set canvas to full window width/height
+    // Set canvas to full window width/height with pixel ratio adjustment for sharp rendering
     const handleResize = () => {
       const parent = canvas.parentElement;
+      const devicePixelRatio = window.devicePixelRatio || 1;
+
+      let width, height;
       if (parent) {
-        canvas.width = parent.clientWidth;
-        canvas.height = parent.clientHeight;
+        width = parent.clientWidth;
+        height = parent.clientHeight;
       } else {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        width = window.innerWidth;
+        height = window.innerHeight;
       }
+
+      // Set display size (css pixels)
+      canvas.style.width = width + "px";
+      canvas.style.height = height + "px";
+
+      // Set actual size in memory (scaled to device pixel ratio)
+      canvas.width = width * devicePixelRatio;
+      canvas.height = height * devicePixelRatio;
+
+      // Scale all drawing operations by the device pixel ratio
+      ctx.scale(devicePixelRatio, devicePixelRatio);
     };
     window.addEventListener("resize", handleResize);
     handleResize();
 
-    // Blue-Purple leaf colors - inspired by colasdroin.github.io
-    const leafColors = [
-      "rgba(100, 130, 255, 0.8)", // Bright blue
-      "rgba(80, 100, 220, 0.8)", // Medium blue
-      "rgba(120, 100, 240, 0.8)", // Purple-blue
-      "rgba(150, 110, 250, 0.8)", // Light purple
-      "rgba(170, 130, 255, 0.8)", // Lavender
-    ];
+    // Initialize colors if they haven't been set in the effect hook
+    if (leafColorsRef.current.length === 0) {
+      if (palette === "autumn") {
+        leafColorsRef.current = [
+          "rgba(214, 125, 62, 0.6)", // Autumn orange
+          "rgba(164, 93, 64, 0.6)", // Autumn brown
+          "rgba(186, 110, 64, 0.6)", // Autumn medium brown
+          "rgba(232, 164, 76, 0.6)", // Autumn gold
+          "rgba(157, 95, 59, 0.6)", // Autumn dark orange
+        ];
+      } else {
+        leafColorsRef.current = [
+          "rgba(100, 130, 255, 0.6)", // Bright blue
+          "rgba(80, 100, 220, 0.6)",  // Medium blue
+          "rgba(120, 100, 240, 0.6)", // Purple-blue
+          "rgba(150, 110, 250, 0.6)", // Light purple
+          "rgba(170, 130, 255, 0.6)", // Lavender
+        ];
+      }
+    }
+
+    const leafColors = leafColorsRef.current;
 
     // Initialize leaves
     const leaves: Leaf[] = [];
+    leavesRef.current = leaves;
     const leafCount = 200;
 
-    // Gravity and wind settings - slightly faster than before
-    const gravity = 0.015; // Increased from 0.01
-    const baseWind = 0.01; // Increased from 0.005
-    let windDirection = 0.3; // Starting more to the right
-    let windStrength = 1.0; // Wind strength multiplier
+    // Gravity and wind settings
+    const gravity = 0.015;
+    const baseWind = 0.01;
+    let windDirection = 0.3;
+    let windStrength = 1.0;
     let windChangeTimer = 0;
 
-    // Create leaf instances with slightly faster but still graceful movement
+    // Create leaf instances
     for (let i = 0; i < leafCount; i++) {
       leaves.push({
         x: Math.random() * canvas.width,
@@ -73,16 +136,16 @@ const LeafAnimation: React.FC = () => {
         size: 7 + Math.random() * 15,
         rotation: Math.random() * Math.PI * 2,
         tilt: Math.random() * Math.PI * 2,
-        speedX: (Math.random() - 0.5) * 0.6, // Increased horizontal variance
-        speedY: Math.random() * 0.25 + 0.15, // Slightly faster falling
-        rotationSpeed: (Math.random() - 0.5) * 0.01, // Slightly faster rotation
-        tiltSpeed: (Math.random() - 0.5) * 0.007, // Slightly faster tilt
+        speedX: (Math.random() - 0.5) * 0.6,
+        speedY: Math.random() * 0.25 + 0.15,
+        rotationSpeed: (Math.random() - 0.5) * 0.01,
+        tiltSpeed: (Math.random() - 0.5) * 0.007,
         color: leafColors[Math.floor(Math.random() * leafColors.length)],
         alpha: 0.7 + Math.random() * 0.3,
         type: Math.floor(Math.random() * 3), // 3 different leaf shapes
-        wobble: Math.random() * Math.PI * 2, // Random starting phase
-        wobbleSpeed: 0.015 + Math.random() * 0.025, // Faster wobble
-        wobbleAmplitude: 0.3 + Math.random() * 0.7, // Different amplitude for each leaf
+        wobble: Math.random() * Math.PI * 2,
+        wobbleSpeed: 0.015 + Math.random() * 0.025,
+        wobbleAmplitude: 0.3 + Math.random() * 0.7,
       });
     }
 
@@ -93,14 +156,7 @@ const LeafAnimation: React.FC = () => {
       ctx.rotate(leaf.rotation);
 
       // Apply tilt effect
-      ctx.transform(
-        1,
-        0,
-        Math.sin(leaf.tilt) * 0.25, // Increased tilt effect
-        1,
-        0,
-        0,
-      );
+      ctx.transform(1, 0, Math.sin(leaf.tilt) * 0.25, 1, 0, 0);
 
       const halfSize = leaf.size / 2;
 
@@ -108,7 +164,8 @@ const LeafAnimation: React.FC = () => {
       ctx.fillStyle = leaf.color;
 
       switch (leaf.type) {
-        case 0: // Oval leaf
+        case 0: {
+          // Oval leaf
           ctx.beginPath();
           ctx.ellipse(0, 0, halfSize, leaf.size, 0, 0, Math.PI * 2);
           ctx.fill();
@@ -121,8 +178,10 @@ const LeafAnimation: React.FC = () => {
           ctx.lineTo(0, leaf.size);
           ctx.stroke();
           break;
+        }
 
-        case 1: // Heart-shaped leaf
+        case 1: {
+          // Heart-shaped leaf
           ctx.beginPath();
           ctx.moveTo(0, halfSize);
           ctx.bezierCurveTo(
@@ -151,8 +210,10 @@ const LeafAnimation: React.FC = () => {
           ctx.lineTo(0, -leaf.size * 0.8);
           ctx.stroke();
           break;
+        }
 
-        case 2: // Maple-like leaf
+        case 2: {
+          // Maple-like leaf
           ctx.beginPath();
 
           // Leaf base
@@ -227,6 +288,7 @@ const LeafAnimation: React.FC = () => {
           ctx.lineTo(-halfSize * 0.7, halfSize * 0.2);
           ctx.stroke();
           break;
+        }
       }
 
       ctx.restore();
@@ -293,95 +355,93 @@ const LeafAnimation: React.FC = () => {
 
     // Animation function
     const animate = () => {
-      // Clear canvas completely - no trails
+      // Clear canvas completely
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Wind changes - more dynamic now
+      // Wind changes
       windChangeTimer++;
 
       // Periodically change wind direction
       if (windChangeTimer > 150) {
-        // Larger wind direction changes
         windDirection += (Math.random() - 0.5) * 0.2;
-        windDirection = Math.max(-1, Math.min(1, windDirection)); // Wider range from -1 to 1
-
-        // Randomly change wind strength too
-        windStrength = 0.7 + Math.random() * 1.0; // Wind strength varies from 0.7 to 1.7
-
+        windDirection = Math.max(-1, Math.min(1, windDirection));
+        windStrength = 0.7 + Math.random() * 1.0;
         windChangeTimer = 0;
       }
 
       // Small continuous wind variations
-      windDirection += (Math.random() - 0.5) * 0.01; // Tiny random changes
-      windDirection = Math.max(-1, Math.min(1, windDirection)); // Keep within bounds
+      windDirection += (Math.random() - 0.5) * 0.01;
+      windDirection = Math.max(-1, Math.min(1, windDirection));
 
       // Update leaves
       leaves.forEach((leaf) => {
-        // Apply wobble effect for a natural sway (more pronounced now)
+        // Apply wobble effect for sway
         leaf.wobble += leaf.wobbleSpeed;
         const wobbleAmount = Math.sin(leaf.wobble) * leaf.wobbleAmplitude;
 
-        // Wind force now varies based on leaf height (stronger higher up)
+        // Wind force varies based on leaf height
         const heightFactor =
           1.0 + ((canvas.height - leaf.y) / canvas.height) * 0.5;
         const currentWind =
           baseWind * windDirection * windStrength * heightFactor;
 
-        // Mouse interaction - push leaves away when mouse is nearby
-        const mouseForce = isMouseMoving ? 5.0 : 2.5; // Stronger force when mouse is moving
-        const mouseFalloff = 200; // How far the mouse influence reaches
+        // Mouse interaction
+        const mouseForce = isMouseMoving ? 5.0 : 2.5;
+        const mouseFalloff = 200;
         const dx = leaf.x - mouseX;
         const dy = leaf.y - mouseY;
         const distSquared = dx * dx + dy * dy;
         const dist = Math.sqrt(distSquared);
 
-        // Only apply force if the leaf is within range
+        // Apply mouse force if the leaf is within range
         if (dist < mouseFalloff) {
-          // Calculate force direction (normalized vector)
           let forceX = dx / dist;
           let forceY = dy / dist;
-
-          // Force is stronger the closer the leaf is to the mouse
-          // Use inverse square falloff for natural-looking physics with a minimum threshold to ensure visibility
           const forceMagnitude =
             mouseForce * Math.pow(1 - dist / mouseFalloff, 2.5);
-
-          // Add mouse velocity influence for more dynamic interaction
           const mouseInfluence = 0.2;
           forceX += mouseSpeedX * mouseInfluence;
           forceY += mouseSpeedY * mouseInfluence;
 
-          // Apply the force with increased effect
           leaf.speedX += forceX * forceMagnitude * 0.2;
           leaf.speedY += forceY * forceMagnitude * 0.2;
-
-          // Increase rotation based on mouse proximity
           leaf.rotationSpeed += forceMagnitude * 0.005 * (Math.random() - 0.5);
-
-          // Add a slight color shift effect when pushed by mouse
           leaf.alpha = Math.min(1.0, leaf.alpha + 0.1);
 
-          // Mark when we last applied mouse force
+          // Update color from current palette when interacted with
+          leaf.color =
+            leafColorsRef.current[
+              Math.floor(Math.random() * leafColorsRef.current.length)
+            ];
           leaf.lastMouseForce = Date.now();
         }
 
-        // Apply gravity and wind with wobble effect
+        // Apply gravity and wind
         leaf.speedY += gravity;
-        leaf.speedX += currentWind + wobbleAmount * 0.02; // Enhanced wobble effect
+        leaf.speedX += currentWind + wobbleAmount * 0.02;
 
         // Apply drag (air resistance)
-        leaf.speedX *= 0.99; // Slightly faster deceleration for more responsive feel
+        leaf.speedX *= 0.99;
         leaf.speedY *= 0.99;
 
+        // Randomly update some leaves' colors each frame for smoother transition when palette changes
+        // 0.05% chance per leaf per frame
+        if (Math.random() < 0.0005) {
+          leaf.color =
+            leafColorsRef.current[
+              Math.floor(Math.random() * leafColorsRef.current.length)
+            ];
+        }
+
         // Limit maximum falling speed
-        leaf.speedY = Math.min(leaf.speedY, 0.85); // Increased from 0.7
+        leaf.speedY = Math.min(leaf.speedY, 0.85);
 
         // Update position
         leaf.x += leaf.speedX;
         leaf.y += leaf.speedY;
 
-        // Update rotation and tilt - affected by horizontal speed
-        const speedInfluence = Math.abs(leaf.speedX) * 2; // Speed impacts rotation
+        // Update rotation and tilt
+        const speedInfluence = Math.abs(leaf.speedX) * 2;
         leaf.rotation +=
           leaf.rotationSpeed + wobbleAmount * 0.003 + speedInfluence * 0.005;
         leaf.tilt += leaf.tiltSpeed + wobbleAmount * 0.002 + leaf.speedX * 0.01;
@@ -394,12 +454,18 @@ const LeafAnimation: React.FC = () => {
         if (leaf.y > canvas.height + leaf.size) {
           leaf.y = -leaf.size * 2;
           leaf.x = Math.random() * canvas.width;
-          leaf.speedY = Math.random() * 0.2 + 0.1; // Slightly faster initial fall
-          leaf.speedX = (Math.random() - 0.5) * 0.5 + windDirection * 0.2; // Initial speed influenced by wind
+          leaf.speedY = Math.random() * 0.15 + 0.05;
+          leaf.speedX = (Math.random() - 0.5) * 0.3 + windDirection * 0.1;
 
           // Reset wobble with new values
           leaf.wobble = Math.random() * Math.PI * 2;
-          leaf.wobbleAmplitude = 0.3 + Math.random() * 0.7;
+          leaf.wobbleAmplitude = 0.2 + Math.random() * 0.3;
+
+          // Always update leaf color with current palette when recycled
+          leaf.color =
+            leafColorsRef.current[
+              Math.floor(Math.random() * leafColorsRef.current.length)
+            ];
         }
 
         // Draw the leaf
@@ -418,7 +484,7 @@ const LeafAnimation: React.FC = () => {
       canvas.removeEventListener("mousemove", handleMouseMove);
       canvas.removeEventListener("touchmove", handleTouchMove);
     };
-  }, []);
+  }, []); // No palette dependency to prevent animation reset
 
   return (
     <canvas
