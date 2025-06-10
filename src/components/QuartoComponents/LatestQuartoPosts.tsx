@@ -9,7 +9,7 @@ const LatestQuartoPosts: React.FC<LatestQuartoPostsProps> = ({ maxPosts = 3 }) =
     <QuartoPostsGrid 
       maxPosts={maxPosts} 
       className={styles.projectsGrid}
-      cardClassName={`${styles.projectCard} card`}
+      cardClassName={`${styles.projectCard} horizontal-card`}
     />
   );
 };

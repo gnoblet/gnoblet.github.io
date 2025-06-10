@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { Link as RouterLink } from "react-router-dom";
 import { FaFileAlt } from "react-icons/fa";
 import styles from "../../styles/pages/Home.module.css";
-import "../../styles/common/CardStyles.css";
 import "../../styles/components/horizontal/HorizontalCard.css";
 import { fetchQuartoDocuments } from "../../utils/quartoService";
 import {
@@ -95,7 +94,7 @@ const QuartoPostsGrid: React.FC<QuartoPostsGridProps> = ({
 export const QuartoCard: React.FC<QuartoCardProps> = ({
   doc,
   onTagClick,
-  className = "card horizontal-card",
+  className = "horizontal-card",
   selectedTags = [],
 }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -115,7 +114,7 @@ export const QuartoCard: React.FC<QuartoCardProps> = ({
         <div className="horizontal-card-left-column">
           <div className="horizontal-card-image-container">
             <div className="card-icon">
-              <FaFileAlt style={{ fontSize: "3rem" }} />
+              <FaFileAlt style={{ fontSize: "2rem" }} />
             </div>
           </div>
           <h2 className="horizontal-card-title">

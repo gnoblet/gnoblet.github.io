@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { Project } from "../../types/project";
 import placeholderImage from "../../assets/placeholders/project-placeholder.svg";
 import { resolveImagePath } from "../../utils/imageUtils";
-import "../../styles/common/CardStyles.css";
 import "../../styles/components/horizontal/HorizontalCard.css";
 import Tag from "../ui/Tag";
 
@@ -24,7 +23,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 
   return (
     <div
-      className={`card horizontal-card ${isHovered ? "card-hovered" : ""}`}
+      className={`horizontal-card ${isHovered ? "card-hovered" : ""}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >

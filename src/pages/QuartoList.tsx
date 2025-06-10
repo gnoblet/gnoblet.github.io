@@ -4,7 +4,6 @@ import { useLocation } from "react-router-dom";
 import SearchBar from "../components/ui/SearchBar";
 import TagFilter from "../components/ui/TagFilter";
 import "../styles/pages/Quarto.css";
-import "../styles/common/CardStyles.css";
 import "../styles/components/horizontal/HorizontalCard.css";
 import { QuartoCard } from "../components/QuartoComponents/QuartoPostsGrid";
 import { fetchQuartoDocuments } from "../utils/quartoService";
@@ -20,7 +19,7 @@ const QuartoList: React.FC = () => {
   >([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
-  
+
   // Load documents directly from the service
   // Track pagination state
   const [currentPage, setCurrentPage] = useState(1);
@@ -53,12 +52,12 @@ const QuartoList: React.FC = () => {
       setDisplayedDocuments(documents.slice(0, documentsPerPage));
     }
   }, [location.key, documentsPerPage, documents]);
-  
+
   // Get all unique tags from documents
   const allTags = useMemo(() => {
     const tags = new Set<string>();
-    documents.forEach(doc => {
-      (doc.categories || []).forEach(tag => tags.add(tag));
+    documents.forEach((doc) => {
+      (doc.categories || []).forEach((tag) => tags.add(tag));
     });
     return Array.from(tags).sort();
   }, [documents]);
@@ -76,16 +75,16 @@ const QuartoList: React.FC = () => {
           doc.title.toLowerCase().includes(term) ||
           (doc.description && doc.description.toLowerCase().includes(term)) ||
           (doc.categories || []).some((cat) =>
-            cat.toLowerCase().includes(term)
+            cat.toLowerCase().includes(term),
           ),
       );
     }
-    
+
     // Apply tag filtering
     if (selectedTags.length > 0) {
-      filtered = filtered.filter(doc => {
+      filtered = filtered.filter((doc) => {
         const docTags = doc.categories || [];
-        return selectedTags.every(tag => docTags.includes(tag));
+        return selectedTags.every((tag) => docTags.includes(tag));
       });
     }
 
@@ -103,28 +102,28 @@ const QuartoList: React.FC = () => {
   const handleClearSearch = () => {
     setSearchTerm("");
   };
-  
+
   // Handle tag selection
   const handleTagSelect = (tag: string) => {
-    setSelectedTags(prev => {
+    setSelectedTags((prev) => {
       // Toggle tag selection
       if (prev.includes(tag)) {
-        return prev.filter(t => t !== tag);
+        return prev.filter((t) => t !== tag);
       } else {
         return [...prev, tag];
       }
     });
     setCurrentPage(1); // Reset to first page when filtering changes
   };
-  
+
   // Handle tag click from card
   const handleTagClick = (tag: string) => {
     if (!selectedTags.includes(tag)) {
-      setSelectedTags(prev => [...prev, tag]);
+      setSelectedTags((prev) => [...prev, tag]);
       setCurrentPage(1);
     }
   };
-  
+
   // Handle clear all tags
   const handleClearAllTags = () => {
     setSelectedTags([]);
@@ -161,8 +160,8 @@ const QuartoList: React.FC = () => {
             onClearSearch={handleClearSearch}
             placeholder="Search Quarto documents..."
           />
-          
-          <TagFilter 
+
+          <TagFilter
             tags={allTags}
             selectedTags={selectedTags}
             onTagSelect={handleTagSelect}
@@ -211,7 +210,7 @@ const QuartoList: React.FC = () => {
                 >
                   <QuartoCard
                     doc={doc}
-                    className="card horizontal-card"
+                    className="horizontal-card"
                     onTagClick={handleTagClick}
                     selectedTags={selectedTags}
                   />
@@ -220,7 +219,9 @@ const QuartoList: React.FC = () => {
             </motion.div>
 
             {/* Load more button - only show when not filtering */}
-            {!searchTerm && selectedTags.length === 0 && documents.length > documentsPerPage * currentPage && (
+            {!searchTerm &&
+              selectedTags.length === 0 &&
+              documents.length > documentsPerPage * currentPage && (
                 <div
                   style={{
                     textAlign: "center",

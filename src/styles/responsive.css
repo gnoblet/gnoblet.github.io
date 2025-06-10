@@ -19,7 +19,7 @@
   }
   
   /* Card adjustments */
-  .card {
+  .horizontal-card {
     border-radius: var(--border-radius-sm);
   }
   

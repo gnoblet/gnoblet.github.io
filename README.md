@@ -309,7 +309,7 @@ To customize the theming system:
 1. **Color Changes**:
    - Edit `src/styles/theme/colors.css` to change base color values
    - Add new color variables for additional palette options
-   - Update common card styles in `src/styles/common/CardStyles.css` for consistent UI
+   - Update common card styles in `src/styles/components/horizontal/HorizontalCard.css` for consistent UI
 
 2. **Component Styling**:
    - Modify `src/styles/theme/semantic.css` to change how components look
