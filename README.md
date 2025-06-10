@@ -22,29 +22,53 @@ Visit the site at [gnoblet.github.io](https://gnoblet.github.io/)
 
 ```
 src/
-├── assets/          # Static assets (images, fonts, logos)
+├── assets/          # Static assets
 │   ├── fonts/       # Custom fonts
-│   ├── logo/        # Logo files
 │   ├── placeholders/ # Placeholder images
-│   └── projects/    # Project images
+│   └── myself.jpg   # Personal image
 ├── components/      # Reusable UI components
-
+│   ├── FeaturesList/ # Feature listing components
+│   ├── QuartoComponents/ # Components for Quarto integration
+│   ├── background/  # Background-related components
+│   ├── buttons/     # Button components
+│   ├── cards/       # Card UI components
+│   ├── content/     # Content display components
+│   ├── layout/      # Layout components (headers, footers, etc.)
+│   ├── social/      # Social media components
+│   └── ui/          # General UI components
 ├── content/         # Static content
 │   └── quarto/      # Quarto documents for blog posts
 ├── contexts/        # React contexts
-├── data/            # Data files (projects, timeline, education, etc.)
+├── data/            # Data files
+│   ├── education.ts # Education history data
+│   ├── features.ts  # Features data
+│   ├── projects.ts  # Projects data
+│   ├── publications.ts # Publications data
+│   ├── social-icons.ts # Social media icons
+│   └── timeline.ts  # Timeline data
 ├── hooks/           # Custom React hooks
 ├── pages/           # Page components
-├── styles/          # CSS modules
+│   ├── AboutMe.tsx  # About me page
+│   ├── Home.tsx     # Homepage
+│   ├── Projects.tsx # Projects page
+│   ├── QuartoList.tsx # List of Quarto posts
+│   └── QuartoPage.tsx # Individual Quarto post page
+├── styles/          # CSS styling
 │   ├── common/      # Shared styles across components
 │   ├── components/  # Component-specific styles
 │   ├── pages/       # Page-specific styles
-│   └── theme/       # Theming system
-│       ├── colors.css      # Base color definitions
-│       ├── semantic.css    # Semantic variables
-│       ├── layout.css      # Layout and spacing
-│       ├── typography.css  # Typography settings
-│       └── index.css       # Theme exports
+│   ├── theme/       # Theming system
+│   │   ├── colors.css     # Base color definitions
+│   │   ├── semantic.css   # Semantic variables
+│   │   ├── layout.css     # Layout and spacing
+│   │   ├── typography.css # Typography settings
+│   │   ├── palette-blue.css # Blue color palette
+│   │   └── index.css      # Theme exports
+│   ├── components.css # Component styles
+│   ├── global.css    # Global styles
+│   ├── responsive.css # Responsive design styles
+│   ├── utilities.css # Utility classes
+│   └── variables.css # CSS variables
 ├── types/           # TypeScript type definitions
 └── utils/           # Utility functions
 ```
