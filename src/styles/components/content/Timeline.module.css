@@ -212,7 +212,7 @@
     display: block;
     font-size: var(--font-size-sm);
     color: var(--text-secondary);
-    margin-bottom: var(--spacing-xs);
+    margin-bottom: var(--spacing-sm);
     transition: var(--transition-standard);
     opacity: 0.7;
 }
@@ -248,7 +248,7 @@
 .timelineDescription {
     font-size: var(--font-size-smmd);
     color: var(--text-primary);
-    margin-bottom: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
     line-height: 1.6;
 }
 
