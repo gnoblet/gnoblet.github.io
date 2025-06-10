@@ -82,14 +82,7 @@ function Navbar() {
                 About Me
               </Link>
             </li>
-            <li className={styles.navbarItem}>
-              <Link
-                to="/#contactMe"
-                className={`${styles.navbarLink} ${isActive("/contactMe") ? styles.active : ""}`}
-              >
-                Contact
-              </Link>
-            </li>
+
           </ul>
 
           <div className={styles.navbarActions}>
