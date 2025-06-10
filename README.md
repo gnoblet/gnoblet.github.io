@@ -387,6 +387,7 @@ The site is configured for deployment to GitHub Pages using GitHub Actions:
 - **Manual Deployment**: Can be triggered manually via GitHub Actions workflow dispatch
 - **Build Process**: The deployment workflow handles Quarto rendering, TypeScript compilation, and Vite building
 - **GitHub Pages**: The built site is deployed to `https://gnoblet.github.io/`
+- **SPA Routing**: Uses a custom SPA routing solution for GitHub Pages
 
 ### Deployment Workflow
 
@@ -396,7 +397,12 @@ The site is configured for deployment to GitHub Pages using GitHub Actions:
    - Compiles TypeScript
    - Builds the project with Vite
    - Copies necessary files to the `dist` directory
+   - Includes 404.html for SPA routing on GitHub Pages
 3. The built site is deployed to GitHub Pages
+
+### GitHub Pages Deployment
+
+The site uses a standard SPA routing solution for GitHub Pages (404.html redirect + script in index.html) to enable client-side routing with React Router. This allows direct navigation to any route like `/aboutMe` or `/blog/post-slug` and ensures Quarto HTML files are properly served.
 
 ## 📄 License
 
