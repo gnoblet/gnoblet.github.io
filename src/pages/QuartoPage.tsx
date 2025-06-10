@@ -9,13 +9,30 @@ const QuartoPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
-  const [error] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
   useEffect(() => {
     // When the page changes, scroll to top
     window.scrollTo(0, 0);
+  }, [slug]);
+
+  useEffect(() => {
+    // Check if the Quarto file exists
+    if (slug) {
+      const checkFileExists = async () => {
+        try {
+          const response = await fetch(`/quarto-html/${slug}.html`, { method: 'HEAD' });
+          if (!response.ok) {
+            setError(`Could not load Quarto document: ${response.statusText}`);
+          }
+        } catch (e) {
+          setError(`Error loading document: ${e instanceof Error ? e.message : String(e)}`);
+        }
+      };
+      checkFileExists();
+    }
   }, [slug]);
 
 
@@ -42,7 +59,8 @@ const QuartoPage: React.FC = () => {
     );
   }
 
-  const quartoUrl = `/quarto-html/${slug}.html`;
+  // Use absolute path to ensure correct loading in GitHub Pages
+  const quartoUrl = `${window.location.origin}/quarto-html/${slug}.html`;
 
   return (
     <>
