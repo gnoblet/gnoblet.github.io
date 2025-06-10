@@ -1,5 +1,5 @@
 // src/components/ui/TagFilter.tsx
-import React from "react";
+import React, { memo, useMemo } from "react";
 import styles from "../../styles/components/ui/TagFilter.module.css";
 import { motion } from "framer-motion";
 import Tag from "../ui/Tag";
@@ -12,13 +12,48 @@ interface TagFilterProps {
   filterTitle?: string;
 }
 
-const TagFilter: React.FC<TagFilterProps> = ({
+const TagFilter: React.FC<TagFilterProps> = memo(({
   tags,
   selectedTags,
   onTagSelect,
   onClearAll,
   filterTitle = "Filter by tag",
 }) => {
+  // Memoize the All tag and tag list to prevent unnecessary re-renders
+  const allTag = useMemo(() => (
+    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+      <Tag
+        text="All"
+        selected={selectedTags.length === 0}
+        onClick={() => onClearAll()}
+        showPrefix={false}
+        className={styles.filterTag}
+      />
+    </motion.div>
+  ), [selectedTags.length, onClearAll]);
+  
+  // Create a Set for faster lookups when checking if a tag is selected
+  const selectedTagsSet = useMemo(() => new Set(selectedTags), [selectedTags]);
+  
+  // Memoize the tag list
+  const tagItems = useMemo(() => 
+    tags.map((tag) => (
+      <motion.div
+        key={tag}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        layout
+      >
+        <Tag
+          text={tag}
+          selected={selectedTagsSet.has(tag)}
+          onClick={onTagSelect}
+          className={styles.filterTag}
+        />
+      </motion.div>
+    )), 
+  [tags, selectedTagsSet, onTagSelect]);
+  
   return (
     <div className={styles.filterContainer}>
       <div className={styles.filterHeader}>
@@ -33,34 +68,13 @@ const TagFilter: React.FC<TagFilterProps> = ({
         className={styles.tagList}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ staggerChildren: 0.1, delayChildren: 0.2 }}
+        transition={{ duration: 0.3 }}
       >
-        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-          <Tag
-            text="All"
-            selected={selectedTags.length === 0}
-            onClick={() => onClearAll()}
-            showPrefix={false}
-            className={styles.filterTag}
-          />
-        </motion.div>
-        {tags.map((tag) => (
-          <motion.div
-            key={tag}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <Tag
-              text={tag}
-              selected={selectedTags.includes(tag)}
-              onClick={onTagSelect}
-              className={styles.filterTag}
-            />
-          </motion.div>
-        ))}
+        {allTag}
+        {tagItems}
       </motion.div>
     </div>
   );
-};
+});
 
-export default TagFilter;
+export default memo(TagFilter);
