@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useMemo, useRef } from "react";
-import { motion } from "framer-motion";
+import React, { useState, useEffect, useMemo, useRef, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { useLocation } from "react-router-dom";
 import SearchBar from "../components/ui/SearchBar";
 import TagFilter from "../components/ui/TagFilter";
@@ -26,7 +26,8 @@ const QuartoList: React.FC = () => {
   // Load documents directly from the service
   // Track pagination state
   const [currentPage, setCurrentPage] = useState(1);
-  const documentsPerPage = 4;
+  const documentsPerPage = 6;
+  const [filteredDocuments, setFilteredDocuments] = useState<QuartoDocument[]>([]);
 
   useEffect(() => {
     // Set up a loading animation with dots
@@ -49,9 +50,28 @@ const QuartoList: React.FC = () => {
     const loadQuartoDocuments = async () => {
       setLoading(true);
       try {
-        const loadedDocuments = await fetchQuartoDocuments();
-        setDocuments(loadedDocuments);
-        setDisplayedDocuments(loadedDocuments.slice(0, documentsPerPage));
+        // Check sessionStorage for documents first for instant loading between page navigations
+        const sessionDocs = sessionStorage.getItem('quartoDocumentsData');
+        if (sessionDocs) {
+          const parsedDocs = JSON.parse(sessionDocs);
+          setDocuments(parsedDocs);
+          setDisplayedDocuments(parsedDocs.slice(0, documentsPerPage));
+          setLoading(false);
+          
+          // Still fetch in background to check for updates
+          fetchQuartoDocuments().then(freshDocs => {
+            sessionStorage.setItem('quartoDocumentsData', JSON.stringify(freshDocs));
+            setDocuments(freshDocs);
+            applyFilters(freshDocs, searchTerm, selectedTags, currentPage);
+          }).catch(err => {
+            console.error("Background refresh error:", err);
+          });
+        } else {
+          const loadedDocuments = await fetchQuartoDocuments();
+          sessionStorage.setItem('quartoDocumentsData', JSON.stringify(loadedDocuments));
+          setDocuments(loadedDocuments);
+          setDisplayedDocuments(loadedDocuments.slice(0, documentsPerPage));
+        }
       } catch (err) {
         console.error("Error loading Quarto documents:", err);
         // Set empty documents to avoid null errors in components
@@ -87,41 +107,70 @@ const QuartoList: React.FC = () => {
     });
     return Array.from(tags).sort();
   }, [documents]);
+  
+  // Optimized filtering function
+  const applyFilters = useCallback((docs: QuartoDocument[], term: string, tags: string[], page: number) => {
+    // Use requestAnimationFrame to prevent UI blocking during intensive operations
+    requestAnimationFrame(() => {
+      // Start fresh filtering from all documents
+      let filtered = docs;
+      
+      // Create a new filtered array only if needed
+      if (term || tags.length > 0) {
+        filtered = docs.filter(doc => {
+          // First check tags (faster)
+          if (tags.length > 0) {
+            const docTags = doc.categories || [];
+            if (!tags.every(tag => docTags.includes(tag))) {
+              return false;
+            }
+          }
+          
+          // Then check search term
+          if (term) {
+            const termLower = term.toLowerCase();
+            return (
+              doc.title.toLowerCase().includes(termLower) ||
+              (doc.description && doc.description.toLowerCase().includes(termLower)) ||
+              (doc.categories || []).some(cat => cat.toLowerCase().includes(termLower))
+            );
+          }
+          
+          return true;
+        });
+      }
+      
+      // Store full filtered results
+      setFilteredDocuments(filtered);
+      
+      // Apply pagination
+      setDisplayedDocuments(filtered.slice(0, documentsPerPage * page));
+    });
+  }, [documentsPerPage]);
 
   // Apply search filter, tag filter, and pagination
   useEffect(() => {
-    // Start fresh filtering from all documents
-    let filtered = [...documents];
+    applyFilters(documents, searchTerm, selectedTags, currentPage);
+  }, [searchTerm, selectedTags, documents, currentPage, applyFilters]);
 
-    // Apply search term filter
-    if (searchTerm) {
-      const term = searchTerm.toLowerCase();
-      filtered = filtered.filter(
-        (doc) =>
-          doc.title.toLowerCase().includes(term) ||
-          (doc.description && doc.description.toLowerCase().includes(term)) ||
-          (doc.categories || []).some((cat) =>
-            cat.toLowerCase().includes(term),
-          ),
-      );
-    }
-
-    // Apply tag filtering
-    if (selectedTags.length > 0) {
-      filtered = filtered.filter((doc) => {
-        const docTags = doc.categories || [];
-        return selectedTags.every((tag) => docTags.includes(tag));
-      });
-    }
-
-    // Apply pagination - ensure we reset properly when filters change
-    setDisplayedDocuments(filtered.slice(0, documentsPerPage * currentPage));
-  }, [searchTerm, selectedTags, documents, currentPage, documentsPerPage]);
-
-  // Handle search change
+  // Handle search change with debounce
+  const searchTimeoutRef = useRef<number | null>(null);
   const handleSearchChange = (term: string) => {
-    setSearchTerm(term);
-    setCurrentPage(1); // Reset to first page on search
+    if (searchTimeoutRef.current) {
+      window.clearTimeout(searchTimeoutRef.current);
+    }
+    
+    // Apply immediately if clearing search
+    if (!term) {
+      setSearchTerm("");
+      setCurrentPage(1);
+    } else {
+      // Debounce search input to prevent excessive filtering
+      searchTimeoutRef.current = window.setTimeout(() => {
+        setSearchTerm(term);
+        setCurrentPage(1); // Reset to first page on search
+      }, 300);
+    }
   };
 
   // Handle clear search
@@ -245,29 +294,32 @@ const QuartoList: React.FC = () => {
               transition={{ duration: 0.5, delay: 0.2 }}
             >
               {/* Display filtered documents */}
-              {displayedDocuments.map((doc, index) => (
-                <motion.div
-                  key={doc.slug}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                >
-                  <QuartoCard
-                    doc={doc}
-                    className="horizontal-card"
-                    onTagClick={handleTagClick}
-                    selectedTags={selectedTags}
-                  />
-                </motion.div>
-              ))}
+              <AnimatePresence mode="wait">
+                {displayedDocuments.map((doc, index) => (
+                  <motion.div
+                    key={doc.slug}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    transition={{ duration: 0.3, delay: Math.min(index * 0.05, 0.3) }}
+                    layout
+                  >
+                    <QuartoCard
+                      doc={doc}
+                      className="horizontal-card"
+                      onTagClick={handleTagClick}
+                      selectedTags={selectedTags}
+                    />
+                  </motion.div>
+                ))}
+              </AnimatePresence>
             </motion.div>
 
-            {/* Load more button - only show when not filtering */}
-            {!searchTerm &&
-              selectedTags.length === 0 &&
-              documents.length > documentsPerPage * currentPage && (
-                <div
+            {/* Load more button - show when there are more filtered documents to display */}
+            {filteredDocuments.length > documentsPerPage * currentPage && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
                   style={{
                     textAlign: "center",
                     marginTop: "20px",
@@ -278,9 +330,9 @@ const QuartoList: React.FC = () => {
                     className="view-more-button"
                     onClick={() => setCurrentPage((prev) => prev + 1)}
                   >
-                    Load More Documents
+                    Load More Documents ({displayedDocuments.length} of {filteredDocuments.length})
                   </button>
-                </div>
+                </motion.div>
               )}
           </>
         )}
