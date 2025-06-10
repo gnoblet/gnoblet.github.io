@@ -18,22 +18,7 @@ const QuartoPage: React.FC = () => {
     window.scrollTo(0, 0);
   }, [slug]);
 
-  // Function to remove the back-to-blog button from the iframe
-  const hideQuartoButton = () => {
-    try {
-      const iframe = iframeRef.current;
-      if (iframe && iframe.contentDocument) {
-        // Try direct DOM manipulation first
-        const buttonToRemove = iframe.contentDocument.querySelector('.back-to-blog-button');
-        if (buttonToRemove) {
-          buttonToRemove.style.display = 'none';
-        }
-      }
-    } catch (err) {
-      // Silently handle cross-origin errors
-      console.log("Could not access iframe content");
-    }
-  };
+
 
   if (loading) {
     setTimeout(() => setLoading(false), 500);
@@ -80,7 +65,6 @@ const QuartoPage: React.FC = () => {
               border: "none",
               backgroundColor: "var(--color-background-primary)",
             }}
-            onLoad={hideQuartoButton}
           />
         </motion.div>
       </div>
