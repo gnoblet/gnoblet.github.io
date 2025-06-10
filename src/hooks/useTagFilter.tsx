@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 interface UseTagFilterProps<T> {
   items: T[];
   getItemTags: (item: T) => string[];
+  resetKey?: number;
 }
 
 interface UseTagFilterResult<T> {
@@ -21,11 +22,17 @@ interface UseTagFilterResult<T> {
  */
 function useTagFilter<T>({
   items,
-  getItemTags
+  getItemTags,
+  resetKey = 0
 }: UseTagFilterProps<T>): UseTagFilterResult<T> {
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [allTags, setAllTags] = useState<string[]>([]);
   const [filteredItems, setFilteredItems] = useState<T[]>(items);
+  
+  // Reset selected tags when resetKey changes
+  useEffect(() => {
+    setSelectedTags([]);
+  }, [resetKey]);
 
   // Extract all unique tags from items
   useEffect(() => {

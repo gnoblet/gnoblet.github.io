@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
+import { useLocation } from "react-router-dom";
 import SearchBar from "../components/ui/SearchBar";
-import TagFilter from "../components/ui/TagFilter.tsx";
+import TagFilter from "../components/ui/TagFilter";
 import "../styles/pages/Quarto.css";
 import "../styles/common/CardStyles.css";
 import "../styles/components/horizontal/HorizontalCard.css";
-import useTagFilter from "../hooks/useTagFilter.tsx";
 import { QuartoCard } from "../components/QuartoComponents/QuartoPostsGrid";
 import { fetchQuartoDocuments } from "../utils/quartoService";
 import { QuartoDocument } from "../types/quarto";
@@ -13,12 +13,14 @@ import "../styles/components/FeaturesList/FeaturedProjects.module.css";
 import Title from "../components/layout/Title.tsx";
 
 const QuartoList: React.FC = () => {
+  const location = useLocation();
   const [documents, setDocuments] = useState<QuartoDocument[]>([]);
   const [displayedDocuments, setDisplayedDocuments] = useState<
     QuartoDocument[]
   >([]);
   const [searchTerm, setSearchTerm] = useState("");
-
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  
   // Load documents directly from the service
   // Track pagination state
   const [currentPage, setCurrentPage] = useState(1);
@@ -42,64 +44,98 @@ const QuartoList: React.FC = () => {
     loadQuartoDocuments();
   }, []);
 
-  // Use our custom hook for tag filtering
-  const {
-    filteredItems,
-    selectedTags,
-    allTags,
-    handleTagSelect,
-    handleTagClick,
-    handleClearAllTags,
-  } = useTagFilter<QuartoDocument>({
-    items: documents,
-    getItemTags: (doc) => doc.categories || [],
-  });
-
-  // Apply search filter
+  // Reset state when location changes
   useEffect(() => {
-    let results = filteredItems;
+    setSearchTerm("");
+    setSelectedTags([]);
+    setCurrentPage(1);
+    if (documents.length > 0) {
+      setDisplayedDocuments(documents.slice(0, documentsPerPage));
+    }
+  }, [location.key, documentsPerPage, documents]);
+  
+  // Get all unique tags from documents
+  const allTags = useMemo(() => {
+    const tags = new Set<string>();
+    documents.forEach(doc => {
+      (doc.categories || []).forEach(tag => tags.add(tag));
+    });
+    return Array.from(tags).sort();
+  }, [documents]);
 
+  // Apply search filter, tag filter, and pagination
+  useEffect(() => {
+    // Start fresh filtering from all documents
+    let filtered = [...documents];
+
+    // Apply search term filter
     if (searchTerm) {
       const term = searchTerm.toLowerCase();
-      results = results.filter(
+      filtered = filtered.filter(
         (doc) =>
           doc.title.toLowerCase().includes(term) ||
           (doc.description && doc.description.toLowerCase().includes(term)) ||
           (doc.categories || []).some((cat) =>
-            cat.toLowerCase().includes(term),
+            cat.toLowerCase().includes(term)
           ),
       );
     }
-
-    // If we're searching or filtering, show all matching results
-    // Otherwise, just show the first page
-    if (searchTerm || selectedTags.length > 0) {
-      setDisplayedDocuments(results);
-    } else {
-      setDisplayedDocuments(results.slice(0, documentsPerPage * currentPage));
+    
+    // Apply tag filtering
+    if (selectedTags.length > 0) {
+      filtered = filtered.filter(doc => {
+        const docTags = doc.categories || [];
+        return selectedTags.every(tag => docTags.includes(tag));
+      });
     }
-  }, [
-    searchTerm,
-    filteredItems,
-    selectedTags.length,
-    documentsPerPage,
-    currentPage,
-  ]);
+
+    // Apply pagination - ensure we reset properly when filters change
+    setDisplayedDocuments(filtered.slice(0, documentsPerPage * currentPage));
+  }, [searchTerm, selectedTags, documents, currentPage, documentsPerPage]);
 
   // Handle search change
   const handleSearchChange = (term: string) => {
     setSearchTerm(term);
+    setCurrentPage(1); // Reset to first page on search
   };
 
   // Handle clear search
   const handleClearSearch = () => {
     setSearchTerm("");
   };
-
-  // Error state is now handled by the QuartoPostsGrid component
+  
+  // Handle tag selection
+  const handleTagSelect = (tag: string) => {
+    setSelectedTags(prev => {
+      // Toggle tag selection
+      if (prev.includes(tag)) {
+        return prev.filter(t => t !== tag);
+      } else {
+        return [...prev, tag];
+      }
+    });
+    setCurrentPage(1); // Reset to first page when filtering changes
+  };
+  
+  // Handle tag click from card
+  const handleTagClick = (tag: string) => {
+    if (!selectedTags.includes(tag)) {
+      setSelectedTags(prev => [...prev, tag]);
+      setCurrentPage(1);
+    }
+  };
+  
+  // Handle clear all tags
+  const handleClearAllTags = () => {
+    setSelectedTags([]);
+    setCurrentPage(1); // Reset to first page when clearing filters
+  };
 
   return (
-    <div className="quarto-list-container page-spacing">
+    <div
+      className="quarto-list-container page-spacing"
+      key={`quarto-list-${location.key}`}
+    >
       <Title
         title="Quarto Documents"
         marginAfterSubtitle="var(--spacing-2xl)"
@@ -125,8 +161,8 @@ const QuartoList: React.FC = () => {
             onClearSearch={handleClearSearch}
             placeholder="Search Quarto documents..."
           />
-
-          <TagFilter
+          
+          <TagFilter 
             tags={allTags}
             selectedTags={selectedTags}
             onTagSelect={handleTagSelect}
@@ -147,7 +183,8 @@ const QuartoList: React.FC = () => {
                 className="clear-filter-button"
                 onClick={() => {
                   setSearchTerm("");
-                  handleClearAllTags();
+                  setSelectedTags([]);
+                  setCurrentPage(1); // Reset to first page when clearing filters
                 }}
               >
                 Clear All Filters
@@ -182,10 +219,8 @@ const QuartoList: React.FC = () => {
               ))}
             </motion.div>
 
-            {/* Load more button */}
-            {!searchTerm &&
-              selectedTags.length === 0 &&
-              documents.length > documentsPerPage * currentPage && (
+            {/* Load more button - only show when not filtering */}
+            {!searchTerm && selectedTags.length === 0 && documents.length > documentsPerPage * currentPage && (
                 <div
                   style={{
                     textAlign: "center",
@@ -206,7 +241,7 @@ const QuartoList: React.FC = () => {
 
         <div className="quarto-footer">
           <p>
-            Created with{" "}
+            Blog posts created with{" "}
             <a
               href="https://quarto.org"
               target="_blank"

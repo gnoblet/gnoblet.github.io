@@ -1,5 +1,6 @@
 // src/App.tsx
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 import Home from "./pages/Home";
 import QuartoList from "./pages/QuartoList";
 import QuartoPage from "./pages/QuartoPage";
@@ -10,6 +11,17 @@ import Footer from "./components/layout/Footer";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { ColorPaletteProvider } from "./contexts/ColorPaletteContext"; // Kept for compatibility
 import "./App.css";
+
+// For handling scrolling on navigation
+const ScrollToTop = () => {
+  const location = useLocation();
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+  
+  return null;
+};
 
 // Layout component to handle different container styles
 const AppLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -49,6 +61,7 @@ function App() {
     <ThemeProvider>
       <ColorPaletteProvider>
         <BrowserRouter>
+          <ScrollToTop />
           <Routes>
             <Route
               path="/"
