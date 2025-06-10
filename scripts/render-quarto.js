@@ -127,75 +127,10 @@ function renderQuartoFile(filePath, cache) {
     // Read the rendered HTML
     let htmlContent = fs.readFileSync(tempOutputPath, 'utf8');
     
-    // Add the "Back to Blog list" button that follows system theme
-    const backButtonStyle = `
-    <style>
-      .back-to-blog-button {
-        position: fixed;
-        top: 20px;
-        left: 20px;
-        z-index: 1000;
-        padding: 8px 16px;
-        background-color: var(--back-button-bg, #5B6FE9);
-        color: var(--back-button-text, white);
-        border: none;
-        border-radius: 4px;
-        font-family: system-ui, -apple-system, sans-serif;
-        font-size: 14px;
-        font-weight: 500;
-        cursor: pointer;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        transition: all 0.2s ease;
-      }
-      
-      .back-to-blog-button:hover {
-        background-color: var(--back-button-hover-bg, #4A5ED8);
-        box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
-        text-decoration: none;
-        color: var(--back-button-text, white);
-      }
-      
-      .back-to-blog-button:before {
-        content: "←";
-        margin-right: 6px;
-        font-size: 16px;
-        line-height: 1;
-      }
-      
-      @media (prefers-color-scheme: dark) {
-        :root {
-          --back-button-bg: #5B6FE9;
-          --back-button-hover-bg: #4A5ED8;
-          --back-button-text: white;
-        }
-      }
-      
-      @media (prefers-color-scheme: light) {
-        :root {
-          --back-button-bg: #5B6FE9;
-          --back-button-hover-bg: #4A5ED8;
-          --back-button-text: white;
-        }
-      }
-      
-      @media (max-width: 768px) {
-        .back-to-blog-button {
-          padding: 6px 12px;
-          font-size: 12px;
-        }
-      }
-    </style>
-    `;
+    // We'll let the React app handle the "Back to Blog list" button
     
-    const backButtonHtml = `
-    <a href="javascript:history.back()" class="back-to-blog-button">Back to Blog list</a>
-    `;
-    
-    // Insert the button and its styles before the closing body tag
-    htmlContent = htmlContent.replace('</body>', `${backButtonStyle}${backButtonHtml}</body>`);
+    // Insert any custom styles before the closing body tag if needed
+    htmlContent = htmlContent.replace('</body>', `</body>`);
     
     // Write the modified HTML to the output path
     fs.writeFileSync(outputPath, htmlContent);
@@ -236,71 +171,11 @@ function renderQuartoFile(filePath, cache) {
 
     // No theme sync script needed
     // Add Back to Blog list button
-    const backButtonStyle = `
-    <style>
-      .back-to-blog-button {
-        position: fixed;
-        top: 20px;
-        left: 20px;
-        z-index: 1000;
-        padding: 8px 16px;
-        background-color: var(--back-button-bg, #5B6FE9);
-        color: var(--back-button-text, white);
-        border: none;
-        border-radius: 4px;
-        font-family: system-ui, -apple-system, sans-serif;
-        font-size: 14px;
-        font-weight: 500;
-        cursor: pointer;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        transition: all 0.2s ease;
-      }
-      
-      .back-to-blog-button:hover {
-        background-color: var(--back-button-hover-bg, #4A5ED8);
-        box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
-        text-decoration: none;
-        color: var(--back-button-text, white);
-      }
-      
-      .back-to-blog-button:before {
-        content: "←";
-        margin-right: 6px;
-        font-size: 16px;
-        line-height: 1;
-      }
-      
-      @media (prefers-color-scheme: dark) {
-        :root {
-          --back-button-bg: #5B6FE9;
-          --back-button-hover-bg: #4A5ED8;
-          --back-button-text: white;
-        }
-      }
-      
-      @media (prefers-color-scheme: light) {
-        :root {
-          --back-button-bg: #5B6FE9;
-          --back-button-hover-bg: #4A5ED8;
-          --back-button-text: white;
-        }
-      }
-      
-      @media (max-width: 768px) {
-        .back-to-blog-button {
-          padding: 6px 12px;
-          font-size: 12px;
-        }
-      }
-    </style>
-    `;
+    const backButtonStyle = ``;
     
-    const backButtonHtml = `<a href="javascript:history.back()" class="back-to-blog-button">Back to Blog list</a>`;
+    const backButtonHtml = ``;
 
-    // Enhanced fallback HTML with back button
+    // Enhanced fallback HTML without the back button
     const fallbackHtml = `
 <!DOCTYPE html>
 <html>
@@ -349,8 +224,6 @@ function renderQuartoFile(filePath, cache) {
   <script>
     // No theme sync script needed
   </script>
-  ${backButtonStyle}
-  ${backButtonHtml}
 </body>
 </html>
 `;

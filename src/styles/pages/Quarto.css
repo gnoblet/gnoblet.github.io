@@ -1,5 +1,15 @@
 /* Quarto.css - Styling for Quarto components */
 
+/* Hide the back-to-blog-button from the Quarto HTML */
+.quarto-frame + .back-to-blog-button,
+iframe.quarto-frame ~ .back-to-blog-button,
+iframe.quarto-frame + .back-to-blog-button,
+iframe[src^="/quarto-html/"] ~ .back-to-blog-button,
+.quarto-container iframe ~ .back-to-blog-button,
+a.back-to-blog-button {
+    display: none !important;
+}
+
 /* Global styles for Quarto pages */
 .quarto-page-container {
     position: relative;

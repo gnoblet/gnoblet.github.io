@@ -11,11 +11,29 @@ const QuartoPage: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [error] = useState<string | null>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
 
   useEffect(() => {
     // When the page changes, scroll to top
     window.scrollTo(0, 0);
   }, [slug]);
+
+  // Function to remove the back-to-blog button from the iframe
+  const hideQuartoButton = () => {
+    try {
+      const iframe = iframeRef.current;
+      if (iframe && iframe.contentDocument) {
+        // Try direct DOM manipulation first
+        const buttonToRemove = iframe.contentDocument.querySelector('.back-to-blog-button');
+        if (buttonToRemove) {
+          buttonToRemove.style.display = 'none';
+        }
+      }
+    } catch (err) {
+      // Silently handle cross-origin errors
+      console.log("Could not access iframe content");
+    }
+  };
 
   if (loading) {
     setTimeout(() => setLoading(false), 500);
@@ -52,6 +70,7 @@ const QuartoPage: React.FC = () => {
           ref={contentRef}
         >
           <iframe
+            ref={iframeRef}
             src={quartoUrl}
             title="Quarto Document"
             className="quarto-frame"
@@ -61,6 +80,7 @@ const QuartoPage: React.FC = () => {
               border: "none",
               backgroundColor: "var(--color-background-primary)",
             }}
+            onLoad={hideQuartoButton}
           />
         </motion.div>
       </div>
