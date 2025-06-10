@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useRef } from "react";
 import { motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
 import SearchBar from "../components/ui/SearchBar";
@@ -19,6 +19,9 @@ const QuartoList: React.FC = () => {
   >([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [loadingProgress, setLoadingProgress] = useState("");
+  const loadingIntervalRef = useRef<number | null>(null);
 
   // Load documents directly from the service
   // Track pagination state
@@ -26,7 +29,25 @@ const QuartoList: React.FC = () => {
   const documentsPerPage = 4;
 
   useEffect(() => {
+    // Set up a loading animation with dots
+    if (loading) {
+      let dots = 0;
+      loadingIntervalRef.current = window.setInterval(() => {
+        dots = (dots + 1) % 4;
+        setLoadingProgress(".".repeat(dots));
+      }, 500);
+    }
+
+    return () => {
+      if (loadingIntervalRef.current) {
+        clearInterval(loadingIntervalRef.current);
+      }
+    };
+  }, [loading]);
+
+  useEffect(() => {
     const loadQuartoDocuments = async () => {
+      setLoading(true);
       try {
         const loadedDocuments = await fetchQuartoDocuments();
         setDocuments(loadedDocuments);
@@ -37,6 +58,11 @@ const QuartoList: React.FC = () => {
         setDocuments([]);
         setDisplayedDocuments([]);
         // Shows the "no documents" message
+      } finally {
+        setLoading(false);
+        if (loadingIntervalRef.current) {
+          clearInterval(loadingIntervalRef.current);
+        }
       }
     };
 
@@ -169,7 +195,26 @@ const QuartoList: React.FC = () => {
           />
         </motion.div>
 
-        {displayedDocuments.length === 0 ? (
+        {loading ? (
+          <div 
+            className="loading-container" 
+            style={{ 
+              textAlign: 'center', 
+              padding: 'var(--spacing-xl) 0', 
+              display: 'flex', 
+              flexDirection: 'column', 
+              alignItems: 'center',
+              minHeight: '300px',
+              justifyContent: 'center' 
+            }}
+          >
+            <div className="loading-spinner"></div>
+            <p>Loading blog posts{loadingProgress}</p>
+            <p style={{ fontSize: 'var(--font-size-sm)', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>
+              This may take a moment on first visit
+            </p>
+          </div>
+        ) : displayedDocuments.length === 0 ? (
           <div className="no-documents">
             <p>
               No Quarto documents found.{" "}
