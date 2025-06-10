@@ -69,6 +69,34 @@ function loadCache() {
   return {};
 }
 
+// Function to fix JS errors in all Quarto HTML files
+function fixQuartoHtmlFiles() {
+  if (!fs.existsSync(outputDir)) {
+    console.log("No Quarto HTML directory to fix.");
+    return;
+  }
+  
+  const htmlFiles = fs.readdirSync(outputDir).filter(file => file.endsWith('.html'));
+  
+  for (const file of htmlFiles) {
+    const filePath = path.join(outputDir, file);
+    try {
+      let content = fs.readFileSync(filePath, 'utf8');
+      
+      // Fix common JS syntax issues that conflict with Vite
+      content = content.replace(/\};(?=\s*<\/script>)/g, '}');
+      
+      // Add a meta tag to indicate these files should be skipped by Vite
+      content = content.replace(/<head>/, '<head>\n  <meta name="vite-skip-processing" content="true">');
+      
+      fs.writeFileSync(filePath, content);
+      console.log(`Fixed JS syntax in ${file}`);
+    } catch (error) {
+      console.warn(`Couldn't fix ${file}: ${error.message}`);
+    }
+  }
+}
+
 // Function to save the cache
 function saveCache(cache) {
   fs.writeFileSync(cacheFilePath, JSON.stringify(cache, null, 2));
@@ -109,8 +137,6 @@ function renderQuartoFile(filePath, cache) {
     const fileName = path.basename(filePath);
     const tempOutputName = "output.html";
 
-    // No need to copy theme files anymore - each Quarto document can specify its own theme
-
     // Create a command with direct theme options rather than using a format file
     execSync(
       `cd "${fileDir}" && quarto render "${fileName}" --to html --embed-resources --standalone -o "${tempOutputName}"`,
@@ -119,18 +145,18 @@ function renderQuartoFile(filePath, cache) {
       },
     );
 
-    // No need to clean up theme files anymore
-
     // Now move the file to our desired output location
     const tempOutputPath = path.join(fileDir, tempOutputName);
     
     // Read the rendered HTML
     let htmlContent = fs.readFileSync(tempOutputPath, 'utf8');
     
-    // We'll let the React app handle the "Back to Blog list" button
+    // Fix any JavaScript in the Quarto HTML that might cause issues with Vite
+    // Replace problematic script syntax that's causing build errors
+    htmlContent = htmlContent.replace(/\};(?=\s*<\/script>)/g, '}');
     
-    // Insert any custom styles before the closing body tag if needed
-    htmlContent = htmlContent.replace('</body>', `</body>`);
+    // Remove any script tags that might interfere with Vite
+    // htmlContent = htmlContent.replace(/<script(?:(?!<\/script>).)*<\/script>/gs, '<!-- Scripts removed for Vite compatibility -->');
     
     // Write the modified HTML to the output path
     fs.writeFileSync(outputPath, htmlContent);
@@ -221,9 +247,6 @@ function renderQuartoFile(filePath, cache) {
   <div class="content">
     <pre>${content}</pre>
   </div>
-  <script>
-    // No theme sync script needed
-  </script>
 </body>
 </html>
 `;
@@ -295,6 +318,7 @@ function renderQuartoFiles() {
   <title>Quarto Documents Index</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="vite-skip-processing" content="true">
   <style>
     body { font-family: system-ui, -apple-system, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
     h1 { margin-bottom: 30px; }
@@ -321,6 +345,9 @@ function renderQuartoFiles() {
 
     fs.writeFileSync(indexPath, indexContent);
     console.log(`Created index file at ${indexPath}`);
+    
+    // Fix any JS issues in all Quarto HTML files
+    fixQuartoHtmlFiles();
   } else {
     console.error("No files were successfully rendered.");
   }

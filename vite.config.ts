@@ -13,7 +13,8 @@ export default defineConfig({
     svgr(),
     {
       name: "copy-quarto-html",
-      buildEnd() {
+      // Move to closeBundle to ensure it runs after all processing
+      closeBundle() {
         // Copy the quarto-html directory to dist
         const rootDir = process.cwd();
         const quartoSrcDir = path.resolve(rootDir, "public/quarto-html");
@@ -46,5 +47,21 @@ export default defineConfig({
     alias: {
       "@": "/src", // Optional: add path alias for cleaner imports
     },
+  },
+  build: {
+    rollupOptions: {
+      // Explicitly tell Vite/Rollup to ignore HTML files
+      input: {
+        main: path.resolve(process.cwd(), 'index.html'),
+      },
+      // External files that should not be bundled
+      external: [
+        /public\/quarto-html\/.+\.html$/,
+        /public\/quarto\/.+\.html$/
+      ]
+    }
+  },
+  optimizeDeps: {
+    exclude: ['quarto-html', 'quarto'], // Exclude Quarto directories from dependency scanning
   },
 });
