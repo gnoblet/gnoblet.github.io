@@ -1,11 +1,11 @@
-// src/components/ProjectCard.tsx
+// src/components/cards/ProjectCard.tsx
 import React, { useState } from "react";
-import { Project } from "../types/project";
-import placeholderImage from "../assets/placeholders/project-placeholder.svg";
-import { resolveImagePath } from "../utils/imageUtils";
-import "../styles/common/CardStyles.css";
-import "../styles/components/horizontal/HorizontalCard.css";
-import Tag from "./Tag";
+import { Project } from "../../types/project";
+import placeholderImage from "../../assets/placeholders/project-placeholder.svg";
+import { resolveImagePath } from "../../utils/imageUtils";
+import "../../styles/common/CardStyles.css";
+import "../../styles/components/horizontal/HorizontalCard.css";
+import Tag from "../ui/Tag";
 
 interface ProjectCardProps {
   project: Project;

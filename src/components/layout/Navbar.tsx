@@ -1,11 +1,11 @@
-// src/components/Navbar.tsx
+// src/components/layout/Navbar.tsx
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import styles from "../styles/components/Navbar.module.css";
+import styles from "../../styles/components/navigation/Navbar.module.css";
 // We need to add the navIcon class in the CSS file
 import { FaChartBar, FaLeaf } from "react-icons/fa";
 import { FiMenu, FiX } from "react-icons/fi";
-import ThemeToggle from "./ThemeToggle";
+import ThemeToggle from "../ui/ThemeToggle";
 
 function Navbar() {
   const location = useLocation();

@@ -1,8 +1,8 @@
 // src/pages/Projects.tsx
 import React, { useState, useEffect } from "react";
-import ProjectCard from "../components/ProjectCard.tsx";
-import SearchBar from "../components/SearchBar.tsx";
-import TagFilter from "../components/TagFilter.tsx";
+import ProjectCard from "../components/cards/ProjectCard.tsx";
+import SearchBar from "../components/ui/SearchBar.tsx";
+import TagFilter from "../components/ui/TagFilter.tsx";
 import { projects } from "../data/projects.ts";
 import { Project } from "../types/project.ts";
 import projectStyles from "../styles/pages/Projects.module.css";

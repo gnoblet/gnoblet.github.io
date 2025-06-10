@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../styles/components/TagCloud.module.css";
+import styles from "../../styles/components/ui/TagCloud.module.css";
 import { motion } from "framer-motion";
 import Tag from "./Tag";
 

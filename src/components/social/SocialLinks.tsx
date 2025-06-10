@@ -1,6 +1,6 @@
 import React from "react";
-import { socialIcons } from "../data/social-icons";
-import styles from "../styles/components/SocialLinks.module.css";
+import { socialIcons } from "../../data/social-icons";
+import styles from "../../styles/components/social/SocialLinks.module.css";
 
 interface SocialLinksProps {
   size?: "small" | "medium" | "large";

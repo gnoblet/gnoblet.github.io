@@ -28,6 +28,7 @@ src/
 │   ├── placeholders/ # Placeholder images
 │   └── projects/    # Project images
 ├── components/      # Reusable UI components
+
 ├── content/         # Static content
 │   └── quarto/      # Quarto documents for blog posts
 ├── contexts/        # React contexts
@@ -52,7 +53,7 @@ src/
 
 - **Home**: Full-width landing page with timeline and project showcase
 - **Projects**: Showcase of projects with filtering options
-- **Quarto Blog**: Blog posts rendered from Quarto documents with search functionality
+- **Blog**: Quarto Blog posts rendered from Quarto documents with search functionality
 - **About Me**: Personal information and professional background
 
 ## 🖼️ Image Handling
@@ -381,7 +382,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 For questions or suggestions, please reach out through:
 
-- Email: gnoblet@zaclys.net
+- Email: [gnoblet@zaclys.net](mailto:gnoblet@zaclys.net)
 - GitHub: [gnoblet](https://github.com/gnoblet)
 - LinkedIn: [gnoblet](https://www.linkedin.com/in/gnoblet/)
 - Bluesky: [@gnoblet.bsky.social](https://bsky.app/profile/gnoblet.bsky.social)

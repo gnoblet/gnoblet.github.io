@@ -1,8 +1,8 @@
 import React from 'react';
-import { useColorPalette } from '../contexts/ColorPaletteContext';
+import { useColorPalette } from '../../contexts/ColorPaletteContext';
 import Toggle from './Toggle';
 import { RiPaletteLine } from 'react-icons/ri';
-import styles from '../styles/components/Toggle.module.css';
+import styles from '../../styles/components/Toggle.module.css';
 
 const ColorPaletteToggle: React.FC<{ className?: string }> = ({ className }) => {
   const { palette } = useColorPalette();

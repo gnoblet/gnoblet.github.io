@@ -5,8 +5,8 @@ import QuartoList from "./pages/QuartoList";
 import QuartoPage from "./pages/QuartoPage";
 import Projects from "./pages/Projects";
 import AboutMe from "./pages/AboutMe";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import Navbar from "./components/layout/Navbar";
+import Footer from "./components/layout/Footer";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { ColorPaletteProvider } from "./contexts/ColorPaletteContext"; // Kept for compatibility
 import "./App.css";

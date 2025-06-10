@@ -1,6 +1,6 @@
 import React from "react";
-import { publications } from "../data/publications";
-import "../styles/common/CardList.css";
+import { publications } from "../../data/publications";
+import "../../styles/common/CardList.css";
 
 const Publications: React.FC = () => {
   // Format publication in APA style

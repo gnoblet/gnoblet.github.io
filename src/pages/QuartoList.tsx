@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import SearchBar from "../components/SearchBar";
-import TagFilter from "../components/TagFilter";
+import SearchBar from "../components/ui/SearchBar";
+import TagFilter from "../components/ui/TagFilter.tsx";
 import "../styles/pages/Quarto.css";
 import "../styles/common/CardStyles.css";
 import "../styles/components/horizontal/HorizontalCard.css";
@@ -9,7 +9,7 @@ import useTagFilter from "../hooks/useTagFilter.tsx";
 import { QuartoCard } from "../components/QuartoComponents/QuartoPostsGrid";
 import { fetchQuartoDocuments } from "../utils/quartoService";
 import { QuartoDocument } from "../types/quarto";
-import "../styles/components/FeaturedProjects.module.css";
+import "../styles/components/FeaturesList/FeaturedProjects.module.css";
 import Title from "../components/layout/Title.tsx";
 
 const QuartoList: React.FC = () => {

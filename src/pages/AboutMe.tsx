@@ -1,9 +1,9 @@
 // src/pages/AboutMe.tsx
 import React from "react";
-import Timeline from "../components/Timeline";
-import Education from "../components/Education";
+import Timeline from "../components/content/Timeline";
+import Education from "../components/content/Education";
 import FeaturesList from "../components/FeaturesList";
-import Publications from "../components/Publications";
+import Publications from "../components/content/Publications";
 import Title from "../components/layout/Title";
 
 const AboutMe: React.FC = () => {

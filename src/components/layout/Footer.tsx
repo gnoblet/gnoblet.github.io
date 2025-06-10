@@ -1,8 +1,8 @@
-// src/components/Footer.tsx
+// src/components/layout/Footer.tsx
 import { useState, useEffect } from "react";
 import { animateScroll as scroll } from "react-scroll";
-import styles from "../styles/components/Footer.module.css";
-import SocialLinks from "./SocialLinks";
+import styles from "../../styles/components/layout/Footer.module.css";
+import SocialLinks from "../social/SocialLinks";
 
 function Footer() {
   const [isVisible, setIsVisible] = useState(false);
@@ -34,7 +34,7 @@ function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.footerContent}>
-      <SocialLinks size="medium" className={styles.footerSocialLinks} />
+        <SocialLinks size="medium" className={styles.footerSocialLinks} />
 
         <p className={styles.copyright}>
           &copy; {currentYear} Guillaume Noblet

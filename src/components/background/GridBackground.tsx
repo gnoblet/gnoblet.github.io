@@ -1,6 +1,6 @@
-import React from 'react';
-import { useTheme } from '../contexts/ThemeContext';
-import styles from '../styles/components/GridBackground.module.css';
+import React from "react";
+import { useTheme } from "../../contexts/ThemeContext";
+import styles from "../../styles/components/background/GridBackground.module.css";
 
 type GridBackgroundProps = {
   className?: string;
@@ -10,24 +10,26 @@ type GridBackgroundProps = {
 };
 
 const GridBackground: React.FC<GridBackgroundProps> = ({
-  className = '',
+  className = "",
   gridSize = 60,
   lineColor,
   animated = false,
 }) => {
   const { theme } = useTheme();
-  
+
   // Use theme-appropriate line color if not explicitly provided
-  const themeLineColor = lineColor || 
-    (theme === 'light' 
-      ? 'rgba(0, 0, 0, 0.1)' 
-      : 'rgba(255, 255, 255, 0.15)');
-  
-  const themeClass = theme === 'light' ? styles.gridLightTheme : styles.gridDarkTheme;
-  const animationClass = animated ? `${styles.animatedGrid} ${styles.active}` : '';
-  
+  const themeLineColor =
+    lineColor ||
+    (theme === "light" ? "rgba(0, 0, 0, 0.1)" : "rgba(255, 255, 255, 0.15)");
+
+  const themeClass =
+    theme === "light" ? styles.gridLightTheme : styles.gridDarkTheme;
+  const animationClass = animated
+    ? `${styles.animatedGrid} ${styles.active}`
+    : "";
+
   return (
-    <div 
+    <div
       className={`${styles.gridBackground} ${themeClass} ${animationClass} ${className}`}
     >
       <svg
@@ -66,11 +68,7 @@ const GridBackground: React.FC<GridBackgroundProps> = ({
         </defs>
 
         {/* Apply the pattern to a rectangle covering the entire SVG */}
-        <rect
-          width="100%"
-          height="100%"
-          fill={`url(#grid-pattern-${theme})`}
-        />
+        <rect width="100%" height="100%" fill={`url(#grid-pattern-${theme})`} />
       </svg>
     </div>
   );

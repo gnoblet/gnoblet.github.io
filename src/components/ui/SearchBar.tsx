@@ -1,6 +1,6 @@
-// src/components/SearchBar.tsx
+// src/components/navigation/SearchBar.tsx
 import React from "react";
-import styles from "../styles/components/SearchBar.module.css";
+import styles from "../../styles/components/ui/SearchBar.module.css";
 
 interface SearchBarProps {
   searchTerm: string;

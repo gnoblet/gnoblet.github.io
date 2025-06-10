@@ -1,0 +1,68 @@
+/* src/styles/responsive.css */
+/* Responsive styles with a clean, minimal Zen Browser aesthetic */
+
+/*---- RESPONSIVE ADJUSTMENTS ----*/
+
+@media (max-width: 768px) {
+  /* Navbar adjustments */
+  .navbar-menu {
+    display: none;
+  }
+  
+  .navbar {
+    height: calc(var(--navbar-height) - 8px);
+  }
+  
+  /* Button adjustments */
+  .btn {
+    padding: var(--spacing-xs) var(--spacing-md);
+  }
+  
+  /* Card adjustments */
+  .card {
+    border-radius: var(--border-radius-sm);
+  }
+  
+  .card-body {
+    padding: var(--spacing-md);
+  }
+  
+  /* Container adjustments */
+  .container {
+    padding: 0 var(--spacing-md);
+  }
+  
+  /* Typography adjustments */
+  h1 {
+    font-size: calc(var(--font-size-3xl) * 0.9);
+  }
+  
+  h2 {
+    font-size: calc(var(--font-size-2xl) * 0.9);
+  }
+}
+
+@media (max-width: 480px) {
+  /* Further adjustments for even smaller screens */
+  .btn {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: var(--font-size-sm);
+  }
+  
+  .navbar {
+    height: calc(var(--navbar-height) - 12px);
+  }
+  
+  .card-body {
+    padding: var(--spacing-sm);
+  }
+  
+  /* Typography adjustments */
+  h1 {
+    font-size: calc(var(--font-size-3xl) * 0.8);
+  }
+  
+  h2 {
+    font-size: calc(var(--font-size-2xl) * 0.8);
+  }
+}

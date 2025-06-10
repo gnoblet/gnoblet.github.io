@@ -1,14 +1,14 @@
-// src/components/FeaturedProjects.tsx
+// src/components/content/FeaturedProjects.tsx
 import React from "react";
-import ProjectCard from "./ProjectCard";
-import styles from "../styles/pages/Home.module.css";
-import featuredStyles from "../styles/components/FeaturedProjects.module.css";
+import ProjectCard from "../cards/ProjectCard";
+import styles from "../../styles/pages/Home.module.css";
+import featuredStyles from "../../styles/components/FeaturesList/FeaturedProjects.module.css";
 import { motion } from "framer-motion";
-import { projects } from "../data/projects";
-import "../styles/components/horizontal/HorizontalCard.css";
-import GridBackground from "./GridBackground";
-import ActionButton from "../components/buttons/ActionButton";
-import Title from "../components/layout/Title";
+import { projects } from "../../data/projects";
+import "../../styles/components/horizontal/HorizontalCard.css";
+import GridBackground from "../background/GridBackground";
+import ActionButton from "../buttons/ActionButton";
+import Title from "../layout/Title";
 
 const FeaturedProjects: React.FC = () => {
   return (

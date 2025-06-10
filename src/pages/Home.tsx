@@ -1,18 +1,18 @@
 // src/pages/Home.tsx
 import React from "react";
 import { motion } from "framer-motion";
-import SocialLinks from "../components/SocialLinks";
+import SocialLinks from "../components/social/SocialLinks";
 import styles from "../styles/pages/Home.module.css";
-import FeaturedProjects from "../components/FeaturedProjects";
+import FeaturedProjects from "../components/content/FeaturedProjects";
 import FeaturesList from "../components/FeaturesList";
-import LeafAnimation from "../components/LeafAnimation";
+import LeafAnimation from "../components/background/LeafAnimation";
 import LatestQuartoPosts from "../components/QuartoComponents/LatestQuartoPosts";
 import ActionButton from "../components/buttons/ActionButton";
 import ScrollButton from "../components/buttons/ScrollButton";
 import Title from "../components/layout/Title";
 
 import "../styles/components/horizontal/HorizontalCard.css";
-import contactStyles from "../styles/components/Contact.module.css";
+import contactStyles from "../styles/components/layout/Contact.module.css";
 
 const Home: React.FC = () => {
   return (

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import styles from "../styles/components/Timeline.module.css";
-import { timelineEntries } from "../data/timeline";
-import Tag from "./Tag";
+import styles from "../../styles/components/content/Timeline.module.css";
+import { timelineEntries } from "../../data/timeline";
+import Tag from "../ui/Tag";
 
 const Timeline: React.FC = () => {
   const [hoveredEntry, setHoveredEntry] = useState<number | null>(null);

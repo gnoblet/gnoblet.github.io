@@ -1,7 +1,7 @@
 import React from "react";
-import type { Education } from "../types/education";
-import { educationList } from "../data/education";
-import "../styles/common/CardListWhite.css";
+import type { Education } from "../../types/education";
+import { educationList } from "../../data/education";
+import "../../styles/common/CardListWhite.css";
 
 const EducationItem: React.FC<{ education: Education }> = ({ education }) => {
   const { degree, institution, thesis, years } = education;

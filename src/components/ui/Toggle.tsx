@@ -1,13 +1,13 @@
-import React from 'react';
-import styles from '../styles/components/Toggle.module.css';
-import { ToggleProps } from '../types/toggle';
+import React from "react";
+import styles from "../../styles/components/ui/Toggle.module.css";
+import { ToggleProps } from "../../types/toggle";
 
 const Toggle: React.FC<ToggleProps> = ({
   icon,
   onClick,
   showDot = false,
-  dotColor = '',
-  className = '',
+  dotColor = "",
+  className = "",
   ariaLabel,
   title,
   spacingLeft = false,
@@ -17,16 +17,17 @@ const Toggle: React.FC<ToggleProps> = ({
 }) => {
   const toggleClasses = [
     styles.toggle,
-    spacingLeft ? styles.spacingLeft : '',
-    spacingRight ? styles.spacingRight : '',
-    isAnimating ? styles.animating : '',
-    className
-  ].filter(Boolean).join(' ');
+    spacingLeft ? styles.spacingLeft : "",
+    spacingRight ? styles.spacingRight : "",
+    isAnimating ? styles.animating : "",
+    className,
+  ]
+    .filter(Boolean)
+    .join(" ");
 
-  const iconClasses = [
-    styles.icon,
-    rotateOnHover ? styles.rotateOnHover : ''
-  ].filter(Boolean).join(' ');
+  const iconClasses = [styles.icon, rotateOnHover ? styles.rotateOnHover : ""]
+    .filter(Boolean)
+    .join(" ");
 
   return (
     <button

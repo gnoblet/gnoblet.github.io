@@ -1,8 +1,8 @@
-// src/components/TagFilter.tsx
+// src/components/ui/TagFilter.tsx
 import React from "react";
-import styles from "../styles/components/TagFilter.module.css";
+import styles from "../../styles/components/ui/TagFilter.module.css";
 import { motion } from "framer-motion";
-import Tag from "./Tag";
+import Tag from "../ui/Tag";
 
 interface TagFilterProps {
   tags: string[];
@@ -45,7 +45,11 @@ const TagFilter: React.FC<TagFilterProps> = ({
           />
         </motion.div>
         {tags.map((tag) => (
-          <motion.div key={tag} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+          <motion.div
+            key={tag}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
             <Tag
               text={tag}
               selected={selectedTags.includes(tag)}
