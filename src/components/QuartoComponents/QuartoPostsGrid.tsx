@@ -93,8 +93,8 @@ const QuartoPostsGrid: React.FC<QuartoPostsGridProps> = ({
 
 export const QuartoCard: React.FC<QuartoCardProps> = ({
   doc,
-  onTagClick,
   className = "horizontal-card",
+  onTagClick,
   selectedTags = [],
 }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -144,16 +144,7 @@ export const QuartoCard: React.FC<QuartoCardProps> = ({
         {(doc.categories || []).map((tag) => (
           <span
             key={tag}
-            className={`horizontal-card-tag ${selectedTags.includes(tag) ? "selected" : ""}`}
-            onClick={
-              onTagClick
-                ? (e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    onTagClick(tag);
-                  }
-                : undefined
-            }
+            className="horizontal-card-tag"
           >
             {tag}
           </span>
