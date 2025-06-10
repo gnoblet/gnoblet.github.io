@@ -31,7 +31,7 @@ const Home: React.FC = () => {
           className={styles.sectionContent}
         >
           <img
-            src="src/assets/myself.jpg"
+            src="/assets/myself.jpg"
             alt="Guillaume Noblet"
             className={styles.profileImage}
           />
