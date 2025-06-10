@@ -1,0 +1,122 @@
+/* src/styles/components/ProjectCard.module.css */
+/* Project card specific styling for horizontal layout */
+
+.card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.horizontalCard {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.cardHovered {
+    transform: translateY(-2px);
+}
+
+.cardLink {
+    display: flex !important;
+    flex-direction: row !important;
+    flex: 1 !important;
+    text-decoration: none;
+    color: inherit;
+}
+
+.leftColumn {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 0;
+}
+
+.rightColumn {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+}
+
+.imageContainer {
+    position: relative;
+    height: 150px !important;
+    width: 100%;
+    overflow: hidden;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cardContent {
+    padding: 12px !important;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 4px 0;
+    padding: 8px;
+    line-height: 1.2;
+}
+
+.description {
+    margin-bottom: 8px;
+    font-size: var(--font-size-md);
+    color: var(--text-secondary);
+    line-height: var(--line-height-normal);
+}
+
+.tags {
+    padding: 0 12px 12px 12px;
+    margin-top: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tag {
+    display: inline-flex;
+    align-items: center;
+    background: var(--tag-background);
+    color: var(--tag-text);
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: var(--font-size-sm);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.tagSelected {
+    background: var(--color-accent);
+    color: #ffffff;
+}
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+    .cardLink {
+        flex-direction: column !important;
+    }
+    
+    .leftColumn, .rightColumn {
+        width: 100%;
+    }
+    
+    .leftColumn {
+        padding-bottom: 8px;
+    }
+    
+    .title {
+        margin-bottom: 8px;
+    }
+    
+    .imageContainer {
+        height: 180px !important;
+    }
+}

@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="Personal website and portfolio of Gnoblet - Featuring blog posts, project portfolio, and contact information."
+        />
+        <meta
+            name="keywords"
+            content="portfolio, blog, web developer, software engineer, projects"
+        />
+        <meta name="author" content="Gnoblet" />
+
+        <!-- Favicon -->
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="/apple-touch-icon.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/favicon-32x32.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/favicon-16x16.png"
+        />
+        <link rel="manifest" href="/site.webmanifest" />
+
+        <!-- Open Graph / Social Media -->
+        <meta property="og:title" content="Gnoblet's Portfolio & Blog" />
+        <meta
+            property="og:description"
+            content="Personal website featuring projects, blog posts, and more."
+        />
+        <meta property="og:image" content="/og-image.jpg" />
+        <meta property="og:url" content="https://gnoblet.github.io" />
+        <meta property="og:type" content="website" />
+
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Gnoblet's Portfolio & Blog" />
+        <meta
+            name="twitter:description"
+            content="Personal website featuring projects, blog posts, and more."
+        />
+        <meta name="twitter:image" content="/og-image.jpg" />
+
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- Base Styles (Optional - if you have global styles) -->
+        <link rel="stylesheet" href="/src/index.css" />
+
+        <!-- Title -->
+        <title>Gnoblet | Portfolio & Blog</title>
+    </head>
+    <body>
+        <!-- No-JavaScript warning -->
+        <noscript>
+            <div
+                style="
+                    padding: 20px;
+                    text-align: center;
+                    background-color: #f8d7da;
+                    color: #721c24;
+                    margin: 20px;
+                "
+            >
+                You need to enable JavaScript to run this app.
+            </div>
+        </noscript>
+
+        <!-- Root container for React app -->
+        <div id="root"></div>
+
+        <!-- Main script - the entry point for your Vite app -->
+        <script type="module" src="/src/main.tsx"></script>
+
+        <!-- Optional: Analytics script -->
+        <!--
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+  -->
+    </body>
+</html>

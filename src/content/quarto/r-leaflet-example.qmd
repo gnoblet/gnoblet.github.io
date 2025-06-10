@@ -1,0 +1,277 @@
+---
+title: "Interactive Maps with R and Leaflet"
+author: "Data Explorer"
+date: "2023-12-18"
+categories: [r, maps, leaflet, geospatial, interactive]
+image: "https://images.unsplash.com/photo-1553484771-898ed465e931?q=80&w=1470&auto=format&fit=crop"
+excerpt: "Learn how to create interactive maps with R and Leaflet, demonstrating custom markers, popups, and visualizing European population density data."
+format: 
+  html:
+    theme: darkly
+    minimal: true
+    page-layout: article
+    toc: true
+    code-fold: false
+    code-tools: true
+    self-contained: true
+    embed-resources: true
+    highlight-style: atom-one-dark
+    include-in-header:
+      - text: |
+          <style>
+            /* Hide all navigation elements */
+            nav, header.navbar, .navbar, .quarto-navbar, .sidebar {
+              display: none !important;
+            }
+            
+            /* Global dark theme adjustments */
+            :root {
+              color-scheme: dark;
+            }
+            
+            body {
+              font-family: 'Nunito', sans-serif;
+              background-color: #121212;
+              color: #e0e0e0;
+            }
+            
+            /* Adjust link colors for better visibility */
+            a {
+              color: #89AAFF;
+            }
+            
+            a:hover {
+              color: #aac1ff;
+            }
+            
+            /* Fix for Leaflet popup text color */
+            .leaflet-popup-content {
+              color: #333;
+            }
+          </style>
+---
+
+# Interactive Maps with R and Leaflet
+
+[Leaflet](https://leafletjs.com/) is one of the most popular open-source JavaScript libraries for interactive maps. The R package `leaflet` provides an easy-to-use interface to create interactive web maps directly from R.
+
+## Getting Started with Leaflet
+
+First, let's load the necessary packages:
+
+```{r setup}
+#| message: false
+#| warning: false
+
+library(leaflet)
+library(dplyr)
+library(htmltools)
+
+# Set custom dark map tiles for the dark theme
+dark_tiles <- "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+dark_attr <- 'Map tiles by <a href="https://carto.com/attributions">CARTO</a>, under CC BY 3.0. Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+```
+
+## Basic Map
+
+Let's start with a simple world map:
+
+```{r basic-map}
+#| fig-height: 6
+
+leaflet() %>% 
+  addProviderTiles(
+    "CartoDB.DarkMatter",
+    options = providerTileOptions(minZoom = 0, maxZoom = 19)
+  ) %>%
+  setView(lng = 0, lat = 30, zoom = 2)  # Set initial view
+```
+
+## Adding Markers and Popups
+
+We can add markers to specific locations with popup information:
+
+```{r markers}
+#| fig-height: 6
+
+# Create some sample data for capital cities
+capitals <- data.frame(
+  city = c("Paris", "London", "Berlin", "Rome", "Madrid"),
+  lat = c(48.8566, 51.5074, 52.5200, 41.9028, 40.4168),
+  lng = c(2.3522, -0.1278, 13.4050, 12.4964, -3.7038),
+  pop = c(2.2, 8.9, 3.7, 2.8, 3.2)  # Population in millions
+)
+
+leaflet(capitals) %>% 
+  addProviderTiles(
+    "CartoDB.DarkMatter",
+    options = providerTileOptions(minZoom = 0, maxZoom = 19)
+  ) %>%
+  setView(lng = 10, lat = 48, zoom = 4) %>%
+  addMarkers(
+    ~lng, ~lat, 
+    popup = ~paste("<strong>", city, "</strong><br>Population:", pop, "million"),
+    label = ~city
+  )
+```
+
+## Customizing Markers
+
+We can use custom markers with different colors:
+
+```{r custom-markers}
+#| fig-height: 6
+
+# Create custom icons
+icons <- awesomeIcons(
+  icon = 'building',
+  iconColor = 'white',
+  library = 'fa',
+  markerColor = c('red', 'blue', 'green', 'orange', 'purple')
+)
+
+leaflet(capitals) %>% 
+  addProviderTiles(
+    "CartoDB.DarkMatter",
+    options = providerTileOptions(minZoom = 0, maxZoom = 19)
+  ) %>%
+  setView(lng = 10, lat = 48, zoom = 4) %>%
+  addAwesomeMarkers(
+    ~lng, ~lat,
+    icon = icons,
+    popup = ~paste("<strong>", city, "</strong><br>Population:", pop, "million"),
+    label = ~city
+  )
+```
+
+## Circle Markers with Population Size
+
+Let's represent the population as differently sized circle markers:
+
+```{r circles}
+#| fig-height: 6
+
+leaflet(capitals) %>% 
+  addProviderTiles(
+    "CartoDB.DarkMatter",
+    options = providerTileOptions(minZoom = 0, maxZoom = 19)
+  ) %>%
+  setView(lng = 10, lat = 48, zoom = 4) %>%
+  addCircleMarkers(
+    ~lng, ~lat,
+    popup = ~paste("<strong>", city, "</strong><br>Population:", pop, "million"),
+    label = ~city,
+    radius = ~pop * 3,  # Circle size based on population
+    color = "#FF5C5C",
+    stroke = FALSE,
+    fillOpacity = 0.7
+  )
+```
+
+## Different Map Providers
+
+Leaflet allows you to use different map tile providers:
+
+```{r tile-providers}
+#| fig-height: 6
+
+leaflet() %>%
+  setView(lng = 10, lat = 48, zoom = 4) %>%
+  
+  # Add multiple base layers, starting with dark ones to match the theme
+  addProviderTiles(providers$CartoDB.DarkMatter, group = "Dark Matter") %>%
+  addProviderTiles(providers$Esri.WorldDarkGrayCanvas, group = "Dark Canvas") %>%
+  addProviderTiles(providers$CartoDB.Positron, group = "Light") %>%
+  addProviderTiles(providers$Esri.WorldImagery, group = "Satellite") %>%
+  
+  # Add layer controls
+  addLayersControl(
+    baseGroups = c("Dark Matter", "Dark Canvas", "Light", "Satellite"),
+    options = layersControlOptions(collapsed = FALSE)
+  )
+```
+
+## Population Density Visualization
+
+Let's create a visualization showing population density for a sample of European countries:
+
+```{r choropleth}
+#| fig-height: 6
+#| warning: false
+
+# Create a simple dataset of European countries
+eu_countries <- data.frame(
+  country = c("France", "Germany", "Italy", "Spain", "UK", 
+              "Poland", "Romania", "Netherlands", "Belgium", "Greece"),
+  lat = c(46.2276, 51.1657, 41.8719, 40.4637, 55.3781,
+          51.9194, 45.9432, 52.1326, 50.5039, 39.0742),
+  lng = c(2.2137, 10.4515, 12.5674, -3.7492, -3.4360,
+          19.1451, 24.9668, 5.2913, 4.4699, 21.8243),
+  density = c(119, 240, 206, 93, 281, 
+              124, 84, 508, 383, 82)  # Population density per km²
+)
+
+# Create a color palette
+pal <- colorNumeric(
+  palette = "YlOrRd",
+  domain = eu_countries$density
+)
+
+# Create the map
+leaflet() %>%
+  addProviderTiles(providers$CartoDB.DarkMatter) %>%
+  setView(lng = 10, lat = 50, zoom = 4) %>%
+  addCircleMarkers(
+    data = eu_countries,
+    lng = ~lng, 
+    lat = ~lat,
+    radius = ~sqrt(density) / 2,
+    fillColor = ~pal(density),
+    color = "#ffffff",
+    weight = 1,
+    opacity = 1,
+    fillOpacity = 0.8,
+    popup = ~paste(
+      "<strong>", country, "</strong><br>",
+      "Population Density: ", density, " people/km²"
+    )
+  ) %>%
+  addLegend(
+    pal = pal,
+    values = eu_countries$density,
+    opacity = 0.9,
+    title = "Population Density<br>(people/km²)",
+    position = "bottomright",
+    labFormat = labelFormat(suffix = " /km²")
+  )
+```
+
+## Adding Custom Controls and Minimap
+
+We can enhance our maps with additional features like a minimap:
+
+```{r minimap}
+#| fig-height: 6
+
+leaflet() %>%
+  addProviderTiles(providers$CartoDB.DarkMatter) %>%
+  setView(lng = -73.9866, lat = 40.7306, zoom = 13) %>%  # New York City
+  addMiniMap(
+    tiles = providers$CartoDB.DarkMatterNoLabels,
+    toggleDisplay = TRUE
+  ) %>%
+  # Add a scale bar
+  addScaleBar(position = "bottomleft")
+```
+
+## Conclusion
+
+This example has shown how easy it is to create interactive maps with R and Leaflet. The combination provides a powerful tool for geospatial data visualization with features like:
+
+- Interactive zooming and panning
+- Multiple base map options
+- Custom markers and popups
+- Population density visualization with proportional symbols
+- Layer controls and minimaps
+
+The possibilities for mapping and visualizing geospatial data are extensive. You can combine these features with your own datasets for effective geospatial storytelling and analysis.

@@ -1,0 +1,56 @@
+/* src/styles/theme/colors.css */
+/* Default color palette - these are fallbacks if no palette is applied */
+/* Most color definitions are now in palette-blue.css */
+
+:root {
+    /* Transparent colors that are not palette-specific */
+    --color-transparent: transparent;
+
+    /* Default color values (used only if no palette class is applied) */
+    /* These are duplicated from palette-blue.css since blue is the default palette */
+    --color-primary: #5b6fe9;
+    --color-primary-rgb: 91, 111, 233;
+    --color-primary-hover: #4a5ed8;
+    --color-primary-light: rgba(91, 111, 233, 0.2);
+    --color-primary-translucent: rgba(91, 111, 233, 0.1);
+
+    --color-accent: #8aa9f4;
+    --color-accent-rgb: 138, 169, 244;
+    --color-accent-hover: #7998e7;
+    --color-accent-light: rgba(138, 169, 244, 0.2);
+    --color-accent-lighter: #dce7ff;
+
+    --color-light-bg: #ffffff;
+    --color-light-bg-secondary: #f5f7fa;
+    --color-light-bg-tertiary: #e9ecf3;
+    --color-light-translucent: rgba(245, 247, 250, 0.8);
+
+    --color-dark-bg: #1a1b26;
+    --color-dark-bg-secondary: #393f5e;
+    --color-dark-bg-tertiary: #2e3348;
+    --color-dark-translucent: rgba(26, 27, 38, 0.8);
+
+    --color-text-light: #ffffff;
+    --color-text-dark: #24283b;
+    --color-text-secondary: #e9f4ff;
+    --color-text-muted-light: rgba(255, 255, 255, 0.7);
+    --color-text-muted-dark: rgba(36, 40, 59, 0.7);
+
+    --color-white: #ffffff;
+    --color-black: #000000;
+    --color-gray-100: #f0f2f5;
+    --color-gray-300: #d1d5df;
+    --color-gray-500: #8e95ac;
+    --color-gray-700: #4a5173;
+    --color-gray-900: #1a1b26;
+
+    --color-white-transparent-20: rgba(255, 255, 255, 0.2);
+    --color-white-transparent-50: rgba(255, 255, 255, 0.5);
+    --color-black-transparent-20: rgba(0, 0, 0, 0.2);
+    --color-black-transparent-50: rgba(0, 0, 0, 0.5);
+
+    --color-success: #5dadad;
+    --color-warning: #e0af68;
+    --color-error: #db6161;
+    --color-info: #7aa2f7;
+}

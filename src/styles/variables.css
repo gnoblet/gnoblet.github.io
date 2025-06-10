@@ -1,0 +1,26 @@
+/* src/styles/variables.css */
+/* 
+   This file is maintained for backward compatibility.
+   All variables have been moved to the theme system.
+   Import the theme system components as needed.
+*/
+
+@import './theme/index.css';
+
+/* 
+   Legacy variables are redirected to their semantic equivalents
+   in the new theming system. This preserves reference to the main
+   theme file while maintaining a clean structure.
+*/
+
+:root {
+  /* Layout - redirected */
+  --navbar-height: var(--navbar-height);
+  --content-max-width: var(--content-max-width);
+  --border-radius: var(--border-radius-sm);
+  --border-radius-large: var(--border-radius-md);
+  --border-radius-pill: var(--border-radius-pill);
+
+  /* Transitions - redirected */
+  --transition-standard: var(--transition-standard);
+}

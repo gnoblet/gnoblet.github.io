@@ -1,0 +1,155 @@
+---
+title: "Dark Blue Theme Example"
+author: "Guillaume Noblet"
+date: "2023-12-20"
+categories: [quarto, styling, customization, dark-theme]
+image: "https://images.unsplash.com/photo-1518443855757-dfadac7101ae?q=80&w=1470&auto=format&fit=crop"
+excerpt: "A Quarto document example using a custom dark blue theme that matches the website's color palette."
+format: 
+  html:
+    theme: templates/website-dark-blue.scss
+    minimal: true
+    page-layout: article
+    toc: true
+    code-fold: false
+    code-tools: true
+    self-contained: true
+    embed-resources: true
+---
+
+# Dark Blue Theme for Quarto Documents
+
+This document demonstrates how to use a custom dark blue theme in Quarto that matches the website's color palette. The theme provides a consistent visual experience with dark backgrounds and a blue accent color scheme.
+
+## Theme Features
+
+The dark blue theme includes:
+
+- Dark backgrounds with blue accents
+- Optimized code highlighting for dark mode
+- Custom styled tables and callouts
+- Typography that matches the main website
+- Proper color contrast for readability
+
+## Code Examples
+
+Here's how code blocks look in this theme:
+
+```python
+# A simple Python function
+def calculate_fibonacci(n):
+    """Calculate the Fibonacci sequence up to n"""
+    fib = [0, 1]
+    while len(fib) < n:
+        fib.append(fib[-1] + fib[-2])
+    return fib
+
+# Generate first 10 Fibonacci numbers
+fibonacci = calculate_fibonacci(10)
+print(f"Fibonacci sequence: {fibonacci}")
+```
+
+And here's some R code with execution:
+
+```{r}
+#| label: r-visualization
+#| fig-cap: "Bar plot with website color palette"
+
+# Create a simple dataset
+categories <- c("Category A", "Category B", "Category C", "Category D")
+values <- c(32, 47, 25, 15)
+
+# Create a bar plot
+barplot(values, 
+        names.arg = categories,
+        col = "#5B6FE9",
+        border = NA,
+        main = "Sample Plot with Website Colors",
+        xlab = "Categories",
+        ylab = "Values")
+```
+
+## Tables
+
+Tables are styled to match the dark theme:
+
+| Feature | Description | Status |
+|---------|-------------|--------|
+| Dark background | Main document background | ✓ |
+| Code highlighting | Syntax colors optimized for dark mode | ✓ |
+| Tables | Styled with theme-appropriate colors | ✓ |
+| Math equations | Support for LaTeX math | ✓ |
+| Diagrams | Support for mermaid and other diagrams | ✓ |
+
+## Callouts
+
+Here are examples of callouts with the dark blue theme styling:
+
+::: {.callout-note}
+## Note
+This is a note callout styled to match the website theme.
+:::
+
+::: {.callout-tip}
+## Tip
+This is a tip callout with styling that matches the accent colors.
+:::
+
+::: {.callout-warning}
+## Warning
+This is a warning callout with appropriate warning colors.
+:::
+
+::: {.callout-important}
+## Important
+This is an important callout with attention-grabbing styling.
+:::
+
+## Mathematical Equations
+
+The theme properly handles mathematical equations:
+
+$$
+f(x) = \int_{-\infty}^{\infty} \hat{f}(\xi) e^{2\pi i \xi x} d\xi
+$$
+
+Inline equations like $E = mc^2$ are also styled appropriately.
+
+## Diagrams
+
+The dark theme works well with diagrams:
+
+```{mermaid}
+flowchart LR
+  A[Start] --> B{Decision}
+  B -->|Yes| C[Process 1]
+  B -->|No| D[Process 2]
+  C --> E[End]
+  D --> E
+```
+
+## Using This Theme
+
+To use this dark blue theme in your own Quarto documents, add these lines to your document's YAML header:
+
+```yaml
+format: 
+  html:
+    theme: templates/website-dark-blue.scss
+    minimal: true
+    page-layout: article
+    toc: true
+```
+
+## Benefits of the Dark Blue Theme
+
+Using this theme offers several advantages:
+
+1. **Reduced eye strain** - Dark mode is easier on the eyes, especially at night
+2. **Visual consistency** - Maintains the brand identity of the main website
+3. **Improved code readability** - Syntax highlighting optimized for dark backgrounds
+4. **Professional appearance** - Polished, modern look for technical content
+
+## Conclusion
+
+The dark blue theme provides a consistent visual experience that aligns with the main website's design while offering excellent readability for technical content. It's particularly well-suited for code-heavy documents and presentations that will be viewed in low-light environments.

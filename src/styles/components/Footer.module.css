@@ -1,0 +1,84 @@
+/* src/styles/components/Footer.module.css */
+.footer {
+    background-color: var(--footer-background);
+    color: var(--footer-text);
+    padding: var(--spacing-xl) 0 var(--spacing-lg);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 0;
+    position: relative;
+    border-top: 1px solid var(--card-border);
+}
+
+.footerContent {
+    width: 100%;
+    max-width: var(--content-max-width);
+    padding: 0 var(--container-padding);
+    text-align: center;
+    position: relative;
+}
+
+.footerSocialLinks {
+    margin-bottom: var(--spacing-lg);
+}
+
+.copyright {
+    font-size: var(--font-size-sm);
+    opacity: 0.8;
+    color: var(--text-secondary);
+    margin-top: var(--spacing-md);
+}
+
+/* Scroll to top button styles */
+.scrollTopButton {
+    position: fixed;
+    bottom: var(--spacing-xl);
+    right: var(--spacing-xl);
+    width: 40px;
+    height: 40px;
+    border-radius: var(--border-radius-circle);
+    background-color: var(--card-background);
+    color: var(--text-secondary);
+    border: 1px solid var(--card-border);
+    box-shadow: var(--shadow-small);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.25s var(--transition-timing);
+    z-index: var(--z-index-fixed);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.scrollTopButton.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.scrollTopButton:hover {
+    background-color: var(--color-accent-light);
+    color: var(--color-accent);
+    border-color: var(--color-accent-light);
+    box-shadow: 0 3px 6px rgba(var(--color-accent-rgb), 0.2);
+    transform: translateY(-2px);
+}
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+    .footer {
+        padding: var(--spacing-lg) 0 var(--spacing-md);
+    }
+
+    .scrollTopButton {
+        bottom: var(--spacing-lg);
+        right: var(--spacing-lg);
+        width: 36px;
+        height: 36px;
+    }
+}
+
+/* BlueSky icon styling moved to SocialLinks.module.css */

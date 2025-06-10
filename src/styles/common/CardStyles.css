@@ -1,0 +1,221 @@
+/* src/styles/common/CardStyles.css */
+/* Common card styling with Zen Browser-inspired minimal aesthetic */
+
+.card {
+    display: flex;
+    flex-direction: column;
+    background: var(--card-background);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-small);
+    transition: transform 0.25s var(--transition-timing), 
+                box-shadow 0.25s var(--transition-timing),
+                border-color 0.25s var(--transition-timing);
+    color: inherit;
+    border: 1px solid var(--card-border);
+    height: 100%;
+    position: relative;
+    border-left: 2px solid transparent;
+    z-index: var(--z-index-base);
+}
+
+/* Horizontal card layout styles */
+.horizontal-card {
+    flex-direction: column;
+}
+
+.horizontal-card-link {
+    display: flex;
+    flex-direction: row;
+}
+
+.left-column {
+    flex: 0 0 38%;
+    display: flex;
+    flex-direction: column;
+}
+
+.right-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover,
+.card-hovered {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+    background: var(--card-hover-background);
+    border-left: 2px solid var(--color-accent);
+    z-index: var(--z-index-dropdown);
+    opacity: 1 !important;
+}
+
+.image-container {
+    width: 100%;
+    height: 150px;
+    overflow: hidden;
+    position: relative;
+}
+
+.card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s var(--transition-timing);
+    filter: brightness(0.98);
+}
+
+.card:hover .card-image,
+.card-link:hover .card-image {
+    transform: scale(1.03);
+    filter: brightness(1);
+}
+
+.card-content {
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    position: relative;
+    z-index: 1;
+    height: 100%;
+}
+
+.card-title {
+    font-size: var(--font-size-lg);
+    margin: var(--spacing-sm) 0 0;
+    padding: 0 var(--spacing-sm);
+    color: var(--text-heading);
+    font-weight: var(--font-weight-semibold);
+}
+
+.card-description {
+    font-size: var(--font-size-md);
+    color: var(--text-secondary);
+    line-height: var(--line-height-normal);
+    margin-bottom: var(--spacing-sm);
+    flex-grow: 1;
+}
+
+.card-link {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    text-decoration: none;
+    color: inherit;
+}
+
+.tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    margin-top: auto;
+    padding: 0 var(--spacing-md) var(--spacing-md) var(--spacing-md);
+}
+
+.tag {
+    font-size: var(--font-size-xs);
+    background-color: var(--color-accent-light);
+    color: var(--text-body);
+    padding: 3px 8px;
+    border-radius: var(--border-radius-pill);
+    transition: var(--transition-standard);
+    border: 1px solid var(--color-accent);
+    position: relative;
+}
+
+.tag-prefix {
+    color: var(--text-body);
+    font-weight: var(--font-weight-bold);
+    margin-right: 2px;
+    opacity: 0.9;
+}
+
+.tag:hover {
+    background-color: var(--color-accent);
+    color: var(--color-white);
+    transform: translateY(-1px);
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(var(--color-accent-rgb), 0.2);
+    border-color: var(--color-accent);
+    position: relative;
+    z-index: 2;
+}
+
+.tag-selected {
+    background: var(--color-accent);
+    color: var(--color-white);
+    border-color: var(--color-accent);
+    box-shadow: 0 2px 4px rgba(var(--color-accent-rgb), 0.2);
+    font-weight: var(--font-weight-medium);
+    transform: translateY(-1px);
+}
+
+.tag-selected .tag-prefix {
+    color: var(--color-white);
+    opacity: 1;
+}
+
+.tag:hover .tag-prefix {
+    color: var(--color-white);
+    opacity: 1;
+}
+
+.tag-selected:hover {
+    background: var(--color-accent-hover);
+    border-color: var(--color-accent-hover);
+    box-shadow: 0 3px 5px rgba(var(--color-accent-rgb), 0.35);
+}
+
+/* Icon-specific styling for Quarto cards */
+.card-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+    background-color: rgba(var(--color-accent-rgb), 0.08);
+    color: var(--color-accent);
+    font-size: var(--font-size-2xl);
+    transition: all 0.3s var(--transition-timing);
+}
+
+.card:hover .card-icon {
+    transform: scale(1.02);
+    background-color: rgba(var(--color-accent-rgb), 0.12);
+}
+
+/* Dark mode adjustments */
+.dark .card {
+    background: var(--card-background);
+}
+
+.dark .card:hover,
+.dark .card-hovered {
+    background: var(--card-hover-background);
+}
+
+/* Media queries for responsive adjustments */
+@media (max-width: 768px) {
+    .card-content {
+        padding: var(--spacing-sm);
+    }
+    
+    .tags-container {
+        padding: 0 var(--spacing-md) var(--spacing-md) var(--spacing-md);
+    }
+    
+    .horizontal-card-link {
+        flex-direction: column;
+    }
+    
+    .left-column, .right-column {
+        flex: 1;
+        width: 100%;
+    }
+}

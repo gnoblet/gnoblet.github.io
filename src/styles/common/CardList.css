@@ -1,0 +1,110 @@
+/* src/styles/common/CardList.css */
+/* Common styling for card-based lists (Features, Publications, etc.) */
+
+.card-list-container {
+    width: 100%;
+    margin: var(--spacing-md) 0;
+}
+
+.card-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    width: 100%;
+    max-width: var(--content-width-narrow);
+    margin-top: var(--spacing-lg);
+}
+
+.card-item {
+    background-color: rgba(var(--color-accent-rgb), 0.3);
+    border-left: 3px solid var(--color-accent);
+    border-radius: var(--border-radius-md);
+    transition:
+        transform 0.25s var(--transition-timing),
+        background-color 0.25s var(--transition-timing),
+        box-shadow 0.25s var(--transition-timing);
+    box-shadow: var(--shadow-small);
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+}
+
+.card-item:hover {
+    transform: translateY(-2px);
+    background-color: rgba(var(--color-accent-rgb), 0.5);
+    box-shadow: var(--shadow-medium);
+}
+
+.card-link {
+    text-decoration: none;
+    color: inherit !important;
+    display: block;
+    padding: var(--spacing-lg) var(--spacing-lg);
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.card-link:hover,
+a.card-link:hover,
+.card-item a,
+.card-item a:hover {
+    color: inherit !important;
+    text-decoration: none;
+}
+
+.card-content {
+    font-size: var(--font-size-md);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+/* Publication-specific styles */
+.publication-citation {
+    font-size: var(--font-size-md);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+@media (max-width: 768px) {
+    .publication-citation {
+        font-size: var(--font-size-sm);
+    }
+}
+
+.journal-name {
+    font-style: italic;
+}
+
+/* Feature-specific styles */
+.feature-title {
+    font-weight: var(--font-weight-bold);
+    margin-right: var(--spacing-xs);
+    display: inline-block;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .card-link {
+        padding: var(--spacing-xs) var(--spacing-sm);
+    }
+
+    .card-content {
+        font-size: var(--font-size-sm);
+    }
+}
+
+@media (max-width: 576px) {
+    .card-list {
+        margin-top: var(--spacing-md);
+    }
+
+    .card-item {
+        margin-bottom: var(--spacing-sm);
+    }
+}

@@ -1,0 +1,51 @@
+/* Contact.module.css */
+.contactSection {
+  background-color: var(--color-background-secondary);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Simple clean background with no effects */
+
+/* No pattern overlay */
+
+.contactContent {
+  position: relative;
+  z-index: 2;
+  color: var(--text-primary);
+  padding: 0;
+}
+
+.contactTitle {
+  position: relative;
+  display: inline-block;
+}
+
+.contactTitle::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70px;
+  height: 3px;
+  background-color: var(--color-accent);
+  border-radius: 3px;
+}
+
+.contactSubtitle {
+  margin-top: var(--spacing-md);
+  max-width: 600px;
+}
+
+.contactText {
+  text-align: center;
+}
+
+/* Button styles moved to ActionButton.module.css */
+
+@media (max-width: 768px) {
+  .contactSection {
+    padding: var(--spacing-xl) var(--spacing-md);
+  }
+}

@@ -1,0 +1,80 @@
+/* SocialLinks.module.css */
+.socialLinks {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-xl);
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.socialLinks a {
+    color: var(--text-heading);
+    transition: all 0.2s var(--transition-timing);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--border-radius-circle);
+    background-color: transparent;
+    border: 1px solid var(--text-heading);
+}
+
+.socialLinks a:hover {
+    color: var(--color-accent);
+    transform: translateY(-2px);
+    background-color: var(--color-accent-light);
+    border-color: var(--color-accent-light);
+    box-shadow: 0 2px 5px rgba(var(--color-accent-rgb), 0.15);
+}
+
+/* Size variants */
+.small {
+    width: 30px;
+    height: 30px;
+    font-size: var(--font-size-md);
+}
+
+.medium {
+    width: 40px;
+    height: 40px;
+    font-size: var(--font-size-xl);
+}
+
+.large {
+    width: 50px;
+    height: 50px;
+    font-size: var(--font-size-2xl);
+}
+
+/* Bluesky icon styling */
+.blueskyIcon {
+    width: 25px;
+    height: 25px;
+    filter: brightness(0) invert(0.6);
+    transition: all 0.2s var(--transition-timing);
+}
+
+.blueskyLink:hover .blueskyIcon {
+    filter: brightness(0) invert(0.4) sepia(1) saturate(5) hue-rotate(180deg);
+}
+
+/* Responsive styles */
+@media (max-width: var(--breakpoint-md)) {
+    .large {
+        width: 45px;
+        height: 45px;
+        font-size: var(--font-size-xl);
+    }
+    
+    .medium {
+        width: 35px;
+        height: 35px;
+        font-size: var(--font-size-lg);
+    }
+    
+    .small {
+        width: 28px;
+        height: 28px;
+        font-size: var(--font-size-md);
+    }
+}

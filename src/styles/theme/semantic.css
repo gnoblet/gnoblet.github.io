@@ -1,0 +1,155 @@
+/* src/styles/theme/semantic.css */
+/* Semantic variables that map to our color system inspired by Zen Browser */
+:root {
+  /* Light mode (default) */
+  /* UI Element Colors */
+  --color-background-primary: var(--color-light-bg);
+  --color-background-secondary: var(--color-light-bg-secondary);
+  --color-background-tertiary: var(--color-light-bg-tertiary);
+  --color-background-accent: var(--color-accent);
+  
+  /* Card & Container Styling */
+  --card-background: var(--color-white);
+  --card-background-alt: var(--color-gray-100);
+  --card-background-translucent: rgba(255, 255, 255, 0.7);
+  --card-border: var(--color-gray-300);
+  --card-hover-background: var(--color-gray-100);
+  
+  /* Text Colors */
+  --text-primary: var(--color-text-dark);
+  --text-secondary: var(--color-text-dark);
+  --text-muted: var(--color-text-muted-dark);
+  --text-accent: var(--color-primary);
+  --text-heading: var(--color-text-dark);
+  --text-body: var(--color-text-dark);
+  --text-link: var(--color-primary);
+  --text-link-hover: var(--color-primary-hover);
+  
+  /* Button Colors */
+  --button-primary-background: var(--color-primary);
+  --button-primary-text: var(--color-text-light);
+  --button-primary-hover: var(--color-primary-hover);
+  --button-secondary-background: var(--color-gray-300);
+  --button-secondary-text: var(--color-text-dark);
+  --button-secondary-hover: var(--color-gray-500);
+  
+  /* Navigation */
+  --navbar-background: var(--color-accent-lighter);
+  --navbar-text: var(--color-text-dark);
+  --navbar-active: var(--color-primary);
+  --navbar-hover: var(--color-primary);
+  --navbar-border: var(--color-primary);
+  
+  /* Footer */
+  --footer-background: var(--color-accent-lighter);
+  --footer-text: var(--color-text-dark);
+  
+  /* Tags & Badges */
+  --tag-background: var(--color-primary-translucent);
+  --tag-text: var(--color-accent);
+  --tag-hover-background: var(--color-primary-light);
+  
+  /* Shadows & Effects */
+  --shadow-small: 0 2px 5px var(--color-black-transparent-20);
+  --shadow-medium: 0 4px 6px var(--color-black-transparent-20);
+  --shadow-large: 0 10px 20px var(--color-black-transparent-20);
+  --glow-primary: 0 0 15px rgba(var(--color-primary-rgb), 0.3);
+  
+  /* Form Elements */
+  --input-background: var(--color-white);
+  --input-border: var(--color-gray-300);
+  --input-text: var(--color-text-dark);
+  --input-focus-border: var(--color-primary);
+  
+  /* Overlay & Modal */
+  --overlay-background: var(--color-black-transparent-50);
+  --modal-background: var(--card-background);
+  --modal-border: var(--card-border);
+  
+  /* Status Colors */
+  --status-success: var(--color-success);
+  --status-warning: var(--color-warning);
+  --status-error: var(--color-error);
+  --status-info: var(--color-info);
+}
+
+/* Dark mode overrides */
+.dark {
+/* UI Element Colors */
+--color-background-primary: var(--color-dark-bg);
+--color-background-secondary: var(--color-dark-bg-secondary);
+--color-background-tertiary: var(--color-dark-bg-tertiary);
+--color-background-accent: var(--color-accent);
+  
+/* Card & Container Styling */
+--card-background: var(--color-dark-bg-secondary);
+--card-background-alt: var(--color-dark-bg-tertiary);
+--card-background-translucent: var(--color-dark-translucent);
+--card-border: var(--color-white-transparent-20);
+--card-hover-background: var(--color-gray-700);
+  
+  /* Text Colors */
+  --text-primary: var(--color-text-light);
+  --text-secondary: var(--color-white);
+  --text-muted: var(--color-text-muted-light);
+  --text-accent: var(--color-accent);
+  --text-heading: var(--color-white);
+  --text-body: var(--color-white);
+  --text-body: var(--color-white);
+  --text-link: var(--color-accent);
+  --text-link-hover: var(--color-accent-hover);
+  
+  /* Button Colors */
+  --button-primary-background: var(--color-primary);
+  --button-primary-text: var(--color-text-light);
+  --button-primary-hover: var(--color-primary-hover);
+  --button-secondary-background: var(--color-dark-translucent);
+  --button-secondary-text: var(--color-text-light);
+  --button-secondary-hover: var(--color-dark-bg-tertiary);
+  
+  /* Navigation */
+  --navbar-background: var(--color-dark-bg);
+  --navbar-text: var(--color-text-light);
+  --navbar-active: var(--color-accent);
+  --navbar-hover: var(--color-accent);
+  --navbar-border: var(--color-accent);
+  
+  /* Footer */
+  --footer-background: var(--color-dark-bg);
+  --footer-text: var(--color-text-light);
+  
+  /* Tags & Badges */
+  --tag-background: var(--color-primary-translucent);
+  --tag-text: var(--color-accent);
+  --tag-hover-background: var(--color-primary-light);
+  
+  /* Form Elements */
+  --input-background: var(--color-white-transparent-20);
+  --input-border: var(--color-white-transparent-50);
+  --input-text: var(--color-text-light);
+  --input-focus-border: var(--color-accent);
+  
+  /* Shadows & Effects */
+  --shadow-small: 0 2px 5px var(--color-black-transparent-50);
+  --shadow-medium: 0 4px 6px var(--color-black-transparent-50);
+  --shadow-large: 0 10px 20px var(--color-black-transparent-50);
+  --glow-primary: 0 0 15px rgba(var(--color-accent-rgb), 0.3);
+  
+  /* Status Colors - slightly muted for dark mode */
+  --status-success: var(--color-success);
+  --status-warning: var(--color-warning);
+  --status-error: var(--color-error);
+  --status-info: var(--color-info);
+}
+
+/* Media query for system preference - maintain for compatibility */
+@media (prefers-color-scheme: dark) {
+  :root.system-theme {
+    --color-background-primary: var(--color-dark-bg);
+    --color-background-secondary: var(--color-dark-bg-secondary);
+    --color-background-tertiary: var(--color-dark-bg-tertiary);
+    --card-background: var(--color-dark-bg-secondary);
+    --card-background-translucent: var(--color-dark-translucent);
+    --card-hover-background: var(--color-gray-700);
+  }
+}

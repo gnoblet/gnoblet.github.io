@@ -1,0 +1,217 @@
+.navbar {
+    background-color: var(--navbar-background);
+    height: var(--navbar-height);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: var(--z-index-fixed);
+    box-shadow: var(--shadow-small);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--card-border);
+    transition: background-color 0.25s var(--transition-timing),
+                box-shadow 0.25s var(--transition-timing);
+}
+
+.navbarContainer {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: var(--content-max-width);
+    padding: 0 var(--container-padding);
+    position: relative;
+}
+
+.navbarLogo {
+    color: var(--navbar-text);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    margin-right: auto;
+    letter-spacing: var(--letter-spacing-tight);
+    transition: color 0.2s var(--transition-timing);
+}
+
+.navbarLogo a {
+    color: var(--navbar-text);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.navbarLogo a:hover {
+    color: var(--navbar-active);
+}
+
+.navbarActions {
+    display: flex;
+    align-items: center;
+    padding-left: var(--spacing-md);
+
+    margin-left: var(--spacing-md);
+}
+
+/* Removed mobileActions and mobileToggle classes */
+
+.navbarMenu {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+.navbarMenu ul {
+    display: flex;
+    list-style: none;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    gap: var(--spacing-xs);
+}
+
+.navbarItem {
+    height: var(--navbar-height);
+    display: flex;
+    align-items: center;
+}
+
+.navbarLink {
+    color: var(--navbar-text);
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding: 0 var(--spacing-md);
+    height: 100%;
+    transition: all 0.2s var(--transition-timing);
+    position: relative;
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-md);
+    letter-spacing: var(--letter-spacing-wide);
+}
+
+/* Create the underline effect */
+.navbarLink::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: calc(var(--spacing-xs) * 1.5);
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--navbar-border);
+    transition: width 0.2s var(--transition-timing);
+    border-radius: var(--border-radius-pill);
+}
+
+/* Show the underline on hover */
+.navbarLink:hover::after {
+    width: calc(100% - var(--spacing-lg));
+}
+
+/* For active/selected state */
+.navbarLink.active {
+    color: var(--navbar-active);
+}
+
+/* Keep the underline visible for active links */
+.navbarLink.active::after {
+    width: calc(100% - var(--spacing-lg));
+}
+
+.navbarLink:hover {
+    color: var(--navbar-hover);
+}
+
+/* Menu button - hidden on desktop, visible on mobile */
+.menuButton {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--navbar-text);
+    cursor: pointer;
+    font-size: 24px;
+    transition: color 0.2s var(--transition-timing);
+    margin-left: auto;
+    padding: 0;
+    line-height: 0;
+}
+
+.menuButton:hover {
+    color: var(--navbar-hover);
+}
+
+/* Icon in navbar */
+.navIcon {
+    margin-right: 0.25em;
+}
+
+/* Mobile responsiveness */
+@media screen and (max-width: 768px) {
+    .menuButton {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .navbarMenu {
+        display: none;
+        position: absolute;
+        top: var(--navbar-height);
+        left: 0;
+        flex-direction: column;
+        width: 100%;
+        background-color: var(--navbar-background);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--card-border);
+        box-shadow: var(--shadow-medium);
+        z-index: var(--z-index-dropdown);
+    }
+    
+    .navbarMenu.active {
+        display: flex;
+        animation: fadeIn 0.3s ease;
+    }
+    
+    .navbarMenu ul {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .navbarItem {
+        width: 100%;
+        height: 48px;
+        border-bottom: 1px solid var(--card-border-light);
+    }
+    
+    .navbarLink {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .navbarLink::after {
+        bottom: 8px;
+    }
+    
+    .navbarActions {
+        width: 100%;
+        justify-content: center;
+        margin: var(--spacing-md) 0;
+        padding: var(--spacing-md) 0;
+        border-top: 1px solid var(--card-border-light);
+    }
+    
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}

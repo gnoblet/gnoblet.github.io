@@ -1,0 +1,147 @@
+/* src/styles/global.css */
+/* Global styles for the entire application - Zen Browser inspired */
+@import "./theme/index.css";
+@import "./utilities.css";
+@import "./components.css";
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+@font-face {
+    font-family: "Nunito";
+    src:
+        local("assets/fonts/Nunito-Regular.ttf"),
+        url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap");
+}
+
+html,
+body,
+#root {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: var(--font-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: var(--color-background-primary);
+    color: var(--text-primary);
+    line-height: var(--line-height-normal);
+    transition: background-color var(--transition-duration)
+        var(--transition-timing);
+}
+
+a {
+    color: var(--text-link);
+    text-decoration: none;
+    transition: var(--transition-standard);
+}
+
+a:hover {
+    color: var(--text-link-hover);
+}
+
+button {
+    cursor: pointer;
+    font-family: inherit;
+    border: none;
+    background: none;
+    transition: var(--transition-standard);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Selection styles */
+::selection {
+    background-color: var(--color-accent-light);
+    color: var(--text-primary);
+}
+
+/* Scrollbar styles - more minimal */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--text-muted);
+    border-radius: var(--border-radius-pill);
+    border: 2px solid var(--color-background-primary);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--text-secondary);
+}
+
+/* Accessibility focus outline - more subtle */
+:focus-visible {
+    outline: 2px solid var(--color-accent-light);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 3px var(--color-accent-light);
+    border-radius: var(--border-radius-xs);
+}
+
+/* Default content container */
+.container {
+    width: 100%;
+    max-width: var(--content-max-width);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+    transition: padding var(--transition-duration) var(--transition-timing);
+}
+
+/* Page container with consistent spacing for all pages */
+.pageContainer {
+    width: 100%;
+    padding-top: calc(var(--navbar-height) + 50px);
+    padding-bottom: 100px;
+    min-height: calc(100vh - var(--footer-height));
+    position: relative;
+    z-index: 1;
+}
+
+/* Extra spacing classes for pages */
+.page-top-spacing {
+    padding-top: 80px !important;
+}
+
+.page-bottom-spacing {
+    padding-bottom: 100px !important;
+}
+
+.page-spacing {
+    padding-top: 80px !important;
+    padding-bottom: 100px !important;
+}
+
+/* Default section spacing */
+.section {
+    padding: var(--section-spacing) 0;
+    transition: padding var(--transition-duration) var(--transition-timing);
+}
+
+/* Hide elements visually but keep them accessible for screen readers */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}

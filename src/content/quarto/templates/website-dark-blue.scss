@@ -1,0 +1,229 @@
+/*-- scss:defaults --*/
+// Base document colors
+$body-bg: #1A1B26;
+$body-color: #FFFFFF;
+$link-color: #8AA9F4;
+$selection-bg: rgba(91, 111, 233, 0.5);
+
+// Code blocks
+$code-block-bg: #24283B;
+$code-bg: rgba(91, 111, 233, 0.2);
+$code-color: #E0AF68;
+
+// Navigation
+$navbar-bg: #1A1B26;
+$navbar-fg: #FFFFFF;
+$navbar-hl: #5B6FE9;
+
+// Headers
+$h1-color: #8AA9F4;
+$h2-color: #7AA2F7;
+$h3-color: #FFFFFF;
+
+// Typography
+$font-family-sans-serif: "Inter", system-ui, -apple-system, sans-serif;
+$font-family-monospace: "JetBrains Mono", monospace;
+
+// Table of contents
+$toc-color: #8E95AC;
+$toc-active-border: #5B6FE9;
+
+// Inputs
+$input-bg: #2E3348;
+$btn-primary-bg: #5B6FE9;
+$btn-primary-border: #4A5ED8;
+$btn-primary-color: #FFFFFF;
+
+// Tables
+$table-bg: #24283B;
+$table-border-color: #393f5e;
+$table-striped-bg: #2E3348;
+
+// Alerts and callouts
+$callout-color-note: #7AA2F7;
+$callout-color-tip: #5DADAD;
+$callout-color-warning: #E0AF68;
+$callout-color-important: #DB6161;
+$callout-color-caution: #E0AF68;
+
+/*-- scss:rules --*/
+// Basic elements
+body {
+  line-height: 1.6;
+}
+
+a:hover {
+  color: #7998E7;
+  text-decoration: underline;
+}
+
+pre {
+  border-radius: 6px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+code {
+  border-radius: 3px;
+  padding: 0.1em 0.3em;
+}
+
+blockquote {
+  border-left: 4px solid #5B6FE9;
+  background-color: rgba(91, 111, 233, 0.1);
+  padding: 0.5em 1em;
+}
+
+// Headings
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 2.2rem;
+  border-bottom: 1px solid rgba(138, 169, 244, 0.3);
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.8rem;
+}
+
+h3 {
+  font-size: 1.4rem;
+}
+
+// Tables
+table {
+  margin-bottom: 2rem;
+  border-spacing: 0;
+  border-top: 1px solid $table-border-color;
+  border-right: 1px solid $table-border-color;
+}
+
+th, td {
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid $table-border-color;
+  border-left: 1px solid $table-border-color;
+}
+
+thead tr {
+  background-color: rgba(91, 111, 233, 0.2);
+}
+
+// Code syntax highlighting - dark mode optimized
+.sourceCode .at { color: #8AA9F4; } /* Attribute */
+.sourceCode .cf { color: #7AA2F7; } /* Control flow */
+.sourceCode .co { color: #8E95AC; } /* Comment */
+.sourceCode .dt { color: #5DADAD; } /* DataType */
+.sourceCode .dv { color: #DB6161; } /* DecVal */
+.sourceCode .fu { color: #7AA2F7; } /* Function */
+.sourceCode .kw { color: #5B6FE9; } /* Keyword */
+.sourceCode .op { color: #FFFFFF; } /* Operator */
+.sourceCode .st { color: #E0AF68; } /* String */
+.sourceCode .va { color: #8AA9F4; } /* Variable */
+
+// Buttons and inputs
+.btn-primary {
+  &:hover {
+    background-color: #4A5ED8;
+    border-color: #394DC7;
+  }
+}
+
+input, select, textarea {
+  border: 1px solid #393f5e;
+  color: #FFFFFF;
+  
+  &:focus {
+    border-color: #5B6FE9;
+    box-shadow: 0 0 0 0.2rem rgba(91, 111, 233, 0.25);
+  }
+}
+
+// Callouts
+div.callout-note {
+  border-left-color: $callout-color-note;
+  
+  .callout-header {
+    background-color: rgba(122, 162, 247, 0.2);
+  }
+}
+
+div.callout-tip {
+  border-left-color: $callout-color-tip;
+  
+  .callout-header {
+    background-color: rgba(93, 173, 173, 0.2);
+  }
+}
+
+div.callout-warning, div.callout-caution {
+  border-left-color: $callout-color-warning;
+  
+  .callout-header {
+    background-color: rgba(224, 175, 104, 0.2);
+  }
+}
+
+div.callout-important {
+  border-left-color: $callout-color-important;
+  
+  .callout-header {
+    background-color: rgba(219, 97, 97, 0.2);
+  }
+}
+
+// Table of contents
+#TOC {
+  border-left: 1px solid rgba(138, 169, 244, 0.3);
+  
+  .toc-active {
+    border-left: 1px solid $toc-active-border;
+    color: #FFFFFF;
+  }
+}
+
+.sidebar nav[role="doc-toc"] ul > li > a.active {
+  border-left: 1px solid $toc-active-border;
+  color: #FFFFFF;
+}
+
+// Figures
+figure {
+  margin: 1.5rem 0;
+  
+  figcaption {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: #8E95AC;
+  }
+}
+
+// Special styles for code output
+.cell-output {
+  background-color: rgba(36, 40, 59, 0.5);
+  border-radius: 6px;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  
+  pre {
+    margin-bottom: 0;
+    box-shadow: none;
+  }
+}
+
+// Print styles
+@media print {
+  body {
+    background-color: white;
+    color: black;
+  }
+  
+  pre, code {
+    background-color: #f0f0f0;
+    color: #333;
+  }
+}

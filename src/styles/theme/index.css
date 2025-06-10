@@ -1,0 +1,26 @@
+/* src/styles/theme/index.css */
+/* Main theme file that imports all theme components */
+
+/* Import base colors (default variables) first */
+@import './colors.css';
+
+/* Import color palettes - these should override base colors */
+@import './palette-blue.css';
+
+/* Import semantic theme variables */
+@import './semantic.css';
+
+/* Import layout and spacing variables */
+@import './layout.css';
+
+/* Import typography variables */
+@import './typography.css';
+
+/* Export theme for module consumption
+ * Note: The CSS imports above handle the actual loading of variables,
+ * this export is primarily for documentation clarity and to maintain
+ * a clean import pattern in consuming files.
+ */
+:export {
+  theme: 'default';
+}

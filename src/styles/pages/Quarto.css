@@ -1,0 +1,382 @@
+/* Quarto.css - Styling for Quarto components */
+
+/* Global styles for Quarto pages */
+.quarto-page-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background-color: var(--color-background-primary);
+}
+
+.quarto-controls-section {
+    margin-bottom: var(--spacing-2xl);
+    position: relative;
+    z-index: var(--z-index-base);
+    background: var(--card-background-translucent);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-md);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--card-border);
+    box-shadow: var(--shadow-medium);
+}
+
+.quarto-container {
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-background-primary);
+    color: var(--text-primary);
+    overflow: hidden;
+}
+
+/* Quarto List Page */
+.quarto-list-container {
+    max-width: var(--content-max-width);
+    margin: 0 auto;
+    padding: var(--spacing-lg) var(--spacing-md);
+    color: var(--text-primary);
+}
+
+.quarto-header {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.quarto-header h1 {
+    font-size: var(--font-size-4xl);
+    margin-bottom: var(--spacing-xs);
+}
+
+.quarto-header p {
+    color: var(--text-secondary);
+    font-size: var(--font-size-lg);
+}
+
+/* Search is now handled by the SearchBar component */
+
+.no-documents {
+    text-align: center;
+    padding: var(--spacing-2xl);
+    background: var(--card-background-translucent);
+    border-radius: var(--border-radius-md);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-medium);
+    border: 1px solid var(--card-border);
+}
+
+.no-documents p {
+    color: var(--text-secondary);
+    font-size: var(--font-size-lg);
+}
+
+.clear-filter-button {
+    background: var(--button-primary-background);
+    color: var(--button-primary-text);
+    border: 1px solid var(--color-primary-light);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--border-radius-md);
+    margin-top: var(--spacing-md);
+    cursor: pointer;
+    transition: var(--transition-standard);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: var(--shadow-small);
+}
+
+.clear-filter-button:hover {
+    background: var(--button-primary-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--glow-primary);
+    border-color: var(--color-primary);
+}
+
+.documents-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    width: 100%;
+    height: fit-content;
+    margin-bottom: var(--spacing-xl);
+}
+
+/* Responsive grid layout */
+@media (max-width: 767px) {
+    .documents-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .horizontal-card-inner {
+        flex-direction: column !important;
+    }
+
+    .horizontal-card-left-column,
+    .horizontal-card-right-column {
+        width: 100% !important;
+    }
+
+    .horizontal-card-image-container {
+        height: 180px !important;
+    }
+}
+
+@media (min-width: 1440px) {
+    .documents-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Document card styles now use horizontal card styles */
+.document-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.document-card .horizontal-card-inner {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+}
+
+.document-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(var(--color-accent-rgb), 0.08);
+    color: var(--color-accent);
+    font-size: 3rem;
+}
+
+.document-info {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.document-card-link {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    text-decoration: none;
+    color: inherit;
+}
+
+.document-tags {
+    padding: 0 12px 12px;
+    margin-top: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.document-tag {
+    display: inline-flex;
+    align-items: center;
+    background: var(--color-accent, #5b6fe9);
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: var(--font-size-sm);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-right: 4px;
+    margin-bottom: 4px;
+}
+
+.document-tag:hover {
+    background: var(--color-accent-hover, #4a5ed8);
+    transform: translateY(-1px);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.view-more-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--button-primary-background);
+    color: var(--button-primary-text);
+    padding: var(--spacing-sm) var(--spacing-xl);
+    border-radius: var(--border-radius-pill);
+    text-decoration: none;
+    font-weight: var(--font-weight-medium);
+    transition: all 0.25s var(--transition-timing);
+    box-shadow: var(--shadow-small);
+    letter-spacing: var(--letter-spacing-wide);
+    border: none;
+    cursor: pointer;
+}
+
+.view-more-button:hover {
+    background: var(--button-primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 3px 8px rgba(var(--color-primary-rgb), 0.3);
+}
+
+.quarto-footer {
+    margin-top: var(--spacing-xl);
+    text-align: center;
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--card-border);
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+}
+
+.quarto-footer a {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+.quarto-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Quarto Document Page */
+
+/* Style for the iframe that contains Quarto content */
+.quarto-frame {
+    width: 100%;
+    height: 100vh;
+    border: none;
+    display: block;
+    overflow: auto;
+    background-color: var(--color-background-primary);
+}
+
+/* We can't directly style iframe content, so we'll handle this with JavaScript */
+
+.quarto-back-button {
+    position: fixed;
+    top: var(--spacing-lg);
+    right: var(--spacing-lg);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    background: var(--color-primary);
+    color: var(--button-primary-text);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--border-radius-pill);
+    cursor: pointer;
+    transition: all 0.25s var(--transition-timing);
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-medium);
+    border: none;
+    outline: none;
+    text-decoration: none;
+    z-index: 9999; /* Ensure button is always visible */
+    box-shadow: var(--shadow-medium);
+}
+
+.quarto-back-button::before {
+    content: "↑";
+    display: inline-block;
+    margin-right: var(--spacing-xs);
+    font-size: var(--font-size-lg);
+    line-height: 1;
+}
+
+.quarto-back-button:hover {
+    background: var(--button-primary-hover);
+    transform: translateY(-3px);
+    box-shadow: var(--glow-primary);
+}
+
+/* Keep the old back-button style for backwards compatibility */
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-xs) var(--spacing-md);
+    background-color: var(--button-primary-background);
+    color: var(--button-primary-text);
+    border: none;
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    font-size: var(--font-size-sm);
+    text-decoration: none;
+}
+
+.back-button:hover {
+    background-color: var(--button-primary-hover);
+}
+
+/* No replacement needed - we're using iframe instead */
+
+/* Loading state */
+.loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-xl) 0;
+}
+
+.loading-spinner {
+    border: 4px solid var(--card-border);
+    border-top: 4px solid var(--color-primary);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin-bottom: var(--spacing-md);
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Error state */
+.error {
+    text-align: center;
+    padding: var(--spacing-lg);
+    color: var(--status-error);
+}
+
+/* Media Queries */
+@media (max-width: 767px) {
+    .documents-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .quarto-container {
+        padding: 0;
+    }
+
+    .back-button {
+        font-size: var(--font-size-xs);
+        padding: var(--spacing-xs) var(--spacing-sm);
+    }
+
+    .quarto-back-button {
+        font-size: var(--font-size-sm);
+        padding: var(--spacing-xs) var(--spacing-sm);
+        top: var(--spacing-sm);
+        right: var(--spacing-sm);
+    }
+
+    .quarto-content-wrapper {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 767px) {
+    .quarto-back-button::before {
+        font-size: var(--font-size-md);
+        margin-right: 0;
+    }
+}
+/* End of styles */

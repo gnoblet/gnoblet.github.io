@@ -1,0 +1,62 @@
+// src/components/TagFilter.tsx
+import React from "react";
+import styles from "../styles/components/TagFilter.module.css";
+import { motion } from "framer-motion";
+import Tag from "./Tag";
+
+interface TagFilterProps {
+  tags: string[];
+  selectedTags: string[];
+  onTagSelect: (tag: string) => void;
+  onClearAll: () => void;
+  filterTitle?: string;
+}
+
+const TagFilter: React.FC<TagFilterProps> = ({
+  tags,
+  selectedTags,
+  onTagSelect,
+  onClearAll,
+  filterTitle = "Filter by tag",
+}) => {
+  return (
+    <div className={styles.filterContainer}>
+      <div className={styles.filterHeader}>
+        <h3 className={styles.filterTitle}>{filterTitle}</h3>
+        {selectedTags.length > 0 && (
+          <button className={styles.clearAllButton} onClick={onClearAll}>
+            Clear all filters
+          </button>
+        )}
+      </div>
+      <motion.div
+        className={styles.tagList}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ staggerChildren: 0.1, delayChildren: 0.2 }}
+      >
+        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+          <Tag
+            text="All"
+            selected={selectedTags.length === 0}
+            onClick={() => onClearAll()}
+            showPrefix={false}
+            className={styles.filterTag}
+          />
+        </motion.div>
+        {tags.map((tag) => (
+          <motion.div key={tag} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <Tag
+              text={tag}
+              selected={selectedTags.includes(tag)}
+              onClick={onTagSelect}
+              className={styles.filterTag}
+            />
+          </motion.div>
+        ))}
+      </motion.div>
+    </div>
+  );
+};
+
+export default TagFilter;

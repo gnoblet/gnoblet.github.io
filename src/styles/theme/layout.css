@@ -1,0 +1,72 @@
+/* src/styles/theme/layout.css */
+/* Layout and spacing variables for cleaner, more minimal spacing - Zen Browser inspired */
+:root {
+    /* Base spacing unit */
+    --spacing-unit: 8px;
+
+    /* Spacing scale - more refined for clean design */
+    --spacing-xs: calc(var(--spacing-unit) * 0.5); /* 4px */
+    --spacing-sm: var(--spacing-unit); /* 8px */
+    --spacing-md: calc(var(--spacing-unit) * 1.5); /* 12px */
+    --spacing-lg: calc(var(--spacing-unit) * 2); /* 16px */
+    --spacing-xl: calc(var(--spacing-unit) * 3); /* 24px */
+    --spacing-2xl: calc(var(--spacing-unit) * 4); /* 32px */
+    --spacing-3xl: calc(var(--spacing-unit) * 6); /* 48px */
+
+    /* Layout dimensions - adjusted for cleaner appearance */
+    --navbar-height: 52px;
+    --content-max-width: 1200px;
+    --content-width-narrow: 740px;
+    --content-width-medium: 960px;
+    --container-padding: var(--spacing-lg);
+
+    /* Section spacing - more balanced */
+    --section-spacing: var(--spacing-3xl);
+    --subsection-spacing: var(--spacing-2xl);
+
+    /* Grid system - refined for cleaner layouts */
+    --grid-gap: var(--spacing-lg);
+    --grid-gap-lg: var(--spacing-xl);
+
+    /* Border radius - softer, more consistent */
+    --border-radius-xs: 3px;
+    --border-radius-sm: 6px;
+    --border-radius-md: 9px;
+    --border-radius-lg: 12px;
+    --border-radius-pill: 100px;
+    --border-radius-circle: 50%;
+
+    /* Z-index layers */
+    --z-index-base: 1;
+    --z-index-dropdown: 100;
+    --z-index-sticky: 500;
+    --z-index-fixed: 700;
+    --z-index-modal: 900;
+    --z-index-tooltip: 1000;
+
+    /* Media query breakpoints */
+    --breakpoint-xs: 480px;
+    --breakpoint-sm: 640px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 1024px;
+    --breakpoint-xl: 1280px;
+
+    /* Animations & Transitions - smoother, subtler */
+    --transition-duration-fast: 120ms;
+    --transition-duration: 240ms;
+    --transition-duration-slow: 400ms;
+    --transition-timing: cubic-bezier(0.25, 0.1, 0.25, 1);
+    --transition-standard: all var(--transition-duration)
+        var(--transition-timing);
+    --transition-smooth: all var(--transition-duration-slow)
+        cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Mobile adjustments - refined for better small screen experiences */
+@media (max-width: 768px) {
+    :root {
+        --container-padding: var(--spacing-md);
+        --section-spacing: var(--spacing-2xl);
+        --grid-gap: var(--spacing-md);
+    }
+}
