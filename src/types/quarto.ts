@@ -9,8 +9,6 @@ export interface QuartoDocument {
 export interface QuartoCardProps {
   doc: QuartoDocument;
   className?: string;
-  onTagClick?: (tag: string) => void;
-  selectedTags?: string[];
 }
 
 export interface QuartoPostsGridProps {

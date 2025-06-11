@@ -94,8 +94,6 @@ const QuartoPostsGrid: React.FC<QuartoPostsGridProps> = ({
 export const QuartoCard: React.FC<QuartoCardProps> = ({
   doc,
   className = "horizontal-card",
-  onTagClick,
-  selectedTags = [],
 }) => {
   const [isHovered, setIsHovered] = useState(false);
 

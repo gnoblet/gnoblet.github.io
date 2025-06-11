@@ -87,7 +87,7 @@ const QuartoList: React.FC = () => {
     if (documents.length > 0) {
       setDisplayedDocuments(documents.slice(0, documentsPerPage));
     }
-  }, [location.key, documentsPerPage, documents]);
+  }, [location.key, documentsPerPage, documents, currentPage]);
   
   // Apply pagination
   useEffect(() => {
