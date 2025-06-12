@@ -12,9 +12,13 @@ const logDebug = (message: string, ...data: any[]) => {
  */
 export const fetchQuartoDocuments = async (): Promise<QuartoDocument[]> => {
   try {
-    // Try to get cached documents first
-    const cachedDocs = localStorage.getItem('quartoDocuments');
-    const cacheTimestamp = localStorage.getItem('quartoDocumentsTimestamp');
+    // Try to get cached documents first - disabled for now to force refresh
+    // const cachedDocs = localStorage.getItem('quartoDocuments');
+    // const cacheTimestamp = localStorage.getItem('quartoDocumentsTimestamp');
+    
+    // Force refresh - skip cache check
+    const cachedDocs = null;
+    const cacheTimestamp = null;
     
     // Check if we have a valid cache (less than 1 hour old)
     if (cachedDocs && cacheTimestamp) {
@@ -22,16 +26,18 @@ export const fetchQuartoDocuments = async (): Promise<QuartoDocument[]> => {
       const cacheTime = parseInt(cacheTimestamp, 10);
       const cacheAge = now - cacheTime;
       
-      // If cache is less than 24 hours old, use it
-      if (cacheAge < 24 * 60 * 60 * 1000) {
+      // If cache is less than 1 hour old, use it (reduced from 24 hours)
+      if (cacheAge < 60 * 60 * 1000) {
         logDebug('Using cached Quarto documents');
         const parsedDocs = JSON.parse(cachedDocs);
         return parsedDocs;
       }
     }
     
+    // Add cache busting parameter to prevent browser caching
+    const cacheBuster = `?t=${Date.now()}`;
     // For simplicity, we'll fetch and parse the index.html file we created
-    const response = await fetch('/quarto-html/index.html');
+    const response = await fetch(`/quarto-html/index.html${cacheBuster}`);
     
     if (!response.ok) {
       throw new Error(`Failed to load Quarto index: ${response.statusText}`);
@@ -65,7 +71,7 @@ export const fetchQuartoDocuments = async (): Promise<QuartoDocument[]> => {
     for (const batch of documentBatches) {
       const batchResults = await Promise.all(batch.map(async ({ href, title: initialTitle, slug }) => {
         try {
-          const response = await fetch(`/quarto-html/${href}`);
+          const response = await fetch(`/quarto-html/${href}${cacheBuster}`);
           const html = await response.text();
           const parser = new DOMParser();
           const docContent = parser.parseFromString(html, 'text/html');

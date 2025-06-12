@@ -86,8 +86,20 @@ function fixQuartoHtmlFiles() {
       // Fix common JS syntax issues that conflict with Vite
       content = content.replace(/\};(?=\s*<\/script>)/g, '}');
       
-      // Add a meta tag to indicate these files should be skipped by Vite
-      content = content.replace(/<head>/, '<head>\n  <meta name="vite-skip-processing" content="true">');
+      // Handle the vite-skip-processing meta tag to prevent duplication
+      const metaTagCount = (content.match(/<meta name="vite-skip-processing" content="true">/g) || []).length;
+      
+      if (metaTagCount > 1) {
+        // Remove all instances of the meta tag
+        content = content.replace(/<meta name="vite-skip-processing" content="true">\s*/g, '');
+        // Add a single instance back
+        content = content.replace(/<head>/, '<head>\n  <meta name="vite-skip-processing" content="true">');
+        console.log(`Fixed duplicate meta tags in ${file}`);
+      } else if (metaTagCount === 0) {
+        // Add the meta tag if it doesn't exist
+        content = content.replace(/<head>/, '<head>\n  <meta name="vite-skip-processing" content="true">');
+      }
+      // If exactly one tag exists, leave it alone
       
       fs.writeFileSync(filePath, content);
       console.log(`Fixed JS syntax in ${file}`);

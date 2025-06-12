@@ -42,28 +42,15 @@ const QuartoList: React.FC = () => {
     const loadQuartoDocuments = async () => {
       setLoading(true);
       try {
-        // Check sessionStorage for documents first for instant loading between page navigations
-        const sessionDocs = sessionStorage.getItem('quartoDocumentsData');
-        if (sessionDocs) {
-          const parsedDocs = JSON.parse(sessionDocs);
-          setDocuments(parsedDocs);
-          setDisplayedDocuments(parsedDocs.slice(0, documentsPerPage));
-          setLoading(false);
-          
-          // Still fetch in background to check for updates
-          fetchQuartoDocuments().then(freshDocs => {
-            sessionStorage.setItem('quartoDocumentsData', JSON.stringify(freshDocs));
-            setDocuments(freshDocs);
-            setDisplayedDocuments(freshDocs.slice(0, documentsPerPage * currentPage));
-          }).catch(err => {
-            console.error("Background refresh error:", err);
-          });
-        } else {
-          const loadedDocuments = await fetchQuartoDocuments();
-          sessionStorage.setItem('quartoDocumentsData', JSON.stringify(loadedDocuments));
-          setDocuments(loadedDocuments);
-          setDisplayedDocuments(loadedDocuments.slice(0, documentsPerPage));
-        }
+        // Force a fresh load every time instead of using sessionStorage
+        // This ensures we always get the latest blog posts
+        const loadedDocuments = await fetchQuartoDocuments();
+        
+        // Temporarily disable sessionStorage caching
+        // sessionStorage.setItem('quartoDocumentsData', JSON.stringify(loadedDocuments));
+        
+        setDocuments(loadedDocuments);
+        setDisplayedDocuments(loadedDocuments.slice(0, documentsPerPage));
       } catch (err) {
         console.error("Error loading Quarto documents:", err);
         // Set empty documents to avoid null errors in components
