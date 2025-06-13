@@ -3,7 +3,7 @@ title: "My Personal Website: Mostly to Learn How to Build One"
 author: "Guillaume Noblet"
 date: today
 categories: [React, Website, quarto, TypeScript]
-image: "/images/blog/a-personal-website.png"
+image: "images/blog/a-personal-website.png"
 excerpt: "A totally-not-desperate showcase of what I used to build this website, featuring React, TypeScript, Quarto and Bezier curves"
 format:
   html:
