@@ -50,10 +50,38 @@ function calculateFileHash(filePath) {
   return crypto.createHash("md5").update(fileContent).digest("hex");
 }
 
-// Function to calculate a hash for a file
+// Function to calculate a hash for a file and check theme dependencies
 function calculateCombinedHash(filePath) {
-  // Get hash of the main file
-  return calculateFileHash(filePath);
+  const fileContent = fs.readFileSync(filePath, "utf8");
+  
+  // Look for theme references in the file
+  let themeHash = "";
+  const themeMatch = fileContent.match(/theme:\s*([^\n]+)/);
+  if (themeMatch && themeMatch[1]) {
+    const themePath = themeMatch[1].trim();
+    // Check if the theme path is a local file reference
+    const possibleThemePaths = [
+      path.join(path.dirname(filePath), themePath),
+      path.join(quartoDir, themePath),
+      // Add more possible locations if needed
+    ];
+    
+    for (const themePath of possibleThemePaths) {
+      if (fs.existsSync(themePath)) {
+        try {
+          themeHash = calculateFileHash(themePath);
+          console.log(`Found theme file: ${themePath}`);
+          break;
+        } catch (e) {
+          // Ignore if we can't hash the theme file
+        }
+      }
+    }
+  }
+  
+  // Combine the file hash with theme hash
+  const fileHash = calculateFileHash(filePath);
+  return fileHash + (themeHash ? `-${themeHash}` : "");
 }
 
 // Function to load the cache
@@ -129,14 +157,27 @@ function renderQuartoFile(filePath, cache) {
   // Check if the file has changed since last build
   const currentHash = calculateCombinedHash(filePath);
   const cachedInfo = cache[relativePath];
+  
+  // Get timestamp of the file
+  const fileStats = fs.statSync(filePath);
+  const fileModTime = fileStats.mtime.getTime();
 
   if (
     cachedInfo &&
     cachedInfo.hash === currentHash &&
-    fs.existsSync(outputPath)
+    fs.existsSync(outputPath) &&
+    (!process.env.FORCE_RENDER_QUARTO)
   ) {
     console.log(`Skipping ${relativePath} (unchanged since last build)`);
     return outputPath;
+  } else {
+    if (cachedInfo && cachedInfo.hash !== currentHash) {
+      console.log(`File or theme has changed: ${relativePath}`);
+    } else if (!fs.existsSync(outputPath)) {
+      console.log(`Output file doesn't exist: ${relativePath}`);
+    } else if (process.env.FORCE_RENDER_QUARTO) {
+      console.log(`Force rendering: ${relativePath}`);
+    }
   }
 
   try {
