@@ -6,9 +6,11 @@ $link-color: #8AA9F4;
 $selection-bg: rgba(91, 111, 233, 0.5);
 
 // Code blocks
-$code-block-bg: #24283B;
+$code-block-bg: #1F2335;
 $code-bg: rgba(91, 111, 233, 0.2);
 $code-color: #E0AF68;
+$code-text-color: #c9d1d9;
+$code-text: #c0caf5;
 
 // Navigation
 $navbar-bg: #1A1B26;
@@ -60,11 +62,20 @@ a:hover {
 pre {
   border-radius: 6px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  background-color: $code-block-bg;
 }
 
 code {
   border-radius: 3px;
   padding: 0.1em 0.3em;
+  color: #E0AF68;
+}
+
+div.sourceCode {
+  background-color: $code-block-bg;
+  color: $code-text;
+  border-radius: 6px;
+  margin: 1.5em 0;
 }
 
 blockquote {
@@ -112,17 +123,44 @@ thead tr {
   background-color: rgba(91, 111, 233, 0.2);
 }
 
-// Code syntax highlighting - dark mode optimized
-.sourceCode .at { color: #8AA9F4; } /* Attribute */
-.sourceCode .cf { color: #7AA2F7; } /* Control flow */
-.sourceCode .co { color: #8E95AC; } /* Comment */
-.sourceCode .dt { color: #5DADAD; } /* DataType */
-.sourceCode .dv { color: #DB6161; } /* DecVal */
-.sourceCode .fu { color: #7AA2F7; } /* Function */
-.sourceCode .kw { color: #5B6FE9; } /* Keyword */
-.sourceCode .op { color: #FFFFFF; } /* Operator */
-.sourceCode .st { color: #E0AF68; } /* String */
-.sourceCode .va { color: #8AA9F4; } /* Variable */
+// Syntax highlighting - Tokyo Night inspired theme
+.sourceCode .at { color: #7DCFFF; } /* Attribute - bright blue */
+.sourceCode .cf { color: #F7768E; } /* Control flow (import, export, return, if) - pink */
+.sourceCode .co { color: #565f89; } /* Comment - muted blue */
+.sourceCode .dt { color: #73DACA; } /* DataType - teal */
+.sourceCode .dv { color: #FF9E64; } /* DecVal - orange */
+.sourceCode .fu { color: #7AA2F7; } /* Function - bright blue */
+.sourceCode .im { color: #F7768E; } /* Import statement - pink */
+.sourceCode .kw { color: #BB9AF7; } /* Keyword - purple */
+.sourceCode .op { color: #89DDFF; } /* Operator - cyan */
+.sourceCode .pp { color: #F7768E; } /* Preprocessor (export, etc) - pink */
+.sourceCode .st { color: #9ECE6A; } /* String - green */
+.sourceCode .va { color: #c0caf5; } /* Variable - light lavender */
+.sourceCode .bu { color: #A9DC76; } /* Built-in - green */
+.sourceCode .cn { color: #E0AF68; } /* Constant - yellow */
+.sourceCode .sc { color: #9ECE6A; } /* SpecialChar - green */
+.sourceCode .vs { color: #9ECE6A; } /* VerbatimString - green */
+.sourceCode .ss { color: #9ECE6A; } /* SpecialString - green */
+.sourceCode .ex { color: #F7768E; } /* Extension - pink */
+.sourceCode .in { color: #73DACA; } /* Information - teal */
+.sourceCode .er { color: #F7768E; } /* Error - pink */
+
+// TypeScript specific
+.sourceCode .cm { color: #565f89; }  /* MultiLineComment - muted blue */
+.sourceCode .do { color: #565f89; }  /* Documentation - muted blue */
+.sourceCode .an { color: #E0AF68; }  /* Annotation - yellow */
+.sourceCode .cv { color: #7AA2F7; }  /* CommentVar - blue */
+.sourceCode .wa { color: #F7768E; }  /* Warning - pink */
+.sourceCode .ot { color: #73DACA; }  /* Other - teal */
+
+// JSX/TSX specific
+.sourceCode .al { color: #F7768E; }  /* Alert - pink */
+.sourceCode .re { color: #7AA2F7; }  /* RegionMarker - blue */
+.sourceCode .bn { color: #FF9E64; }  /* BaseN - orange */
+.sourceCode .fl { color: #FF9E64; }  /* Float - orange */
+.sourceCode .ch { color: #9ECE6A; }  /* Char - green */
+.sourceCode .ca { color: #73DACA; }  /* ConstantAttribute - teal */
+.sourceCode .dl { color: #9ECE6A; }  /* StringDelimiter - green */
 
 // Buttons and inputs
 .btn-primary {
@@ -135,7 +173,7 @@ thead tr {
 input, select, textarea {
   border: 1px solid #393f5e;
   color: #FFFFFF;
-  
+
   &:focus {
     border-color: #5B6FE9;
     box-shadow: 0 0 0 0.2rem rgba(91, 111, 233, 0.25);
@@ -145,7 +183,7 @@ input, select, textarea {
 // Callouts
 div.callout-note {
   border-left-color: $callout-color-note;
-  
+
   .callout-header {
     background-color: rgba(122, 162, 247, 0.2);
   }
@@ -153,7 +191,7 @@ div.callout-note {
 
 div.callout-tip {
   border-left-color: $callout-color-tip;
-  
+
   .callout-header {
     background-color: rgba(93, 173, 173, 0.2);
   }
@@ -161,7 +199,7 @@ div.callout-tip {
 
 div.callout-warning, div.callout-caution {
   border-left-color: $callout-color-warning;
-  
+
   .callout-header {
     background-color: rgba(224, 175, 104, 0.2);
   }
@@ -169,7 +207,7 @@ div.callout-warning, div.callout-caution {
 
 div.callout-important {
   border-left-color: $callout-color-important;
-  
+
   .callout-header {
     background-color: rgba(219, 97, 97, 0.2);
   }
@@ -178,7 +216,7 @@ div.callout-important {
 // Table of contents
 #TOC {
   border-left: 1px solid rgba(138, 169, 244, 0.3);
-  
+
   .toc-active {
     border-left: 1px solid $toc-active-border;
     color: #FFFFFF;
@@ -193,7 +231,7 @@ div.callout-important {
 // Figures
 figure {
   margin: 1.5rem 0;
-  
+
   figcaption {
     margin-top: 0.5rem;
     font-size: 0.9rem;
@@ -208,7 +246,7 @@ figure {
   border-radius: 6px;
   padding: 0.5rem;
   margin-top: 0.5rem;
-  
+
   pre {
     margin-bottom: 0;
     box-shadow: none;
@@ -221,9 +259,54 @@ figure {
     background-color: white;
     color: black;
   }
-  
+
   pre, code {
     background-color: #f0f0f0;
     color: #333;
   }
+}
+
+/* Enhanced code syntax highlighting for all languages */
+pre.sourceCode {
+  background-color: #1F2335;
+  border-radius: 6px;
+  color: #c9d1d9;
+}
+
+code.sourceCode {
+  color: #c9d1d9;
+}
+
+/* Special selector for function parameters */
+.sourceCode .cf + .op + .va {
+  color: #73DACA;  /* Parameters - teal */
+}
+
+/* Plain TSX specific styling - colors match the sourceCode colors */
+pre.tsx code {
+  /* Add styles for specific patterns in the code */
+  .keyword, .const, .let, .var, .function, .return, .import, .export {
+    color: #BB9AF7; /* Keywords - purple */
+  }
+
+  .jsx-tag, .jsx-attr {
+    color: #7DCFFF; /* JSX elements - light blue */
+  }
+
+  .string {
+    color: #9ECE6A; /* Strings - green */
+  }
+
+  .comment {
+    color: #565f89; /* Comments - muted blue */
+  }
+
+  /* For manual syntax highlighting */
+  span.function { color: #7AA2F7; }
+  span.keyword { color: #BB9AF7; }
+  span.variable { color: #c0caf5; }
+  span.string { color: #9ECE6A; }
+  span.jsx-tag { color: #7DCFFF; }
+  span.jsx-attr { color: #7DCFFF; }
+  span.operator { color: #89DDFF; }
 }
