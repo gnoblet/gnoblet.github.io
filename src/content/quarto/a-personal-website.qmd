@@ -49,7 +49,7 @@ All of this was lovingly developed on my [Framework 13](https://frame.work) lapt
 
 ## The Real MVP: My Code Editor
 
-I've recently switched to **Zed**, the blazingly fast code editor that's so exclusive you needed an invitation to use it (until you didn't). It's written in Rust, which automatically makes anything 300% more impressive to mention in technical conversations.
+I've recently switched to [Zed](https://zed.dev/), the blazingly fast code editor that's so exclusive you needed an invitation to use it (until you didn't). It's written in Rust, which automatically makes anything 300% more impressive to mention in technical conversations.
 
 While I will most likely settle on Positron for data projects still, e.g., to write blog posts with Quarto, I will settle on Zed most things.
 
@@ -57,7 +57,7 @@ While I will most likely settle on Positron for data projects still, e.g., to wr
 
 ### Light/Dark Theme Toggle
 
-```tsx
+```typescript
 const ThemeToggle = () => {
   const { theme, toggleTheme } = useTheme();
   return (
@@ -105,26 +105,13 @@ const drawLeaf = (ctx: CanvasContext, leaf: Leaf) => {
 };
 ```
 
-Is this animation necessary? Absolutely not. Does it occasionally cause performance issues on mobile? Perhaps. But does it make me seem like a creative developer with an eye for detail and unnecessary animations? I sure hope so!
+Is this animation necessary? Absolutely not. Does it occasionally cause performance issues? Perhaps. But does it make me seem like a creative developer with an eye for detail and unnecessary animations? I sure hope so!
 
 The amount of time I spent perfecting the wobble coefficient of these leaves is something I will never publicly admit to. Let's just say I liked spending time on the animations of mouse movement..
 
 ### Quarto Document Integration
 
-Perhaps the most impressive feature of this website is the seamless integration of Quarto documents. Quarto, for those not in the know (which was me until I started using it), is a scientific and technical publishing system built on Pandoc.
-
-```typescript
-export const fetchQuartoDocuments = async (): Promise<QuartoDocument[]> => {
-  try {
-    // Complex code to fetch and parse Quarto documents
-    // That definitely wasn't copied from Stack Overflow
-    return sortedDocs;
-  } catch (err) {
-    console.error('Error loading Quarto documents:', err);
-    return [];
-  }
-};
-```
+Perhaps the most impressive feature of this website is the seamless integration of Quarto documents. Quarto, for those not in the know, it is a scientific and technical publishing system built on Pandoc.
 
 What makes this integration special is that each Quarto document can have its own theming. This means I can write technical blog posts with custom styling, interactive visualizations, and embedded code that actually runs. It's perfect for showing off data visualizations or explaining complex concepts.
 
