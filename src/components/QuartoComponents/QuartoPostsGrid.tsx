@@ -96,6 +96,10 @@ export const QuartoCard: React.FC<QuartoCardProps> = ({
   className = "horizontal-card",
 }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(true);
+
+  // Create a conventional image path based on the post slug
+  const imagePath = `/images/blog/${doc.slug}.png`;
 
   return (
     <div
@@ -111,9 +115,18 @@ export const QuartoCard: React.FC<QuartoCardProps> = ({
       >
         <div className="horizontal-card-left-column">
           <div className="horizontal-card-image-container">
-            <div className="card-icon">
-              <FaFileAlt style={{ fontSize: "2rem" }} />
-            </div>
+            {imageLoaded ? (
+              <img
+                src={imagePath}
+                alt={doc.title || "Blog post image"}
+                className="horizontal-card-image"
+                onError={() => setImageLoaded(false)}
+              />
+            ) : (
+              <div className="card-icon">
+                <FaFileAlt style={{ fontSize: "2rem" }} />
+              </div>
+            )}
           </div>
           <h2 className="horizontal-card-title">
             {doc.title || "Untitled Document"}
@@ -140,10 +153,7 @@ export const QuartoCard: React.FC<QuartoCardProps> = ({
       </RouterLink>
       <div className="horizontal-card-tags">
         {(doc.categories || []).map((tag) => (
-          <span
-            key={tag}
-            className="horizontal-card-tag"
-          >
+          <span key={tag} className="horizontal-card-tag">
             {tag}
           </span>
         ))}

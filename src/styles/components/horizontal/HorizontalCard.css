@@ -61,6 +61,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: var(--border-radius-sm);
+    background: rgba(var(--color-accent-rgb), 0.05);
+    padding: 0.25rem;
 }
 
 .horizontal-card-image {
@@ -69,6 +72,8 @@
     object-fit: contain;
     transition: transform 0.3s ease;
     filter: brightness(0.98);
+    z-index: 2;
+    max-height: 7.5rem;
 }
 
 .horizontal-card:hover .horizontal-card-image {
@@ -180,10 +185,12 @@
     height: 100%;
     overflow: hidden;
     position: relative;
+    z-index: 1;
     background-color: rgba(var(--color-accent-rgb), 0.08);
     color: var(--color-accent);
     font-size: var(--font-size-2xl);
     transition: all 0.3s var(--transition-timing);
+    padding: 0;
 }
 
 .horizontal-card:hover .card-icon {
