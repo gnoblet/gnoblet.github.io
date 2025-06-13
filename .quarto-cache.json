@@ -1,30 +1,6 @@
 {
-  "dark-blue-theme-example.qmd": {
-    "hash": "794b7def8633ab50a049a31f17a75936",
-    "lastRendered": "2025-06-10T09:43:51.035Z"
-  },
-  "r-leaflet-example.qmd": {
-    "hash": "43f7b01172f96b8f413a37e0a5c49a3a",
-    "lastRendered": "2025-06-10T09:43:55.567Z"
-  },
-  "sample-quarto-post.qmd": {
-    "hash": "91ce2b3d1052576b38d0e0e6a9fa4ca8",
-    "lastRendered": "2025-06-10T09:44:01.112Z"
-  },
-  "website-theme-example.qmd": {
-    "hash": "c238e97eea316bd9607d6bac6886ce38",
-    "lastRendered": "2025-06-10T09:44:04.613Z"
-  },
-  "website-improvements.qmd": {
-    "hash": "8926fdbfab23cf7bba54493805b62fe0",
-    "lastRendered": "2025-06-12T07:30:04.781Z"
-  },
-  "website-tech-showcase.qmd": {
-    "hash": "ca45600fdf9e5251e9e3705c7de26a94",
-    "lastRendered": "2025-06-12T07:30:09.332Z"
-  },
   "a-personal-website.qmd": {
-    "hash": "e252ba4c204a936f189891e165e94941",
-    "lastRendered": "2025-06-12T15:21:39.544Z"
+    "hash": "64085b2fd21b6222d9237a48c3e58fc8-195e1ec55b47c889bfc514fce914b164",
+    "lastRendered": "2025-06-13T11:15:58.071Z"
   }
 }
