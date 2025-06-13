@@ -15,11 +15,11 @@ import "./App.css";
 // For handling scrolling on navigation
 const ScrollToTop = () => {
   const location = useLocation();
-  
+
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [location.pathname]);
-  
+  }, [location]);
+
   return null;
 };
 
