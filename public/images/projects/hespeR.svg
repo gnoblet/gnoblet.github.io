@@ -1,0 +1,52 @@
+<svg 
+  width="4.39cm" 
+  height="5.08cm" 
+  viewBox="0 0 439 508" 
+  xmlns="http://www.w3.org/2000/svg"
+>  <defs>
+    <!-- Gaussian blur filter for the halo -->
+    <filter id="halo" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="7" result="blur"/>
+    </filter>
+  </defs>
+  <!-- Hexagon outline -->
+  <polygon 
+    points="219.5,20 429,139.5 429,368.5 219.5,488 10,368.5 10,139.5"     fill="white" 
+    stroke="#333" 
+    stroke-width="8"
+  />
+  <!-- Scatter-line plot ladder (stylized) -->
+  <polyline 
+    points="50,340 80,250 140,200 200,180 240,150 280,120 320,100" 
+    fill="none" 
+    stroke="#4F81BD" 
+    stroke-width="6"
+  />
+  <!-- Ladder rungs (horizontal lines at data points) -->
+  <line x1="80" y1="250" x2="160" y2="250" stroke="#4F81BD" stroke-width="4"/>
+  <line x1="140" y1="200" x2="220" y2="200" stroke="#4F81BD" stroke-width="4"/>
+  <line x1="200" y1="180" x2="280" y2="180" stroke="#4F81BD" stroke-width="4"/>
+  <line x1="240" y1="150" x2="320" y2="150" stroke="#4F81BD" stroke-width="4"/>
+  <!-- Data points -->
+  <circle cx="80" cy="250" r="8" fill="#F28E2B"/>
+  <circle cx="140" cy="200" r="8" fill="#F28E2B"/>
+  <circle cx="200" cy="180" r="8" fill="#F28E2B"/>
+  <circle cx="240" cy="150" r="8" fill="#F28E2B"/>
+  <circle cx="280" cy="120" r="8" fill="#F28E2B"/>
+  <circle cx="320" cy="100" r="8" fill="#F28E2B"/>
+
+  <!-- Centered main text -->
+  <text 
+    x="219.5" 
+    y="360" 
+    font-family="Futura, Arial, sans-serif" 
+    font-size="60" 
+    fill="#222" 
+    text-anchor="middle" 
+    alignment-baseline="middle"
+    font-weight="bold"
+    letter-spacing="4"
+  >
+    hespeR
+  </text>
+</svg>

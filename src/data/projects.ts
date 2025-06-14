@@ -28,7 +28,7 @@ export const projects: Project[] = [
     slug: "hespeR",
     description:
       "(Ongoing) R package for handling the WHO's Humanitarian Emergency Settings Perceived Needs Scale (HESPER). In collaboration with Raphael Bacot, it aims to provide an integrated data workflow (wrangling, analysis, reporting, and visualization) based on the HESPER survey methodology.",
-    imageUrl: "https://via.placeholder.com/400x300?text=hespeR",
+    imageUrl: "/images/projects/hespeR.svg",
     projectUrl: "https://github.com/gnoblet/hespeR",
     tags: [
       "R",
