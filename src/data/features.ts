@@ -5,19 +5,23 @@ export interface Feature {
 
 export const featuresList: Feature[] = [
   {
-    title: "Research & Analysis",
-    description: "Statistical analysis, economic modeling, data visualization, participatory assessment"
+    title: "Research & Analysis - ",
+    description:
+      "statistical analysis, economic modeling, data structuration, data visualization, household surveys",
   },
   {
-    title: "Project Management",
-    description: "Horizontal project management, capacity building, community resilience initiatives"
+    title: "Project Management - ",
+    description:
+      "horizontal project management, capacity building, co-training",
   },
   {
-    title: "Technical Toolbox",
-    description: "R (Tidyverse, Shiny, interactive viz), Python, QGIS, Kobo Toolbox, Microsoft Office"
+    title: "Technical Toolbox -",
+    description:
+      "R (Tidyverse, Shiny, data.table, sf, tmap), Python (Pandas, Polars, Matplotlib, Plotnine), QGIS, Kobo Toolbox",
   },
   {
-    title: "Interests",
-    description: "Data visualization, open source projects, community resilience, participatory approaches, socio-ecological analysis"
-  }
+    title: "Interests - ",
+    description:
+      "data visualization, open source projects, community resilience, participatory approaches, socio-ecological analysis",
+  },
 ];

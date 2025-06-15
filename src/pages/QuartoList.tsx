@@ -12,7 +12,9 @@ import Title from "../components/layout/Title.tsx";
 const QuartoList: React.FC = () => {
   const location = useLocation();
   const [documents, setDocuments] = useState<QuartoDocument[]>([]);
-  const [displayedDocuments, setDisplayedDocuments] = useState<QuartoDocument[]>([]);
+  const [displayedDocuments, setDisplayedDocuments] = useState<
+    QuartoDocument[]
+  >([]);
   const [loading, setLoading] = useState(true);
   const [loadingProgress, setLoadingProgress] = useState("");
   const loadingIntervalRef = useRef<number | null>(null);
@@ -45,10 +47,10 @@ const QuartoList: React.FC = () => {
         // Force a fresh load every time instead of using sessionStorage
         // This ensures we always get the latest blog posts
         const loadedDocuments = await fetchQuartoDocuments();
-        
+
         // Temporarily disable sessionStorage caching
         // sessionStorage.setItem('quartoDocumentsData', JSON.stringify(loadedDocuments));
-        
+
         setDocuments(loadedDocuments);
         setDisplayedDocuments(loadedDocuments.slice(0, documentsPerPage));
       } catch (err) {
@@ -75,7 +77,7 @@ const QuartoList: React.FC = () => {
       setDisplayedDocuments(documents.slice(0, documentsPerPage));
     }
   }, [location.key, documentsPerPage, documents, currentPage]);
-  
+
   // Apply pagination
   useEffect(() => {
     setDisplayedDocuments(documents.slice(0, documentsPerPage * currentPage));
@@ -87,9 +89,9 @@ const QuartoList: React.FC = () => {
       key={`quarto-list-${location.key}`}
     >
       <Title
-        title="Quarto Documents"
+        title="Blog posts"
         marginAfterSubtitle="var(--spacing-2xl)"
-        subtitle="Interactive data science documents powered by Quarto"
+        subtitle="Data-based blog posts."
       />
 
       <div
@@ -100,21 +102,27 @@ const QuartoList: React.FC = () => {
         }}
       >
         {loading ? (
-          <div 
-            className="loading-container" 
-            style={{ 
-              textAlign: 'center', 
-              padding: 'var(--spacing-xl) 0', 
-              display: 'flex', 
-              flexDirection: 'column', 
-              alignItems: 'center',
-              minHeight: '300px',
-              justifyContent: 'center' 
+          <div
+            className="loading-container"
+            style={{
+              textAlign: "center",
+              padding: "var(--spacing-xl) 0",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              minHeight: "300px",
+              justifyContent: "center",
             }}
           >
             <div className="loading-spinner"></div>
             <p>Loading blog posts{loadingProgress}</p>
-            <p style={{ fontSize: 'var(--font-size-sm)', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>
+            <p
+              style={{
+                fontSize: "var(--font-size-sm)",
+                color: "var(--text-secondary)",
+                marginTop: "0.5rem",
+              }}
+            >
               This may take a moment on first visit
             </p>
           </div>
@@ -138,12 +146,12 @@ const QuartoList: React.FC = () => {
                   key={doc.slug}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: Math.min(index * 0.05, 0.3) }}
+                  transition={{
+                    duration: 0.3,
+                    delay: Math.min(index * 0.05, 0.3),
+                  }}
                 >
-                  <QuartoCard
-                    doc={doc}
-                    className="horizontal-card"
-                  />
+                  <QuartoCard doc={doc} className="horizontal-card" />
                 </motion.div>
               ))}
             </motion.div>
@@ -163,7 +171,8 @@ const QuartoList: React.FC = () => {
                   className="view-more-button"
                   onClick={() => setCurrentPage((prev) => prev + 1)}
                 >
-                  Load More Documents ({displayedDocuments.length} of {documents.length})
+                  Load More Documents ({displayedDocuments.length} of{" "}
+                  {documents.length})
                 </button>
               </motion.div>
             )}

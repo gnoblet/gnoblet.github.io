@@ -23,7 +23,7 @@ const FeaturedProjects: React.FC = () => {
       >
         <Title
           title="My Latest Projects"
-          subtitle="Here are some of my recent projects and works that showcase my skills and interests"
+          subtitle="Here are some of my recent projects and works that tries to showcase my skills and interests. I will be adding more in the future."
           center={true}
           animate={false}
           marginBottom="1.5rem"

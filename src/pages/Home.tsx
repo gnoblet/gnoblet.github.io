@@ -80,7 +80,7 @@ const Home: React.FC = () => {
             as much as bouncing ideas around with others. Whether I'm trying to make
             sense of messy data or just swapping stories about bits of history,
             I genuinely enjoy taking complicated things and making them a little
-            clearer —for others, and honestly, for myself too. And if we can share a
+            clearer—for others, and honestly, for myself too. And if we can share a
             laugh or two along the way, even better."
             center={true}
             animate={false}
@@ -115,7 +115,7 @@ const Home: React.FC = () => {
         >
           <Title
             title="My Latest Quarto Blogs"
-            subtitle="Here you will see the latest blog posts if I ever take the time to blog. Or find any subject I would feel both confident enough to write or the  to not be redundant."
+            subtitle="Here you will see the latest blog posts if I ever take the time to blog. Or find any subject I would feel both confident enough to write or to not be redundant."
             center={true}
             animate={false}
             marginBottom="1.5rem"
@@ -143,7 +143,7 @@ const Home: React.FC = () => {
         >
           <Title
             title="Contact Me"
-            subtitle="Do you want to get in touch? Have a project on data or surveys and need support, advice, or just another mind to discuss? Feel free to reach out!"
+            subtitle="Looking to connect? If you have a project involving data or surveys and need support, advice, or simply someone to brainstorm with, feel free to reach out!"
             center={true}
             animate={false}
           />

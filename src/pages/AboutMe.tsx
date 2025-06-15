@@ -15,7 +15,7 @@ const AboutMe: React.FC = () => {
         as much as bouncing ideas around with others. Whether I'm trying to make
         sense of messy data or just swapping stories about bits of history,
         I genuinely enjoy taking complicated things and making them a little
-        clearer —for others, and honestly, for myself too. And if we can share a
+        clearer—for others, and honestly, for myself too. And if we can share a
         laugh or two along the way, even better."
         marginAfterSubtitle="var(--spacing-2xl)"
       />
