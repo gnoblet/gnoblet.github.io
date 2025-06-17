@@ -8,7 +8,7 @@ export const projects: Project[] = [
     slug: "tidytuesday",
     description:
       "My weekly data visualization contributions to #TidyTuesday. Each visualization explores different datasets using R and Python, showcasing various visualization techniques and data analysis approaches. Nothing much there yet.",
-    imageUrl: "https://via.placeholder.com/400x300?text=TidyTuesday",
+    imageUrl: "/images/projects/tidytuesday.png",
     projectUrl: "https://github.com/gnoblet/TidyTuesday/tree/main",
     tags: ["R", "Python", "data visualization", "data analysis", "ongoing"],
   },
@@ -18,7 +18,7 @@ export const projects: Project[] = [
     slug: "30-day-chart-challenge",
     description:
       "My submissions for the #30DayChartChallenge, a community-driven data visualization event where participants create and share charts based on daily prompts. First participation in 2025.",
-    imageUrl: "https://via.placeholder.com/400x300?text=30DayChartChallenge",
+    imageUrl: "/images/projects/30-day-chart-challenge.png",
     projectUrl: "https://github.com/gnoblet/30DayChartChallenge",
     tags: ["R", "Python", "data visualization", "challenge", "creative"],
   },
