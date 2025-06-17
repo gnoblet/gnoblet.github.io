@@ -1,5 +1,5 @@
 // src/pages/Home.tsx
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import SocialLinks from "../components/social/SocialLinks";
 import styles from "../styles/pages/Home.module.css";
@@ -15,6 +15,32 @@ import "../styles/components/horizontal/HorizontalCard.css";
 import contactStyles from "../styles/components/layout/Contact.module.css";
 
 const Home: React.FC = () => {
+  // We don't need to destructure setIsLoading since we're only preloading images
+  useEffect(() => {
+    // Preload critical images
+    const preloadImages = async () => {
+      const imageUrl = "/assets/myself.jpg";
+
+      try {
+        const img = new Image();
+        img.src = imageUrl;
+        await new Promise((resolve, reject) => {
+          img.onload = resolve;
+          img.onerror = reject;
+        });
+      } catch (error) {
+        console.error("Failed to preload image:", error);
+      }
+    };
+
+    preloadImages();
+
+    // Add a cleanup function
+    return () => {
+      // Clean up any resources if needed
+    };
+  }, []);
+
   return (
     <div className={styles.fullWidthContainer}>
       {/* Intro Section */}

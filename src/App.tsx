@@ -8,8 +8,10 @@ import Projects from "./pages/Projects";
 import AboutMe from "./pages/AboutMe";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
+import LoadingSpinner from "./components/ui/loading/LoadingSpinner";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { ColorPaletteProvider } from "./contexts/ColorPaletteContext"; // Kept for compatibility
+import { LoadingProvider, useLoading } from "./contexts/LoadingContext";
 import "./App.css";
 
 // For handling scrolling on navigation
@@ -56,63 +58,77 @@ const AppLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   );
 };
 
+// Main application wrapper that includes the loading spinner
+const AppWithLoading = () => {
+  const { isLoading } = useLoading();
+
+  return (
+    <>
+      <LoadingSpinner isLoading={isLoading} />
+      <BrowserRouter>
+        <ScrollToTop />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <AppLayout>
+                <Home />
+              </AppLayout>
+            }
+          />
+          <Route
+            path="/home"
+            element={
+              <AppLayout>
+                <Home />
+              </AppLayout>
+            }
+          />
+          <Route
+            path="/blog"
+            element={
+              <AppLayout>
+                <QuartoList />
+              </AppLayout>
+            }
+          />
+          <Route
+            path="/blog/:slug"
+            element={
+              <AppLayout>
+                <QuartoPage />
+              </AppLayout>
+            }
+          />
+          <Route
+            path="/projects"
+            element={
+              <AppLayout>
+                <Projects />
+              </AppLayout>
+            }
+          />
+          <Route
+            path="/aboutMe"
+            element={
+              <AppLayout>
+                <AboutMe />
+              </AppLayout>
+            }
+          />
+        </Routes>
+      </BrowserRouter>
+    </>
+  );
+};
+
 function App() {
   return (
     <ThemeProvider>
       <ColorPaletteProvider>
-        <BrowserRouter>
-          <ScrollToTop />
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <AppLayout>
-                  <Home />
-                </AppLayout>
-              }
-            />
-            <Route
-              path="/home"
-              element={
-                <AppLayout>
-                  <Home />
-                </AppLayout>
-              }
-            />
-            <Route
-              path="/blog"
-              element={
-                <AppLayout>
-                  <QuartoList />
-                </AppLayout>
-              }
-            />
-            <Route
-              path="/blog/:slug"
-              element={
-                <AppLayout>
-                  <QuartoPage />
-                </AppLayout>
-              }
-            />
-            <Route
-              path="/projects"
-              element={
-                <AppLayout>
-                  <Projects />
-                </AppLayout>
-              }
-            />
-            <Route
-              path="/aboutMe"
-              element={
-                <AppLayout>
-                  <AboutMe />
-                </AppLayout>
-              }
-            />
-          </Routes>
-        </BrowserRouter>
+        <LoadingProvider>
+          <AppWithLoading />
+        </LoadingProvider>
       </ColorPaletteProvider>
     </ThemeProvider>
   );
