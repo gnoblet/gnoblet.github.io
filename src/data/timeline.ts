@@ -47,7 +47,7 @@ export const timelineEntries: TimelineEntry[] = [
     company: "University of Paris 1 Panthéon-Sorbonne",
     role: "PhD Candidate in (History of) Economics",
     description:
-      "Thesis in(history of) economics: “Agricultural economics in the interwar United States: methods, experiments, and statistics.”. I co-authored two peer-reviewed published papers. I also coordinated the REHPERE research network, organized research seminars and I was an Assistant managing editor for Œconomia: History, Methodology, Philosophy. I also taught undergrads and grads in mathematics and economic analysis.",
+      "Thesis in (history of) economics: “Agricultural economics in the interwar United States: methods, experiments, and statistics.”. I co-authored two peer-reviewed published papers. I also coordinated the REHPERE research network, organized research seminars and I was an Assistant managing editor for Œconomia: History, Methodology, Philosophy. I taught undergrads and grads in mathematics and economic analysis.",
     companyUrl: "https://www.impact-initiatives.org",
     location: "Paris, France",
     skills: [
