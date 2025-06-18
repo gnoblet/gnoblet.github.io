@@ -1,5 +1,5 @@
 ---
-title: "My Personal Website: Mostly to Learn How to Build One"
+title: "My Personal Website: Only to Learn How to Build One"
 author: "Guillaume Noblet"
 date: today
 categories: [React, Website, quarto, TypeScript]
@@ -32,7 +32,7 @@ format:
 
 ## Why I Built This Website (Hint: Pure Employability)
 
-Let's be honest: the primary function of a personal website in 2025 is to serve as a digital billboard that screams "PLEASE HIRE ME" in the a very sophisticated way. After all, what better way to demonstrate my employability than by showcasing a bunch of tools and technologies that will probably be obsolete by the time you finish reading this---or I even finish writing this post? So here it is—--an attempt at a meticulously crafted website.
+Let's be honest: the primary function of my personal website is to serve as a digital billboard that screams "PLEASE HIRE ME" in a very sophisticated way. After all, what better way to demonstrate my employability than by showcasing a bunch of tools I just learnt and technologies that will probably be obsolete by the time you finish reading this---or I even finish writing this post? So here it is---an attempt at a meticulously crafted website.
 
 ## The Tech Stack (AKA "Things I May or May Not List on My Resume")
 
@@ -68,7 +68,7 @@ const ThemeToggle = () => {
 };
 ```
 
-That's right—I implemented a theme toggle. Sure, there are ready-to-go ways that do this exact thing, but I wrote mine from scratch because of "learning purposes." Anyway, the beauty of having both light and dark themes is that I can now proudly claim both on my resume and I had fun implementing the toggle, but above all to choose colors for both themes.
+That's right---I implemented a theme toggle. Sure, there are ready-to-go ways that do this exact thing, but I wrote mine from scratch because of "learning purposes." Anyway, the beauty of having both light and dark themes is that I can now proudly claim both on my resume and I had fun implementing the toggle, but above all to choose colors for both themes.
 
 ### The Leaf Animation with Bezier Curves
 
