@@ -4,7 +4,7 @@ author: "Guillaume Noblet"
 date: today
 categories: [React, Website, quarto, TypeScript]
 image: "images/blog/a-personal-website.png"
-excerpt: "A totally-not-desperate showcase of what I used to build this website, featuring React, TypeScript, Quarto and Bezier curves"
+excerpt: "A totally-not-desperate showcase of what I used to build this website, featuring React, TypeScript, and Quarto."
 format:
   html:
     theme: templates/website-dark-blue.scss
@@ -32,28 +32,26 @@ format:
 
 ## Why I Built This Website (Hint: Pure Employability)
 
-Let's be honest: the primary function of a personal website in 2023 is to serve as a digital billboard that screams "PLEASE HIRE ME" in the most sophisticated way possible. After all, what better way to demonstrate my employability than by showcasing a bunch of technologies that will probably be obsolete by the time you finish reading this?
+Let's be honest: the primary function of a personal website in 2025 is to serve as a digital billboard that screams "PLEASE HIRE ME" in the a very sophisticated way. After all, what better way to demonstrate my employability than by showcasing a bunch of tools and technologies that will probably be obsolete by the time you finish reading this---or I even finish writing this post? So here it is—--an attempt at a meticulously crafted website.
 
-So here it is—my grand attempt at professional relevance, meticulously crafted using modern web technologies that I promise to list repeatedly throughout this post for maximum keyword saturation (hello there, LinkedIn algorithm!).
-
-## The Tech Stack (AKA "Things I Can List on My Resume")
+## The Tech Stack (AKA "Things I May or May Not List on My Resume")
 
 This website was built with:
 
-- **React** - Because using vanilla JavaScript would make me look like I've been living under a rock since 2013, they say
+- **React** - Because using vanilla JavaScript is far too far from my comfort zone
 - **TypeScript** - So I can pretend I care about type safety while this is actually to get lazy
 - **Vite** - Not sure why, but it's working well and fast and efficient
-- **Github Copilot** - As a helper, it's like having a personal assistant who knows everything about building websites
+- **Github Copilot** - As a helper, otherwise this website wouldn't exist
 
-All of this was lovingly developed on my [Framework 13](https://frame.work) laptop running [Fedora KDE 42](https://fedoraproject.org/kde/), which I'm happy to mention in every (technical?) conversation since I use Linux.
+All of this was lovingly developed on my [Framework 13](https://frame.work) laptop running [Fedora KDE 42](https://fedoraproject.org/kde/), which I'm happy to mention in every (technical?) conversation since I've been using Linux for the paste 15 years.
 
 ## The Real MVP: My Code Editor
 
-I've recently switched to [Zed](https://zed.dev/), the blazingly fast code editor that's so exclusive you needed an invitation to use it (until you didn't). It's written in Rust, which automatically makes anything 300% more impressive to mention in technical conversations.
+I've recently switched to [Zed](https://zed.dev/), the "blazingly fast code editor" written in Rust, which automatically makes anything 300% more impressive to mention in technical conversations.
 
-While I will most likely settle on Positron for data projects still, e.g., to write blog posts with Quarto, I will settle on Zed most things.
+While I settle on Positron for data projects still, e.g., to write blog posts with Quarto, I started settling on Zed for most things. Imho both the integration of the Agent and less clutter and more focus on content really helps writing and building blocks of code.
 
-## Features I Was Happy Spending Time On Polishing
+## Features of the Website I Was Happy Spending Time On Polishing
 
 ### Light/Dark Theme Toggle
 
@@ -70,13 +68,11 @@ const ThemeToggle = () => {
 };
 ```
 
-That's right—I implemented a theme toggle. Sure, there are about 10,000 npm packages that do this exact thing, but I wrote mine from scratch because... um... "learning purposes." Anyway, this makes me at least 15% more hireable, according to statistics I just made up.
-
-The beauty of having both light and dark themes is that I can now proudly claim "accessibility expertise" on my resume, despite never having read a single WCAG guideline.
+That's right—I implemented a theme toggle. Sure, there are ready-to-go ways that do this exact thing, but I wrote mine from scratch because of "learning purposes." Anyway, the beauty of having both light and dark themes is that I can now proudly claim both on my resume and I had fun implementing the toggle, but above all to choose colors for both themes.
 
 ### The Leaf Animation with Bezier Curves
 
-The crown jewel of my website is undoubtedly the leaf animation that uses Bezier curves to create smooth, natural movements. Let me show you a small snippet of this masterpiece:
+The crown jewel of my website is undoubtedly the leaf animation that uses Bezier curves to create a not-really-sense of smooth, natural movements. Let me show you a small snippet of this masterpiece:
 
 ```typescript
 // Drawing a leaf using bezier curves
@@ -107,20 +103,16 @@ const drawLeaf = (ctx: CanvasContext, leaf: Leaf) => {
 
 Is this animation necessary? Absolutely not. Does it occasionally cause performance issues? Perhaps. But does it make me seem like a creative developer with an eye for detail and unnecessary animations? I sure hope so!
 
-The amount of time I spent perfecting the wobble coefficient of these leaves is something I will never publicly admit to. Let's just say I liked spending time on the animations of mouse movement..
+The amount of time I spent perfecting the wobble coefficient or the mouse movement's effect of these leaves is far too big.
 
 ### Quarto Document Integration
 
-Perhaps the most impressive feature of this website is the seamless integration of Quarto documents. Quarto, for those not in the know, it is a scientific and technical publishing system built on Pandoc.
+Perhaps the most impressive feature of this website is the (seamless, but not fully yer) integration of Quarto documents. Quarto, for those not in the know, it is a scientific and technical publishing system built on Pandoc.
 
-What makes this integration special is that each Quarto document can have its own theming. This means I can write technical blog posts with custom styling, interactive visualizations, and embedded code that actually runs. It's perfect for showing off data visualizations or explaining complex concepts.
-
-Of course, the real reason I use Quarto is that it makes me seem like I know R and Python, even though I mostly just copy-paste code from existing examples.
+What makes this integration special is that each Quarto document can have its own theming. This means I can write technical blog posts with custom styling, interactive visualizations, and embedded code that actually runs. It's perfect for showing off data visualizations or explaining complex concepts. And as simple as markdown for 'simple' blog writing.
 
 ## Conclusion: Will This Get Me Hired?
 
-In conclusion, this website represents my desperate attempt to showcase technical skills and creativity in hopes that it will translate into employment opportunities. Is it working? I don't know, but if you're reading this and happen to be hiring, my contact information is just a click away!
+I've learned a ton building this site—from React component structure to TypeScript typing, from CSS animations to optimization techniques. It's been a fun project, and there are most likely many things to review and improve on the webiste, but I am taking a pausee from it now.
 
-Remember: hiring me means getting someone who spent an inordinate amount of time perfecting the physics of animated leaves falling across a screen. If that's not dedication to meaningless details, I don't know what is.
-
-But seriously, I've learned a ton building this site—from React component structure to TypeScript typing, from CSS animations to optimization techniques. It's been a fun project that's helped me grow as a developer, regardless of its impact on my employment status.
+If you're reading this and happen to be hiring, my contact information is just a click away on the Home page!
