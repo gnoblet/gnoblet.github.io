@@ -19,7 +19,7 @@ export const projects: Project[] = [
     description:
       "My submissions for the #30DayChartChallenge, a community-driven data visualization event where participants create and share charts based on daily prompts. First participation in 2025.",
     imageUrl: "/images/projects/30-day-chart-challenge.png",
-    projectUrl: "https://github.com/gnoblet/30DayChartChallenge",
+    projectUrl: "https://gnoblet.github.io/30DayChartChallenge/",
     tags: ["R", "Python", "data visualization", "challenge", "creative"],
   },
   {
@@ -58,7 +58,7 @@ export const projects: Project[] = [
       "First comprehensive multisectoral package for humanitarian indicators. Provides functions to prepare usual humanitarian composite indicators related to household-level Multi-Sector Needs Assessments (MSNAs). While still in early-stage of development, it covers usual food security indicators, Washington Group Short Set of questions, JMP ladders among others.",
     imageUrl:
       "https://raw.githubusercontent.com/impact-initiatives-hppu/humind/main/man/figures/logo.png",
-    projectUrl: "https://github.com/impact-initiatives-hppu/humind",
+    projectUrl: "https://impact-initiatives-hppu.github.io/humind/",
     tags: ["R", "humanitarian", "data analysis", "indicators", "package"],
   },
 ];
