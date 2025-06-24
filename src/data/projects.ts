@@ -9,7 +9,7 @@ export const projects: Project[] = [
     description:
       "My weekly data visualization contributions to #TidyTuesday. Each visualization explores different datasets using R and Python, showcasing various visualization techniques and data analysis approaches. Nothing much there yet.",
     imageUrl: "/images/projects/tidytuesday.png",
-    projectUrl: "https://github.com/gnoblet/TidyTuesday/tree/main",
+    projectUrl: "https://gnoblet.github.io/TidyTuesday/",
     tags: ["R", "Python", "data visualization", "data analysis", "ongoing"],
   },
   {
