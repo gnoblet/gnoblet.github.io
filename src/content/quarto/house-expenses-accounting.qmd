@@ -1,0 +1,92 @@
+---
+title: "House Expenses Accounting: Shiny Shared Expenses"
+excerpt: "Discover how the house-expenses-accounting Shiny app I built brings clarity and flexibility to splitting house's expenses."
+date: today
+categories: [R, Golem, Shiny, house expenses]
+image: "images/blog/house-expenses-accounting.png"
+format:
+  html:
+    theme: cosmo
+    minimal: true
+    page-layout: article
+    toc: false
+    code-fold: false
+    code-tools: true
+    self-contained: true
+    embed-resources: true
+    include-in-header:
+      - text: |
+          <style>
+            /* Hide all navigation elements */
+            nav, header.navbar, .navbar, .quarto-navbar, .sidebar {
+              display: none !important;
+            }
+          </style>
+---
+
+## Simpler Accounting of Shared Expenses
+
+Managing shared expenses in a house shared with others can be tricky—especially when people are away, participate partially, or have different consumption habits, have been more or less absent.
+
+My [`house-expenses-accounting`](https://gnoblet-house-expenses-accounting.share.connect.posit.cloud/) project is a simple Shiny app designed to make final accounting **transparent, flexible, and easy**. Code is available on my [`GitHub`](https://github.com/gnoblet/house-expenses-accounting).
+
+### Why This App?
+
+While sharing a house, we had this excel system, repeated every 2-3 months. I quickly realized that splitting expenses fairly was not that simple, aka more complex than just dividing everything equally.
+
+> Like people come and go. Sometimes someone is away for a week or two, and it hardly seems fair for them to pay for groceries they didn’t eat. Then there are those who only partially participate in certain expenses—like Bob, who only drinks 20% of the household’s wine, or someone who skips out on the party snacks. And of course, there are always those shared services—utilities, internet, subscriptions—that should be split evenly no matter what.
+
+But Excel sheets (maybe because I'm bad at it) are error-prone, not replicable and we did not want to redo the same mistakes and process over and over again.
+
+I wanted a **solution that kept transparency to the process**. So I dived into how every calculation was made, and I wanted the **flexibility to upload my own data, set custom rules, and export a PDF report that can be shared with others**. That’s why I built this app: to make the messy reality of shared expenses a little bit simpler.
+
+### Key Features
+
+To achieve this, I focused on a few core features. The app lets me split expenses in a **weighted** way, consider **who was present** and any **exceptions for partial participation**. It automatically handles those always-shared expenses like utilities and subscriptions, so I don’t have to think about them. Eventually, we could rely on robust validation to catch any mistakes in the data.
+
+For reporting, I made sure I could export everything to a PDF document, and the interface is organized into tabs for settlements, summaries, and detailed analysis.
+
+> One of my favorite parts is the longitudinal analysis (also preliminary for now), which lets me spot trends in our house’s spending over time and see how things change as people come and go.
+
+### How It Works
+
+::: {.callout-tip}
+## Built with R, Shiny & Golem
+This app is built using the [Golem](https://engineering-shiny.org/golem.html) framework for robust applications. For me the main reason is that it provides a structured way to build and deploy Shiny apps, with modularity at its core. I cannot find my way around very long lonely R shiny scripts.
+:::
+
+To use the app, follow these steps:
+
+1. **Upload your data:** Expenses, absences, and exceptions (CSV or text files).
+2. **Set your rules:** Who’s in the house, expense types, and any exceptions.
+3. **Calculate:** The app computes everyone’s share, factoring in absences and partial participation.
+4. **Explore results:** See settlements, summaries, and trends. Filter by expense type and export the PDF report.
+
+If you clone the repo, instead of writing texts each time, you can set up default people, expense types, and exceptions by editing simple text or CSV files in the `assets/` folder. No coding required!
+
+## See It in Action
+
+Here are a few screenshots from the app:
+
+| ![](images/blog/house-expenses-accounting_settlement.png){width=350} | ![](images/blog/house-expenses-accounting_results-type.png){width=350} |
+|:--:|:--:|
+| *Final settlement tab* | *Expense breakdown by type* |
+
+| ![](images/blog/house-expenses-accounting_trendanalysis.png){width=350} |
+|:--:|
+| *Trend analysis of household spending* |
+
+## Try It or Contribute
+
+- **Source code:** [github.com/gnoblet/house-expenses-accounting](https://github.com/gnoblet/house-expenses-accounting)
+- **Get started:** Clone the repo and follow the instructions in the README.
+- **Ideas or feedback?** Open an issue or contribute on GitHub!
+
+Next steps are:
+
+- **Prevent breaking**: Add a testing structures and further checks on inputs.
+- **Beautifulize**: Enhance the design and user experience.
+- **Improve trend analysis**: for now the long term analysis is pretty basic and only includes the current date range calculation.
+
+Ready to make your house finances fair, transparent, and drama-free?
+**Try [`house-expenses-accounting`](https://gnoblet-house-expenses-accounting.share.connect.posit.cloud/) today!**

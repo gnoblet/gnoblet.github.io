@@ -4,6 +4,23 @@ import { Project } from "../types/project";
 export const projects: Project[] = [
   {
     id: 1,
+    title: "House Expenses Accounting",
+    slug: "house-expenses-accounting",
+    description:
+      "A Shiny app for fair, flexible, and transparent splitting of shared household expenses. Handles absences, partial participation, always-shared services, and provides detailed analysis and professional reports. Built with the Golem framework for robust R Shiny apps.",
+    imageUrl: "/images/projects/house-expenses-accounting_homepage.png",
+    projectUrl: "https://github.com/gnoblet/house-expenses-accounting",
+    tags: [
+      "R",
+      "Shiny",
+      "expense tracking",
+      "fairness",
+      "data analysis",
+      "automation",
+    ],
+  },
+  {
+    id: 2,
     title: "TidyTuesday Contributions",
     slug: "tidytuesday",
     description:
@@ -13,7 +30,7 @@ export const projects: Project[] = [
     tags: ["R", "Python", "data visualization", "data analysis", "ongoing"],
   },
   {
-    id: 2,
+    id: 3,
     title: "30 Day Chart Challenge",
     slug: "30-day-chart-challenge",
     description:
@@ -23,7 +40,7 @@ export const projects: Project[] = [
     tags: ["R", "Python", "data visualization", "challenge", "creative"],
   },
   {
-    id: 3,
+    id: 4,
     title: "hespeR: Humanitarian Emergency Settings Perceived Needs Scale",
     slug: "hespeR",
     description:
@@ -40,7 +57,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    id: 4,
+    id: 5,
     title: "visualizeR: Utility functions for Humanitarian Viz",
     slug: "visualizeR",
     description:
@@ -51,7 +68,7 @@ export const projects: Project[] = [
     tags: ["R", "data visualization", "humanitarian", "package", "ongoing"],
   },
   {
-    id: 5,
+    id: 6,
     title: "humind: Humanitarian Indicators Package",
     slug: "humind",
     description:
