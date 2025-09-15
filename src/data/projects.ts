@@ -4,6 +4,24 @@ import { Project } from "../types/project";
 export const projects: Project[] = [
   {
     id: 1,
+    title: "SurveyLiteR",
+    slug: "surveyliter",
+    description:
+      "A streamlined workflow for analyzing survey data based on sampling designs (weights, strata, clusters). Perfect for KoboToolbox data and humanitarian survey analysis, offering standardized analysis functions built on top of the srvyr package with consistent outputs for faster reporting and visualization.",
+    imageUrl:
+      "https://gnoblet.github.io/SurveyLiteR/reference/figures/logo.svg",
+    projectUrl: "https://github.com/gnoblet/SurveyLiteR",
+    tags: [
+      "R",
+      "survey analysis",
+      "KoboToolbox",
+      "humanitarian",
+      "data analysis",
+      "package",
+    ],
+  },
+  {
+    id: 2,
     title: "House Expenses Accounting",
     slug: "house-expenses-accounting",
     description:
@@ -20,7 +38,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    id: 2,
+    id: 3,
     title: "TidyTuesday Contributions",
     slug: "tidytuesday",
     description:
@@ -30,7 +48,7 @@ export const projects: Project[] = [
     tags: ["R", "Python", "data visualization", "data analysis", "ongoing"],
   },
   {
-    id: 3,
+    id: 4,
     title: "30 Day Chart Challenge",
     slug: "30-day-chart-challenge",
     description:
@@ -40,7 +58,7 @@ export const projects: Project[] = [
     tags: ["R", "Python", "data visualization", "challenge", "creative"],
   },
   {
-    id: 4,
+    id: 5,
     title: "hespeR: Humanitarian Emergency Settings Perceived Needs Scale",
     slug: "hespeR",
     description:
@@ -57,7 +75,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    id: 5,
+    id: 6,
     title: "visualizeR: Utility functions for Humanitarian Viz",
     slug: "visualizeR",
     description:
@@ -68,7 +86,7 @@ export const projects: Project[] = [
     tags: ["R", "data visualization", "humanitarian", "package", "ongoing"],
   },
   {
-    id: 6,
+    id: 7,
     title: "humind: Humanitarian Indicators Package",
     slug: "humind",
     description:
