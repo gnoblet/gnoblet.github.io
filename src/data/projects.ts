@@ -4,6 +4,17 @@ import { Project } from "../types/project";
 export const projects: Project[] = [
   {
     id: 1,
+    title: "ggbranding",
+    slug: "ggbranding",
+    description:
+      "Add personal branding to ggplot2 charts using Font Awesome 7 icons. Automatically downloads Font Awesome 7 fonts on first use, provides access to 500+ icons, and allows adding complete branding with one function call. Supports major platforms like GitHub, LinkedIn, Bluesky, Twitter/X, and more.",
+    imageUrl:
+      "https://raw.githubusercontent.com/gnoblet/ggbranding/main/man/figures/logo.png",
+    projectUrl: "https://gnoblet.github.io/ggbranding/",
+    tags: ["R", "ggplot2", "branding", "visualization", "package"],
+  },
+  {
+    id: 2,
     title: "SurveyLiteR",
     slug: "surveyliter",
     description:
@@ -21,7 +32,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    id: 2,
+    id: 3,
     title: "House Expenses Accounting",
     slug: "house-expenses-accounting",
     description:
@@ -38,7 +49,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    id: 3,
+    id: 4,
     title: "TidyTuesday Contributions",
     slug: "tidytuesday",
     description:
@@ -48,7 +59,7 @@ export const projects: Project[] = [
     tags: ["R", "Python", "data visualization", "data analysis", "ongoing"],
   },
   {
-    id: 4,
+    id: 5,
     title: "30 Day Chart Challenge",
     slug: "30-day-chart-challenge",
     description:
@@ -58,7 +69,7 @@ export const projects: Project[] = [
     tags: ["R", "Python", "data visualization", "challenge", "creative"],
   },
   {
-    id: 5,
+    id: 6,
     title: "hespeR: Humanitarian Emergency Settings Perceived Needs Scale",
     slug: "hespeR",
     description:
@@ -75,7 +86,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    id: 6,
+    id: 7,
     title: "visualizeR: Utility functions for Humanitarian Viz",
     slug: "visualizeR",
     description:
@@ -86,7 +97,7 @@ export const projects: Project[] = [
     tags: ["R", "data visualization", "humanitarian", "package", "ongoing"],
   },
   {
-    id: 7,
+    id: 8,
     title: "humind: Humanitarian Indicators Package",
     slug: "humind",
     description:
