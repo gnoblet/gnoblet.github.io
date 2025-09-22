@@ -1,0 +1,110 @@
+---
+title: "ggbranding: Because Charts Need Social Media Handles Too"
+author: "Guillaume Noblet"
+date: 2025-09-22
+categories: [R, ggplot2, package, branding, visualization]
+image: "images/blog/ggbranding-release.png"
+excerpt: "I made a package to add social media icons to ggplot2 charts. Not sure if it is useful since I barely make charts or use social media atm, but hey, it exists now."
+format:
+  html:
+    theme: templates/website-dark-blue.scss
+    minimal: true
+    page-layout: article
+    toc: false
+    code-tools: true
+    self-contained: true
+    embed-resources: true
+    include-in-header:
+      - text: |
+          <style>
+            /* Hide all navigation elements */
+            nav, header.navbar, .navbar, .quarto-navbar, .sidebar {
+              display: none !important;
+            }
+
+            /* Make sure Observable outputs look good */
+            .ojs-wrapper, .ojs-output-wrapper, .ojs-shell-container {
+              background: transparent !important;
+            }
+          </style>
+---
+
+Happy to announce the release of my new R package, [`ggbranding`](https://gnoblet.github.io/ggbranding)---a package that lets you slap your GitHub, LinkedIn, Bluesky, or whatever social media handles onto your `ggplot2` charts as a one liner. It uses Font Awesome icons, which it sets up automatically for you.
+
+I'm not sure if this package is anyhow useful, especially since I haven't spent much time producing `ggplot2` charts these days, nor am I really on social media. **BUT** it may be useful not only for people personally but also for companies or organizations that want to add their branding onto data visualizations.
+
+### What does it do?
+
+It adds Font Awesome icons and your social media handles to chart captions. That's it. One function call: `add_branding()`, and boom! Your chart now has little icons and handles at the bottom. Very professional. Much brand. You want to get fancier? You can customize colors, sizes, positions. 
+
+Below I used the new [ggplot2 4.0.0](https://www.tidyverse.org/blog/2025/09/ggplot2-4-0-0/) ink and paper theme parameters to set a dark green on azure theme (I looove it).
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+
+library(ggplot2)
+library(ggbranding)
+library(showtext, quietly = TRUE)
+library(sysfonts, quietly = TRUE)
+
+font_add_google("Monoton", "monoton")
+
+ggplot(mtcars, aes(x = mpg, y = wt)) +
+  geom_point(size = 4) +
+  labs(title = "Cars Weight vs. Miles Per Hour") +
+  theme_minimal(
+    ink = "darkgreen",
+    paper = "azure"
+  ) +
+  theme(
+    plot.title = element_text(
+      family = "monoton",
+      size = 30,
+      margin = margin(t = 10, b = 20),
+      hjust = 0.5
+    ),
+    plot.title.position = "plot",
+    axis.title = element_blank(),
+    axis.text = element_text(size = 16)
+  ) +
+  add_branding(
+    github = "gnoblet",
+    bluesky = "@gnoblet",
+    linkedin = "gnoblet",
+    icon_color = "darkgreen",
+    text_color = "darkgreen",
+    icon_size = "20pt",
+    text_size = "20pt",
+    text_family = "monoton",
+    caption_halign = 0.5,
+    caption_margin = ggplot2::margin(t = 20)
+  )
+```
+
+In the background, it checks whether there is a `ggbranding` cached version of Font Awesome 7 available, and if not, it downloads it and sets it up for you. So you don't have to worry about installing fonts or anything. It just works (I hope). Typically, on linux, it'll be in `~/.cache/ggbranding/`. 
+
+::: {.callout-note}
+I just realised while drafting this blog post that I again used the `mtcars` dataset. I guess it's a classic for a reason. But at the same time, I should probably branch out and use other datasets in future examples rather than stressing out cars, again...
+:::
+
+
+### Why did I make this?
+
+I read [Nicola Rennie's blog post](https://nrennie.rbind.io/blog/adding-social-media-icons-ggplot2/) about adding social media icons to ggplot2 after I saw their social media handles on their TidyTuesday contributions and thought "this should be easier." 
+
+Although there are most likely several paths to improvements, I thought I would just package this and share it. Since I haven't found anything similar on CRAN or GitHub, I guess it's somewhat novel. One big thing I couldn't manage to do was to add a separator option to pass to `ggtext`. For now, the package just adds transparent dots (...) between icons, which was the only workaround I found. Even using non-breaking HTML spaces didn't work. If you know how to do this, please let me know!
+
+### Who might actually use this?
+
+- **Companies** wanting consistent branding across all their data viz
+- **Consultants** who need to watermark their work (in the nicest way possible)
+- **Data people** building internal dashboards
+- **Anyone** who's tired of manually adding contact info to charts
+- **Me** (when I eventually start making charts again)
+
+The package handles Font Awesome 7 font setup automatically, supports 500+ icons, and works with custom styling. It's basically the lazy person's approach to chart branding, which is exactly the target demographic.
+
+Available on GitHub, CRAN version coming soon (probably).
+
+➡️ Check it out here: [https://gnoblet.github.io/ggbranding](https://gnoblet.github.io/ggbranding)
