@@ -1,7 +1,7 @@
 ---
 title: "My Personal Website: Only to Learn How to Build One"
 author: "Guillaume Noblet"
-date: today
+date: 2025-06-10
 categories: [React, Website, quarto, TypeScript]
 image: "images/blog/a-personal-website.png"
 excerpt: "A totally-not-desperate showcase of what I used to build this website, featuring React, TypeScript, and Quarto."

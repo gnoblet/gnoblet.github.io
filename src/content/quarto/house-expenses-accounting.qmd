@@ -1,7 +1,7 @@
 ---
 title: "House Expenses Accounting: Shiny Shared Expenses"
 excerpt: "Discover how the house-expenses-accounting Shiny app I built brings clarity and flexibility to splitting expenses in a shared house."
-date: today
+date: 2025-07-01
 categories: [R, Golem, Shiny, house expenses]
 image: "images/blog/house-expenses-accounting.png"
 format:
