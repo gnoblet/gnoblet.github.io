@@ -7,7 +7,7 @@ export const projects: Project[] = [
     title: "ggbranding",
     slug: "ggbranding",
     description:
-      "Add personal branding to ggplot2 charts using Font Awesome 7 icons. Automatically downloads Font Awesome 7 fonts on first use, provides access to 500+ icons, and allows adding complete branding with one function call. Supports major platforms like GitHub, LinkedIn, Bluesky, Twitter/X, and more.",
+      "Easily add personal branding elements like social media icons to \'ggplot2\' charts such as GitHub, GitLab, LinkedIn, Bluesky, and other brand icons with minimal effort. Automatically downloads Font Awesome 7 fonts from official sources if not already available.",
     imageUrl:
       "https://raw.githubusercontent.com/gnoblet/ggbranding/main/man/figures/logo.png",
     projectUrl: "https://gnoblet.github.io/ggbranding/",
