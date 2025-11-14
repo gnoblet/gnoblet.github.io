@@ -15,7 +15,7 @@ Visit the site at [gnoblet.github.io](https://gnoblet.github.io/)
 - **Dynamic Content**: Blog and portfolio with filtering capabilities
 - **Type Safety**: Developed with TypeScript for robust code quality
 - **Fast Performance**: Built with Vite for optimal development and production performance
-- **Quarto Integration**: Support for independently-themed Quarto documents with efficient caching
+- **Quarto Integration**: Removed from this branch — blog content moved to a legacy branch
 - **SEO Friendly**: Properly structured content for better search engine visibility
 
 ## 📁 Project Structure
@@ -37,7 +37,7 @@ src/
 │   ├── social/      # Social media components
 │   └── ui/          # General UI components
 ├── content/         # Static content
-│   └── quarto/      # Quarto documents for blog posts
+│   └── quarto/      # (moved to legacy branch; removed from this branch)
 ├── contexts/        # React contexts
 ├── data/            # Data files
 │   ├── education.ts # Education history data
@@ -77,7 +77,7 @@ src/
 
 - **Home**: Full-width landing page with timeline and project showcase
 - **Projects**: Showcase of projects with filtering options
-- **Blog**: Quarto Blog posts rendered from Quarto documents with search functionality
+- **Blog**: Removed from the main branch; blog content and Quarto files are available on a legacy branch
 - **About Me**: Personal information and professional background
 
 ## 🖼️ Image Handling
@@ -168,8 +168,8 @@ pnpm dev
 # Build for production (includes Quarto rendering)
 pnpm build
 
-# Render Quarto documents only
-pnpm render-quarto
+# Render Quarto documents only (disabled)
+# pnpm render-quarto (removed) — Quarto rendering disabled in this branch
 
 # Preview production build
 pnpm preview

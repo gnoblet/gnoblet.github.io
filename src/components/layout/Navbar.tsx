@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import styles from "../../styles/components/navigation/Navbar.module.css";
 // We need to add the navIcon class in the CSS file
-import { FaChartBar, FaLeaf } from "react-icons/fa";
+import { FaLeaf } from "react-icons/fa";
 import { FiMenu, FiX } from "react-icons/fi";
 import ThemeToggle from "../ui/ThemeToggle";
 
@@ -57,14 +57,7 @@ function Navbar() {
                 Home
               </Link>
             </li>
-            <li className={styles.navbarItem}>
-              <Link
-                to="/blog"
-                className={`${styles.navbarLink} ${isActive("/blog") ? styles.active : ""}`}
-              >
-                <FaChartBar className={styles.navIcon} /> Blog
-              </Link>
-            </li>
+            {/* Blog link removed temporarily */}
             <li className={styles.navbarItem}>
               <Link
                 to="/projects"
@@ -82,7 +75,6 @@ function Navbar() {
                 About Me
               </Link>
             </li>
-
           </ul>
 
           <div className={styles.navbarActions}>

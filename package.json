@@ -5,8 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/render-quarto.js || echo 'Quarto rendering skipped' && tsc -b && vite build && cp public/.nojekyll dist/ && mkdir -p dist/assets && cp -r public/assets/* dist/assets/ && mkdir -p dist/quarto-html && cp -r public/quarto-html/* dist/quarto-html/",
-    "render-quarto": "node scripts/render-quarto.js",
+    "build": "tsc -b && vite build && cp public/.nojekyll dist/ && mkdir -p dist/assets && cp -r public/assets/* dist/assets/",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },

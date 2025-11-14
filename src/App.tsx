@@ -2,8 +2,6 @@
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import Home from "./pages/Home";
-import QuartoList from "./pages/QuartoList";
-import QuartoPage from "./pages/QuartoPage";
 import Projects from "./pages/Projects";
 import AboutMe from "./pages/AboutMe";
 import Navbar from "./components/layout/Navbar";
@@ -30,12 +28,6 @@ const AppLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const location = useLocation();
   const isFullWidth =
     location.pathname === "/" || location.pathname === "/home";
-  const isQuartoPage = location.pathname.startsWith("/blog/");
-
-  if (isQuartoPage) {
-    // For Quarto pages, return just the content without navbar/footer
-    return <>{children}</>;
-  }
 
   return (
     <>
@@ -81,22 +73,6 @@ const AppWithLoading = () => {
             element={
               <AppLayout>
                 <Home />
-              </AppLayout>
-            }
-          />
-          <Route
-            path="/blog"
-            element={
-              <AppLayout>
-                <QuartoList />
-              </AppLayout>
-            }
-          />
-          <Route
-            path="/blog/:slug"
-            element={
-              <AppLayout>
-                <QuartoPage />
               </AppLayout>
             }
           />

@@ -6,7 +6,7 @@ import styles from "../styles/pages/Home.module.css";
 import FeaturedProjects from "../components/content/FeaturedProjects";
 import FeaturesList from "../components/FeaturesList";
 import LeafAnimation from "../components/background/LeafAnimation";
-import LatestQuartoPosts from "../components/QuartoComponents/LatestQuartoPosts";
+
 import ActionButton from "../components/buttons/ActionButton";
 import ScrollButton from "../components/buttons/ScrollButton";
 import Title from "../components/layout/Title";
@@ -130,30 +130,7 @@ const Home: React.FC = () => {
       {/* Latest Projects Section with Mondrian Background - No Blur */}
       <FeaturedProjects />
 
-      {/* Quarto Blog Section */}
-      <section className={`${styles.section}`}>
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className={styles.sectionContent}
-        >
-          <Title
-            title="My Latest Quarto Blogs"
-            subtitle="Here you will see the latest blog posts if I ever take the time to blog. Or find any subject I would feel both confident enough to write or to not be redundant."
-            center={true}
-            animate={false}
-            marginBottom="1.5rem"
-          />
-
-          <LatestQuartoPosts maxPosts={3} />
-
-          <div className={styles.viewMoreContainer}>
-            <ActionButton to="/blog">View All Blog Posts</ActionButton>
-          </div>
-        </motion.div>
-      </section>
+      {/* Blog section removed from this branch */}
 
       {/* Contact Me Section */}
       <section
