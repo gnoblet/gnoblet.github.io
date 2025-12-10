@@ -1,0 +1,39 @@
+# Bun configuration file
+# https://bun.sh/docs/runtime/bunfig
+
+[install]
+# Configure package installation
+registry = "https://registry.npmjs.org/"
+auto = "auto"
+
+[install.cache]
+# Use default cache directory
+dir = "~/.bun/install/cache"
+
+[install.lockfile]
+# Save the lockfile
+save = true
+print = "yarn"
+
+[run]
+# Run configuration
+# Use bun shell for running scripts
+shell = "/bin/sh"
+
+[test]
+# Test configuration
+preload = []
+coverage = false
+
+# Performance optimizations
+[loader]
+".svg" = "file"
+".png" = "file"
+".jpg" = "file"
+".jpeg" = "file"
+".gif" = "file"
+".webp" = "file"
+
+# Define macros for better performance
+[define]
+"process.env.NODE_ENV" = "production"

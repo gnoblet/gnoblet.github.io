@@ -1,7 +1,0 @@
-/* src/index.css */
-/* Main entry point for CSS */
-@import "./styles/global.css";
-
-/* This file is kept intentionally minimal.
-   All styling is imported from the global.css file which
-   handles importing the theme and component styles. */

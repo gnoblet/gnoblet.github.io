@@ -1,0 +1,36 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+    themes: pastel --default;
+}
+
+@theme {
+    /* Font family configuration */
+    --font-family-sans:
+        "Oswald", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+        "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+    /* Increase base font size significantly */
+    --font-size-base: 1.375rem; /* 22px instead of default 16px */
+}
+
+/* Custom global styles */
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: var(--font-family-sans);
+        font-size: var(--font-size-base);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+}
+
+@layer components {
+    /* Add any custom component styles here */
+}
+
+@layer utilities {
+    /* Add any custom utility styles here */
+}
