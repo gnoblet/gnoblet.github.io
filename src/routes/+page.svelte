@@ -3,6 +3,7 @@
     import Hero from "$lib/sections/Hero.svelte";
     import LatestProjects from "$lib/sections/LatestProjects.svelte";
     import Portfolio from "$lib/sections/Portfolio.svelte";
+    import RiverBasinShowcase from "$lib/sections/RiverBasinShowcase.svelte";
     import Contact from "$lib/sections/Contact.svelte";
 
     let loaded = false;
@@ -130,6 +131,8 @@
     <LatestProjects />
 
     <Portfolio />
+
+    <RiverBasinShowcase />
 
     <Contact />
 </div>

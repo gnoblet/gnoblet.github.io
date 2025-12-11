@@ -1,9 +1,11 @@
 <script lang="ts">
     import SocialLinks from "$lib/components/SocialLinks.svelte";
+    import AnimatedBackground from "$lib/components/AnimatedBackground.svelte";
 </script>
 
-<section class="hero min-h-screen bg-base-200">
-    <div class="hero-content text-center">
+<section class="hero min-h-screen bg-base-200 relative">
+    <AnimatedBackground />
+    <div class="hero-content text-center relative z-10">
         <div class="max-w-4xl">
             <div class="avatar mb-8">
                 <div

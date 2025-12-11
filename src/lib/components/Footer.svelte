@@ -41,6 +41,21 @@
         <p class="text-lg">
             &copy; {currentYear} - Developer, Designer & Problem Solver
         </p>
+        <p class="text-sm opacity-70 mt-2">
+            Map data: <a
+                href="https://www.naturalearthdata.com"
+                class="link link-hover"
+                target="_blank"
+                rel="noopener noreferrer">Natural Earth</a
+            >
+            • Thanks to
+            <a
+                href="https://github.com/nvkelso"
+                class="link link-hover"
+                target="_blank"
+                rel="noopener noreferrer">@nvkelso</a
+            >
+        </p>
     </aside>
     <nav>
         <div class="grid grid-flow-col gap-4">
