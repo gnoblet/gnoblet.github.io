@@ -15,11 +15,21 @@
                 </div>
             </div>
 
-            <h1 class="text-6xl font-bold mb-4">Hi, I'm Guillaume Noblet</h1>
+            <h1 class="text-6xl font-bold mb-4">Hey👋, I'm Guillaume Noblet</h1>
 
-            <p class="text-3xl mb-8 opacity-80">
-                Welcome to my digital space where I share my projects, thoughts,
-                and adventures in code.
+            <p class="text-4xl mb-8 opacity-90">
+                A (humanitarian) researcher specialized in quantitative field
+                research and data visualization. I can juggle between drafting
+                reports from data wrangling to fine-tuned analyses and viz,
+                building web apps, and managing research projects (and also
+                coming up with good memes).
+            </p>
+
+            <p class="text-2xl mb-8 opacity-90">
+                Lastly, I was a Data & Research Specialist at <a
+                    href="https://www.impact-initiatives.org/"
+                    class="link">IMPACT Initiatives</a
+                >
             </p>
 
             <div class="mb-6">
