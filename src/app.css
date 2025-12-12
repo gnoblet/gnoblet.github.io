@@ -5,7 +5,12 @@
 
 @theme {
     /* Font family configuration */
-    --font-family-sans:
+    --font-family-body:
+        "Source Sans 3", ui-sans-serif, system-ui, sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+        "Noto Color Emoji";
+
+    --font-family-heading:
         "Oswald", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
         "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
@@ -20,10 +25,27 @@
     }
 
     body {
-        font-family: var(--font-family-sans);
+        font-family: var(--font-family-body);
         font-size: var(--font-size-base);
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .font-bold,
+    .font-black,
+    .text-xl,
+    .text-2xl,
+    .text-3xl,
+    .text-4xl,
+    .text-5xl,
+    .text-6xl {
+        font-family: var(--font-family-heading);
     }
 }
 
