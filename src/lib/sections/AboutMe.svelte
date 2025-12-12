@@ -7,31 +7,15 @@
     let activeTab: "about" | "skills" | "experience" = "about";
 </script>
 
-<svelte:head>
-    <title>About Me | Gnoblet</title>
-    <meta
-        name="description"
-        content="Learn more about Guillaume Noblet - Developer, Designer, and Problem Solver."
-    />
-</svelte:head>
-
-<div class="min-h-screen py-20 px-4">
+<section id="about-me" class="py-20 px-4 bg-base-100">
     <div class="container mx-auto max-w-6xl">
         <!-- Header Section -->
         <div class="text-center mb-16">
-            <div class="avatar mb-8">
-                <div
-                    class="w-32 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2"
-                >
-                    <img src="/assets/myself.jpg" alt="Guillaume Noblet" />
-                </div>
-            </div>
-
-            <h1 class="text-5xl font-bold mb-4">About Me</h1>
+            <h2 class="text-5xl font-bold mb-4">About Me</h2>
 
             <p class="text-xl opacity-80 max-w-2xl mx-auto mb-8">
-                Hi! I'm Guillaume Noblet, a passionate developer who loves
-                creating elegant solutions to complex problems.
+                Humanitarian researcher passionate about using data to make a
+                difference
             </p>
 
             <SocialLinks size="large" />
@@ -113,7 +97,7 @@
         </div>
 
         <!-- Content Sections -->
-        <div class="max-w-4xl mx-auto">
+        <div class="max-w-5xl mx-auto">
             {#if activeTab === "about"}
                 <AboutSection />
             {:else if activeTab === "skills"}
@@ -122,43 +106,8 @@
                 <ExperienceSection />
             {/if}
         </div>
-
-        <!-- Call to Action -->
-        <div class="text-center mt-20 p-10 bg-base-200 rounded-3xl">
-            <h2 class="text-3xl font-bold mb-4">Let's Work Together</h2>
-            <p class="text-lg opacity-80 mb-6 max-w-2xl mx-auto">
-                I'm always open to discussing new projects, creative ideas, or
-                opportunities to be part of your visions.
-            </p>
-            <div class="flex gap-4 justify-center flex-wrap">
-                <a
-                    href="mailto:data@guillaume-noblet.com"
-                    class="btn btn-primary btn-lg"
-                >
-                    <!-- Heroicon: envelope -->
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke-width="1.5"
-                        stroke="currentColor"
-                        class="h-6 w-6"
-                    >
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"
-                        />
-                    </svg>
-                    Send Email
-                </a>
-                <a href="/projects" class="btn btn-outline btn-lg">
-                    View My Work
-                </a>
-            </div>
-        </div>
     </div>
-</div>
+</section>
 
 <style>
     .tab-active {

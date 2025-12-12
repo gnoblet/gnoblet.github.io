@@ -28,13 +28,8 @@
             >
                 Projects
             </a>
-            <a
-                href="/aboutMe"
-                class="btn btn-ghost"
-                class:btn-active={isActive("/aboutMe")}
-            >
-                About Me
-            </a>
+            <a href="/#about-me" class="btn btn-ghost"> About Me </a>
+            <a href="/#contact" class="btn btn-accent"> Contact </a>
         </div>
 
         <!-- Mobile Menu Dropdown (visible on small screens) -->
@@ -68,9 +63,10 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/aboutMe" class:active={isActive("/aboutMe")}>
-                        About Me
-                    </a>
+                    <a href="/#about-me"> About Me </a>
+                </li>
+                <li>
+                    <a href="/#contact" class="btn btn-accent"> Contact </a>
                 </li>
             </ul>
         </details>
