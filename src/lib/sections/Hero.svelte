@@ -3,29 +3,37 @@
     import AnimatedBackground from "$lib/components/AnimatedBackground.svelte";
 </script>
 
-<section class="hero min-h-screen bg-base-200 relative">
+<section class="hero h-screen relative">
     <AnimatedBackground />
+    <!-- White background overlay -->
+    <div class="absolute inset-0 bg-white/50 z-5"></div>
     <div class="hero-content text-center relative z-10">
         <div class="max-w-4xl">
-            <div class="avatar mb-8">
+            <div class="avatar mb-6">
                 <div
-                    class="w-48 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2"
+                    class="w-40 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2"
                 >
                     <img src="/assets/myself.jpg" alt="Guillaume Noblet" />
                 </div>
             </div>
 
-            <h1 class="text-6xl font-bold mb-4">Hey👋, I'm Guillaume Noblet</h1>
+            <h1 class="text-4xl font-bold mb-8">Hey👋, I'm Guillaume Noblet</h1>
 
-            <p class="text-4xl mb-8 opacity-90">
-                A (humanitarian) researcher specialized in quantitative field
-                research and data visualization. I can juggle between drafting
-                reports from data wrangling to fine-tuned analyses and viz,
-                building web apps, and managing research projects (and also
-                coming up with good memes).
+            <div class="mb-8">
+                <SocialLinks size="large" />
+            </div>
+
+            <p class="text-1xl font-family-body mb-4 opacity-90">
+                I specialize in quantitative field research and data
+                visualization. I juggle between drafting reports from data
+                wrangling to fine-tuned analyses, building web apps, and
+                managing research projects.
+            </p>
+            <p class="text-1xl font-family-body mb-8 opacity-90">
+                (and also coming up with good memes!).
             </p>
 
-            <p class="text-2xl mb-8 opacity-90">
+            <p class="text-lg font-familiy-body mb-8 opacity-90">
                 Lastly, I was a Data & Research Specialist at <a
                     href="https://www.impact-initiatives.org/"
                     class="link">IMPACT Initiatives</a
@@ -52,10 +60,6 @@
                 </a>
             </div>
 
-            <div class="mb-8">
-                <SocialLinks size="large" />
-            </div>
-
             <div class="flex gap-4 justify-center flex-wrap">
                 <a href="/projects" class="btn btn-primary btn-lg">
                     View My Projects
@@ -75,7 +79,9 @@
                     </svg>
                 </a>
 
-                <a href="/aboutMe" class="btn btn-outline btn-lg"> About Me </a>
+                <a href="#about-me" class="btn btn-outline btn-lg">
+                    About Me
+                </a>
             </div>
         </div>
     </div>
