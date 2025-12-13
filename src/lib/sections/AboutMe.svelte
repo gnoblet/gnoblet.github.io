@@ -17,8 +17,6 @@
                 Humanitarian researcher passionate about using data to make a
                 difference
             </p>
-
-            <SocialLinks size="large" />
         </div>
 
         <!-- Tabs Navigation -->
