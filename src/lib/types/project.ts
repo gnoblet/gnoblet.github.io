@@ -1,9 +1,10 @@
 export interface Project {
-    id: number;
-    title: string;
-    slug: string;
-    description: string;
-    imageUrl: string;
-    projectUrl: string;
-    tags: string[];
+  id: number;
+  title: string;
+  slug: string;
+  description: string;
+  imageUrl: string;
+  projectUrl: string;
+  tags: string[];
+  badge?: "new" | "ongoing";
 }

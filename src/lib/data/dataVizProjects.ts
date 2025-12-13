@@ -12,6 +12,7 @@ export const dataVizProjects: Project[] = [
       "https://raw.githubusercontent.com/gnoblet/ggbranding/main/man/figures/logo.png",
     projectUrl: "https://gnoblet.github.io/ggbranding/",
     tags: ["R", "ggplot2", "branding", "visualization", "package"],
+    badge: "new",
   },
   {
     id: 2,
@@ -57,6 +58,7 @@ export const dataVizProjects: Project[] = [
     imageUrl: "/images/projects/tidytuesday.png",
     projectUrl: "https://gnoblet.github.io/TidyTuesday/",
     tags: ["R", "Python", "data visualization", "data analysis", "ongoing"],
+    badge: "ongoing",
   },
   {
     id: 5,
@@ -84,6 +86,7 @@ export const dataVizProjects: Project[] = [
       "package",
       "ongoing",
     ],
+    badge: "ongoing",
   },
   {
     id: 7,
@@ -95,6 +98,7 @@ export const dataVizProjects: Project[] = [
       "https://raw.githubusercontent.com/gnoblet/visualizeR/revamp/man/figures/logo.png",
     projectUrl: "https://github.com/gnoblet/visualizeR/tree/revamp",
     tags: ["R", "data visualization", "humanitarian", "package", "ongoing"],
+    badge: "ongoing",
   },
   {
     id: 8,

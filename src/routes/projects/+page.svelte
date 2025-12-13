@@ -47,7 +47,7 @@
         </div>
 
         <!-- Filter Tabs -->
-        <div class="flex justify-center mb-12">
+        <div class="flex justify-center mb-12 max-w-2xl">
             <div class="tabs tabs-boxed bg-base-200 p-2">
                 <button
                     class="tab"
@@ -73,8 +73,17 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {#each filteredProjects as project (project.id)}
                     <div
-                        class="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
+                        class="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 relative"
                     >
+                        {#if project.badge}
+                            <div
+                                class="badge {project.badge === 'new'
+                                    ? 'badge-accent'
+                                    : 'badge-secondary'} absolute -top-2 -right-2 z-10 font-family-headingb"
+                            >
+                                {project.badge.toUpperCase()}
+                            </div>
+                        {/if}
                         <figure class="px-4 pt-4">
                             <img
                                 src={project.imageUrl}
@@ -90,7 +99,6 @@
                         <div class="card-body">
                             <h2 class="card-title">
                                 {project.title}
-                                <div class="badge badge-secondary">NEW</div>
                             </h2>
                             <p class="text-sm opacity-80">
                                 {project.description}
