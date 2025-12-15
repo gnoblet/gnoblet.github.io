@@ -8,6 +8,10 @@
     let mouseY = $state(0);
     let viewWidth = $state(1000);
     let viewHeight = $state(800);
+    let isVisible = $state(true);
+    let animationFrameId: number | null = null;
+    let animationTime = 0; // Track cumulative animation time
+    let lastFrameTime = 0;
 
     interface Shape {
         id: number;
@@ -89,15 +93,29 @@
         });
     }
 
-    function animate() {
+    function animate(currentTime: number) {
+        if (!isVisible) {
+            animationFrameId = null;
+            lastFrameTime = 0; // Reset for next resume
+            return; // Pause when not visible
+        }
+
+        // Calculate delta time and update cumulative animation time
+        if (lastFrameTime === 0) {
+            lastFrameTime = currentTime;
+        }
+        const deltaTime = (currentTime - lastFrameTime) / 1000;
+        lastFrameTime = currentTime;
+        animationTime += deltaTime;
+
         shapes.forEach((shape) => {
             // Apply velocity with natural floating animation
-            const time = Date.now() * 0.001;
+            const time = animationTime;
             const floatX = Math.sin(time * 0.3 + shape.floatOffsetX) * 3;
             const floatY = Math.cos(time * 0.2 + shape.floatOffsetY) * 3;
 
-            shape.x += shape.velocityX + floatX * 0.2;
-            shape.y += shape.velocityY + floatY * 0.2;
+            shape.x += shape.velocityX + floatX * 1.1;
+            shape.y += shape.velocityY + floatY * 1.1;
 
             // Apply damping to velocity
             shape.velocityX *= damping;
@@ -135,7 +153,7 @@
         });
 
         if (mounted) {
-            requestAnimationFrame(animate);
+            animationFrameId = requestAnimationFrame(animate);
         }
     }
 
@@ -150,12 +168,35 @@
             updateViewSize();
             initShapes();
             mounted = true;
-            animate();
+            animationFrameId = requestAnimationFrame(animate);
             window.addEventListener("mousemove", handleMouseMove);
             window.addEventListener("resize", () => {
                 updateViewSize();
                 initShapes(); // Reinitialize shapes on resize
             });
+
+            // Intersection Observer to pause when not visible
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        isVisible = entry.isIntersecting;
+                        if (isVisible && mounted && animationFrameId === null) {
+                            animationFrameId = requestAnimationFrame(animate);
+                        }
+                    });
+                },
+                { threshold: 0.1 },
+            );
+
+            if (container) {
+                observer.observe(container);
+            }
+
+            return () => {
+                if (container) {
+                    observer.unobserve(container);
+                }
+            };
         }
     });
 
@@ -163,14 +204,19 @@
         mounted = false;
         if (browser) {
             window.removeEventListener("mousemove", handleMouseMove);
+            if (animationFrameId !== null) {
+                cancelAnimationFrame(animationFrameId);
+            }
         }
     });
 </script>
 
-<div class="animated-background" bind:this={container}>
+<div
+    class="absolute inset-0 w-full h-full overflow-hidden z-0 pointer-events-none"
+    bind:this={container}
+>
     <svg
-        width="100%"
-        height="100%"
+        class="w-full h-full"
         viewBox="0 0 {viewWidth} {viewHeight}"
         preserveAspectRatio="xMidYMid slice"
         xmlns="http://www.w3.org/2000/svg"
@@ -273,25 +319,3 @@
         {/each}
     </svg>
 </div>
-
-<style>
-    .animated-background {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-        z-index: 0;
-        pointer-events: none;
-    }
-
-    svg {
-        width: 100%;
-        height: 100%;
-    }
-
-    .shape {
-        filter: blur(1px);
-    }
-</style>

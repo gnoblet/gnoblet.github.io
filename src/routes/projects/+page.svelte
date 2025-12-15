@@ -47,8 +47,8 @@
         </div>
 
         <!-- Filter Tabs -->
-        <div class="flex justify-center mb-12 max-w-2xl">
-            <div class="tabs tabs-boxed bg-base-200 p-2">
+        <div class="flex justify-center mb-12 max-w-4xl mx-auto">
+            <div class="tabs tabs-boxed bg-base-300 p-2">
                 <button
                     class="tab"
                     class:tab-active={selectedFilter === "all"}

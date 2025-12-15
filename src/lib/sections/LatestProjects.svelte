@@ -1,14 +1,48 @@
 <script lang="ts">
+    import { onMount } from "svelte";
+    import ElevationRidgeMap from "$lib/components/ElevationRidgeMap.svelte";
     import HorizontalCarousel from "$lib/components/HorizontalCarousel.svelte";
-    import MapBasinBackground from "$lib/components/MapBasinBackground.svelte";
     import { dataVizProjects } from "$lib/data/dataVizProjects";
+
+    let containerElement: HTMLDivElement;
+    let isVisible = false;
+
+    onMount(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        isVisible = true;
+                    }
+                });
+            },
+            {
+                threshold: 1, // Trigger when 100% of element is shown
+            },
+        );
+
+        if (containerElement) {
+            observer.observe(containerElement);
+        }
+
+        return () => {
+            if (containerElement) {
+                observer.unobserve(containerElement);
+            }
+        };
+    });
 </script>
 
-<section class="py-20 px-4 bg-base-200 relative overflow-hidden">
-    <div class=" bg-white opacity-50">
-        <MapBasinBackground></MapBasinBackground>
+<section class="py-20 px-4 bg-base-300 relative overflow-hidden">
+    <div class="bg-white h-60">
+        <ElevationRidgeMap></ElevationRidgeMap>
     </div>
-    <div class="container mx-auto max-w-7xl relative z-10">
+    <div
+        bind:this={containerElement}
+        class="container mx-auto max-w-7xl relative z-10 transition-all duration-1500 ease-out {isVisible
+            ? 'translate-y-0 opacity-100'
+            : 'translate-y-20 opacity-0'}"
+    >
         <div class="text-center mb-8">
             <h2 class="text-4xl font-bold mb-4">Latest Projects</h2>
             <p class="text-2xl max-w-2xl mx-auto">
