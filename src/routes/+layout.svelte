@@ -17,6 +17,13 @@
         href="https://fonts.bunny.net/css?family=oswald:400,600,700"
         rel="stylesheet"
     />
+    <script>
+        // Load theme immediately to prevent flash
+        try {
+            const theme = localStorage.getItem("theme") || "pastel";
+            document.documentElement.setAttribute("data-theme", theme);
+        } catch (e) {}
+    </script>
 </svelte:head>
 
 <div class="min-h-screen flex flex-col bg-base-100">

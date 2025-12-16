@@ -1,6 +1,6 @@
 @import "tailwindcss";
 @plugin "daisyui" {
-    themes: pastel --default;
+    themes: pastel, dracula;
 }
 
 @theme {
@@ -51,6 +51,9 @@
 
 @layer components {
     /* Add any custom component styles here */
+    .btn {
+        border-radius: 2rem !important;
+    }
 }
 
 @layer utilities {
