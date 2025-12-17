@@ -75,7 +75,7 @@
             </div>
 
             <div class="flex gap-4 justify-center flex-wrap">
-                <a href="/projects" class="btn btn-primary btn-lg">
+                <a href="#latest-projects" class="btn btn-primary btn-lg">
                     View My Projects
                     <svg
                         xmlns="http://www.w3.org/2000/svg"

@@ -33,17 +33,20 @@
     });
 </script>
 
-<section class="py-20 px-4 bg-base-300 relative overflow-hidden">
+<section
+    id="latest-projects"
+    class="py-20 px-4 bg-base-300 relative overflow-hidden"
+>
     <div class="bg-white h-60">
         <ElevationRidgeMap></ElevationRidgeMap>
     </div>
     <div
         bind:this={containerElement}
-        class="container mx-auto max-w-7xl relative z-10 transition-all duration-1500 ease-out {isVisible
+        class="container mx-auto max-w-6xl relative z-10 transition-all duration-500 ease-out {isVisible
             ? 'translate-y-0 opacity-100'
             : 'translate-y-20 opacity-0'}"
     >
-        <div class="text-center mb-8">
+        <div class="text-center mb-8 bg-white/60">
             <h2 class="text-4xl font-bold mb-4">Latest Projects</h2>
             <p class="text-2xl max-w-2xl mx-auto">
                 Check out my most recent work and ongoing projects.

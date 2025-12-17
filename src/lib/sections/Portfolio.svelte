@@ -11,6 +11,41 @@
             #30DayChartChallenge.
         </p>
 
+        <div class="mb-12 flex justify-center">
+            <ul class="steps">
+                <li class="step step-primary">
+                    <a
+                        href="https://guillaume-noblet.com/TidyTuesday/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="cursor-pointer hover:text-accent font-family-heading"
+                    >
+                        #TidyTuesday
+                    </a>
+                </li>
+                <li class="step step-primary">
+                    <a
+                        href="https://guillaume-noblet.com/30DayMapChallenge/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="cursor-pointer hover:text-accent font-family-heading"
+                    >
+                        #30DayMapChallenge
+                    </a>
+                </li>
+                <li class="step step-primary">
+                    <a
+                        href="https://guillaume-noblet.com/30DayChartChallenge/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="cursor-pointer hover:text-accent font-family-heading"
+                    >
+                        #30DayChartChallenge
+                    </a>
+                </li>
+            </ul>
+        </div>
+
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {#each portfolioItems as item}
                 <a
@@ -59,12 +94,6 @@
                     </figure>
                 </a>
             {/each}
-        </div>
-
-        <div class="text-center mt-12">
-            <a href="/projects" class="btn btn-outline btn-lg">
-                View All Projects
-            </a>
         </div>
     </div>
 </section>

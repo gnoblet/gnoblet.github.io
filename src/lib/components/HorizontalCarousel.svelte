@@ -84,7 +84,7 @@
             style="transform: translateX(-{currentIndex * itemWidth}%)"
         >
             {#each infiniteItems as item}
-                <div class="flex-shrink-0 px-2" style="width: {itemWidth}%">
+                <div class="shrink-0 px-2" style="width: {itemWidth}%">
                     <div
                         class="card bg-base-100 shadow-xl h-full hover:shadow-2xl transition-shadow"
                     >
