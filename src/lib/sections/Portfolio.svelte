@@ -6,10 +6,12 @@
     <div class="container mx-auto max-w-6xl">
         <h2 class="text-4xl font-bold text-center mb-12">Portfolio</h2>
         <p class="text-xl text-center opacity-80 mb-12 max-w-2xl mx-auto">
-            A collection of data visualizations I'm quite happy with.
+            A collection of data visualizations I'm quite happy with since I
+            started participating (a bit) to challenges such as the
+            #30DayChartChallenge.
         </p>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {#each portfolioItems as item}
                 <a
                     href={item.portfolioUrl && item.portfolioUrl !== "#"
@@ -27,12 +29,12 @@
                         : 'cursor-default'}"
                 >
                     <figure
-                        class="relative overflow-hidden aspect-[4/3] rounded-t-2xl"
+                        class="relative overflow-hidden aspect-square rounded-t-2xl"
                     >
                         <img
                             src={item.thumbnailUrl}
                             alt={item.title}
-                            class="w-full h-full object-cover"
+                            class="w-full h-full object-cover object-top"
                             on:error={(e) => {
                                 e.currentTarget.src =
                                     'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"%3E%3Crect fill="%23e5e7eb" width="400" height="300"/%3E%3Cpath fill="%239ca3af" d="M0 0h400v300H0z"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="24" fill="%23fff"%3EViz%3C/text%3E%3C/svg%3E';
