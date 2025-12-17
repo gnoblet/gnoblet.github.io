@@ -5,73 +5,99 @@
     <div class="card-body">
         <h2 class="card-title text-3xl mb-6">My Story</h2>
 
-        <div class="space-y-4 text-lg leading-relaxed">
-            <p>
-                I'm a passionate developer with a love for creating beautiful,
-                functional, and user-friendly web applications. My journey in
-                software development started with curiosity and has evolved into
-                a fulfilling career.
-            </p>
+        <!-- Hero layout with image -->
+        <div class="hero bg-base-200 rounded-lg mb-6">
+            <div class="hero-content flex-col lg:flex-row gap-8 py-8">
+                <div
+                    class="space-y-4 text-lg leading-relaxed px-6 lg:px-8 py-4"
+                >
+                    <p>
+                        I'm a <span class="text-primary-content font-bold"
+                            >data researcher</span
+                        >
+                        who loves a good meme almost as much as genuinely enjoying
+                        taking complicated things and making them a little clearer—for
+                        others, and honestly, for myself too. And if we can share
+                        a laugh or two along the way, even better!
+                    </p>
 
-            <p>
-                I specialize in modern web technologies, with a particular focus
-                on creating seamless user experiences using frameworks like
-                Svelte, React, and other cutting-edge tools. I believe in
-                writing clean, maintainable code and always staying up-to-date
-                with the latest industry trends.
-            </p>
-
-            <p>
-                When I'm not coding, you can find me exploring new technologies,
-                contributing to open-source projects, or sharing my knowledge
-                with the developer community. I'm always excited to take on new
-                challenges and collaborate on interesting projects.
-            </p>
-
-            <div class="divider"></div>
-
-            <h3 class="text-2xl font-bold mt-6 mb-4">What I Believe In</h3>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="flex items-start gap-3">
-                    <div class="badge badge-primary badge-lg mt-1">✓</div>
-                    <div>
-                        <h4 class="font-bold">Clean Code</h4>
-                        <p class="text-sm opacity-80">
-                            Writing code that's easy to read, maintain, and
-                            scale.
-                        </p>
-                    </div>
+                    <p>
+                        I bridge academic rigor and practical project
+                        management. Over the past four years, I've led
+                        <span class="text-primary-content font-bold"
+                            >nationwide data collection efforts</span
+                        >
+                        in crisis settings, transforming complex field data into actionable
+                        insights through
+                        <span class="text-primary-content font-bold"
+                            >statistical methods and data visualization</span
+                        >.
+                    </p>
+                    <p>
+                        I thrive on wrangling messy datasets, building analysis
+                        pipelines that actually work in the field, and
+                        <span class="text-primary-content font-bold"
+                            >turning numbers into stories</span
+                        >
+                        that help people make better decisions—whether that's through
+                        interactive dashboards, clean visualizations, or just explaining
+                        what the data really means.
+                    </p>
                 </div>
+                <img
+                    src="/images/memes/story.jpeg"
+                    alt="How important this story is meme"
+                    class="max-w-sm rounded-lg shadow-2xl"
+                />
+            </div>
+        </div>
 
-                <div class="flex items-start gap-3">
-                    <div class="badge badge-primary badge-lg mt-1">✓</div>
-                    <div>
-                        <h4 class="font-bold">User-Centric Design</h4>
-                        <p class="text-sm opacity-80">
-                            Putting users first in every decision.
-                        </p>
-                    </div>
+        <div class="divider"></div>
+
+        <h3 class="text-2xl font-bold mt-6 mb-4">How I Approach Data</h3>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="flex items-start gap-3">
+                <div class="badge badge-primary badge-lg mt-1">✓</div>
+                <div>
+                    <h4 class="font-bold">Data without context is just data</h4>
+                    <p class="text-sm opacity-80">
+                        Data is constructed, not just collected—understanding
+                        how is needed to shape stories made to inform decisions.
+                    </p>
                 </div>
+            </div>
 
-                <div class="flex items-start gap-3">
-                    <div class="badge badge-primary badge-lg mt-1">✓</div>
-                    <div>
-                        <h4 class="font-bold">Continuous Learning</h4>
-                        <p class="text-sm opacity-80">
-                            Always exploring new technologies and best practices.
-                        </p>
-                    </div>
+            <div class="flex items-start gap-3">
+                <div class="badge badge-primary badge-lg mt-1">✓</div>
+                <div>
+                    <h4 class="font-bold">Transparency & rigor</h4>
+                    <p class="text-sm opacity-80">
+                        Honest analysis backed by solid methodology, not just
+                        pretty charts.
+                    </p>
                 </div>
+            </div>
 
-                <div class="flex items-start gap-3">
-                    <div class="badge badge-primary badge-lg mt-1">✓</div>
-                    <div>
-                        <h4 class="font-bold">Collaboration</h4>
-                        <p class="text-sm opacity-80">
-                            Working together to achieve better results.
-                        </p>
-                    </div>
+            <div class="flex items-start gap-3">
+                <div class="badge badge-primary badge-lg mt-1">✓</div>
+                <div>
+                    <h4 class="font-bold">Learning by doing</h4>
+                    <p class="text-sm opacity-80">
+                        The best way to understand something is to dive in,
+                        break it, and fix it.
+                    </p>
+                </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+                <div class="badge badge-primary badge-lg mt-1">✓</div>
+                <div>
+                    <h4 class="font-bold">Collective work</h4>
+                    <p class="text-sm opacity-80">
+                        Sharing knowledge horizontally, open collaboration, and
+                        building systems that work without me.
+                    </p>
                 </div>
             </div>
         </div>
