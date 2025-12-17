@@ -6,8 +6,7 @@
     <div class="container mx-auto max-w-6xl">
         <h2 class="text-4xl font-bold text-center mb-12">Portfolio</h2>
         <p class="text-xl text-center opacity-80 mb-12 max-w-2xl mx-auto">
-            A collection of data visualizations and analytical work I've created
-            for various projects and challenges.
+            A collection of data visualizations I'm quite happy with.
         </p>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
