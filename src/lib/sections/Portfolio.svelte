@@ -40,20 +40,18 @@
                         />
                         <!-- Hover overlay -->
                         <div
-                            class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-6 text-center"
+                            class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-6 text-center"
                         >
-                            <h3 class="text-2xl font-bold text-white mb-2">
-                                {item.title}
-                            </h3>
-                            <p class="text-sm text-white opacity-90 mb-3">
-                                {item.description}
-                            </p>
-                            <div class="flex flex-wrap gap-2 justify-center">
-                                {#each item.tags as tag}
-                                    <div class="badge badge-primary badge-sm">
-                                        {tag}
-                                    </div>
-                                {/each}
+                            <div
+                                class="absolute inset-0 bg-black opacity-60"
+                            ></div>
+                            <div class="relative z-10">
+                                <h3 class="text-2xl font-bold text-white mb-2">
+                                    {item.title}
+                                </h3>
+                                <p class="text-sm text-white opacity-90">
+                                    {item.description}
+                                </p>
                             </div>
                         </div>
                     </figure>
