@@ -27,7 +27,7 @@
                         : 'cursor-default'}"
                 >
                     <figure
-                        class="relative overflow-hidden aspect-video rounded-t-2xl"
+                        class="relative overflow-hidden aspect-[4/3] rounded-t-2xl"
                     >
                         <img
                             src={item.thumbnailUrl}
