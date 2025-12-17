@@ -1,6 +1,7 @@
 <script lang="ts">
     import { onMount, onDestroy } from "svelte";
     import { browser } from "$app/environment";
+    import { theme } from "$lib/stores/theme";
 
     let mounted = $state(false);
     let container: HTMLDivElement;
@@ -12,6 +13,46 @@
     let animationFrameId: number | null = null;
     let animationTime = 0; // Track cumulative animation time
     let lastFrameTime = 0;
+
+    // Get theme-aware gradient colors
+    function getThemeGradients(currentTheme: string) {
+        const isDark = currentTheme === "dracula";
+        return {
+            grad1: isDark
+                ? {
+                      start: "rgb(220,180,255)",
+                      end: "rgb(150,240,255)",
+                      opacity: 0.9,
+                  }
+                : {
+                      start: "rgb(99,102,241)",
+                      end: "rgb(168,85,247)",
+                      opacity: 0.7,
+                  },
+            grad2: isDark
+                ? {
+                      start: "rgb(255,150,220)",
+                      end: "rgb(255,200,130)",
+                      opacity: 0.9,
+                  }
+                : {
+                      start: "rgb(236,72,153)",
+                      end: "rgb(251,113,133)",
+                      opacity: 0.7,
+                  },
+            grad3: isDark
+                ? {
+                      start: "rgb(120,255,160)",
+                      end: "rgb(250,255,180)",
+                      opacity: 0.9,
+                  }
+                : {
+                      start: "rgb(59,130,246)",
+                      end: "rgb(147,51,234)",
+                      opacity: 0.7,
+                  },
+        };
+    }
 
     interface Shape {
         id: number;
@@ -165,6 +206,8 @@
 
     onMount(() => {
         if (browser) {
+            theme.init();
+
             updateViewSize();
             initShapes();
             mounted = true;
@@ -221,38 +264,58 @@
         preserveAspectRatio="xMidYMid slice"
         xmlns="http://www.w3.org/2000/svg"
     >
-        <defs>
-            <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop
-                    offset="0%"
-                    style="stop-color:rgb(99,102,241);stop-opacity:0.7"
-                />
-                <stop
-                    offset="100%"
-                    style="stop-color:rgb(168,85,247);stop-opacity:0.7"
-                />
-            </linearGradient>
-            <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop
-                    offset="0%"
-                    style="stop-color:rgb(236,72,153);stop-opacity:0.7"
-                />
-                <stop
-                    offset="100%"
-                    style="stop-color:rgb(251,113,133);stop-opacity:0.7"
-                />
-            </linearGradient>
-            <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop
-                    offset="0%"
-                    style="stop-color:rgb(59,130,246);stop-opacity:0.7"
-                />
-                <stop
-                    offset="100%"
-                    style="stop-color:rgb(147,51,234);stop-opacity:0.7"
-                />
-            </linearGradient>
-        </defs>
+        {#key $theme}
+            <defs>
+                <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop
+                        offset="0%"
+                        style="stop-color:{getThemeGradients($theme).grad1
+                            .start};stop-opacity:{getThemeGradients($theme)
+                            .grad1.opacity}"
+                        class="transition-all duration-100"
+                    />
+                    <stop
+                        offset="100%"
+                        style="stop-color:{getThemeGradients($theme).grad1
+                            .end};stop-opacity:{getThemeGradients($theme).grad1
+                            .opacity}"
+                        class="transition-all duration-100"
+                    />
+                </linearGradient>
+                <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop
+                        offset="0%"
+                        style="stop-color:{getThemeGradients($theme).grad2
+                            .start};stop-opacity:{getThemeGradients($theme)
+                            .grad2.opacity}"
+                        class="transition-all duration-100"
+                    />
+                    <stop
+                        offset="100%"
+                        style="stop-color:{getThemeGradients($theme).grad2
+                            .end};stop-opacity:{getThemeGradients($theme).grad2
+                            .opacity}"
+                        class="transition-all duration-100"
+                    />
+                </linearGradient>
+                <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop
+                        offset="0%"
+                        style="stop-color:{getThemeGradients($theme).grad3
+                            .start};stop-opacity:{getThemeGradients($theme)
+                            .grad3.opacity}"
+                        class="transition-all duration-100"
+                    />
+                    <stop
+                        offset="100%"
+                        style="stop-color:{getThemeGradients($theme).grad3
+                            .end};stop-opacity:{getThemeGradients($theme).grad3
+                            .opacity}"
+                        class="transition-all duration-100"
+                    />
+                </linearGradient>
+            </defs>
+        {/key}
 
         {#each shapes as shape (shape.id)}
             {#if shape.type === "circle"}

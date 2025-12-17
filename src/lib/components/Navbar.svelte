@@ -1,10 +1,7 @@
 <script lang="ts">
     import { page } from "$app/stores";
     import { onMount } from "svelte";
-    import { themeChange } from "theme-change";
-    import { browser } from "$app/environment";
-
-    let isDark = $state(false);
+    import { theme } from "$lib/stores/theme";
 
     // Check if the link is active
     function isActive(path: string): boolean {
@@ -14,15 +11,8 @@
         return $page.url.pathname.startsWith(path);
     }
 
-    // Initialize theme-change on mount
     onMount(() => {
-        themeChange(false);
-
-        // Sync checkbox state with saved theme
-        if (browser) {
-            const savedTheme = localStorage.getItem("theme");
-            isDark = savedTheme === "dracula";
-        }
+        theme.init();
     });
 </script>
 
@@ -32,15 +22,13 @@
     </div>
 
     <div class="navbar-end gap-4">
-        <!-- Theme Toggle with theme-change -->
+        <!-- Theme Toggle -->
         <label class="swap swap-rotate">
             <input
                 type="checkbox"
                 class="theme-controller"
-                value="dracula"
-                data-toggle-theme="pastel,dracula"
-                data-act-class="ACTIVECLASS"
-                bind:checked={isDark}
+                checked={$theme === "dracula"}
+                on:change={() => theme.toggle()}
             />
 
             <!-- sun icon -->

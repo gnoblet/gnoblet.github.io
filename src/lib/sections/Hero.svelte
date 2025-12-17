@@ -1,12 +1,26 @@
 <script lang="ts">
+    import { onMount } from "svelte";
     import SocialLinks from "$lib/components/SocialLinks.svelte";
     import AnimatedBackground from "$lib/components/AnimatedBackground.svelte";
+    import { theme } from "$lib/stores/theme";
+
+    function getOverlayColor(currentTheme: string) {
+        const isDark = currentTheme === "dracula";
+        return isDark ? "rgba(40, 42, 54, 0.7)" : "rgba(255, 255, 255, 0.5)";
+    }
+
+    onMount(() => {
+        theme.init();
+    });
 </script>
 
 <section class="hero h-screen relative">
     <AnimatedBackground />
-    <!-- White background overlay -->
-    <div class="absolute inset-0 bg-white/50 z-5"></div>
+    <!-- Theme-aware background overlay -->
+    <div
+        class="absolute inset-0 z-5 transition-colors duration-100"
+        style="background-color: {getOverlayColor($theme)}"
+    ></div>
     <div class="hero-content text-center relative z-10">
         <div class="max-w-4xl">
             <div class="avatar mb-6">

@@ -1,6 +1,7 @@
 <script lang="ts">
     import { onMount, onDestroy } from "svelte";
     import * as d3 from "d3";
+    import { theme } from "$lib/stores/theme";
 
     let container: HTMLDivElement;
     let svg: SVGSVGElement;
@@ -25,6 +26,20 @@
     let animatedDots: AnimatedDot[] = [];
     let animationFrameId: number | null = null;
     let isVisible = false;
+
+    // Get theme-aware colors
+    function getThemeColors(currentTheme: string) {
+        const isDark = currentTheme === "dracula";
+        return {
+            background: isDark ? "#282a36" : "#ffffff",
+            stroke: isDark ? "#f8f8f2" : "#000000",
+            dotFill: isDark ? "#ff79c6" : "#ff4444",
+            dotStroke: isDark ? "#bd93f9" : "#ffffff",
+            dotGlow: isDark
+                ? "drop-shadow(0 0 8px rgba(255, 121, 198, 1)) drop-shadow(0 0 4px rgba(189, 147, 249, 0.9))"
+                : "drop-shadow(0 0 8px rgba(255, 68, 68, 1)) drop-shadow(0 0 4px rgba(255, 68, 68, 0.9))",
+        };
+    }
 
     async function renderRidgelines() {
         try {
@@ -135,14 +150,16 @@
 
                 // Draw each continuous segment separately
                 segments.forEach((segment, segmentIndex) => {
-                    // Draw stroke (color = "black")
+                    const colors = getThemeColors($theme);
+
+                    // Draw stroke with theme-aware color
                     const pathElement = ridgeGroup
                         .append("path")
                         .datum(segment)
                         .attr("class", "ridge-stroke")
                         .attr("d", line)
                         .attr("fill", "none")
-                        .attr("stroke", "#000000")
+                        .attr("stroke", colors.stroke)
                         .attr("stroke-width", 1)
                         .attr("stroke-opacity", 0.8)
                         .style(
@@ -162,20 +179,17 @@
                     // Get initial position at start of path
                     const startPoint = pathNode.getPointAtLength(0);
 
-                    // Create animated dot for this segment
+                    // Create animated dot for this segment with theme colors
                     const dot = ridgeGroup
                         .append("circle")
                         .attr("class", "animated-dot")
                         .attr("r", 3)
                         .attr("cx", startPoint.x)
                         .attr("cy", startPoint.y)
-                        .attr("fill", "#ff4444")
-                        .attr("stroke", "#ffffff")
+                        .attr("fill", colors.dotFill)
+                        .attr("stroke", colors.dotStroke)
                         .attr("stroke-width", 1)
-                        .style(
-                            "filter",
-                            "drop-shadow(0 0 8px rgba(255, 68, 68, 1)) drop-shadow(0 0 4px rgba(255, 68, 68, 0.9))",
-                        );
+                        .style("filter", colors.dotGlow);
 
                     // Store dot info for RAF animation
                     animatedDots.push({
@@ -229,10 +243,16 @@
     }
 
     onMount(async () => {
+        theme.init();
         await renderRidgelines();
 
+        // Subscribe to theme changes and re-render
+        const unsubscribe = theme.subscribe(() => {
+            renderRidgelines();
+        });
+
         // Intersection Observer to pause when not visible
-        const observer = new IntersectionObserver(
+        const visibilityObserver = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
                     isVisible = entry.isIntersecting;
@@ -245,12 +265,13 @@
         );
 
         if (container) {
-            observer.observe(container);
+            visibilityObserver.observe(container);
         }
 
         return () => {
+            unsubscribe();
             if (container) {
-                observer.unobserve(container);
+                visibilityObserver.unobserve(container);
             }
         };
     });
@@ -264,7 +285,8 @@
 </script>
 
 <div
-    class="absolute inset-0 overflow-hidden z-0 pointer-events-none bg-white"
+    class="absolute inset-0 overflow-hidden z-0 pointer-events-none transition-colors duration-100"
+    style="background-color: {getThemeColors($theme).background}"
     bind:this={container}
 >
     <svg
