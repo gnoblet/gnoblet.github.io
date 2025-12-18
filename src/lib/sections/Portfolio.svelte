@@ -4,7 +4,7 @@
     import { slide, scale, blur } from "svelte/transition";
 </script>
 
-<section class="py-20 px-4">
+<section class="py-20 px-4 bg-neutral-content/60">
     <div class="container mx-auto max-w-6xl">
         <h2 class="text-4xl font-bold text-center mb-12">Portfolio</h2>
         <p class="text-xl text-center opacity-80 mb-12 max-w-2xl mx-auto">
@@ -113,7 +113,7 @@
                     rel={item.portfolioUrl && item.portfolioUrl !== "#"
                         ? "noopener noreferrer"
                         : undefined}
-                    class="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 group overflow-hidden block {item.portfolioUrl &&
+                    class="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-500 group overflow-hidden block border-2 border-transparent hover:border-primary-content {item.portfolioUrl &&
                     item.portfolioUrl !== '#'
                         ? 'cursor-pointer'
                         : 'cursor-default'}"
@@ -134,14 +134,12 @@
                         <div
                             class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-6 text-center"
                         >
-                            <div
-                                class="absolute inset-0 bg-black opacity-60"
-                            ></div>
+                            <div class="absolute inset-0 bg-primary/90"></div>
                             <div class="relative z-10">
-                                <h3 class="text-2xl font-bold text-white mb-2">
+                                <h3 class="text-2xl font-bold text-black mb-2">
                                     {item.title}
                                 </h3>
-                                <p class="text-sm text-white opacity-90">
+                                <p class="text-md text-black opacity-90">
                                     {item.description}
                                 </p>
                             </div>

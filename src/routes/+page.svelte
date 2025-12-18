@@ -41,11 +41,11 @@
 <div class="w-full">
     <Hero />
 
-    <AboutMe />
-
     <LatestProjects />
 
     <Portfolio />
+
+    <AboutMe />
 
     <Contact />
 </div>
