@@ -1,5 +1,7 @@
 <script lang="ts">
     import { portfolioItems } from "$lib/data/portfolio";
+    import { Tooltip } from "flowbite-svelte";
+    import { slide, scale, blur } from "svelte/transition";
 </script>
 
 <section class="py-20 px-4">
@@ -12,36 +14,89 @@
         </p>
 
         <div class="mb-12 flex justify-center">
-            <ul class="steps">
+            <ul class="steps max-w-2xl w-full text-lg">
                 <li class="step step-primary">
                     <a
                         href="https://guillaume-noblet.com/TidyTuesday/"
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="cursor-pointer hover:text-accent font-family-heading"
+                        class="cursor-pointer hover:text-primary-content"
+                        id="tidytuesday-link"
                     >
                         #TidyTuesday
                     </a>
-                </li>
-                <li class="step step-primary">
-                    <a
-                        href="https://guillaume-noblet.com/30DayMapChallenge/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="cursor-pointer hover:text-accent font-family-heading"
+                    <Tooltip
+                        triggeredBy="#tidytuesday-link"
+                        placement="top"
+                        class="w-96 max-w-lg border-2 border-primary"
                     >
-                        #30DayMapChallenge
-                    </a>
+                        <h3
+                            class="text-xl font-bold mb-2 mt-2 text-base-content"
+                        >
+                            #TidyTuesday
+                        </h3>
+                        <img
+                            src="/images/previews/tidytuesday-preview.png"
+                            alt="TidyTuesday preview"
+                            class="w-full rounded-lg py-2 px-4"
+                        />
+                    </Tooltip>
                 </li>
+
                 <li class="step step-primary">
                     <a
                         href="https://guillaume-noblet.com/30DayChartChallenge/"
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="cursor-pointer hover:text-accent font-family-heading"
+                        class="cursor-pointer hover:text-primary-content"
+                        id="chart-link"
                     >
                         #30DayChartChallenge
                     </a>
+                    <Tooltip
+                        triggeredBy="#chart-link"
+                        placement="top"
+                        class="w-96 max-w-lg border-2 border-primary"
+                    >
+                        <h3
+                            class="text-xl font-bold mb-2 mt-2 text-base-content"
+                        >
+                            #30DayChartChallenge
+                        </h3>
+                        <img
+                            src="/images/previews/30daychart-preview.png"
+                            alt="30DayChartChallenge preview"
+                            class="w-full rounded-lg py-2 px-4"
+                        />
+                    </Tooltip>
+                </li>
+
+                <li class="step step-primary">
+                    <a
+                        href="https://guillaume-noblet.com/30DayMapChallenge/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="cursor-pointer hover:text-primary-content"
+                        id="map-link"
+                    >
+                        #30DayMapChallenge
+                    </a>
+                    <Tooltip
+                        triggeredBy="#map-link"
+                        placement="top"
+                        class="w-96 max-w-lg border-2 border-primary"
+                    >
+                        <h3
+                            class="text-xl font-bold mb-2 mt-2 text-base-content"
+                        >
+                            #30DayMapChallenge
+                        </h3>
+                        <img
+                            src="/images/previews/30daymap-preview.png"
+                            alt="30DayMapChallenge preview"
+                            class="w-full rounded-lg py-2 px-4"
+                        />
+                    </Tooltip>
                 </li>
             </ul>
         </div>
