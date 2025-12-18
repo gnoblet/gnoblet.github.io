@@ -1,7 +1,6 @@
 <script lang="ts">
     import { onMount, onDestroy } from "svelte";
     import * as d3 from "d3";
-    import { theme } from "$lib/stores/theme";
 
     let container: HTMLDivElement;
     let svg: SVGSVGElement;
@@ -27,19 +26,14 @@
     let animationFrameId: number | null = null;
     let isVisible = false;
 
-    // Get theme-aware colors
-    function getThemeColors(currentTheme: string) {
-        const isDark = currentTheme === "dracula";
-        return {
-            background: isDark ? "#282a36" : "#ffffff",
-            stroke: isDark ? "#f8f8f2" : "#000000",
-            dotFill: isDark ? "#ff79c6" : "#ff4444",
-            dotStroke: isDark ? "#bd93f9" : "#ffffff",
-            dotGlow: isDark
-                ? "drop-shadow(0 0 8px rgba(255, 121, 198, 1)) drop-shadow(0 0 4px rgba(189, 147, 249, 0.9))"
-                : "drop-shadow(0 0 8px rgba(255, 68, 68, 1)) drop-shadow(0 0 4px rgba(255, 68, 68, 0.9))",
-        };
-    }
+    // Light theme colors only
+    const colors = {
+        stroke: "#000000",
+        dotFill: "#4444ff",
+        dotStroke: "#ffffff",
+        dotGlow:
+            "drop-shadow(0 0 16px rgba(68, 68, 255, 1)) drop-shadow(0 0 8px rgba(68, 68, 255, 1)) drop-shadow(0 0 4px rgba(68, 68, 255, 0.9))",
+    };
 
     async function renderRidgelines() {
         try {
@@ -47,11 +41,11 @@
             svgElement.selectAll("*").remove();
 
             // Load the data
-            const data: DataPoint[] =
+            const dataPoints: DataPoint[] =
                 (await d3.json("/data/europe_elevation_profiles.json")) || [];
 
             // Group data by latitude (y coordinate) to create profiles
-            const profilesMap = d3.group(data, (d) => d.y);
+            const profilesMap = d3.group(dataPoints, (d) => d.y);
             const allProfiles = Array.from(profilesMap.entries())
                 .map(([lat, points]) => ({
                     latitude: lat,
@@ -73,7 +67,10 @@
                 .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
             // Calculate scales
-            const xExtent = d3.extent(data, (d) => d.x) as [number, number];
+            const xExtent = d3.extent(dataPoints, (d) => d.x) as [
+                number,
+                number,
+            ];
             const xScale = d3.scaleLinear().domain(xExtent).range([0, width]);
 
             // Find max elevation for height scaling (only positive)
@@ -150,9 +147,7 @@
 
                 // Draw each continuous segment separately
                 segments.forEach((segment, segmentIndex) => {
-                    const colors = getThemeColors($theme);
-
-                    // Draw stroke with theme-aware color
+                    // Draw stroke
                     const pathElement = ridgeGroup
                         .append("path")
                         .datum(segment)
@@ -168,16 +163,16 @@
                         );
 
                     // Only animate dots on every 4th profile to reduce memory
-                    if (i % 4 !== 0) return;
+                    if (i % 8 !== 0) return;
 
-                    // Get the path node for animation
-                    const pathNode = pathElement.node() as SVGPathElement;
-                    if (!pathNode) return;
+                    // Get the path node for dot animation
+                    const dotPathNode = pathElement.node() as SVGPathElement;
+                    if (!dotPathNode) return;
 
-                    const pathLength = pathNode.getTotalLength();
+                    const dotPathLength = dotPathNode.getTotalLength();
 
                     // Get initial position at start of path
-                    const startPoint = pathNode.getPointAtLength(0);
+                    const startPoint = dotPathNode.getPointAtLength(0);
 
                     // Create animated dot for this segment with theme colors
                     const dot = ridgeGroup
@@ -194,8 +189,8 @@
                     // Store dot info for RAF animation
                     animatedDots.push({
                         element: dot,
-                        pathNode,
-                        pathLength,
+                        pathNode: dotPathNode,
+                        pathLength: dotPathLength,
                         progress: 0,
                         speed: 1 / 8000, // Complete in 8 seconds
                     });
@@ -243,13 +238,7 @@
     }
 
     onMount(async () => {
-        theme.init();
         await renderRidgelines();
-
-        // Subscribe to theme changes and re-render
-        const unsubscribe = theme.subscribe(() => {
-            renderRidgelines();
-        });
 
         // Intersection Observer to pause when not visible
         const visibilityObserver = new IntersectionObserver(
@@ -269,7 +258,6 @@
         }
 
         return () => {
-            unsubscribe();
             if (container) {
                 visibilityObserver.unobserve(container);
             }
@@ -285,8 +273,7 @@
 </script>
 
 <div
-    class="absolute inset-0 overflow-hidden z-0 pointer-events-none transition-colors duration-100"
-    style="background-color: {getThemeColors($theme).background}"
+    class="absolute inset-0 overflow-hidden z-0 pointer-events-none"
     bind:this={container}
 >
     <svg

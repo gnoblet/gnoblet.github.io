@@ -1,13 +1,8 @@
 <script lang="ts">
     import { onMount } from "svelte";
     import SocialLinks from "$lib/components/SocialLinks.svelte";
-    import AnimatedBackground from "$lib/components/AnimatedBackground.svelte";
+    import ElevationRidgeMap from "$lib/components/ElevationRidgeMap.svelte";
     import { theme } from "$lib/stores/theme";
-
-    function getOverlayColor(currentTheme: string) {
-        const isDark = currentTheme === "dracula";
-        return isDark ? "rgba(40, 42, 54, 0.7)" : "rgba(255, 255, 255, 0.5)";
-    }
 
     onMount(() => {
         theme.init();
@@ -15,14 +10,13 @@
 </script>
 
 <section class="hero h-screen relative">
-    <AnimatedBackground />
-    <!-- Theme-aware background overlay -->
-    <div
-        class="absolute inset-0 z-5 transition-colors duration-100"
-        style="background-color: {getOverlayColor($theme)}"
-    ></div>
+    <div class="absolute inset-0 bg-neutral-content">
+        <ElevationRidgeMap />
+    </div>
     <div class="hero-content text-center relative z-10">
-        <div class="max-w-4xl">
+        <div
+            class="max-w-4xl bg-white/50 backdrop-blur-[2px] rounded-3xl p-8 shadow-xl transition-all duration-1000 ease-out"
+        >
             <div class="avatar mb-6">
                 <div
                     class="w-40 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2"
