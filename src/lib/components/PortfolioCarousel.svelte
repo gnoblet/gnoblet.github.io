@@ -78,7 +78,7 @@
                                 alt={item.title}
                                 class="w-full h-full object-cover object-top"
                                 on:error={(e) => {
-                                    e.currentTarget.src =
+                                    (e.currentTarget as HTMLImageElement).src =
                                         'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"%3E%3Crect fill="%23e5e7eb" width="400" height="300"/%3E%3Cpath fill="%239ca3af" d="M0 0h400v300H0z"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="24" fill="%23fff"%3EViz%3C/text%3E%3C/svg%3E';
                                 }}
                             />
