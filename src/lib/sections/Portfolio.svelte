@@ -14,7 +14,9 @@
         </p>
 
         <div class="mb-12 flex justify-center">
-            <ul class="steps max-w-2xl w-full text-lg">
+            <ul
+                class="steps steps-vertical md:steps-horizontal max-w-3xl w-full text-lg justify-center"
+            >
                 <li class="step step-primary">
                     <a
                         href="https://guillaume-noblet.com/TidyTuesday/"
@@ -101,7 +103,7 @@
             </ul>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
             {#each portfolioItems as item}
                 <a
                     href={item.portfolioUrl && item.portfolioUrl !== "#"
