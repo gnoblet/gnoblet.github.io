@@ -7,15 +7,15 @@
 <section class="py-20 px-4 bg-neutral-content/60">
     <div class="container mx-auto max-w-6xl">
         <h2 class="text-4xl font-bold text-center mb-12">Portfolio</h2>
-        <p class="text-xl text-center opacity-80 mb-12 max-w-2xl mx-auto">
+        <p class="text-xl text-center mb-12 max-w-2xl mx-auto">
             A collection of data visualizations I'm quite happy with since I
             started participating (a bit) to challenges such as the
             #30DayChartChallenge.
         </p>
 
-        <div class="mb-12 flex justify-center">
+        <div class="mb-12 flex justify-center items-center">
             <ul
-                class="steps steps-vertical md:steps-horizontal max-w-3xl w-full text-lg justify-center"
+                class="steps steps-vertical md:steps-horizontal max-w-3xl md:w-full text-lg justify-center mx-auto"
             >
                 <li class="step step-primary">
                     <a
@@ -115,7 +115,7 @@
                     rel={item.portfolioUrl && item.portfolioUrl !== "#"
                         ? "noopener noreferrer"
                         : undefined}
-                    class="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-500 group overflow-hidden block border-2 border-transparent hover:border-primary-content {item.portfolioUrl &&
+                    class="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-500 group overflow-hidden block border-2 border-transparent hover:border-primary-content hover:scale-105 {item.portfolioUrl &&
                     item.portfolioUrl !== '#'
                         ? 'cursor-pointer'
                         : 'cursor-default'}"
