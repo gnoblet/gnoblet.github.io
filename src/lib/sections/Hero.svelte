@@ -15,41 +15,46 @@
     </div>
     <div class="hero-content text-center relative z-10">
         <div
-            class="max-w-4xl bg-white/50 backdrop-blur-[2px] rounded-3xl p-8 shadow-xl transition-all duration-1000 ease-out"
+            class="max-w-5xl bg-white/70 backdrop-blur-[2px] rounded-3xl p-8 shadow-xl animate-fade-slide-up py-12"
         >
-            <div class="avatar mb-6">
-                <div
-                    class="w-40 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2"
-                >
-                    <img src="/assets/myself.jpg" alt="Guillaume Noblet" />
+            <div
+                class="flex flex-col md:flex-row gap-8 items-center md:items-start"
+            >
+                <div class="avatar shrink-0">
+                    <div
+                        class="w-40 rounded-full ring ring-primary ring-offset-primary-content ring-offset-4"
+                    >
+                        <img src="/assets/myself.jpg" alt="Guillaume Noblet" />
+                    </div>
+                </div>
+
+                <div class="flex-1 text-center md:text-left">
+                    <h1 class="text-4xl font-bold mb-6">
+                        Hey👋, I'm Guillaume Noblet
+                    </h1>
+
+                    <div class="mb-6 flex justify-center md:justify-start">
+                        <SocialLinks size="large" />
+                    </div>
+
+                    <p class="text-1xl font-family-body mb-4 opacity-90">
+                        I specialize in quantitative field research and data
+                        visualization. I juggle between drafting reports from
+                        data wrangling to fine-tuned analyses, building web
+                        apps, and managing research projects. (and also coming
+                        up with good memes!).
+                    </p>
+                    <p class="text-lg font-familiy-body mb-6 opacity-90">
+                        Lastly, I was a Data & Research Specialist at <a
+                            href="https://www.impact-initiatives.org/"
+                            class="link">IMPACT Initiatives</a
+                        >
+                    </p>
                 </div>
             </div>
 
-            <h1 class="text-4xl font-bold mb-8">Hey👋, I'm Guillaume Noblet</h1>
-
-            <div class="mb-8">
-                <SocialLinks size="large" />
-            </div>
-
-            <p class="text-1xl font-family-body mb-4 opacity-90">
-                I specialize in quantitative field research and data
-                visualization. I juggle between drafting reports from data
-                wrangling to fine-tuned analyses, building web apps, and
-                managing research projects.
-            </p>
-            <p class="text-1xl font-family-body mb-8 opacity-90">
-                (and also coming up with good memes!).
-            </p>
-
-            <p class="text-lg font-familiy-body mb-8 opacity-90">
-                Lastly, I was a Data & Research Specialist at <a
-                    href="https://www.impact-initiatives.org/"
-                    class="link">IMPACT Initiatives</a
-                >
-            </p>
-
-            <div class="mb-6">
-                <a href="#contact" class="btn btn-primary btn-lg">
+            <div class="flex gap-4 justify-center flex-wrap py-4">
+                <a href="#contact" class="btn btn-accent btn-lg">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         class="h-6 w-6"
@@ -66,9 +71,6 @@
                     </svg>
                     Contact Me
                 </a>
-            </div>
-
-            <div class="flex gap-4 justify-center flex-wrap">
                 <a href="#latest-projects" class="btn btn-primary btn-lg">
                     View My Projects
                     <svg
@@ -94,3 +96,21 @@
         </div>
     </div>
 </section>
+
+<style>
+    @keyframes fade-slide-up {
+        from {
+            opacity: 0;
+            transform: translateY(2rem);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .animate-fade-slide-up {
+        opacity: 0;
+        animation: fade-slide-up 1s ease-out 0.4s forwards;
+    }
+</style>
