@@ -171,8 +171,11 @@
 
                     const dotPathLength = dotPathNode.getTotalLength();
 
-                    // Get initial position at start of path
-                    const startPoint = dotPathNode.getPointAtLength(0);
+                    // Get initial position at random point on path
+                    const randomProgress = Math.random();
+                    const startPoint = dotPathNode.getPointAtLength(
+                        randomProgress * dotPathLength,
+                    );
 
                     // Create animated dot for this segment with theme colors
                     const dot = ridgeGroup
@@ -191,7 +194,7 @@
                         element: dot,
                         pathNode: dotPathNode,
                         pathLength: dotPathLength,
-                        progress: 0,
+                        progress: randomProgress,
                         speed: 1 / 8000, // Complete in 8 seconds
                     });
                 });
