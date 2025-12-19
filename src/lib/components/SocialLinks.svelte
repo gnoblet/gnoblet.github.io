@@ -18,7 +18,9 @@
     <div class="flex gap-2">
         <a
             href="https://github.com/gnoblet"
-            class="btn btn-ghost btn-square {sizeClasses[size]}"
+            class="btn-square bg-transparent hover:bg-primary hover:text-primary-content rounded-2xl flex items-center justify-center transition-colors {sizeClasses[
+                size
+            ]}"
             aria-label="GitHub"
         >
             <svg
@@ -35,7 +37,9 @@
         </a>
         <a
             href="https://codeberg.org/gnoblet"
-            class="btn btn-ghost btn-square {sizeClasses[size]}"
+            class="btn-square bg-transparent hover:bg-primary hover:text-primary-content rounded-lg flex items-center justify-center transition-colors {sizeClasses[
+                size
+            ]}"
             aria-label="Codeberg"
         >
             <svg
@@ -52,7 +56,9 @@
         </a>
         <a
             href="https://www.linkedin.com/in/gnoblet/"
-            class="btn btn-ghost btn-square {sizeClasses[size]}"
+            class="btn-square bg-transparent hover:bg-primary hover:text-primary-content rounded-lg flex items-center justify-center transition-colors {sizeClasses[
+                size
+            ]}"
             aria-label="LinkedIn"
         >
             <svg
@@ -69,7 +75,9 @@
         </a>
         <a
             href="https://bsky.app/profile/gnoblet.bsky.social"
-            class="btn btn-ghost btn-square {sizeClasses[size]}"
+            class="btn-square bg-transparent hover:bg-primary hover:text-primary-content rounded-lg flex items-center justify-center transition-colors {sizeClasses[
+                size
+            ]}"
             aria-label="Bluesky"
         >
             <svg
