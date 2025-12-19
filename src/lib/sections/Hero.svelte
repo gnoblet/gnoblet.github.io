@@ -12,7 +12,7 @@
 <section class="hero min-h-screen relative">
     <ElevationRidgeMap />
     <div class="hero-overlay bg-neutral-content"></div>
-    <div class="hero-content text-center">
+    <div class="hero-content text-center -mt-16">
         <div
             class="max-w-5xl bg-white/70 backdrop-blur-[2px] rounded-3xl p-8 shadow-xl animate-fade-slide-up py-8"
         >
