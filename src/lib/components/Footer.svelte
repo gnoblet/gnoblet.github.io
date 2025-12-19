@@ -36,25 +36,26 @@
 </script>
 
 <footer class="footer footer-center bg-base-200 text-base-content p-10">
-    <aside>
-        <p class="font-bold text-xl">Guillaume Noblet</p>
-        <p class="text-lg">
-            &copy; {currentYear} - Developer, Designer & Problem Solver
+    <aside class="max-w-sm">
+        <p class="font-bold text-xl">
+            Guillaume Noblet &copy; {currentYear}
         </p>
-        <p class="text-sm opacity-70 mt-2">
-            Map data: <a
-                href="https://www.naturalearthdata.com"
+        <p class="text-sm opacity-80 mt-2">
+            Thanks to <a
+                href="https://a2-ai.github.io/rv-docs/"
                 class="link link-hover"
                 target="_blank"
-                rel="noopener noreferrer">Natural Earth</a
+                rel="noopener noreferrer">rv</a
             >
-            • Thanks to
+            and
             <a
-                href="https://github.com/nvkelso"
+                href="https://rspatial.org/pkg/"
                 class="link link-hover"
                 target="_blank"
-                rel="noopener noreferrer">@nvkelso</a
+                rel="noopener noreferrer">terra</a
             >
+            for elevation data with R • contributors to Svelte, daisyUI, d3.js, splide.js,
+            and Tailwind CSS.
         </p>
     </aside>
     <nav>
