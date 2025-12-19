@@ -9,16 +9,15 @@
     });
 </script>
 
-<section class="hero h-screen relative">
-    <div class="absolute inset-0 bg-neutral-content">
-        <ElevationRidgeMap />
-    </div>
-    <div class="hero-content text-center relative z-10">
+<section class="hero min-h-screen relative">
+    <ElevationRidgeMap />
+    <div class="hero-overlay bg-neutral-content"></div>
+    <div class="hero-content text-center">
         <div
-            class="max-w-5xl bg-white/70 backdrop-blur-[2px] rounded-3xl p-8 shadow-xl animate-fade-slide-up py-12"
+            class="max-w-5xl bg-white/70 backdrop-blur-[2px] rounded-3xl p-8 shadow-xl animate-fade-slide-up py-8"
         >
             <div
-                class="flex flex-col md:flex-row gap-8 items-center md:items-start"
+                class="flex flex-col md:flex-row gap-8 items-center md:items-start py-4"
             >
                 <div class="avatar shrink-0">
                     <div
@@ -29,22 +28,28 @@
                 </div>
 
                 <div class="flex-1 text-center md:text-left">
-                    <h1 class="text-4xl font-bold mb-6">
-                        Hey👋, I'm Guillaume Noblet
+                    <h1 class="text-3xl font-bold mb-6">
+                        Hey👋, I'm Guillaume Noblet, a data scientist
                     </h1>
 
-                    <div class="mb-6 flex justify-center md:justify-start">
+                    <div class="mb-8 flex justify-center md:justify-start">
                         <SocialLinks size="large" />
                     </div>
 
-                    <p class="text-1xl font-family-body mb-4 opacity-90">
-                        I specialize in quantitative field research and data
-                        visualization. I juggle between drafting reports from
-                        data wrangling to fine-tuned analyses, building web
-                        apps, and managing research projects. (and also coming
-                        up with good memes!).
+                    <p class="text-1xl mb-2">
+                        I specialize in
+                        <span class="text-primary-content font-bold">
+                            quantitative field research
+                        </span>
+                        and
+                        <span class="text-primary-content font-bold">
+                            data visualization
+                        </span>. I juggle between drafting reports from data
+                        wrangling to fine-tuned analyses and imagining and
+                        managing research projects (and also coming up with good
+                        memes!).
                     </p>
-                    <p class="text-lg font-familiy-body mb-6 opacity-90">
+                    <p class="text-lg mb-2">
                         Lastly, I was a Data & Research Specialist at <a
                             href="https://www.impact-initiatives.org/"
                             class="link">IMPACT Initiatives</a
