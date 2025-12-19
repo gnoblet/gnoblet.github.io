@@ -13,7 +13,7 @@
         <div class="text-center mb-16">
             <h2 class="text-5xl font-bold mb-4">About Me</h2>
 
-            <p class="text-xl opacity-80 max-w-2xl mx-auto mb-8">
+            <p class="text-xl max-w-2xl mx-auto mb-8">
                 Humanitarian researcher passionate about using data to make a
                 difference
             </p>
