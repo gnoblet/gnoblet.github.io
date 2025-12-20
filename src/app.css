@@ -14,6 +14,9 @@
         "Oswald", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
         "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
+    --font-family-hand:
+        "Shadows Into Light Two", ui-sans-serif, system-ui, sans-serif;
+
     /* Increase base font size significantly */
     --font-size-base: 1.375rem; /* 22px instead of default 16px */
 }
