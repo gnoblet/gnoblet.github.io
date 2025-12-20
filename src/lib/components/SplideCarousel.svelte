@@ -22,8 +22,8 @@
                 pagination: false,
                 autoScroll: {
                     speed: 1,
-                    pauseOnHover: true,
-                    pauseOnFocus: true,
+                    pauseOnHover: false,
+                    pauseOnFocus: false,
                 },
                 breakpoints: {
                     1024: {
