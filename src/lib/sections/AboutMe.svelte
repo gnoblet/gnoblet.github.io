@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { fade } from "svelte/transition";
     import AboutSection from "$lib/components/about/AboutSection.svelte";
     import SkillsSection from "$lib/components/about/SkillsSection.svelte";
     import ExperienceSection from "$lib/components/about/ExperienceSection.svelte";
@@ -175,15 +176,25 @@
         <!-- Content Sections -->
         <div class="max-w-5xl mx-auto">
             {#if activeTab === "about"}
-                <AboutSection />
+                <div in:fade={{ duration: 500 }}>
+                    <AboutSection />
+                </div>
             {:else if activeTab === "skills"}
-                <SkillsSection />
+                <div in:fade={{ duration: 500 }}>
+                    <SkillsSection />
+                </div>
             {:else if activeTab === "experience"}
-                <ExperienceSection />
+                <div in:fade={{ duration: 500 }}>
+                    <ExperienceSection />
+                </div>
             {:else if activeTab === "education"}
-                <EducationSection />
+                <div in:fade={{ duration: 500 }}>
+                    <EducationSection />
+                </div>
             {:else if activeTab === "publications"}
-                <PublicationsSection />
+                <div in:fade={{ duration: 500 }}>
+                    <PublicationsSection />
+                </div>
             {/if}
         </div>
     </div>
