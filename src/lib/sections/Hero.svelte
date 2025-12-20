@@ -1,12 +1,6 @@
 <script lang="ts">
-    import { onMount } from "svelte";
     import SocialLinks from "$lib/components/SocialLinks.svelte";
     import ElevationRidgeMap from "$lib/components/ElevationRidgeMap.svelte";
-    import { theme } from "$lib/stores/theme";
-
-    onMount(() => {
-        theme.init();
-    });
 </script>
 
 <section class="hero min-h-screen relative">
