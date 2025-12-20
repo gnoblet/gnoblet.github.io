@@ -139,11 +139,6 @@
         background-color: hsl(var(--p) / 0.2);
     }
 
-    .font-heading {
-        font-family: "Oswald", sans-serif;
-        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-    }
-
     @keyframes bounce-slow {
         0%,
         100% {
