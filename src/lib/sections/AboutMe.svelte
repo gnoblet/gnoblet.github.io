@@ -1,5 +1,4 @@
 <script lang="ts">
-    import SocialLinks from "$lib/components/SocialLinks.svelte";
     import AboutSection from "$lib/components/about/AboutSection.svelte";
     import SkillsSection from "$lib/components/about/SkillsSection.svelte";
     import ExperienceSection from "$lib/components/about/ExperienceSection.svelte";
@@ -22,15 +21,13 @@
                        xl:top-[-140px] xl:right-[180px]
                        2xl:top-[-140px] 2xl:right-[220px]"
             >
-                <div class="flex flex-col items-start">
-                    <p
-                        class="text-lg whitespace-nowrap animate-bounce-slow font-family-hand"
-                    >
+                <div class="flex flex-col items-start animate-bounce">
+                    <p class="text-lg whitespace-nowrap font-family-hand">
                         Dive into my knowledge <br /> and my journey
                     </p>
                     <!-- Hand-drawn curved arrow SVG pointing down-left to Experience tab -->
                     <svg
-                        class="w-30 h-30 animate-bounce-slow"
+                        class="w-30 h-30"
                         xmlns="http://www.w3.org/2000/svg"
                         xmlns:xlink="http://www.w3.org/1999/xlink"
                         viewBox="0 0 415.262 415.261"
@@ -137,19 +134,5 @@
 <style>
     .tab-active {
         background-color: hsl(var(--p) / 0.2);
-    }
-
-    @keyframes bounce-slow {
-        0%,
-        100% {
-            transform: translateY(0);
-        }
-        50% {
-            transform: translateY(-10px);
-        }
-    }
-
-    .animate-bounce-slow {
-        animation: bounce-slow 2s ease-in-out infinite;
     }
 </style>

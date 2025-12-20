@@ -4,6 +4,8 @@
 }
 
 @theme {
+    /****** FONTS *****/
+
     /* Font family configuration */
     --font-family-body:
         "Source Sans 3", ui-sans-serif, system-ui, sans-serif,
@@ -19,6 +21,21 @@
 
     /* Increase base font size significantly */
     --font-size-base: 1.375rem; /* 22px instead of default 16px */
+
+    /****** ANIMATE *****/
+
+    /* Animation configuration */
+    --animate-bounce: bounce 2s ease-in-out infinite;
+
+    @keyframes bounce {
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-20px);
+        }
+    }
 }
 
 /* Custom global styles */
