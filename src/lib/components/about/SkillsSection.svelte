@@ -90,7 +90,7 @@
     </div>
 
     <!-- Additional Skills Info -->
-    <div class="alert alert-success">
+    <div class="alert text-accent-content bg-accent">
         <!-- Heroicon: information-circle -->
         <svg
             xmlns="http://www.w3.org/2000/svg"
