@@ -3,13 +3,13 @@
 
 <div class="card bg-base-100 shadow-xl">
     <div class="card-body">
-        <h2 class="card-title text-3xl mb-6">My Story</h2>
+        <h2 class="card-title text-3xl mb-4">My Story</h2>
 
         <!-- Hero layout with image -->
         <div class="hero bg-base-200 rounded-lg mb-6">
-            <div class="hero-content flex-col lg:flex-row gap-8 py-8">
+            <div class="hero-content flex-col lg:flex-row gap-8 py-6">
                 <div
-                    class="space-y-4 text-lg leading-relaxed px-6 lg:px-8 py-4"
+                    class="space-y-4 text-lg leading-relaxed px-6 lg:px-8 py-2"
                 >
                     <p>
                         I'm a <span class="text-primary-content font-bold"
@@ -54,27 +54,36 @@
 
         <div class="divider"></div>
 
-        <h3 class="text-2xl font-bold ml-10 mt-6 mb-4">How I Approach Data</h3>
+        <h3 class="text-2xl font-bold ml-4 mt-1 mb-2">How I Approach Data</h3>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 m-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 m-4">
             <div class="flex items-start gap-3">
                 <div class="badge badge-primary badge-lg mt-1">✓</div>
                 <div>
                     <p class="text-lg font-bold">
                         Data without context is just data
                     </p>
-                    <p class="text-base opacity-80 mr-10">
+                    <p class="text-base opacity-80 mr-6">
                         Data is constructed, not just collected—understanding
                         how is needed to shape stories made to inform decisions.
                     </p>
                 </div>
             </div>
-
+            <div class="flex items-start gap-3">
+                <div class="badge badge-primary badge-lg mt-1">✓</div>
+                <div>
+                    <h4 class="text-lg font-bold">Collective work</h4>
+                    <p class="text-base opacity-80 mr-6">
+                        Sharing knowledge horizontally, open collaboration, and
+                        building systems that work without me.
+                    </p>
+                </div>
+            </div>
             <div class="flex items-start gap-3">
                 <div class="badge badge-primary badge-lg mt-1">✓</div>
                 <div>
                     <h4 class="text-lg font-bold">Transparency & rigor</h4>
-                    <p class="text-base opacity-80 mr-10">
+                    <p class="text-base opacity-80 mr-6">
                         Honest analysis backed by solid methodology, not just
                         pretty charts.
                     </p>
@@ -85,20 +94,9 @@
                 <div class="badge badge-primary badge-lg mt-1">✓</div>
                 <div>
                     <h4 class="text-lg font-bold">Learning by doing</h4>
-                    <p class="text-base opacity-80 mr-10">
+                    <p class="text-base opacity-80 mr-6">
                         The best way to understand something is to dive in,
                         break it, and fix it.
-                    </p>
-                </div>
-            </div>
-
-            <div class="flex items-start gap-3">
-                <div class="badge badge-primary badge-lg mt-1">✓</div>
-                <div>
-                    <h4 class="text-lg font-bold">Collective work</h4>
-                    <p class="text-base opacity-80 mr-10">
-                        Sharing knowledge horizontally, open collaboration, and
-                        building systems that work without me.
                     </p>
                 </div>
             </div>
