@@ -283,7 +283,7 @@
         bind:this={svg}
         class="w-full h-full"
         viewBox="0 0 {viewWidth} {viewHeight}"
-        preserveAspectRatio="xMidYMid meet"
+        preserveAspectRatio="xMidYMin slice"
         xmlns="http://www.w3.org/2000/svg"
     />
 </div>
