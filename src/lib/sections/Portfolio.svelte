@@ -115,38 +115,24 @@
                     rel={item.portfolioUrl && item.portfolioUrl !== "#"
                         ? "noopener noreferrer"
                         : undefined}
-                    class="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-500 group overflow-hidden block border-2 border-transparent hover:border-primary-content hover:scale-105 {item.portfolioUrl &&
-                    item.portfolioUrl !== '#'
-                        ? 'cursor-pointer'
-                        : 'cursor-default'}"
+                    class="block relative aspect-square rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl group hover:scale-103 duration-300 transition-all"
                 >
-                    <figure
-                        class="relative overflow-hidden aspect-square rounded-t-2xl"
+                    <img
+                        src={item.thumbnailUrl}
+                        alt={item.title}
+                        class="w-full h-full object-cover object-center"
+                    />
+                    <!-- Hover overlay -->
+                    <div
+                        class="absolute inset-0 bg-primary-content/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-6 text-center"
                     >
-                        <img
-                            src={item.thumbnailUrl}
-                            alt={item.title}
-                            class="w-full h-full object-cover object-top"
-                            on:error={(e) => {
-                                e.currentTarget.src =
-                                    'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"%3E%3Crect fill="%23e5e7eb" width="400" height="300"/%3E%3Cpath fill="%239ca3af" d="M0 0h400v300H0z"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="24" fill="%23fff"%3EViz%3C/text%3E%3C/svg%3E';
-                            }}
-                        />
-                        <!-- Hover overlay -->
-                        <div
-                            class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-6 text-center"
-                        >
-                            <div class="absolute inset-0 bg-primary/90"></div>
-                            <div class="relative z-10">
-                                <h3 class="text-2xl font-bold text-black mb-2">
-                                    {item.title}
-                                </h3>
-                                <p class="text-lg text-black opacity-90">
-                                    {item.description}
-                                </p>
-                            </div>
-                        </div>
-                    </figure>
+                        <h3 class="text-2xl font-bold text-base-100 mb-2">
+                            {item.title}
+                        </h3>
+                        <p class="text-lg text-base-100">
+                            {item.description}
+                        </p>
+                    </div>
                 </a>
             {/each}
         </div>
