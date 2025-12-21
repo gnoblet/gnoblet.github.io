@@ -72,7 +72,15 @@
                             />
                             {#if item.badge}
                                 <div
-                                    class="absolute top-4 right-4 badge badge-primary badge-lg font-bold uppercase"
+                                    class="absolute top-4 right-4 badge
+                                    {item.badge === 'new'
+                                        ? 'badge-primary'
+                                        : item.badge === 'ongoing'
+                                          ? 'badge-accent'
+                                          : item.badge === 'V1'
+                                            ? 'badge-secondary'
+                                            : 'badge-info'}
+                                    badge-lg font-bold uppercase"
                                 >
                                     {item.badge}
                                 </div>
@@ -83,7 +91,7 @@
                                 {item.title}
                             </h3>
                             <p class="text-base opacity-80 mb-4 line-clamp-3">
-                                {item.description}
+                                {item.shortDescription}
                             </p>
                             <div class="flex flex-wrap gap-2 mb-4">
                                 {#each item.tags.slice(0, 4) as tag}

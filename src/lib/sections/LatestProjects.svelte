@@ -1,6 +1,6 @@
 <script lang="ts">
     import SplideCarousel from "$lib/components/SplideCarousel.svelte";
-    import { dataVizProjects } from "$lib/data/dataVizProjects";
+    import { projects } from "$lib/data/projects";
 </script>
 
 <section
@@ -16,6 +16,6 @@
                 Check out my most recent work and ongoing projects.
             </p>
         </div>
-        <SplideCarousel items={dataVizProjects.slice(0, 5)} />
+        <SplideCarousel items={projects.slice(0, 5)} />
     </div>
 </section>

@@ -1,9 +1,7 @@
 <script lang="ts">
     import { onMount } from "svelte";
     import type { Project } from "$lib/types/project";
-    import { dataVizProjects } from "$lib/data/dataVizProjects";
-
-    let projects = dataVizProjects;
+    import { projects } from "$lib/data/projects";
 
     let selectedFilter = "all";
     let filteredProjects = projects;
