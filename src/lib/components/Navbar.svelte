@@ -33,8 +33,8 @@
         </div>
 
         <!-- Mobile Menu Dropdown (visible on small screens) -->
-        <details class="dropdown dropdown-end lg:hidden">
-            <summary class="btn btn-ghost btn-circle">
+        <div class="dropdown dropdown-end lg:hidden">
+            <div tabindex="0" role="button" class="btn btn-ghost">
                 <!-- Heroicon: bars-3 -->
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -50,26 +50,37 @@
                         d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
                     />
                 </svg>
-            </summary>
+            </div>
             <ul
-                class="menu menu-sm dropdown-content mt-3 z-1 p-2 shadow bg-base-100 rounded-box w-52"
+                tabindex="-1"
+                class="menu dropdown-content mt-4 z-1 p-2 shadow bg-base-100 rounded-box w-42"
             >
                 <li>
-                    <a href="/" class:active={isActive("/")}> Home </a>
+                    <a
+                        href="/"
+                        class="btn btn-ghost"
+                        class:active={isActive("/")}
+                    >
+                        Home
+                    </a>
                 </li>
                 <li>
-                    <a href="/projects" class:active={isActive("/projects")}>
+                    <a
+                        href="/projects"
+                        class="btn btn-ghost"
+                        class:active={isActive("/projects")}
+                    >
                         Projects
                     </a>
                 </li>
                 <li>
-                    <a href="/#about-me"> About Me </a>
+                    <a href="/#about-me" class="btn btn-ghost"> About Me </a>
                 </li>
                 <li>
                     <a href="/#contact" class="btn btn-accent"> Contact </a>
                 </li>
             </ul>
-        </details>
+        </div>
     </div>
 </nav>
 
