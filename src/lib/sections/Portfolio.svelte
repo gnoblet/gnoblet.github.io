@@ -15,7 +15,7 @@
 
         <div class="mb-12 flex justify-center items-center">
             <ul
-                class="steps steps-vertical md:steps-horizontal max-w-3xl md:w-full text-lg justify-center mx-auto"
+                class="steps steps-vertical md:steps-horizontal max-w-3xl md:w-full text-lg md:text-xl font-family-body justify-center mx-auto"
             >
                 <li class="step step-primary">
                     <a
@@ -103,7 +103,7 @@
             </ul>
         </div>
 
-        <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
             {#each portfolioItems as item}
                 <a
                     href={item.portfolioUrl && item.portfolioUrl !== "#"
