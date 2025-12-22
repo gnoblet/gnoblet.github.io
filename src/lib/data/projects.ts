@@ -12,7 +12,7 @@ export const projects: Project[] = [
     imageUrl:
       "https://raw.githubusercontent.com/gnoblet/ggbranding/main/man/figures/logo.png",
     projectUrl: "https://gnoblet.github.io/ggbranding/",
-    tags: ["R", "ggplot2", "package", "visualization"],
+    tags: ["R", "ggplot2", "package", "data viz"],
     badge: "new",
   },
   {
@@ -26,7 +26,7 @@ export const projects: Project[] = [
       "Streamlined survey analysis for KoboToolbox and humanitarian data.",
     imageUrl:
       "https://gnoblet.github.io/SurveyLiteR/reference/figures/logo.svg",
-    projectUrl: "https://github.com/gnoblet/SurveyLiteR",
+    projectUrl: "https://gnoblet.github.io/SurveyLiteR/",
     tags: ["R", "humanitarian", "data analysis", "package"],
   },
   {
@@ -48,7 +48,7 @@ export const projects: Project[] = [
     description:
       "My weekly data visualization contributions to #TidyTuesday. Each visualization explores different datasets using R and Python, showcasing various visualization techniques and data analysis approaches. Nothing much there yet.",
     shortDescription:
-      "Weekly data visualizations for #TidyTuesday using R and Python.",
+      "(Weekly?) data visualizations for #TidyTuesday using R and Python.",
     imageUrl: "/images/projects/tidytuesday.png",
     projectUrl: "https://gnoblet.github.io/TidyTuesday/",
     tags: ["R", "Python", "data viz", "challenge"],
@@ -60,8 +60,7 @@ export const projects: Project[] = [
     slug: "30-day-chart-challenge",
     description:
       "My submissions for the #30DayChartChallenge, a community-driven data visualization event where participants create and share charts based on daily prompts. First participation in 2025.",
-    shortDescription:
-      "Creative chart submissions for the #30DayChartChallenge event.",
+    shortDescription: "Chart submissions for the #30DayChartChallenge event.",
     imageUrl: "/images/projects/30-day-chart-challenge.png",
     projectUrl: "https://gnoblet.github.io/30DayChartChallenge/",
     tags: ["R", "Python", "data viz", "challenge"],
@@ -72,8 +71,7 @@ export const projects: Project[] = [
     slug: "hespeR",
     description:
       "(Ongoing) R package for handling the WHO's Humanitarian Emergency Settings Perceived Needs Scale (HESPER). In collaboration with Raphael Bacot, it aims to provide an integrated data workflow (wrangling, analysis, reporting, and visualization) based on the HESPER survey methodology.",
-    shortDescription:
-      "R package for WHO's HESPER survey data workflow (ongoing).",
+    shortDescription: "R package for WHO's HESPER survey data workflow.",
     imageUrl: "/images/projects/hespeR.svg",
     projectUrl: "https://github.com/gnoblet/hespeR",
     tags: ["R", "humanitarian", "data analysis", "package"],
@@ -86,7 +84,7 @@ export const projects: Project[] = [
     description:
       "(Ongoing) R package providing utility functions and sane defaults for humanitarian analysts with colors, scales and default visualizations. Includes ready-to-go color palettes and pre-configured visualization templates for common humanitarian data viz needs.",
     shortDescription:
-      "Utility functions and templates for humanitarian data visualization (ongoing).",
+      "Utility functions and templates for humanitarian data visualization.",
     imageUrl:
       "https://raw.githubusercontent.com/gnoblet/visualizeR/revamp/man/figures/logo.png",
     projectUrl: "https://github.com/gnoblet/visualizeR/tree/revamp",

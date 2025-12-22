@@ -2,6 +2,7 @@
     import { onMount } from "svelte";
     import type { Project } from "$lib/types/project";
     import { projects } from "$lib/data/projects";
+    import ProjectCard from "$lib/components/ProjectCard.svelte";
 
     let selectedFilter = "all";
     let filteredProjects = projects;
@@ -70,74 +71,7 @@
         {#if filteredProjects.length > 0}
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {#each filteredProjects as project (project.id)}
-                    <div
-                        class="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 relative"
-                    >
-                        {#if project.badge}
-                            <div
-                                class="badge {project.badge === 'new'
-                                    ? 'badge-accent'
-                                    : 'badge-secondary'} absolute -top-2 -right-2 z-10 font-family-headingb"
-                            >
-                                {project.badge.toUpperCase()}
-                            </div>
-                        {/if}
-                        <figure class="px-4 pt-4">
-                            <img
-                                src={project.imageUrl}
-                                alt={project.title}
-                                class="rounded-xl w-full h-48 object-cover"
-                                on:error={(e) => {
-                                    e.currentTarget.src =
-                                        'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"%3E%3Crect fill="%23e5e7eb" width="400" height="300"/%3E%3Cpath fill="%239ca3af" d="M0 0h400v300H0z"/%3E%3Cpath fill="%23fff" d="M150 100h100v100H150z"/%3E%3C/svg%3E';
-                                }}
-                            />
-                        </figure>
-
-                        <div class="card-body">
-                            <h2 class="card-title">
-                                {project.title}
-                            </h2>
-                            <p class="text-sm opacity-80">
-                                {project.description}
-                            </p>
-
-                            <!-- Tags -->
-                            <div class="flex flex-wrap gap-2 mt-4">
-                                {#each project.tags as tag}
-                                    <div class="badge badge-outline badge-sm">
-                                        {tag}
-                                    </div>
-                                {/each}
-                            </div>
-
-                            <!-- Actions -->
-                            <div class="card-actions justify-end mt-4">
-                                <a
-                                    href={project.projectUrl}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    class="btn btn-primary btn-sm"
-                                >
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        class="h-5 w-5"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        stroke="currentColor"
-                                    >
-                                        <path
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="2"
-                                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                                        />
-                                    </svg>
-                                    View Project
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                    <ProjectCard {project} showDescription={true} maxTags={4} />
                 {/each}
             </div>
         {:else}
