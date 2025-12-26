@@ -1,5 +1,7 @@
 <script lang="ts">
     import { fade } from "svelte/transition";
+    import Tabs from "$lib/components/Tabs.svelte";
+    import Tab from "$lib/components/Tab.svelte";
     import AboutSection from "$lib/components/about/AboutSection.svelte";
     import SkillsSection from "$lib/components/about/SkillsSection.svelte";
     import ExperienceSection from "$lib/components/about/ExperienceSection.svelte";
@@ -54,12 +56,11 @@
 
         <!-- Tabs Navigation -->
         <div class="flex justify-center mb-2">
-            <div class="tabs tabs-box tabs-lg bg-neutral-content mb-6">
-                <button
-                    type="button"
-                    class="tab"
-                    class:tab-active={activeTab === "about"}
-                    on:click={() => (activeTab = "about")}
+            <Tabs boxed bgClass="bg-neutral-content" className="mb-6">
+                <Tab
+                    active={activeTab === "about"}
+                    value="about"
+                    on:select={(e) => (activeTab = e.detail.value)}
                 >
                     <!-- Heroicon: user -->
                     <svg
@@ -77,12 +78,11 @@
                         />
                     </svg>
                     About
-                </button>
-                <button
-                    type="button"
-                    class="tab"
-                    class:tab-active={activeTab === "skills"}
-                    on:click={() => (activeTab = "skills")}
+                </Tab>
+                <Tab
+                    active={activeTab === "skills"}
+                    value="skills"
+                    on:select={(e) => (activeTab = e.detail.value)}
                 >
                     <!-- Heroicon: light-bulb -->
                     <svg
@@ -100,12 +100,11 @@
                         />
                     </svg>
                     Skills
-                </button>
-                <button
-                    type="button"
-                    class="tab"
-                    class:tab-active={activeTab === "experience"}
-                    on:click={() => (activeTab = "experience")}
+                </Tab>
+                <Tab
+                    active={activeTab === "experience"}
+                    value="experience"
+                    on:select={(e) => (activeTab = e.detail.value)}
                 >
                     <!-- Heroicon: briefcase -->
                     <svg
@@ -123,12 +122,11 @@
                         />
                     </svg>
                     Experience
-                </button>
-                <button
-                    type="button"
-                    class="tab"
-                    class:tab-active={activeTab === "education"}
-                    on:click={() => (activeTab = "education")}
+                </Tab>
+                <Tab
+                    active={activeTab === "education"}
+                    value="education"
+                    on:select={(e) => (activeTab = e.detail.value)}
                 >
                     <!-- Heroicon: academic-cap -->
                     <svg
@@ -146,12 +144,11 @@
                         />
                     </svg>
                     Education
-                </button>
-                <button
-                    type="button"
-                    class="tab"
-                    class:tab-active={activeTab === "publications"}
-                    on:click={() => (activeTab = "publications")}
+                </Tab>
+                <Tab
+                    active={activeTab === "publications"}
+                    value="publications"
+                    on:select={(e) => (activeTab = e.detail.value)}
                 >
                     <!-- Heroicon: document-text -->
                     <svg
@@ -169,8 +166,8 @@
                         />
                     </svg>
                     Publications
-                </button>
-            </div>
+                </Tab>
+            </Tabs>
         </div>
 
         <!-- Content Sections -->
@@ -199,9 +196,3 @@
         </div>
     </div>
 </section>
-
-<style>
-    .tab-active {
-        background-color: hsl(var(--p) / 0.2);
-    }
-</style>

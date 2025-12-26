@@ -1,8 +1,9 @@
 <script lang="ts">
     import { onMount } from "svelte";
-    import type { Project } from "$lib/types/project";
     import { projects } from "$lib/data/projects";
     import ProjectCard from "$lib/components/ProjectCard.svelte";
+    import Tabs from "$lib/components/Tabs.svelte";
+    import Tab from "$lib/components/Tab.svelte";
 
     let selectedFilter = "all";
     let filteredProjects = projects;
@@ -47,24 +48,24 @@
 
         <!-- Filter Tabs -->
         <div class="flex justify-center mb-12 max-w-4xl mx-auto">
-            <div class="tabs tabs-boxed bg-base-300 p-2">
-                <button
-                    class="tab"
-                    class:tab-active={selectedFilter === "all"}
-                    on:click={() => (selectedFilter = "all")}
+            <Tabs boxed size="lg" className="p-2">
+                <Tab
+                    active={selectedFilter === "all"}
+                    value="all"
+                    on:select={(e) => (selectedFilter = e.detail.value)}
                 >
                     All Projects
-                </button>
+                </Tab>
                 {#each allTags as tag}
-                    <button
-                        class="tab"
-                        class:tab-active={selectedFilter === tag}
-                        on:click={() => (selectedFilter = tag)}
+                    <Tab
+                        active={selectedFilter === tag}
+                        value={tag}
+                        on:select={(e) => (selectedFilter = e.detail.value)}
                     >
                         {tag}
-                    </button>
+                    </Tab>
                 {/each}
-            </div>
+            </Tabs>
         </div>
 
         <!-- Projects Grid -->
