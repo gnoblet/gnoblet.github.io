@@ -8,7 +8,7 @@
     <div class="hero-overlay bg-neutral-content"></div>
     <div class="hero-content text-center -mt-16">
         <div
-            class="max-w-5xl bg-base-100/70 backdrop-blur-[2px] rounded-3xl p-8 shadow-xl animate-fade-slide-up py-8"
+            class="max-w-5xl bg-base-100/60 rounded-3xl p-8 shadow-xl animate-fade-slide-up py-8"
         >
             <div
                 class="flex flex-col md:flex-row gap-8 items-center md:items-start py-4"
