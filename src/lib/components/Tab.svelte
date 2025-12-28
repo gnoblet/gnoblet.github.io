@@ -10,7 +10,7 @@
 
     // Base classes matching the style used across the site.
     const base =
-        "tab px-4 py-2 rounded-full text-black hover:font-semibold focus:font-semibold whitespace-nowrap";
+        "tab px-4 py-2 rounded-full text-black hover:font-semibold focus:text-white focus:font-semibold whitespace-nowrap";
 
     $: classes =
         `${base} ${active ? "bg-neutral font-semibold" : ""} ${className}`.trim();
