@@ -104,4 +104,17 @@ export const projects: Project[] = [
     projectUrl: "https://impact-initiatives-hppu.github.io/humind/",
     tags: ["R", "humanitarian", "data analysis", "package"],
   },
+
+  // Main entry for the 30DayMapChallenge collection
+  {
+    id: 9,
+    title: "30 Day Map Challenge",
+    slug: "30-day-map-challenge",
+    shortDescription: "Map submissions for the #30DayMapChallenge.",
+    description:
+      "My submissions to the #30DayMapChallenge — a collection of maps demonstrating different mapping techniques, datasets, and visualization styles across the challenge.",
+    imageUrl: "/images/projects/30-day-map-challenge.png",
+    projectUrl: "https://guillaume-noblet.com/30DayMapChallenge/",
+    tags: ["R", "maps", "data viz", "challenge"],
+  },
 ];
