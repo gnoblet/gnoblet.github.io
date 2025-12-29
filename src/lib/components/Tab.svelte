@@ -13,7 +13,7 @@
         "tab px-4 py-2 rounded-full text-black hover:font-semibold focus:text-white focus:font-semibold whitespace-nowrap";
 
     $: classes =
-        `${base} ${active ? "bg-neutral font-semibold" : ""} ${className}`.trim();
+        `${base} ${active ? "bg-neutral text-white font-semibold" : ""} ${className}`.trim();
 
     function handleClick(event: MouseEvent) {
         // Forward a semantic `select` event with the tab value
