@@ -47,10 +47,9 @@
     <div class="container mx-auto max-w-7xl">
         <!-- Header -->
         <div class="text-center mb-16">
-            <h1 class="text-5xl font-bold mb-4">My Projects</h1>
-            <p class="text-xl opacity-80 max-w-2xl mx-auto">
-                A collection of projects I've worked on, showcasing different
-                technologies and approaches to problem-solving.
+            <h1 class="text-4xl font-bold mb-4">My Projects</h1>
+            <p class="text-2xl opacity-80 max-w-2xl mx-auto">
+                Check out a (small) collection of projects I've worked on.
             </p>
         </div>
 
