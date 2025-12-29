@@ -173,23 +173,23 @@
         <!-- Content Sections -->
         <div class="max-w-5xl mx-auto">
             {#if activeTab === "about"}
-                <div in:fade={{ duration: 500 }}>
+                <div in:fade={{ duration: 700 }}>
                     <AboutSection />
                 </div>
             {:else if activeTab === "skills"}
-                <div in:fade={{ duration: 500 }}>
+                <div in:fade={{ duration: 700 }}>
                     <SkillsSection />
                 </div>
             {:else if activeTab === "experience"}
-                <div in:fade={{ duration: 500 }}>
+                <div in:fade={{ duration: 700 }}>
                     <ExperienceSection />
                 </div>
             {:else if activeTab === "education"}
-                <div in:fade={{ duration: 500 }}>
+                <div in:fade={{ duration: 700 }}>
                     <EducationSection />
                 </div>
             {:else if activeTab === "publications"}
-                <div in:fade={{ duration: 500 }}>
+                <div in:fade={{ duration: 700 }}>
                     <PublicationsSection />
                 </div>
             {/if}
