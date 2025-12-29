@@ -20,7 +20,7 @@
     <div class="container mx-auto max-w-6xl">
         <!-- Header Section -->
         <div class="text-center mb-16">
-            <h2 class="text-5xl font-bold mb-4">About Me</h2>
+            <h2 class="text-4xl font-bold mb-4">About Me</h2>
         </div>
 
         <!-- Hand-drawn Arrow Guide - Positioned as overlay -->
