@@ -123,7 +123,6 @@
     class:text-primary-content={isActive}
     class:font-semibold={isActive}
     role="tab"
-    aria-selected={ariaSelected}
     aria-controls={ariaControls}
     tabindex={tabIndex}
     {disabled}

@@ -1,5 +1,8 @@
 <script lang="ts">
     import { onMount } from "svelte";
+    import { fade } from "svelte/transition";
+    import { flip } from "svelte/animate";
+    import { cubicOut } from "svelte/easing";
     import { projects } from "$lib/data/projects";
     import ProjectCard from "$lib/components/ProjectCard.svelte";
     import Tabs from "$lib/components/Tabs.svelte";
@@ -7,6 +10,11 @@
 
     let selectedFilter = "all";
     let filteredProjects = projects;
+
+    function handleTabSelect(e: CustomEvent) {
+        // update filter (simple: no visual feedback state)
+        selectedFilter = e.detail.value;
+    }
 
     // Get unique tags from all projects
     $: allTags = [...new Set(projects.flatMap((p) => p.tags))];
@@ -52,7 +60,7 @@
                 <Tab
                     active={selectedFilter === "all"}
                     value="all"
-                    on:select={(e) => (selectedFilter = e.detail.value)}
+                    on:select={handleTabSelect}
                 >
                     All Projects
                 </Tab>
@@ -60,7 +68,7 @@
                     <Tab
                         active={selectedFilter === tag}
                         value={tag}
-                        on:select={(e) => (selectedFilter = e.detail.value)}
+                        on:select={handleTabSelect}
                     >
                         {tag}
                     </Tab>
@@ -72,7 +80,17 @@
         {#if filteredProjects.length > 0}
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {#each filteredProjects as project (project.id)}
-                    <ProjectCard {project} showDescription={true} maxTags={4} />
+                    <div
+                        animate:flip={{ duration: 400, easing: cubicOut }}
+                        in:fade={{ duration: 400 }}
+                        out:fade={{ duration: 200 }}
+                    >
+                        <ProjectCard
+                            {project}
+                            showDescription={true}
+                            maxTags={4}
+                        />
+                    </div>
                 {/each}
             </div>
         {:else}
