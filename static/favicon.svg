@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="32" height="32"
+     viewBox="0 0 64 64"
+     role="img" aria-hidden="false" focusable="false"
+     preserveAspectRatio="xMidYMid meet">
+  <title>Gnoblet favicon - GN</title>
+  <desc>Black initials "GN" set in Oswald on a white background (with font fallback).</desc>
+
+  <defs>
+    <style><![CDATA[
+      /* Prefer Oswald; fall back to common system sans-serif fonts if not available */
+      .gn-text {
+        font-family: 'Oswald', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        font-weight: 700;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        letter-spacing: -0.02em;
+      }
+    ]]></style>
+  </defs>
+
+  <!-- White background (explicit to ensure crisp rendering in all contexts) -->
+  <rect x="0" y="0" width="64" height="64" fill="#FFFFFF"/>
+
+  <!-- Centered black GN. Adjust font-size so letters remain readable at favicon scale. -->
+  <text x="50%" y="52%" class="gn-text"
+        text-anchor="middle" dominant-baseline="middle"
+        font-size="34" fill="#000000">GN</text>
+</svg>
