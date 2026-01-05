@@ -4,7 +4,7 @@
     import { slide, scale, blur } from "svelte/transition";
 </script>
 
-<section class="py-20 px-4 bg-neutral-content/60">
+<section id="portfolio" class="py-20 px-4 bg-neutral-content/60">
     <div class="container mx-auto max-w-6xl">
         <h2 class="text-4xl font-bold text-center mb-12">Portfolio</h2>
         <p class="text-2xl text-center mb-12 max-w-2xl mx-auto">
