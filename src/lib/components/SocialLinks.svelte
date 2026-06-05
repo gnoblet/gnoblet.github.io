@@ -18,7 +18,7 @@
     <div class="flex gap-2">
         <a
             href="https://github.com/gnoblet"
-            class="btn-square bg-transparent hover:bg-primary hover:text-primary-content rounded-2xl flex items-center justify-center transition-colors {sizeClasses[
+            class="btn-square bg-transparent hover:bg-primary hover:text-primary-content  flex items-center justify-center transition-colors {sizeClasses[
                 size
             ]}"
             aria-label="GitHub"
@@ -37,7 +37,7 @@
         </a>
         <a
             href="https://codeberg.org/gnoblet"
-            class="btn-square bg-transparent hover:bg-primary hover:text-primary-content rounded-lg flex items-center justify-center transition-colors {sizeClasses[
+            class="btn-square bg-transparent hover:bg-primary hover:text-primary-content flex items-center justify-center transition-colors {sizeClasses[
                 size
             ]}"
             aria-label="Codeberg"
@@ -56,7 +56,7 @@
         </a>
         <a
             href="https://www.linkedin.com/in/gnoblet/"
-            class="btn-square bg-transparent hover:bg-primary hover:text-primary-content rounded-lg flex items-center justify-center transition-colors {sizeClasses[
+            class="btn-square bg-transparent hover:bg-primary hover:text-primary-content flex items-center justify-center transition-colors {sizeClasses[
                 size
             ]}"
             aria-label="LinkedIn"
@@ -75,7 +75,7 @@
         </a>
         <a
             href="https://bsky.app/profile/gnoblet.bsky.social"
-            class="btn-square bg-transparent hover:bg-primary hover:text-primary-content rounded-lg flex items-center justify-center transition-colors {sizeClasses[
+            class="btn-square bg-transparent hover:bg-primary hover:text-primary-content flex items-center justify-center transition-colors {sizeClasses[
                 size
             ]}"
             aria-label="Bluesky"

@@ -101,7 +101,7 @@
         {/if}
 
         <!-- Call to Action -->
-        <div class="text-center mt-20 p-10 bg-base-200 rounded-3xl">
+        <div class="text-center mt-20 p-10 bg-base-200">
             <h2 class="text-3xl font-bold mb-4">Want to collaborate?</h2>
             <p class="text-lg opacity-80 mb-6">
                 I'm always interested in hearing about new projects and

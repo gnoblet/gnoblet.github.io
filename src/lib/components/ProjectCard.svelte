@@ -9,7 +9,7 @@
 </script>
 
 <div
-    class={`card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-500 group overflow-hidden h-full border-2 border-transparent hover:border-primary-content ${className}`}
+    class={`card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-500 group overflow-hidden h-full border-2 border-base-300 hover:border-primary ${className}`}
 >
     <figure
         class="relative overflow-hidden bg-base-200 h-64 flex items-center justify-center p-8"

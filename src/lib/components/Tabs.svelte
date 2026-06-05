@@ -32,7 +32,7 @@
     export let size: "sm" | "md" | "lg" = "lg";
     export let boxed: boolean = true;
     export let padded: boolean = true;
-    export let bgClass: string = "bg-neutral-content";
+    export let bgClass: string = "bg-base-300";
 
     // Optional items list; when set, Tabs renders items automatically.
     type TabItem = {
@@ -56,7 +56,7 @@
     $: boxClass = boxed ? "tabs-box" : "";
     $: padClass = padded ? "p-1" : "";
     $: baseContainer =
-        "tabs inline-flex flex-wrap gap-2 items-center rounded-full justify-center";
+        "tabs inline-flex flex-wrap gap-2 items-center justify-center";
     $: containerClass = [
         baseContainer,
         sizeClass,

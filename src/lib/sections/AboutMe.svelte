@@ -56,7 +56,7 @@
 
         <!-- Tabs Navigation -->
         <div class="flex justify-center mb-2">
-            <Tabs boxed bgClass="bg-neutral-content" className="mb-6">
+            <Tabs boxed bgClass="bg-base-300" className="mb-6">
                 <Tab
                     active={activeTab === "about"}
                     value="about"

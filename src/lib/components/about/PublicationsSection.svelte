@@ -16,7 +16,7 @@
                                 xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 24 24"
                                 fill="currentColor"
-                                class="size-6 text-primary-content"
+                                class="size-6 text-primary"
                             >
                                 <path
                                     d="M5.625 1.5c-1.036 0-1.875.84-1.875 1.875v17.25c0 1.035.84 1.875 1.875 1.875h12.75c1.035 0 1.875-.84 1.875-1.875V12.75A3.75 3.75 0 0 0 16.5 9h-1.875a1.875 1.875 0 0 1-1.875-1.875V5.25A3.75 3.75 0 0 0 9 1.5H5.625Z"
@@ -29,7 +29,7 @@
 
                         <div class="grow">
                             <!-- Authors and Year -->
-                            <div class="text-lg text-primary-content mb-1">
+                            <div class="text-lg text-primary mb-1">
                                 {pub.authors} ({pub.year})
                             </div>
 

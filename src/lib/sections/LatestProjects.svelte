@@ -5,7 +5,7 @@
 
 <section
     id="latest-projects"
-    class="py-12 px-4 bg-white flex items-center justify-center"
+    class="py-12 px-4 bg-base-200 flex items-center justify-center"
 >
     <div
         class="container mx-auto max-w-6xl transition-all duration-200 ease-out"

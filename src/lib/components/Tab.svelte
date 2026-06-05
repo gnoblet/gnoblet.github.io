@@ -17,7 +17,7 @@
 
     // Base classes matching the style used across the site.
     const base =
-        "tab px-4 py-2 rounded-full text-black hover:font-semibold focus:text-primary-content focus:font-semibold whitespace-nowrap";
+        "tab px-4 py-2 text-base-content hover:text-primary hover:font-semibold focus:text-primary focus:font-semibold whitespace-nowrap";
 
     // Support a couple of common context keys so Tab works with different Tabs implementations.
     // Tabs.svelte should provide a context object with e.g.:
@@ -89,7 +89,7 @@
     }
 
     $: classes =
-        `${base} ${isActive ? "tab-active bg-primary text-primary-content font-semibold" : ""} ${className}`.trim();
+        `${base} ${isActive ? "tab-active bg-primary !text-primary-content font-semibold" : ""} ${className}`.trim();
 
     // Accessibility attributes
     $: ariaSelected = isActive ? "true" : "false";

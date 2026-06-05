@@ -4,7 +4,7 @@
     import { slide, scale, blur } from "svelte/transition";
 </script>
 
-<section id="portfolio" class="py-20 px-4 bg-neutral-content/60">
+<section id="portfolio" class="py-20 px-4 bg-base-200">
     <div class="container mx-auto max-w-6xl">
         <h2 class="text-4xl font-bold text-center mb-12">Portfolio</h2>
         <p class="text-2xl text-center mb-12 max-w-2xl mx-auto">
@@ -22,7 +22,7 @@
                         href="https://guillaume-noblet.com/TidyTuesday/"
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="cursor-pointer hover:text-primary-content"
+                        class="cursor-pointer hover:text-primary"
                         id="tidytuesday-link"
                     >
                         #TidyTuesday
@@ -40,7 +40,7 @@
                         <img
                             src="/images/previews/tidytuesday-preview.png"
                             alt="TidyTuesday preview"
-                            class="w-full rounded-lg py-2 px-4"
+                            class="w-full py-2 px-4"
                         />
                     </Tooltip>
                 </li>
@@ -50,7 +50,7 @@
                         href="https://guillaume-noblet.com/30DayChartChallenge/"
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="cursor-pointer hover:text-primary-content"
+                        class="cursor-pointer hover:text-primary"
                         id="chart-link"
                     >
                         #30DayChartChallenge
@@ -68,7 +68,7 @@
                         <img
                             src="/images/previews/30daychart-preview.png"
                             alt="30DayChartChallenge preview"
-                            class="w-full rounded-lg py-2 px-4"
+                            class="w-full py-2 px-4"
                         />
                     </Tooltip>
                 </li>
@@ -78,7 +78,7 @@
                         href="https://guillaume-noblet.com/30DayMapChallenge/"
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="cursor-pointer hover:text-primary-content"
+                        class="cursor-pointer hover:text-primary"
                         id="map-link"
                     >
                         #30DayMapChallenge
@@ -96,7 +96,7 @@
                         <img
                             src="/images/previews/30daymap-preview.png"
                             alt="30DayMapChallenge preview"
-                            class="w-full rounded-lg py-2 px-4"
+                            class="w-full py-2 px-4"
                         />
                     </Tooltip>
                 </li>
@@ -115,7 +115,7 @@
                     rel={item.portfolioUrl && item.portfolioUrl !== "#"
                         ? "noopener noreferrer"
                         : undefined}
-                    class="block relative aspect-square rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl group hover:scale-103 duration-300 transition-all"
+                    class="block relative aspect-square overflow-hidden shadow-xl hover:shadow-2xl group hover:scale-103 duration-300 transition-all border border-base-300 hover:border-primary"
                 >
                     <img
                         src={item.thumbnailUrl}
@@ -124,12 +124,12 @@
                     />
                     <!-- Hover overlay -->
                     <div
-                        class="absolute inset-0 bg-primary-content/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-6 text-center"
+                        class="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-6 text-center"
                     >
-                        <h3 class="text-2xl font-bold text-base-100 mb-2">
+                        <h3 class="text-2xl font-bold text-primary-content mb-2">
                             {item.title}
                         </h3>
-                        <p class="text-lg text-base-100">
+                        <p class="text-lg text-primary-content">
                             {item.description}
                         </p>
                     </div>

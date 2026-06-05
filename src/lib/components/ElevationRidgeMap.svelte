@@ -26,13 +26,13 @@
     let animationFrameId: number | null = null;
     let isVisible = false;
 
-    // Light theme colors only
+    // Forest dark theme colors
     const colors = {
-        stroke: "#000000",
-        dotFill: "#4444ff",
-        dotStroke: "#ffffff",
+        stroke: "rgba(168, 216, 162, 0.45)",  /* pale leaf — glows on dark bg */
+        dotFill: "#52B85C",                    /* primary forest green */
+        dotStroke: "#070D09",
         dotGlow:
-            "drop-shadow(0 0 16px rgba(68, 68, 255, 1)) drop-shadow(0 0 8px rgba(68, 68, 255, 1)) drop-shadow(0 0 4px rgba(68, 68, 255, 0.9))",
+            "drop-shadow(0 0 16px rgba(82, 184, 92, 0.9)) drop-shadow(0 0 8px rgba(82, 184, 92, 0.7)) drop-shadow(0 0 4px rgba(82, 184, 92, 0.5))",
     };
 
     async function renderRidgelines() {

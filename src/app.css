@@ -150,8 +150,10 @@
    Component overrides
 ───────────────────────────────────────────────────────────────────────────── */
 @layer components {
-    /* Sharp corners on all buttons — no exceptions */
-    .btn {
+    /* Sharp corners on all interactive/display elements */
+    .btn,
+    .badge,
+    .alert {
         border-radius: 0 !important;
     }
 
@@ -159,5 +161,18 @@
     .card {
         border-radius: 0 !important;
         border-left: 2px solid var(--color-leaf-bright);
+    }
+
+    /* Steps: square step indicators (DaisyUI v5 uses ::after for the circle) */
+    .step::after,
+    .step > .step-icon {
+        border-radius: 0 !important;
+    }
+
+    /* Tabs: no rounded container or tab pills */
+    .tabs,
+    [role="tablist"],
+    .tab {
+        border-radius: 0 !important;
     }
 }
