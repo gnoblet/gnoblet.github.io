@@ -11,14 +11,6 @@
     }
 </script>
 
-<svelte:head>
-    <link rel="preconnect" href="https://fonts.bunny.net" />
-    <link
-        href="https://fonts.bunny.net/css?family=oswald:400,600,700"
-        rel="stylesheet"
-    />
-</svelte:head>
-
 <div class="min-h-screen flex flex-col bg-base-100">
     {#if $loading}
         <div
