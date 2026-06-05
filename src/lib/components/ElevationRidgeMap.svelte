@@ -7,6 +7,7 @@
 
     const viewWidth = 1600;
     const viewHeight = 900;
+    const margin = { top: 20, right: 20, bottom: 20, left: 20 };
 
     interface DataPoint {
         x: number; // longitude
@@ -63,6 +64,80 @@
             "drop-shadow(0 0 16px rgba(68, 68, 255, 1)) drop-shadow(0 0 8px rgba(68, 68, 255, 1)) drop-shadow(0 0 4px rgba(68, 68, 255, 0.9))",
     };
 
+    /**
+     * Derives all rendered profiles from raw dataPoints using D3 for pure math:
+     * grouping by latitude, computing scales, and generating SVG path strings.
+     * No DOM manipulation — Svelte renders the output declaratively.
+     */
+    let profiles = $derived.by<RenderedProfile[]>(() => {
+        if (dataPoints.length === 0) return [];
+
+        const width = viewWidth - margin.left - margin.right;
+        const height = viewHeight - margin.top - margin.bottom;
+
+        const profilesMap = d3.group(dataPoints, (d) => d.y);
+        const allProfiles = Array.from(profilesMap.entries())
+            .map(([lat, points]) => ({
+                latitude: lat,
+                points: points.sort((a, b) => a.x - b.x),
+                maxElevation: d3.max(points, (p) => p.z) || 0,
+            }))
+            .sort((a, b) => b.latitude - a.latitude);
+
+        const filteredProfiles = allProfiles.filter((p) => p.maxElevation > 0);
+        if (filteredProfiles.length === 0) return [];
+
+        const xExtent = d3.extent(dataPoints, (d) => d.x) as [number, number];
+        const xScale = d3.scaleLinear().domain(xExtent).range([0, width]);
+
+        const maxElevation =
+            d3.max(
+                filteredProfiles.flatMap((p) => p.points),
+                (d) => d.z,
+            ) || 1000;
+
+        const scale = 8;
+        const ridgeSpacing = height / filteredProfiles.length;
+        const ridgeHeight = ridgeSpacing * scale;
+        const minHeightThreshold = maxElevation * 0.001;
+
+        const elevationScale = d3
+            .scaleLinear()
+            .domain([0, maxElevation])
+            .range([0, ridgeHeight]);
+
+        const line = d3
+            .line<DataPoint>()
+            .x((d) => xScale(d.x))
+            .y((d) => -elevationScale(Math.max(0, d.z)))
+            .curve(d3.curveBasis);
+
+        let dotCount = 0;
+
+        return filteredProfiles.map((profile, i) => {
+            const yOffset = i * ridgeSpacing;
+
+            const rawSegments: DataPoint[][] = [];
+            let current: DataPoint[] = [];
+            for (const point of profile.points) {
+                if (point.z > minHeightThreshold) {
+                    current.push(point);
+                } else {
+                    if (current.length >= 2) rawSegments.push(current);
+                    current = [];
+                }
+            }
+            if (current.length >= 2) rawSegments.push(current);
+
+            const segments: RenderedSegment[] = rawSegments.map((seg) => ({
+                d: line(seg) ?? "",
+                dotIndex: i % 8 === 0 ? dotCount++ : null,
+            }));
+
+            return { latitude: profile.latitude, yOffset, segments };
+        });
+    });
+
     async function renderRidgelines() {
         try {
             const svgElement = d3.select(svg);
@@ -86,7 +161,6 @@
             const profiles = allProfiles.filter((p) => p.maxElevation > 0);
 
             // theme_void() - minimal margins, no axes
-            const margin = { top: 20, right: 20, bottom: 20, left: 20 };
             const width = viewWidth - margin.left - margin.right;
             const height = viewHeight - margin.top - margin.bottom;
 
