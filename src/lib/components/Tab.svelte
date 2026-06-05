@@ -119,9 +119,6 @@
     {type}
     class={classes}
     class:tab-active={isActive}
-    class:bg-primary={isActive}
-    class:text-primary-content={isActive}
-    class:font-semibold={isActive}
     role="tab"
     aria-controls={ariaControls}
     tabindex={tabIndex}

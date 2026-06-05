@@ -30,7 +30,7 @@
                     <Tooltip
                         triggeredBy="#tidytuesday-link"
                         placement="top"
-                        class="w-96 max-w-lg border-2 border-primary-content"
+                        class="w-96 max-w-lg border-2 border-primary"
                     >
                         <h3
                             class="text-xl font-bold mb-2 mt-2 text-base-content"
@@ -58,7 +58,7 @@
                     <Tooltip
                         triggeredBy="#chart-link"
                         placement="top"
-                        class="w-96 max-w-lg border-2 border-primary-content"
+                        class="w-96 max-w-lg border-2 border-primary"
                     >
                         <h3
                             class="text-xl font-bold mb-2 mt-2 text-base-content"
@@ -86,7 +86,7 @@
                     <Tooltip
                         triggeredBy="#map-link"
                         placement="top"
-                        class="w-96 max-w-lg border-2 border-primary-content"
+                        class="w-96 max-w-lg border-2 border-primary"
                     >
                         <h3
                             class="text-xl font-bold mb-2 mt-2 text-base-content"
