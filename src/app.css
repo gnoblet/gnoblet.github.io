@@ -107,20 +107,16 @@
 @layer base {
     html {
         scroll-behavior: smooth;
+        background-color: var(--color-forest-void);
     }
 
     body {
         font-family: var(--font-family-body);
         font-size: var(--font-size-base);
-        background-color: var(--color-forest-void);
         color: var(--color-text-primary);
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        /* Graph-paper grid texture — references the field station aesthetic */
-        background-image:
-            linear-gradient(rgba(82, 184, 92, 0.04) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(82, 184, 92, 0.04) 1px, transparent 1px);
-        background-size: 28px 28px;
+        background: transparent;
     }
 
     * {
