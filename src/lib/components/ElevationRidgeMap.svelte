@@ -1,9 +1,7 @@
 <script lang="ts">
-    import { onMount, onDestroy } from "svelte";
     import * as d3 from "d3";
 
-    let container: HTMLDivElement;
-    let svg: SVGSVGElement;
+    let container: HTMLDivElement | undefined = $state();
 
     const viewWidth = 1600;
     const viewHeight = 900;
@@ -13,14 +11,6 @@
         x: number; // longitude
         y: number; // latitude
         z: number; // elevation
-    }
-
-    interface AnimatedDot {
-        element: d3.Selection<SVGCircleElement, unknown, null, undefined>;
-        pathNode: SVGPathElement;
-        pathLength: number;
-        progress: number;
-        speed: number;
     }
 
     /** A single continuous elevation segment with its pre-computed SVG path string. dotIndex is set for segments that carry an animated dot (every 8th profile). */
@@ -46,13 +36,11 @@
         cy: number;
     }
 
-    let animatedDots: AnimatedDot[] = [];
-    let animationFrameId: number | null = null;
     let isVisible = $state(false);
-
-    // Svelte 5 reactive state (replaces D3 DOM management)
     let dataPoints = $state<DataPoint[]>([]);
     let dots = $state<DotState[]>([]);
+
+    // Populated by bind:this on dot-eligible <path> elements; not reactive.
     let pathRefs: (SVGPathElement | null)[] = [];
 
     // Light theme colors only
@@ -138,242 +126,72 @@
         });
     });
 
-    async function renderRidgelines() {
-        try {
-            const svgElement = d3.select(svg);
-            svgElement.selectAll("*").remove();
+    // Load elevation data from JSON; setting dataPoints triggers $derived profiles.
+    $effect(() => {
+        d3.json<DataPoint[]>("/data/europe_elevation_profiles.json").then(
+            (data) => {
+                dataPoints = data ?? [];
+            },
+        );
+    });
 
-            // Load the data
-            const dataPoints: DataPoint[] =
-                (await d3.json("/data/europe_elevation_profiles.json")) || [];
-
-            // Group data by latitude (y coordinate) to create profiles
-            const profilesMap = d3.group(dataPoints, (d) => d.y);
-            const allProfiles = Array.from(profilesMap.entries())
-                .map(([lat, points]) => ({
-                    latitude: lat,
-                    points: points.sort((a, b) => a.x - b.x),
-                    maxElevation: d3.max(points, (p) => p.z) || 0,
-                }))
-                .sort((a, b) => b.latitude - a.latitude); // Sort north to south
-
-            // Filter out profiles where max elevation is 0 or below
-            const profiles = allProfiles.filter((p) => p.maxElevation > 0);
-
-            // theme_void() - minimal margins, no axes
-            const width = viewWidth - margin.left - margin.right;
-            const height = viewHeight - margin.top - margin.bottom;
-
-            const g = svgElement
-                .append("g")
-                .attr("transform", `translate(${margin.left}, ${margin.top})`);
-
-            // Calculate scales
-            const xExtent = d3.extent(dataPoints, (d) => d.x) as [
-                number,
-                number,
-            ];
-            const xScale = d3.scaleLinear().domain(xExtent).range([0, width]);
-
-            // Find max elevation for height scaling (only positive)
-            const maxElevation =
-                d3.max(
-                    profiles.flatMap((p) => p.points),
-                    (d) => d.z,
-                ) || 1000;
-
-            // scale = 8 means ridges overlap significantly
-            const scale = 8;
-            const ridgeSpacing = height / profiles.length;
-            const ridgeHeight = ridgeSpacing * scale;
-
-            // Elevation scale with the overlap factor
-            const elevationScale = d3
-                .scaleLinear()
-                .domain([0, maxElevation])
-                .range([0, ridgeHeight]);
-
-            // rel_min_height = 0.001 (filter very small elevations)
-            const minHeightThreshold = maxElevation * 0.001;
-
-            // Create area generator (stat = "identity")
-            const area = d3
-                .area<DataPoint>()
-                .x((d) => xScale(d.x))
-                .y0(0)
-                .y1((d) => -elevationScale(Math.max(0, d.z)))
-                .curve(d3.curveBasis);
-
-            // Create line generator for stroke
-            const line = d3
-                .line<DataPoint>()
-                .x((d) => xScale(d.x))
-                .y((d) => -elevationScale(Math.max(0, d.z)))
-                .curve(d3.curveBasis);
-
-            // Draw ridgelines from back to front
-            const ridges = g.append("g").attr("class", "ridgelines");
-
-            // Clear previous dots
-            animatedDots = [];
-
-            profiles.forEach((profile, i) => {
-                const yOffset = i * ridgeSpacing;
-
-                // Split profile into continuous segments (no zero/negative elevation gaps)
-                const segments: DataPoint[][] = [];
-                let currentSegment: DataPoint[] = [];
-
-                profile.points.forEach((point) => {
-                    if (point.z > minHeightThreshold) {
-                        currentSegment.push(point);
-                    } else {
-                        if (currentSegment.length >= 2) {
-                            segments.push(currentSegment);
-                        }
-                        currentSegment = [];
-                    }
-                });
-
-                // Don't forget the last segment
-                if (currentSegment.length >= 2) {
-                    segments.push(currentSegment);
-                }
-
-                if (segments.length === 0) return;
-
-                const ridgeGroup = ridges
-                    .append("g")
-                    .attr("transform", `translate(0, ${yOffset})`)
-                    .attr("class", "ridge-group");
-
-                // Draw each continuous segment separately
-                segments.forEach((segment, segmentIndex) => {
-                    // Draw stroke
-                    const pathElement = ridgeGroup
-                        .append("path")
-                        .datum(segment)
-                        .attr("class", "ridge-stroke")
-                        .attr("d", line)
-                        .attr("fill", "none")
-                        .attr("stroke", colors.stroke)
-                        .attr("stroke-width", 1)
-                        .attr("stroke-opacity", 0.8)
-                        .style(
-                            "transition",
-                            "opacity 0.2s ease, stroke-width 0.2s ease",
-                        );
-
-                    // Only animate dots on every 4th profile to reduce memory
-                    if (i % 8 !== 0) return;
-
-                    // Get the path node for dot animation
-                    const dotPathNode = pathElement.node() as SVGPathElement;
-                    if (!dotPathNode) return;
-
-                    const dotPathLength = dotPathNode.getTotalLength();
-
-                    // Get initial position at random point on path
-                    const randomProgress = Math.random();
-                    const startPoint = dotPathNode.getPointAtLength(
-                        randomProgress * dotPathLength,
-                    );
-
-                    // Create animated dot for this segment with theme colors
-                    const dot = ridgeGroup
-                        .append("circle")
-                        .attr("class", "animated-dot")
-                        .attr("r", 3)
-                        .attr("cx", startPoint.x)
-                        .attr("cy", startPoint.y)
-                        .attr("fill", colors.dotFill)
-                        .attr("stroke", colors.dotStroke)
-                        .attr("stroke-width", 1)
-                        .style("filter", colors.dotGlow);
-
-                    // Store dot info for RAF animation
-                    animatedDots.push({
-                        element: dot,
-                        pathNode: dotPathNode,
-                        pathLength: dotPathLength,
-                        progress: randomProgress,
-                        speed: 1 / 8000, // Complete in 8 seconds
-                    });
-                });
+    // After profiles recompute, bind:this has already populated pathRefs.
+    // Re-initialize dots from the freshly bound SVGPathElements.
+    $effect(() => {
+        void profiles;
+        dots = pathRefs
+            .filter((node): node is SVGPathElement => node !== null)
+            .map((node): DotState => {
+                const pathLength = node.getTotalLength();
+                const progress = Math.random();
+                const pt = node.getPointAtLength(progress * pathLength);
+                return {
+                    pathNode: node,
+                    pathLength,
+                    progress,
+                    speed: 1 / 8000,
+                    cx: pt.x,
+                    cy: pt.y,
+                };
             });
+    });
 
-            // Start RAF animation loop
-            startAnimation();
-        } catch (error) {
-            console.error("Error rendering ridgelines:", error);
-        }
-    }
+    // RAF animation loop; pauses when scrolled out of view, cleans up on destroy.
+    $effect(() => {
+        if (!isVisible || dots.length === 0) return;
 
-    function startAnimation() {
-        if (animationFrameId !== null) return; // Already running
+        let id: number;
+        let last = performance.now();
 
-        let lastTime = performance.now();
-
-        function animate(currentTime: number) {
-            if (!isVisible) {
-                animationFrameId = null;
-                return; // Pause when not visible
-            }
-
-            const deltaTime = currentTime - lastTime;
-            lastTime = currentTime;
-
-            // Update all dots in a single loop
-            animatedDots.forEach((dot) => {
-                dot.progress += dot.speed * deltaTime;
-                if (dot.progress >= 1) {
-                    dot.progress = 0; // Loop
-                }
-
-                const point = dot.pathNode.getPointAtLength(
+        function animate(now: number) {
+            const dt = now - last;
+            last = now;
+            for (const dot of dots) {
+                dot.progress = (dot.progress + dot.speed * dt) % 1;
+                const pt = dot.pathNode.getPointAtLength(
                     dot.progress * dot.pathLength,
                 );
-                dot.element.attr("cx", point.x).attr("cy", point.y);
-            });
-
-            animationFrameId = requestAnimationFrame(animate);
+                dot.cx = pt.x;
+                dot.cy = pt.y;
+            }
+            id = requestAnimationFrame(animate);
         }
 
-        animationFrameId = requestAnimationFrame(animate);
-    }
+        id = requestAnimationFrame(animate);
+        return () => cancelAnimationFrame(id);
+    });
 
-    onMount(async () => {
-        await renderRidgelines();
-
-        // Intersection Observer to pause when not visible
-        const visibilityObserver = new IntersectionObserver(
+    // Pause animation when the component scrolls out of the viewport.
+    $effect(() => {
+        if (!container) return;
+        const obs = new IntersectionObserver(
             (entries) => {
-                entries.forEach((entry) => {
-                    isVisible = entry.isIntersecting;
-                    if (isVisible && animatedDots.length > 0) {
-                        startAnimation();
-                    }
-                });
+                isVisible = entries[0].isIntersecting;
             },
             { threshold: 0.1 },
         );
-
-        if (container) {
-            visibilityObserver.observe(container);
-        }
-
-        return () => {
-            if (container) {
-                visibilityObserver.unobserve(container);
-            }
-        };
-    });
-
-    onDestroy(() => {
-        // Clean up animation frame
-        if (animationFrameId !== null) {
-            cancelAnimationFrame(animationFrameId);
-        }
+        obs.observe(container);
+        return () => obs.disconnect();
     });
 </script>
 
@@ -382,12 +200,49 @@
     bind:this={container}
 >
     <svg
-        bind:this={svg}
         class="w-full h-full"
         viewBox="0 0 {viewWidth} {viewHeight}"
         preserveAspectRatio="xMidYMin slice"
         xmlns="http://www.w3.org/2000/svg"
-    />
+    >
+        <g transform="translate({margin.left}, {margin.top})">
+            {#each profiles as profile (profile.latitude)}
+                <g transform="translate(0, {profile.yOffset})">
+                    {#each profile.segments as seg}
+                        {#if seg.dotIndex !== null}
+                            <path
+                                d={seg.d}
+                                fill="none"
+                                stroke={colors.stroke}
+                                stroke-width="1"
+                                stroke-opacity="0.8"
+                                bind:this={pathRefs[seg.dotIndex]}
+                            />
+                        {:else}
+                            <path
+                                d={seg.d}
+                                fill="none"
+                                stroke={colors.stroke}
+                                stroke-width="1"
+                                stroke-opacity="0.8"
+                            />
+                        {/if}
+                    {/each}
+                </g>
+            {/each}
+            {#each dots as dot}
+                <circle
+                    cx={dot.cx}
+                    cy={dot.cy}
+                    r="3"
+                    fill={colors.dotFill}
+                    stroke={colors.dotStroke}
+                    stroke-width="1"
+                    style:filter={colors.dotGlow}
+                />
+            {/each}
+        </g>
+    </svg>
 </div>
 
 <style>
