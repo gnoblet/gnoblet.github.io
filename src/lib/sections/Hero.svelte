@@ -23,7 +23,8 @@
 
                 <div class="flex-1 text-center md:text-left">
                     <h1 class="text-3xl font-bold mb-6">
-                        Hey👋, I'm Guillaume Noblet, a data scientist
+                        Hey👋, I'm Guillaume Noblet, a quantitative
+                        social-science researcher
                     </h1>
 
                     <div class="mb-8 flex justify-center md:justify-start">
@@ -39,9 +40,8 @@
                         <span class="text-primary-content font-bold">
                             data visualization
                         </span>. I juggle between drafting reports from data
-                        wrangling to fine-tuned analyses and imagining and
-                        managing research projects (and also coming up with good
-                        memes!).
+                        wrangling to fine-tuned analyses and implementing
+                        research projects (and also coming up with good memes!).
                     </p>
                     <p class="text-lg mb-2">
                         Lastly, I was a Data & Research Specialist at <a
