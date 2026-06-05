@@ -22,9 +22,37 @@
         speed: number;
     }
 
+    /** A single continuous elevation segment with its pre-computed SVG path string. dotIndex is set for segments that carry an animated dot (every 8th profile). */
+    interface RenderedSegment {
+        d: string;
+        dotIndex: number | null;
+    }
+
+    /** One latitude band: its vertical offset in the SVG and its list of rendered segments. */
+    interface RenderedProfile {
+        latitude: number;
+        yOffset: number;
+        segments: RenderedSegment[];
+    }
+
+    /** Mutable position of one animated dot, updated each animation frame via $state. */
+    interface DotState {
+        pathNode: SVGPathElement;
+        pathLength: number;
+        progress: number;
+        speed: number;
+        cx: number;
+        cy: number;
+    }
+
     let animatedDots: AnimatedDot[] = [];
     let animationFrameId: number | null = null;
-    let isVisible = false;
+    let isVisible = $state(false);
+
+    // Svelte 5 reactive state (replaces D3 DOM management)
+    let dataPoints = $state<DataPoint[]>([]);
+    let dots = $state<DotState[]>([]);
+    let pathRefs: (SVGPathElement | null)[] = [];
 
     // Light theme colors only
     const colors = {
