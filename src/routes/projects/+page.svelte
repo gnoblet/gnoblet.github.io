@@ -1,6 +1,6 @@
 <script lang="ts">
     import { onMount } from "svelte";
-    import { fade } from "svelte/transition";
+    import { fade, fly } from "svelte/transition";
     import { flip } from "svelte/animate";
     import { cubicOut } from "svelte/easing";
     import { projects } from "$lib/data/projects";
@@ -43,7 +43,7 @@
     />
 </svelte:head>
 
-<div class="min-h-screen py-20 px-4">
+<div class="min-h-screen py-20 px-4" in:fly={{ y: 12, duration: 320, easing: cubicOut }}>
     <div class="container mx-auto max-w-7xl">
         <!-- Header -->
         <div class="text-center mb-16">
