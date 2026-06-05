@@ -34,6 +34,8 @@
         speed: number;
         cx: number;
         cy: number;
+        /** SVG y-offset of the profile group this dot lives in; added to cy at render time. */
+        yOffset: number;
     }
 
     let isVisible = $state(false);
@@ -139,9 +141,21 @@
     // Re-initialize dots from the freshly bound SVGPathElements.
     $effect(() => {
         void profiles;
+
+        // Build dotIndex → yOffset lookup so dots rendered outside profile groups
+        // can still be positioned correctly in global SVG space.
+        const yOffsets: number[] = [];
+        for (const profile of profiles) {
+            for (const seg of profile.segments) {
+                if (seg.dotIndex !== null) {
+                    yOffsets[seg.dotIndex] = profile.yOffset;
+                }
+            }
+        }
+
         dots = pathRefs
             .filter((node): node is SVGPathElement => node !== null)
-            .map((node): DotState => {
+            .map((node, i): DotState => {
                 const pathLength = node.getTotalLength();
                 const progress = Math.random();
                 const pt = node.getPointAtLength(progress * pathLength);
@@ -152,6 +166,7 @@
                     speed: 1 / 8000,
                     cx: pt.x,
                     cy: pt.y,
+                    yOffset: yOffsets[i] ?? 0,
                 };
             });
     });
@@ -233,7 +248,7 @@
             {#each dots as dot}
                 <circle
                     cx={dot.cx}
-                    cy={dot.cy}
+                    cy={dot.cy + dot.yOffset}
                     r="3"
                     fill={colors.dotFill}
                     stroke={colors.dotStroke}
