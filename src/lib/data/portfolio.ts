@@ -127,7 +127,7 @@ export const portfolioItems: PortfolioItem[] = [
     id: 12,
     title: "#TidyTuesday 2024 - Week 39",
     slug: "tidytuesday-2024-week-39",
-    description: "When I discovered `pathwork`.",
+    description: "When I discovered `patchwork`.",
     thumbnailUrl: "/images/portfolio/thumbnails/week_39_2024.png",
     portfolioUrl:
       "https://guillaume-noblet.com/TidyTuesday/posts/2024/week_39/week_39.html",
