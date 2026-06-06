@@ -5,16 +5,8 @@
     import { cubicOut } from "svelte/easing";
     import { projects } from "$lib/data/projects";
     import ProjectCard from "$lib/components/ProjectCard.svelte";
-    import Tabs from "$lib/components/Tabs.svelte";
-    import Tab from "$lib/components/Tab.svelte";
-
     let selectedFilter = "all";
     let filteredProjects = projects;
-
-    function handleTabSelect(e: CustomEvent) {
-        // update filter (simple: no visual feedback state)
-        selectedFilter = e.detail.value;
-    }
 
     // Get unique tags from all projects
     $: allTags = [...new Set(projects.flatMap((p) => p.tags))];
@@ -55,24 +47,24 @@
 
         <!-- Filter Tabs -->
         <div class="flex justify-center mb-12 max-w-4xl mx-auto">
-            <Tabs boxed size="lg" className="p-2">
-                <Tab
-                    active={selectedFilter === "all"}
-                    value="all"
-                    on:select={handleTabSelect}
+            <div role="tablist" class="tabs tabs-box tabs-lg p-2">
+                <button
+                    role="tab"
+                    class="tab {selectedFilter === 'all' ? 'tab-active' : ''}"
+                    onclick={() => (selectedFilter = 'all')}
                 >
                     All Projects
-                </Tab>
+                </button>
                 {#each allTags as tag}
-                    <Tab
-                        active={selectedFilter === tag}
-                        value={tag}
-                        on:select={handleTabSelect}
+                    <button
+                        role="tab"
+                        class="tab {selectedFilter === tag ? 'tab-active' : ''}"
+                        onclick={() => (selectedFilter = tag)}
                     >
                         {tag}
-                    </Tab>
+                    </button>
                 {/each}
-            </Tabs>
+            </div>
         </div>
 
         <!-- Projects Grid -->
