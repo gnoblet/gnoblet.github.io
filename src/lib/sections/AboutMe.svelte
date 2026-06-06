@@ -45,7 +45,7 @@
         </div>
 
         <!-- DaisyUI native radio tabs -->
-        <div class="tabs tabs-border justify-center">
+        <div class="tabs tabs-border tabs-lg justify-center">
             <!-- About -->
             <label class="tab">
                 <input type="radio" name="about_tabs" checked autocomplete="off" />
