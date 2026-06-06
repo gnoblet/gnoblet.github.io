@@ -9,9 +9,9 @@
         <li>
             <div class="timeline-middle">
                 {#if exp.title === "More to come..."}
-                    <div class="w-3 h-3 border-2 border-primary "></div>
+                    <div class="neon-dot w-3 h-3 border-2 border-primary"></div>
                 {:else}
-                    <div class="w-3 h-3 bg-primary"></div>
+                    <div class="neon-dot w-3 h-3 bg-primary"></div>
                 {/if}
             </div>
             <div

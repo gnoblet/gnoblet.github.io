@@ -7,7 +7,7 @@
     <ElevationRidgeMap />
     <div class="hero-content text-center -mt-16">
         <div
-            class="max-w-5xl bg-base-100/75 p-8 animate-fade-slide-up py-8 border-primary border-2"
+            class="max-w-5xl bg-base-100/75 p-8 animate-fade-slide-up py-8 border-primary border-4"
         >
             <div
                 class="flex flex-col md:flex-row gap-8 items-center md:items-start py-4"
@@ -32,11 +32,11 @@
 
                     <p class="text-1xl mb-2">
                         I specialize in
-                        <span class="text-primary font-bold">
+                        <span class="neon-text text-primary font-bold">
                             quantitative field research
                         </span>
                         and
-                        <span class="text-primary font-bold">
+                        <span class="neon-text text-primary font-bold">
                             data visualization
                         </span>. I juggle between drafting reports from data
                         wrangling to fine-tuned analyses and implementing
