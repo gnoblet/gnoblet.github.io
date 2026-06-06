@@ -26,13 +26,13 @@
     let animationFrameId: number | null = null;
     let isVisible = false;
 
-    // Forest dark theme colors
+    // Phosphor Cyan theme colors
     const colors = {
-        stroke: "rgba(168, 216, 162, 0.45)",  /* pale leaf — glows on dark bg */
-        dotFill: "#52B85C",                    /* primary forest green */
-        dotStroke: "#070D09",
+        stroke: "rgba(0, 212, 160, 0.38)",     /* phosphor cyan ridgelines */
+        dotFill: "#00D4A0",                     /* primary neon cyan-green */
+        dotStroke: "#06100E",
         dotGlow:
-            "drop-shadow(0 0 16px rgba(82, 184, 92, 0.9)) drop-shadow(0 0 8px rgba(82, 184, 92, 0.7)) drop-shadow(0 0 4px rgba(82, 184, 92, 0.5))",
+            "drop-shadow(0 0 16px rgba(0,212,160,0.9)) drop-shadow(0 0 8px rgba(0,212,160,0.7)) drop-shadow(0 0 4px rgba(0,212,160,0.5))",
     };
 
     async function renderRidgelines() {
