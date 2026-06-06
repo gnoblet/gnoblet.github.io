@@ -67,7 +67,7 @@
     <!-- 2x3 Grid Layout -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         {#each skills as skillGroup}
-            <div class="card bg-base-100 shadow-xl">
+            <div class="card bg-base-100">
                 <div class="card-body">
                     <h3 class="card-title text-2xl mb-4 flex items-center">
                         <span class="badge badge-primary badge-lg mr-2"

@@ -1,7 +1,7 @@
 <script lang="ts">
 </script>
 
-<div class="card bg-base-100 shadow-xl">
+<div class="card bg-base-100">
     <div class="card-body">
         <h2 class="card-title text-3xl mb-4">My Story</h2>
 
@@ -24,19 +24,19 @@
                     <p>
                         I bridge academic rigor and practical project
                         management. Over the past four years, I've led
-                        <span class="text-primary font-bold"
+                        <span class="neon-text text-primary font-bold"
                             >nationwide data collection efforts</span
                         >
                         in crisis settings, transforming complex field data into actionable
                         insights through
-                        <span class="text-primary font-bold"
+                        <span class="neon-text text-primary font-bold"
                             >statistical methods and data visualization</span
                         >.
                     </p>
                     <p>
                         I thrive on wrangling messy datasets, building analysis
                         pipelines that actually work in the field, and
-                        <span class="text-primary font-bold"
+                        <span class="neon-text text-primary font-bold"
                             >turning numbers into stories</span
                         >
                         that help people make better decisions—whether that's through
