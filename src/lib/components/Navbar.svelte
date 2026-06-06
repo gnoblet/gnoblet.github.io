@@ -10,9 +10,9 @@
     }
 </script>
 
-<nav class="navbar bg-base-100 shadow-lg sticky top-0 z-50">
+<nav class="navbar bg-base-100 border-b border-primary/25 sticky top-0 z-50">
     <div class="navbar-start">
-        <a href="/" class="btn btn-ghost text-xl font-bold"> @GNOBLET </a>
+        <a href="/" class="btn btn-ghost text-xl font-bold tracking-widest"> @GNOBLET </a>
     </div>
 
     <div class="navbar-end gap-4">
@@ -53,7 +53,7 @@
             </div>
             <ul
                 tabindex="-1"
-                class="menu dropdown-content mt-4 z-1 p-2 shadow bg-base-100 rounded-box w-42"
+                class="menu dropdown-content mt-4 z-1 p-2 shadow bg-base-100 w-42"
             >
                 <li>
                     <a
@@ -85,11 +85,9 @@
 </nav>
 
 <style>
-    .btn-active {
-        background-color: hsl(var(--p) / 0.2);
-    }
-
+    .btn-active,
     .active {
-        background-color: hsl(var(--p) / 0.2);
+        background-color: color-mix(in oklch, var(--color-primary) 15%, transparent);
+        color: var(--color-primary);
     }
 </style>

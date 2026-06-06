@@ -1,30 +1,93 @@
 @import "tailwindcss";
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   DaisyUI — custom "forest" dark theme only; no built-in themes loaded
+───────────────────────────────────────────────────────────────────────────── */
 @plugin "daisyui" {
-    themes: pastel --default;
+    themes: forest --default;
 }
 
-@theme {
-    /****** FONTS *****/
+/* ─────────────────────────────────────────────────────────────────────────────
+   "Forest" theme — Mycelium Dark palette
+   All colors in OKLCH so DaisyUI opacity utilities work correctly.
+   To revamp: edit the values below; components stay untouched.
+───────────────────────────────────────────────────────────────────────────── */
+[data-theme="forest"] {
+    color-scheme: dark;
 
-    /* Font family configuration */
+    /* ── Surfaces ─────────────────────────────────────────────────── */
+    --color-base-100: oklch(0.14 0.03 195);   /* near-black teal */
+    --color-base-200: oklch(0.22 0.05 188);   /* raised surface */
+    --color-base-300: oklch(0.30 0.06 182);   /* border / divider */
+    --color-base-content: oklch(0.96 0.02 165); /* near-white, faint green tint */
+
+    /* ── Brand — Phosphor Cyan ────────────────────────────────────── */
+    --color-primary: oklch(0.80 0.28 165);    /* #00D4A0 — neon cyan-green */
+    --color-primary-content: oklch(0.08 0.03 195); /* on-primary: near-black */
+    --color-secondary: oklch(0.38 0.10 175);  /* deep teal */
+    --color-secondary-content: oklch(0.92 0.06 165);
+    --color-accent: oklch(0.88 0.12 162);     /* pale mint highlight */
+    --color-accent-content: oklch(0.08 0.03 195);
+
+    /* ── Neutral ──────────────────────────────────────────────────── */
+    --color-neutral: oklch(0.20 0.04 190);
+    --color-neutral-content: oklch(0.80 0.08 165);
+
+    /* ── Status ───────────────────────────────────────────────────── */
+    --color-info: oklch(0.67 0.09 215);       /* #5BA8C4 */
+    --color-info-content: oklch(0.10 0.02 215);
+    --color-success: oklch(0.68 0.15 145);
+    --color-success-content: oklch(0.10 0.02 145);
+    --color-warning: oklch(0.73 0.13 87);     /* #D4A840 */
+    --color-warning-content: oklch(0.10 0.02 87);
+    --color-error: oklch(0.59 0.15 23);       /* #C45B5B */
+    --color-error-content: oklch(0.97 0.01 23);
+
+    /* ── Shape — zero radius everywhere ─────────────────────────── */
+    --rounded-box: 0rem;
+    --rounded-btn: 0rem;
+    --rounded-badge: 0rem;
+    --tab-radius: 0rem;
+
+    /* ── Border ───────────────────────────────────────────────────── */
+    --border: 1px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Tailwind @theme — semantic design tokens
+   This is the single source of truth for the visual language.
+   Changing the values below updates the entire site.
+───────────────────────────────────────────────────────────────────────────── */
+@theme {
+    /* ── Semantic palette tokens ─────────────────────────────────── */
+    --color-forest-void: #06100E;         /* page background — teal near-black */
+    --color-forest-base: #0A1A18;
+    --color-leaf-bright: #00D4A0;         /* primary — phosphor cyan-green */
+    --color-leaf-pale: #80FFD4;           /* accent — pale mint */
+    --color-text-primary: #C8F0E8;
+    --color-text-muted: #5A9E8A;
+
+    /* ── Typography ──────────────────────────────────────────────── */
     --font-family-body:
         "Source Sans 3", ui-sans-serif, system-ui, sans-serif,
         "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
         "Noto Color Emoji";
-
     --font-family-heading:
-        "Oswald", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
-        "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        "Aldrich", ui-sans-serif, system-ui, sans-serif;
 
-    --font-family-hand:
-        "Shadows Into Light Two", ui-sans-serif, system-ui, sans-serif;
+    --font-size-base: 1.125rem; /* 18px */
 
-    /* Increase base font size significantly */
-    --font-size-base: 1.375rem; /* 22px instead of default 16px */
+    /* ── Radius — all zero ───────────────────────────────────────── */
+    --radius-none: 0;
+    --radius-sm: 0;
+    --radius: 0;
+    --radius-md: 0;
+    --radius-lg: 0;
+    --radius-xl: 0;
+    --radius-2xl: 0;
+    --radius-3xl: 0;
 
-    /****** ANIMATE *****/
-
-    /* Animation configuration */
+    /* ── Animation ───────────────────────────────────────────────── */
     --animate-bounce: bounce 2s ease-in-out infinite;
 
     @keyframes bounce {
@@ -38,17 +101,22 @@
     }
 }
 
-/* Custom global styles */
+/* ─────────────────────────────────────────────────────────────────────────────
+   Base styles
+───────────────────────────────────────────────────────────────────────────── */
 @layer base {
     html {
         scroll-behavior: smooth;
+        background-color: var(--color-forest-void);
     }
 
     body {
         font-family: var(--font-family-body);
         font-size: var(--font-size-base);
+        color: var(--color-text-primary);
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+        background: transparent;
     }
 
     * {
@@ -70,16 +138,124 @@
     .text-5xl,
     .text-6xl {
         font-family: var(--font-family-heading);
+        letter-spacing: 0.03em;
     }
 }
 
+/* ─────────────────────────────────────────────────────────────────────────────
+   Component overrides
+───────────────────────────────────────────────────────────────────────────── */
 @layer components {
-    /* Add any custom component styles here */
-    .btn {
-        border-radius: 2rem !important;
+    /* Sharp corners on all interactive/display elements */
+    .btn,
+    .badge,
+    .alert {
+        border-radius: 0 !important;
+    }
+
+    /* Cards: square, sharp left-border accent */
+    .card {
+        border-radius: 0 !important;
+        border-left: 2px solid var(--color-leaf-bright);
+    }
+
+
+    /* Steps: square step indicators (DaisyUI v5 uses ::after for the circle) */
+    .step::after,
+    .step > .step-icon {
+        border-radius: 0 !important;
+    }
+
+    /* Tabs: no rounded container or tab pills */
+    .tabs,
+    [role="tablist"],
+    .tab {
+        border-radius: 0 !important;
     }
 }
 
-@layer utilities {
-    /* Add any custom utility styles here */
+/* ─────────────────────────────────────────────────────────────────────────────
+   Neon glow effects — outside @layer so they beat DaisyUI styles
+───────────────────────────────────────────────────────────────────────────── */
+.btn-primary {
+    box-shadow: 0 0 10px oklch(0.80 0.28 165 / 0.35),
+                0 0 3px  oklch(0.80 0.28 165 / 0.6);
+}
+.btn-primary:hover {
+    box-shadow: 0 0 20px oklch(0.80 0.28 165 / 0.6),
+                0 0 6px  oklch(0.80 0.28 165 / 0.9);
+}
+.card {
+    box-shadow: -4px 0 14px oklch(0.80 0.28 165 / 0.18);
+    transition: box-shadow 0.3s ease;
+}
+.card:hover {
+    box-shadow: -6px 0 20px oklch(0.80 0.28 165 / 0.35);
+}
+.neon-item {
+    box-shadow: 0 0 8px oklch(0.80 0.28 165 / 0.12);
+    transition: box-shadow 0.3s ease;
+}
+.neon-item:hover {
+    box-shadow: 0 0 20px oklch(0.80 0.28 165 / 0.5),
+                0 0 6px  oklch(0.80 0.28 165 / 0.75);
+}
+.timeline hr {
+    box-shadow: 0 0 6px oklch(0.80 0.28 165 / 0.55),
+                0 0 2px oklch(0.80 0.28 165 / 0.8);
+}
+.neon-dot {
+    box-shadow: 0 0 8px oklch(0.80 0.28 165 / 0.7),
+                0 0 3px oklch(0.80 0.28 165 / 1.0);
+}
+.neon-text,
+h1,
+h2 {
+    text-shadow: 0 0 8px oklch(0.80 0.28 165 / 0.8),
+                 0 0 20px oklch(0.80 0.28 165 / 0.35);
+}
+
+.badge-primary {
+    box-shadow: 0 0 6px oklch(0.80 0.28 165 / 0.6),
+                0 0 2px oklch(0.80 0.28 165 / 0.9);
+}
+.badge-secondary {
+    box-shadow: 0 0 5px oklch(0.38 0.10 175 / 0.7);
+}
+
+/* AboutMe tabs-border color overrides */
+.tabs-border .tab {
+    color: oklch(0.96 0.02 165);
+}
+.tabs-border .tab:hover {
+    color: oklch(0.80 0.28 165);
+}
+.tabs-border .tab:has(:checked) {
+    color: oklch(0.80 0.28 165);
+    --tab-border-color: oklch(0.80 0.28 165);
+}
+
+/* Tab content soft reveal */
+.tab-content {
+    transition: opacity 0.25s ease;
+}
+
+/* Square icon buttons — neon glow on hover */
+.neon-btn {
+    transition: box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+.neon-btn:hover {
+    box-shadow: 0 0 14px oklch(0.80 0.28 165 / 0.65),
+                0 0 4px  oklch(0.80 0.28 165 / 0.9);
+}
+
+/* SVG icon neon glow — use filter: drop-shadow since text-shadow has no effect on SVG */
+.neon-icon {
+    filter: drop-shadow(0 0 6px oklch(0.80 0.28 165 / 0.9))
+            drop-shadow(0 0 16px oklch(0.80 0.28 165 / 0.45));
+}
+
+/* Section rhythm — thin primary accent line between sections */
+section:not(.hero) {
+    border-top: 1px solid oklch(0.80 0.28 165 / 0.18);
 }

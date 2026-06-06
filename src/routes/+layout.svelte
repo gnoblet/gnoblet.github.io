@@ -11,15 +11,7 @@
     }
 </script>
 
-<svelte:head>
-    <link rel="preconnect" href="https://fonts.bunny.net" />
-    <link
-        href="https://fonts.bunny.net/css?family=oswald:400,600,700"
-        rel="stylesheet"
-    />
-</svelte:head>
-
-<div class="min-h-screen flex flex-col bg-base-100">
+<div class="min-h-screen flex flex-col" data-theme="forest">
     {#if $loading}
         <div
             class="fixed inset-0 z-50 flex items-center justify-center bg-base-100"

@@ -45,13 +45,13 @@
     // Populated by bind:this on dot-eligible <path> elements; not reactive.
     let pathRefs: (SVGPathElement | null)[] = [];
 
-    // Light theme colors only
+    // Phosphor Cyan theme colors
     const colors = {
-        stroke: "#000000",
-        dotFill: "#4444ff",
-        dotStroke: "#ffffff",
+        stroke: "rgba(0, 212, 160, 0.38)",     /* phosphor cyan ridgelines */
+        dotFill: "#00D4A0",                     /* primary neon cyan-green */
+        dotStroke: "#06100E",
         dotGlow:
-            "drop-shadow(0 0 16px rgba(68, 68, 255, 1)) drop-shadow(0 0 8px rgba(68, 68, 255, 1)) drop-shadow(0 0 4px rgba(68, 68, 255, 0.9))",
+            "drop-shadow(0 0 16px rgba(0,212,160,0.9)) drop-shadow(0 0 8px rgba(0,212,160,0.7)) drop-shadow(0 0 4px rgba(0,212,160,0.5))",
     };
 
     /**

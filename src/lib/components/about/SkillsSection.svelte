@@ -44,12 +44,12 @@
 
 <div class="space-y-6">
     <!-- Self-taught intro with hero layout -->
-    <div class="hero bg-base-200 rounded-lg mb-8">
+    <div class="hero bg-base-200 mb-8">
         <div class="hero-content flex-col lg:flex-row gap-8 py-8">
             <img
                 src="/images/memes/skills.jpg"
                 alt="Self-taught skills meme showing multiple skills being offered at once"
-                class="max-w-sm rounded-lg shadow-2xl"
+                class="max-w-sm shadow-2xl"
             />
             <div class="px-6 lg:px-8 py-4">
                 <p class="text-lg">
@@ -67,7 +67,7 @@
     <!-- 2x3 Grid Layout -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         {#each skills as skillGroup}
-            <div class="card bg-base-100 shadow-xl">
+            <div class="card bg-base-100">
                 <div class="card-body">
                     <h3 class="card-title text-2xl mb-4 flex items-center">
                         <span class="badge badge-primary badge-lg mr-2"
@@ -78,7 +78,7 @@
                     <div class="flex flex-wrap gap-3">
                         {#each skillGroup.items as skill}
                             <div
-                                class="badge badge-outline badge-md py-4 px-4 hover:text-primary-content transition-all cursor-default"
+                                class="badge badge-outline badge-md py-4 px-4 hover:badge-primary transition-all cursor-default"
                             >
                                 {skill}
                             </div>

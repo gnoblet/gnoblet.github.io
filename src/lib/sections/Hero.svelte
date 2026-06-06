@@ -5,17 +5,16 @@
 
 <section class="hero min-h-screen relative">
     <ElevationRidgeMap />
-    <div class="hero-overlay bg-neutral-content"></div>
     <div class="hero-content text-center -mt-16">
         <div
-            class="max-w-5xl bg-base-100/60 rounded-3xl p-8 shadow-xl animate-fade-slide-up py-8"
+            class="max-w-5xl bg-base-100/75 p-8 animate-fade-slide-up py-8 border-primary border-4"
         >
             <div
                 class="flex flex-col md:flex-row gap-8 items-center md:items-start py-4"
             >
                 <div class="avatar shrink-0">
                     <div
-                        class="w-40 rounded-full ring ring-primary ring-offset-primary-content ring-offset-4"
+                        class="w-40 ring ring-primary ring-offset-primary-content ring-offset-4"
                     >
                         <img src="/assets/myself.jpg" alt="Guillaume Noblet" />
                     </div>
@@ -33,11 +32,11 @@
 
                     <p class="text-1xl mb-2">
                         I specialize in
-                        <span class="text-primary-content font-bold">
+                        <span class="neon-text text-primary font-bold">
                             quantitative field research
                         </span>
                         and
-                        <span class="text-primary-content font-bold">
+                        <span class="neon-text text-primary font-bold">
                             data visualization
                         </span>. I juggle between drafting reports from data
                         wrangling to fine-tuned analyses and implementing
