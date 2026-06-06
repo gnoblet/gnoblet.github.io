@@ -2,7 +2,7 @@
     import SocialLinks from "$lib/components/SocialLinks.svelte";
 </script>
 
-<section id="contact" class="py-20 px-4 bg-base-200">
+<section id="contact" class="py-28 px-4 bg-base-200">
     <div class="container mx-auto max-w-4xl text-center">
         <h2 class="text-4xl font-bold mb-6">Let's Connect</h2>
         <p class="text-xl mb-8">
