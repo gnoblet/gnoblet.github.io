@@ -16,22 +16,22 @@
     color-scheme: dark;
 
     /* ── Surfaces ─────────────────────────────────────────────────── */
-    --color-base-100: oklch(0.17 0.04 145);   /* #0D1A0F — forest base */
-    --color-base-200: oklch(0.22 0.04 145);   /* #152218 — raised surface */
-    --color-base-300: oklch(0.28 0.05 145);   /* #1F3024 — border / divider */
-    --color-base-content: oklch(0.93 0.05 143); /* #D4EDD0 — pale leaf text */
+    --color-base-100: oklch(0.14 0.03 195);   /* near-black teal */
+    --color-base-200: oklch(0.22 0.05 188);   /* raised surface */
+    --color-base-300: oklch(0.30 0.06 182);   /* border / divider */
+    --color-base-content: oklch(0.96 0.02 165); /* near-white, faint green tint */
 
-    /* ── Brand ────────────────────────────────────────────────────── */
-    --color-primary: oklch(0.68 0.15 145);    /* #52B85C — bright forest green */
-    --color-primary-content: oklch(0.10 0.02 145); /* #060C07 — on-primary */
-    --color-secondary: oklch(0.44 0.09 160);  /* #2D6A4F — deep forest */
-    --color-secondary-content: oklch(0.93 0.05 143);
-    --color-accent: oklch(0.84 0.09 142);     /* #A8D8A2 — pale sage */
-    --color-accent-content: oklch(0.10 0.02 145);
+    /* ── Brand — Phosphor Cyan ────────────────────────────────────── */
+    --color-primary: oklch(0.80 0.28 165);    /* #00D4A0 — neon cyan-green */
+    --color-primary-content: oklch(0.08 0.03 195); /* on-primary: near-black */
+    --color-secondary: oklch(0.38 0.10 175);  /* deep teal */
+    --color-secondary-content: oklch(0.92 0.06 165);
+    --color-accent: oklch(0.88 0.12 162);     /* pale mint highlight */
+    --color-accent-content: oklch(0.08 0.03 195);
 
     /* ── Neutral ──────────────────────────────────────────────────── */
-    --color-neutral: oklch(0.24 0.04 145);    /* #1A2D1C */
-    --color-neutral-content: oklch(0.86 0.07 142); /* #C0D9BA */
+    --color-neutral: oklch(0.20 0.04 190);
+    --color-neutral-content: oklch(0.80 0.08 165);
 
     /* ── Status ───────────────────────────────────────────────────── */
     --color-info: oklch(0.67 0.09 215);       /* #5BA8C4 */
@@ -60,12 +60,12 @@
 ───────────────────────────────────────────────────────────────────────────── */
 @theme {
     /* ── Semantic palette tokens ─────────────────────────────────── */
-    --color-forest-void: #070D09;         /* page background */
-    --color-forest-base: #0D1A0F;
-    --color-leaf-bright: #52B85C;         /* primary CTA green */
-    --color-leaf-pale: #A8D8A2;           /* accent / highlight */
-    --color-text-primary: #D4EDD0;
-    --color-text-muted: #7A9E78;
+    --color-forest-void: #06100E;         /* page background — teal near-black */
+    --color-forest-base: #0A1A18;
+    --color-leaf-bright: #00D4A0;         /* primary — phosphor cyan-green */
+    --color-leaf-pale: #80FFD4;           /* accent — pale mint */
+    --color-text-primary: #C8F0E8;
+    --color-text-muted: #5A9E8A;
 
     /* ── Typography ──────────────────────────────────────────────── */
     --font-family-body:
@@ -153,11 +153,12 @@
         border-radius: 0 !important;
     }
 
-    /* Cards: square, with a sharp left-border accent instead of rounded corners */
+    /* Cards: square, sharp left-border accent */
     .card {
         border-radius: 0 !important;
         border-left: 2px solid var(--color-leaf-bright);
     }
+
 
     /* Steps: square step indicators (DaisyUI v5 uses ::after for the circle) */
     .step::after,
@@ -171,4 +172,90 @@
     .tab {
         border-radius: 0 !important;
     }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Neon glow effects — outside @layer so they beat DaisyUI styles
+───────────────────────────────────────────────────────────────────────────── */
+.btn-primary {
+    box-shadow: 0 0 10px oklch(0.80 0.28 165 / 0.35),
+                0 0 3px  oklch(0.80 0.28 165 / 0.6);
+}
+.btn-primary:hover {
+    box-shadow: 0 0 20px oklch(0.80 0.28 165 / 0.6),
+                0 0 6px  oklch(0.80 0.28 165 / 0.9);
+}
+.card {
+    box-shadow: -4px 0 14px oklch(0.80 0.28 165 / 0.18);
+    transition: box-shadow 0.3s ease;
+}
+.card:hover {
+    box-shadow: -6px 0 20px oklch(0.80 0.28 165 / 0.35);
+}
+.neon-item {
+    box-shadow: 0 0 8px oklch(0.80 0.28 165 / 0.12);
+    transition: box-shadow 0.3s ease;
+}
+.neon-item:hover {
+    box-shadow: 0 0 20px oklch(0.80 0.28 165 / 0.5),
+                0 0 6px  oklch(0.80 0.28 165 / 0.75);
+}
+.timeline hr {
+    box-shadow: 0 0 6px oklch(0.80 0.28 165 / 0.55),
+                0 0 2px oklch(0.80 0.28 165 / 0.8);
+}
+.neon-dot {
+    box-shadow: 0 0 8px oklch(0.80 0.28 165 / 0.7),
+                0 0 3px oklch(0.80 0.28 165 / 1.0);
+}
+.neon-text,
+h1,
+h2 {
+    text-shadow: 0 0 8px oklch(0.80 0.28 165 / 0.8),
+                 0 0 20px oklch(0.80 0.28 165 / 0.35);
+}
+
+.badge-primary {
+    box-shadow: 0 0 6px oklch(0.80 0.28 165 / 0.6),
+                0 0 2px oklch(0.80 0.28 165 / 0.9);
+}
+.badge-secondary {
+    box-shadow: 0 0 5px oklch(0.38 0.10 175 / 0.7);
+}
+
+/* AboutMe tabs-border color overrides */
+.tabs-border .tab {
+    color: oklch(0.96 0.02 165);
+}
+.tabs-border .tab:hover {
+    color: oklch(0.80 0.28 165);
+}
+.tabs-border .tab:has(:checked) {
+    color: oklch(0.80 0.28 165);
+    --tab-border-color: oklch(0.80 0.28 165);
+}
+
+/* Tab content soft reveal */
+.tab-content {
+    transition: opacity 0.25s ease;
+}
+
+/* Square icon buttons — neon glow on hover */
+.neon-btn {
+    transition: box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+.neon-btn:hover {
+    box-shadow: 0 0 14px oklch(0.80 0.28 165 / 0.65),
+                0 0 4px  oklch(0.80 0.28 165 / 0.9);
+}
+
+/* SVG icon neon glow — use filter: drop-shadow since text-shadow has no effect on SVG */
+.neon-icon {
+    filter: drop-shadow(0 0 6px oklch(0.80 0.28 165 / 0.9))
+            drop-shadow(0 0 16px oklch(0.80 0.28 165 / 0.45));
+}
+
+/* Section rhythm — thin primary accent line between sections */
+section:not(.hero) {
+    border-top: 1px solid oklch(0.80 0.28 165 / 0.18);
 }
