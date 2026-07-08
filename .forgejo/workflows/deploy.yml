@@ -25,6 +25,6 @@ jobs:
       - name: Deploy to Codeberg Pages
         uses: https://codeberg.org/git-pages/action@v2
         with:
-          site: "https://gnoblet.codeberg.page/"
+          site: "https://www.guillaume-noblet.com"
           token: ${{ forge.token }}
           source: build/
