@@ -50,7 +50,7 @@ export const projects: Project[] = [
     shortDescription:
       "(Weekly?) data visualizations for #TidyTuesday using R and Python.",
     imageUrl: "/images/projects/tidytuesday.png",
-    projectUrl: "https://gnoblet.github.io/TidyTuesday/",
+    projectUrl: "https://gnoblet.codeberg.page/TidyTuesday/",
     tags: ["R", "Python", "data viz", "challenge"],
     badge: "ongoing",
   },
