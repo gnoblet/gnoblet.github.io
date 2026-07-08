@@ -104,10 +104,21 @@ export const projects: Project[] = [
     projectUrl: "https://impact-initiatives-hppu.github.io/humind/",
     tags: ["R", "humanitarian", "data analysis", "package"],
   },
+  {
+    id: 9,
+    title: "AddFonts",
+    slug: "addfonts",
+    shortDescription: "Add custom fonts to R graphics and documents with ease.",
+    description:
+      "A lightweight utility for installing and using custom fonts in R graphics and documents, with special support for automated font discovery and registration.",
+    imageUrl: "https://gnoblet.codeberg.page/AddFonts/logo.png",
+    projectUrl: "https://gnoblet.codeberg.page/AddFonts/",
+    tags: ["R", "fonts", "graphics", "utility"],
+  },
 
   // Main entry for the 30DayMapChallenge collection
   {
-    id: 9,
+    id: 10,
     title: "30 Day Map Challenge",
     slug: "30-day-map-challenge",
     shortDescription: "Map submissions for the #30DayMapChallenge.",
