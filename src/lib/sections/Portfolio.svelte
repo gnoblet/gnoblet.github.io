@@ -19,7 +19,7 @@
             >
                 <li class="step step-primary">
                     <a
-                        href="https://guillaume-noblet.com/TidyTuesday/"
+                        href="https://gnoblet.codeberg.page/TidyTuesday/"
                         target="_blank"
                         rel="noopener noreferrer"
                         class="cursor-pointer hover:text-primary"
