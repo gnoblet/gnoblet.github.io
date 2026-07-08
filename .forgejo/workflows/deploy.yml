@@ -26,5 +26,6 @@ jobs:
         uses: https://codeberg.org/git-pages/action@v2
         with:
           site: "https://guillaume-noblet.com"
+          server: "gnoblet.codeberg.page"
           token: ${{ forge.token }}
           source: build/
