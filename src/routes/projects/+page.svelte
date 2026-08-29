@@ -100,7 +100,7 @@
                 opportunities.
             </p>
             <a
-                href="mailto:data@guillaume-noblet.com"
+                href="mailto:guillaume.noblet@pm.me"
                 class="btn btn-primary btn-lg"
             >
                 <svg

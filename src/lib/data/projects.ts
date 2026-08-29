@@ -62,7 +62,7 @@ export const projects: Project[] = [
       "My submissions for the #30DayChartChallenge, a community-driven data visualization event where participants create and share charts based on daily prompts. First participation in 2025.",
     shortDescription: "Chart submissions for the #30DayChartChallenge event.",
     imageUrl: "/images/projects/30-day-chart-challenge.png",
-    projectUrl: "https://gnoblet.github.io/30DayChartChallenge/",
+    projectUrl: "https://gnoblet.codeberg.page/30DayChartChallenge/",
     tags: ["R", "Python", "data viz", "challenge"],
   },
   {
@@ -125,7 +125,7 @@ export const projects: Project[] = [
     description:
       "My submissions to the #30DayMapChallenge — a collection of maps demonstrating different mapping techniques, datasets, and visualization styles across the challenge.",
     imageUrl: "/images/projects/30-day-map-challenge.png",
-    projectUrl: "https://guillaume-noblet.com/30DayMapChallenge/",
+    projectUrl: "https://gnoblet.codeberg.page/30DayMapChallenge/",
     tags: ["R", "maps", "data viz", "challenge"],
   },
 ];

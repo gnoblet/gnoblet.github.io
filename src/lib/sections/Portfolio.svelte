@@ -47,7 +47,7 @@
 
                 <li class="step step-primary">
                     <a
-                        href="https://guillaume-noblet.com/30DayChartChallenge/"
+                        href="https://gnoblet.codeberg.page/30DayChartChallenge/"
                         target="_blank"
                         rel="noopener noreferrer"
                         class="cursor-pointer hover:text-primary"
@@ -75,7 +75,7 @@
 
                 <li class="step step-primary">
                     <a
-                        href="https://guillaume-noblet.com/30DayMapChallenge/"
+                        href="https://gnoblet.codeberg.page/30DayMapChallenge/"
                         target="_blank"
                         rel="noopener noreferrer"
                         class="cursor-pointer hover:text-primary"
