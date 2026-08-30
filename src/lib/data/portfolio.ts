@@ -30,7 +30,7 @@ export const portfolioItems: PortfolioItem[] = [
     description: "Tiles as stripes.",
     thumbnailUrl: "/images/portfolio/thumbnails/chart_day_11.png",
     portfolioUrl:
-      "https://gnoblet.github.io/30DayChartChallenge/2025/day_11.html",
+      "https://gnoblet.codeberg.page/30DayChartChallenge/2025/day_11.html",
     date: "2025-01",
     category: "Data Visualization",
   },
@@ -41,7 +41,7 @@ export const portfolioItems: PortfolioItem[] = [
     description: "Mapping accidents thanks to Geneva open data.",
     thumbnailUrl: "/images/portfolio/thumbnails/map_day_01.png",
     portfolioUrl:
-      "https://gnoblet.github.io/30DayMapChallenge/2025/day_01/day_01.html",
+      "https://gnoblet.codeberg.page/30DayMapChallenge/2025/day_01/day_01.html",
     date: "2025-01",
     category: "Maps",
   },
@@ -52,7 +52,7 @@ export const portfolioItems: PortfolioItem[] = [
     description: "Using isochrones OSM data and bike profiles.",
     thumbnailUrl: "/images/portfolio/thumbnails/map_day_07.png",
     portfolioUrl:
-      "https://gnoblet.github.io/30DayMapChallenge/2025/day_07/day_07.html",
+      "https://gnoblet.codeberg.page/30DayMapChallenge/2025/day_07/day_07.html",
     date: "2025-01",
     category: "Maps",
   },
@@ -63,7 +63,7 @@ export const portfolioItems: PortfolioItem[] = [
     description: "Polygons and and jittered distributions of cities' density.",
     thumbnailUrl: "/images/portfolio/thumbnails/map_day_03.png",
     portfolioUrl:
-      "https://gnoblet.github.io/30DayMapChallenge/2025/day_03/day_03.html",
+      "https://gnoblet.codeberg.page/30DayMapChallenge/2025/day_03/day_03.html",
     date: "2025-01",
     category: "Maps",
   },
@@ -75,7 +75,7 @@ export const portfolioItems: PortfolioItem[] = [
       "1st participation to the 30DayChartChallenge with a waffle chart used as time series.",
     thumbnailUrl: "/images/portfolio/thumbnails/chart_day_01.png",
     portfolioUrl:
-      "https://gnoblet.github.io/30DayChartChallenge/2025/day_01.html",
+      "https://gnoblet.codeberg.page/30DayChartChallenge/2025/day_01.html",
     date: "2025-01",
     category: "Data Visualization",
   },
@@ -86,7 +86,7 @@ export const portfolioItems: PortfolioItem[] = [
     description: "A minimal map or the Geneva urban fabric.",
     thumbnailUrl: "/images/portfolio/thumbnails/map_day_08.png",
     portfolioUrl:
-      "https://gnoblet.github.io/30DayMapChallenge/2025/day_08/day_08.html",
+      "https://gnoblet.codeberg.page/30DayMapChallenge/2025/day_08/day_08.html",
     date: "2025-01",
     category: "Maps",
   },
@@ -97,7 +97,7 @@ export const portfolioItems: PortfolioItem[] = [
     description: "Playing with annotations and `gghighlight`.",
     thumbnailUrl: "/images/portfolio/thumbnails/chart_day_02.png",
     portfolioUrl:
-      "https://gnoblet.github.io/30DayChartChallenge/2025/day_02.html",
+      "https://gnoblet.codeberg.page/30DayChartChallenge/2025/day_02.html",
     date: "2025-01",
     category: "Data Visualization",
   },
@@ -108,7 +108,7 @@ export const portfolioItems: PortfolioItem[] = [
     description: "Reproducing Milos Popovic's tutorial rivers and basins.",
     thumbnailUrl: "/images/portfolio/thumbnails/map_day_02.png",
     portfolioUrl:
-      "https://gnoblet.github.io/30DayMapChallenge/2025/day_02/day_02.html",
+      "https://gnoblet.codeberg.page/30DayMapChallenge/2025/day_02/day_02.html",
     date: "2025-01",
     category: "Maps",
   },
@@ -119,7 +119,7 @@ export const portfolioItems: PortfolioItem[] = [
     description: "Circular proportions and annotations.",
     thumbnailUrl: "/images/portfolio/thumbnails/chart_day_03.png",
     portfolioUrl:
-      "https://gnoblet.github.io/30DayChartChallenge/2025/day_03.html",
+      "https://gnoblet.codeberg.page/30DayChartChallenge/2025/day_03.html",
     date: "2025-01",
     category: "Data Visualization",
   },
