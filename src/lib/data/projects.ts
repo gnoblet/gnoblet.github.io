@@ -17,18 +17,17 @@ export const projects: Project[] = [
   },
   {
     id: 2,
-    title: "SurveyLiteR",
-    slug: "surveyliter",
-    badge: "V1",
+    title: "Acute Needs Analysis app",
+    slug: "ana-app",
     description:
-      "A streamlined workflow for analyzing survey data based on sampling designs (weights, strata, clusters). Perfect for KoboToolbox data and humanitarian survey analysis, offering standardized analysis functions built on top of the srvyr package with consistent outputs for faster reporting and visualization.",
-    shortDescription:
-      "Streamlined survey analysis for KoboToolbox and humanitarian data.",
-    imageUrl:
-      "https://gnoblet.github.io/SurveyLiteR/reference/figures/logo.svg",
-    projectUrl: "https://gnoblet.github.io/SurveyLiteR/",
-    tags: ["R", "humanitarian", "data analysis", "package"],
-  }, 
+      "A Svelte web app to screen humanitarian data for Risk of Excess Mortality. Validate, flag, and visualize all units of analysis against reference thresholds — automatically. Upload your data and the Acute Needs Analysis (ANA) app does the rest. This app has been built during a short assignment at IMPACT Initiatives based on lessons learnt conducted with country office teams and the global technical team.",
+      shortDescription:
+      "Svelte web app that screens humanitarian data for Risk of Excess Mortality.",
+    imageUrl: "/images/projects/ana-app.png",
+    projectUrl: "https://impact-initiatives.github.io/ana_app/",
+    tags: ["Svelte", "app", "humanitarian", "data analysis", "data viz"],
+
+  },
   {
     id: 3,
     title: "AddFonts",
@@ -130,4 +129,18 @@ export const projects: Project[] = [
     projectUrl: "https://gnoblet.codeberg.page/30DayMapChallenge/",
     tags: ["R", "maps", "data viz", "challenge"],
   },
+  {
+    id: 11,
+    title: "SurveyLiteR",
+    slug: "surveyliter",
+    badge: "V1",
+    description:
+      "A streamlined workflow for analyzing survey data based on sampling designs (weights, strata, clusters). Perfect for KoboToolbox data and humanitarian survey analysis, offering standardized analysis functions built on top of the srvyr package with consistent outputs for faster reporting and visualization.",
+    shortDescription:
+      "Streamlined survey analysis for KoboToolbox and humanitarian data.",
+    imageUrl:
+      "https://gnoblet.github.io/SurveyLiteR/reference/figures/logo.svg",
+    projectUrl: "https://gnoblet.github.io/SurveyLiteR/",
+    tags: ["R", "humanitarian", "data analysis", "package"],
+  }, 
 ];
