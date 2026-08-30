@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Setup script for gnoblet.github.io
+# Setup script for gnoblet.codeberg.page
 # This script helps you get started with the SvelteKit + Bun project
 
 set -e
@@ -130,7 +130,7 @@ create_env_example() {
 # Copy this file to .env.local and update with your values
 
 # Public variables (available in browser)
-PUBLIC_SITE_URL=https://gnoblet.github.io
+PUBLIC_SITE_URL=https://gnoblet.codeberg.page
 
 # Private variables (server-side only)
 # Add any API keys or secrets here

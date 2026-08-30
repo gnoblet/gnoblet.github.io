@@ -2,7 +2,7 @@
 
 A fast, static personal website built with SvelteKit, TypeScript, Tailwind CSS and DaisyUI.
 
-Live: https://gnoblet.github.io
+Live: https://gnoblet.codeberg.page
 
 Tech
 
@@ -14,8 +14,7 @@ Tech
 Quick start (local)
 
 ```/dev/null/commands.sh#L1-6
-git clone https://github.com/gnoblet/gnoblet.github.io.git
-cd gnoblet.github.io
+git clone https://codeberg.page/gnoblet/pages
 bun install
 bun run dev --open # Open http://localhost:5173
 ```

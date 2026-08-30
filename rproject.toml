@@ -1,5 +1,5 @@
 [project]
-name = "gnoblet.github.io"
+name = "gnoblet.codeberg.page"
 r_version = "4.5"
 
 # A list of repositories to fetch packages from. Order matters: we will try to get a package from each repository in order.
