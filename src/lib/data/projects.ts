@@ -28,18 +28,17 @@ export const projects: Project[] = [
       "https://gnoblet.github.io/SurveyLiteR/reference/figures/logo.svg",
     projectUrl: "https://gnoblet.github.io/SurveyLiteR/",
     tags: ["R", "humanitarian", "data analysis", "package"],
-  },
+  }, 
   {
     id: 3,
-    title: "House Expenses Accounting",
-    slug: "house-expenses-accounting",
+    title: "AddFonts",
+    slug: "addfonts",
+    shortDescription: "Add custom fonts to R graphics and documents with ease.",
     description:
-      "A Shiny app for fair, flexible, and transparent splitting of shared household expenses. Handles absences, partial participation, always-shared services, and provides detailed analysis and professional reports. Built with the Golem framework for robust R Shiny apps.",
-    shortDescription:
-      "Shiny app for fair and transparent household expense splitting.",
-    imageUrl: "/images/projects/house-expenses-accounting_homepage.png",
-    projectUrl: "https://github.com/gnoblet/house-expenses-accounting",
-    tags: ["R", "Shiny", "data analysis", "app"],
+      "A lightweight utility for installing and using custom fonts in R graphics and documents, with special support for automated font discovery and registration.",
+    imageUrl: "https://gnoblet.codeberg.page/AddFonts/logo.png",
+    projectUrl: "https://gnoblet.codeberg.page/AddFonts/",
+    tags: ["R", "fonts", "graphics", "utility"],
   },
   {
     id: 4,
@@ -104,17 +103,20 @@ export const projects: Project[] = [
     projectUrl: "https://impact-initiatives-hppu.github.io/humind/",
     tags: ["R", "humanitarian", "data analysis", "package"],
   },
+
   {
     id: 9,
-    title: "AddFonts",
-    slug: "addfonts",
-    shortDescription: "Add custom fonts to R graphics and documents with ease.",
+    title: "House Expenses Accounting",
+    slug: "house-expenses-accounting",
     description:
-      "A lightweight utility for installing and using custom fonts in R graphics and documents, with special support for automated font discovery and registration.",
-    imageUrl: "https://gnoblet.codeberg.page/AddFonts/logo.png",
-    projectUrl: "https://gnoblet.codeberg.page/AddFonts/",
-    tags: ["R", "fonts", "graphics", "utility"],
+      "A Shiny app for fair, flexible, and transparent splitting of shared household expenses. Handles absences, partial participation, always-shared services, and provides detailed analysis and professional reports. Built with the Golem framework for robust R Shiny apps.",
+    shortDescription:
+      "Shiny app for fair and transparent household expense splitting.",
+    imageUrl: "/images/projects/house-expenses-accounting_homepage.png",
+    projectUrl: "https://github.com/gnoblet/house-expenses-accounting",
+    tags: ["R", "Shiny", "data analysis", "app"],
   },
+
 
   // Main entry for the 30DayMapChallenge collection
   {
