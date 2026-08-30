@@ -50,8 +50,6 @@
         stroke: "rgba(0, 212, 160, 0.38)",     /* phosphor cyan ridgelines */
         dotFill: "#00D4A0",                     /* primary neon cyan-green */
         dotStroke: "#06100E",
-        dotGlow:
-            "drop-shadow(0 0 16px rgba(0,212,160,0.9)) drop-shadow(0 0 8px rgba(0,212,160,0.7)) drop-shadow(0 0 4px rgba(0,212,160,0.5))",
     };
 
     /**
@@ -121,7 +119,7 @@
 
             const segments: RenderedSegment[] = rawSegments.map((seg) => ({
                 d: line(seg) ?? "",
-                dotIndex: i % 8 === 0 ? dotCount++ : null,
+                dotIndex: i % 5 === 0 ? dotCount++ : null,
             }));
 
             return { latitude: profile.latitude, yOffset, segments };
@@ -175,19 +173,31 @@
     $effect(() => {
         if (!isVisible || dots.length === 0) return;
 
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            return;
+        }
+
         let id: number;
         let last = performance.now();
+        let sinceUpdate = 0;
+        const updateInterval = 1000 / 30;
 
         function animate(now: number) {
-            const dt = now - last;
+            const frameDt = now - last;
             last = now;
-            for (const dot of dots) {
-                dot.progress = (dot.progress + dot.speed * dt) % 1;
-                const pt = dot.pathNode.getPointAtLength(
-                    dot.progress * dot.pathLength,
-                );
-                dot.cx = pt.x;
-                dot.cy = pt.y;
+            sinceUpdate += frameDt;
+
+            if (sinceUpdate >= updateInterval) {
+                const dt = sinceUpdate;
+                sinceUpdate = 0;
+                for (const dot of dots) {
+                    dot.progress = (dot.progress + dot.speed * dt) % 1;
+                    const pt = dot.pathNode.getPointAtLength(
+                        dot.progress * dot.pathLength,
+                    );
+                    dot.cx = pt.x;
+                    dot.cy = pt.y;
+                }
             }
             id = requestAnimationFrame(animate);
         }
@@ -196,17 +206,31 @@
         return () => cancelAnimationFrame(id);
     });
 
-    // Pause animation when the component scrolls out of the viewport.
+    // Pause animation when the component scrolls out of the viewport or the
+    // tab is backgrounded. isVisible only becomes true when both are true.
     $effect(() => {
         if (!container) return;
+
+        let intersecting = false;
+
+        function updateVisibility() {
+            isVisible = intersecting && !document.hidden;
+        }
+
         const obs = new IntersectionObserver(
             (entries) => {
-                isVisible = entries[0].isIntersecting;
+                intersecting = entries[0].isIntersecting;
+                updateVisibility();
             },
             { threshold: 0.1 },
         );
         obs.observe(container);
-        return () => obs.disconnect();
+        document.addEventListener("visibilitychange", updateVisibility);
+
+        return () => {
+            obs.disconnect();
+            document.removeEventListener("visibilitychange", updateVisibility);
+        };
     });
 </script>
 
@@ -220,10 +244,16 @@
         preserveAspectRatio="xMidYMin slice"
         xmlns="http://www.w3.org/2000/svg"
     >
+        <defs>
+            <radialGradient id="dotGlow">
+                <stop offset="0%" stop-color="#00D4A0" stop-opacity="0.9" />
+                <stop offset="100%" stop-color="#00D4A0" stop-opacity="0" />
+            </radialGradient>
+        </defs>
         <g transform="translate({margin.left}, {margin.top})">
             {#each profiles as profile (profile.latitude)}
                 <g transform="translate(0, {profile.yOffset})">
-                    {#each profile.segments as seg}
+                    {#each profile.segments as seg, i (i)}
                         {#if seg.dotIndex !== null}
                             <path
                                 d={seg.d}
@@ -245,7 +275,13 @@
                     {/each}
                 </g>
             {/each}
-            {#each dots as dot}
+            {#each dots as dot, i (i)}
+                <circle
+                    cx={dot.cx}
+                    cy={dot.cy + dot.yOffset}
+                    r="10"
+                    fill="url(#dotGlow)"
+                />
                 <circle
                     cx={dot.cx}
                     cy={dot.cy + dot.yOffset}
@@ -253,7 +289,6 @@
                     fill={colors.dotFill}
                     stroke={colors.dotStroke}
                     stroke-width="1"
-                    style:filter={colors.dotGlow}
                 />
             {/each}
         </g>
