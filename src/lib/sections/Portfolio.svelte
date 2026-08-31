@@ -22,7 +22,7 @@
                         href="https://gnoblet.codeberg.page/TidyTuesday/"
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="cursor-pointer hover:text-primary"
+                        class="cursor-pointer text-underline"
                         id="tidytuesday-link"
                     >
                         #TidyTuesday
@@ -30,7 +30,7 @@
                     <Tooltip
                         triggeredBy="#tidytuesday-link"
                         placement="top"
-                        class="w-96 max-w-lg border-2 border-primary"
+                        class="w-96 max-w-lg border-2 border-primary neon-item"
                     >
                         <h3
                             class="text-xl font-bold mb-2 mt-2 text-base-content"
@@ -50,7 +50,7 @@
                         href="https://gnoblet.codeberg.page/30DayChartChallenge/"
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="cursor-pointer hover:text-primary"
+                        class="cursor-pointer text-underline"
                         id="chart-link"
                     >
                         #30DayChartChallenge
@@ -58,7 +58,7 @@
                     <Tooltip
                         triggeredBy="#chart-link"
                         placement="top"
-                        class="w-96 max-w-lg border-2 border-primary"
+                        class="w-96 max-w-lg border-2 border-primary neon-item"
                     >
                         <h3
                             class="text-xl font-bold mb-2 mt-2 text-base-content"
@@ -78,7 +78,7 @@
                         href="https://gnoblet.codeberg.page/30DayMapChallenge/"
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="cursor-pointer hover:text-primary"
+                        class="cursor-pointer text-underline"
                         id="map-link"
                     >
                         #30DayMapChallenge
@@ -86,7 +86,7 @@
                     <Tooltip
                         triggeredBy="#map-link"
                         placement="top"
-                        class="w-96 max-w-lg border-2 border-primary"
+                        class="w-96 max-w-lg border-2 border-primary neon-item"
                     >
                         <h3
                             class="text-xl font-bold mb-2 mt-2 text-base-content"
