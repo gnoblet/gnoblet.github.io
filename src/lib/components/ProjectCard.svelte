@@ -9,7 +9,7 @@
 </script>
 
 <div
-    class={`card bg-base-100 transition-all duration-300 group overflow-hidden h-full border-2 border-base-300 border-draw ${className}`}
+    class={`card neon-item bg-base-100 transition-all duration-300 group overflow-hidden h-full border-2 border-base-300 border-draw ${className}`}
 >
     <figure
         class="relative overflow-hidden bg-base-200 h-64 flex items-center justify-center p-8"
