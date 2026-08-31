@@ -45,11 +45,11 @@
     // Populated by bind:this on dot-eligible <path> elements; not reactive.
     let pathRefs: (SVGPathElement | null)[] = [];
 
-    // Phosphor Cyan theme colors
+    // Colors follow the current theme's CSS custom properties
     const colors = {
-        stroke: "rgba(0, 212, 160, 0.38)",     /* phosphor cyan ridgelines */
-        dotFill: "#00D4A0",                     /* primary neon cyan-green */
-        dotStroke: "#06100E",
+        stroke: "color-mix(in oklch, var(--color-primary) 38%, transparent)",
+        dotFill: "var(--color-primary)",
+        dotStroke: "var(--color-primary-content)",
     };
 
     /**
@@ -119,7 +119,7 @@
 
             const segments: RenderedSegment[] = rawSegments.map((seg) => ({
                 d: line(seg) ?? "",
-                dotIndex: i % 5 === 0 ? dotCount++ : null,
+                dotIndex: (i + 2) % 6 === 0 ? dotCount++ : null,
             }));
 
             return { latitude: profile.latitude, yOffset, segments };
@@ -246,8 +246,8 @@
     >
         <defs>
             <radialGradient id="dotGlow">
-                <stop offset="0%" stop-color="#00D4A0" stop-opacity="0.9" />
-                <stop offset="100%" stop-color="#00D4A0" stop-opacity="0" />
+                <stop offset="0%" stop-color="var(--color-primary)" stop-opacity="0.9" />
+                <stop offset="100%" stop-color="var(--color-primary)" stop-opacity="0" />
             </radialGradient>
         </defs>
         <g transform="translate({margin.left}, {margin.top})">
