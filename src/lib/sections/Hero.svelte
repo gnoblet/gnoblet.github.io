@@ -52,7 +52,7 @@
             </div>
 
             <div class="flex gap-4 justify-center flex-wrap py-4">
-                <a href="#contact" class="btn btn-accent btn-lg">
+                <a href="#contact" class="btn btn-outline btn-draw btn-lg">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         class="h-6 w-6"
@@ -69,7 +69,7 @@
                     </svg>
                     Contact Me
                 </a>
-                <a href="#latest-projects" class="btn btn-primary btn-lg">
+                <a href="#latest-projects" class="btn btn-outline btn-draw btn-lg">
                     View My Projects
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -87,7 +87,7 @@
                     </svg>
                 </a>
 
-                <a href="#about-me" class="btn btn-outline btn-lg">
+                <a href="#about-me" class="btn btn-outline btn-lg btn-draw">
                     About Me
                 </a>
             </div>
