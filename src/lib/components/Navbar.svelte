@@ -12,24 +12,24 @@
 
 <nav class="navbar bg-base-100 border-b border-primary/25 sticky top-0 z-50">
     <div class="navbar-start">
-        <a href="/" class="btn btn-ghost text-xl font-bold tracking-widest"> @GNOBLET </a>
+        <a href="/" class="btn btn-ghost nav-link text-xl font-bold tracking-widest"> @GNOBLET </a>
     </div>
 
     <div class="navbar-end gap-4">
         <!-- Desktop Navigation Buttons (visible on large screens) -->
         <div class="hidden md:flex gap-2">
-            <a href="/" class="btn btn-ghost" class:btn-active={isActive("/")}>
+            <a href="/" class="btn btn-ghost nav-link" class:nav-active={isActive("/")}>
                 Home
             </a>
             <a
                 href="/projects"
-                class="btn btn-ghost"
-                class:btn-active={isActive("/projects")}
+                class="btn btn-ghost nav-link"
+                class:nav-active={isActive("/projects")}
             >
                 Projects
             </a>
-            <a href="/#about-me" class="btn btn-ghost"> About Me </a>
-            <a href="/#contact" class="btn btn-accent"> Contact </a>
+            <a href="/#about-me" class="btn btn-ghost nav-link"> About Me </a>
+            <a href="/#contact" class="btn btn-ghost nav-link"> Contact </a>
         </div>
 
         <!-- Mobile Menu Dropdown (visible on small screens) -->
@@ -58,8 +58,8 @@
                 <li>
                     <a
                         href="/"
-                        class="btn btn-ghost"
-                        class:active={isActive("/")}
+                        class="btn btn-ghost nav-link"
+                        class:nav-active={isActive("/")}
                     >
                         Home
                     </a>
@@ -67,17 +67,17 @@
                 <li>
                     <a
                         href="/projects"
-                        class="btn btn-ghost"
-                        class:active={isActive("/projects")}
+                        class="btn btn-ghost nav-link"
+                        class:nav-active={isActive("/projects")}
                     >
                         Projects
                     </a>
                 </li>
                 <li>
-                    <a href="/#about-me" class="btn btn-ghost"> About Me </a>
+                    <a href="/#about-me" class="btn btn-ghost nav-link"> About Me </a>
                 </li>
                 <li>
-                    <a href="/#contact" class="btn btn-accent"> Contact </a>
+                    <a href="/#contact" class="btn btn-ghost nav-link"> Contact </a>
                 </li>
             </ul>
         </div>
@@ -85,9 +85,40 @@
 </nav>
 
 <style>
-    .btn-active,
-    .active {
-        background-color: color-mix(in oklch, var(--color-primary) 15%, transparent);
+    .nav-link {
+        position: relative;
+    }
+
+    .nav-link:hover,
+    .nav-link:focus,
+    .nav-link:focus-visible,
+    .nav-link.nav-active {
+        background-color: transparent;
+        border-color: transparent;
+        outline: none;
+        box-shadow: none;
+    }
+
+    .nav-link::after {
+        content: "";
+        position: absolute;
+        left: 0.9rem;
+        right: 0.9rem;
+        bottom: 6px;
+        height: 2px;
+        background-color: var(--color-primary);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.25s ease;
+    }
+
+    .nav-link:hover::after,
+    .nav-link:focus-visible::after,
+    .nav-link.nav-active::after {
+        transform: scaleX(1);
+    }
+
+    .nav-link.nav-active {
         color: var(--color-primary);
     }
 </style>
