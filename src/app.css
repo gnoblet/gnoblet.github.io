@@ -253,9 +253,15 @@ h2 {
    in left-to-right on hover/keyboard-focus that persist when active,
    so it turns the text to primary too, independent of hovering.
    Pair with real btn/btn-ghost classes. */
-.btn-underline {
+.btn-underline,
+.text-underline {
     position: relative;
 }
+/* text-underline: no button padding to work with, so shrink to fit thetext itself*/
+.text-underline {
+    display: inline-block;
+}
+
 .btn-underline:hover,
 .btn-underline:focus,
 .btn-underline:focus-visible,
@@ -265,24 +271,38 @@ h2 {
     outline: none;
     box-shadow: none;
 }
-.btn-underline::after {
+.btn-underline::after,
+.text-underline::after {
     content: "";
     position: absolute;
-    left: 0.9rem;
-    right: 0.9rem;
-    bottom: 6px;
-    height: 2px;
     background-color: var(--color-primary);
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.25s ease;
 }
+/* Inset differs. */
+.btn-underline::after {
+    left: 0.9rem;
+    right: 0.9rem;
+    bottom: 6px;
+    height: 2px;
+}
+.text-underline::after {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+}
 .btn-underline:hover::after,
 .btn-underline:focus-visible::after,
-.btn-underline.btn-underline-active::after {
+.btn-underline.btn-underline-active::after,
+.text-underline:hover::after,
+.text-underline:focus-visible::after,
+.text-underline.text-underline-active::after {
     transform: scaleX(1);
 }
-.btn-underline.btn-underline-active {
+.btn-underline.btn-underline-active,
+.text-underline.text-underline-active {
     color: var(--color-primary);
 }
 
