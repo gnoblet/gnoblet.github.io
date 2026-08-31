@@ -18,18 +18,18 @@
     <div class="navbar-end gap-4">
         <!-- Desktop Navigation Buttons (visible on large screens) -->
         <div class="hidden md:flex gap-2">
-            <a href="/" class="btn btn-ghost nav-link" class:nav-active={isActive("/")}>
+            <a href="/" class="btn btn-ghost nav-link text-lg" class:nav-active={isActive("/")}>
                 Home
             </a>
             <a
                 href="/projects"
-                class="btn btn-ghost nav-link"
+                class="btn btn-ghost nav-link text-lg"
                 class:nav-active={isActive("/projects")}
             >
                 Projects
             </a>
-            <a href="/#about-me" class="btn btn-ghost nav-link"> About Me </a>
-            <a href="/#contact" class="btn btn-ghost nav-link"> Contact </a>
+            <a href="/#about-me" class="btn btn-ghost nav-link text-lg"> About Me </a>
+            <a href="/#contact" class="btn btn-ghost nav-link text-lg"> Contact </a>
         </div>
 
         <!-- Mobile Menu Dropdown (visible on small screens) -->
