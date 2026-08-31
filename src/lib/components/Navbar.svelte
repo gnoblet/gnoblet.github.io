@@ -17,7 +17,7 @@
 
     <div class="navbar-end gap-4">
         <!-- Desktop Navigation Buttons (visible on large screens) -->
-        <div class="hidden lg:flex gap-2">
+        <div class="hidden md:flex gap-2">
             <a href="/" class="btn btn-ghost" class:btn-active={isActive("/")}>
                 Home
             </a>
@@ -33,7 +33,7 @@
         </div>
 
         <!-- Mobile Menu Dropdown (visible on small screens) -->
-        <div class="dropdown dropdown-end lg:hidden">
+        <div class="dropdown dropdown-end md:hidden">
             <div tabindex="0" role="button" class="btn btn-ghost">
                 <!-- Heroicon: bars-3 -->
                 <svg
