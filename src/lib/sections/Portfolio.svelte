@@ -115,7 +115,7 @@
                     rel={item.portfolioUrl && item.portfolioUrl !== "#"
                         ? "noopener noreferrer"
                         : undefined}
-                    class="neon-item block relative aspect-square overflow-hidden group hover:scale-103 duration-300 transition-all border border-base-300 hover:border-primary"
+                    class="neon-item block relative aspect-square overflow-hidden group hover:scale-103 duration-300 transition-all border border-base-300 border-draw"
                 >
                     <img
                         src={item.thumbnailUrl}
@@ -124,12 +124,12 @@
                     />
                     <!-- Hover overlay -->
                     <div
-                        class="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4 text-center overflow-hidden"
+                        class="absolute inset-0 bg-base-100/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4 text-center overflow-hidden"
                     >
-                        <h3 class="text-lg font-bold text-primary-content mb-1 line-clamp-2">
+                        <h3 class="text-lg font-bold text-base-content mb-1 line-clamp-2">
                             {item.title}
                         </h3>
-                        <p class="text-base text-primary-content line-clamp-2">
+                        <p class="text-base text-base-content line-clamp-2">
                             {item.description}
                         </p>
                     </div>
