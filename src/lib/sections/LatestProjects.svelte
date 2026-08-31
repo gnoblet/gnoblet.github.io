@@ -20,7 +20,7 @@
         <div class="text-center mt-8">
             <a
                 href="/projects"
-                class="btn btn-primary btn-lg inline-flex items-center gap-2"
+                class="btn btn-outline btn-draw btn-lg "
             >
                 View All Projects
                 <svg
