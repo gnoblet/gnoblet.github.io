@@ -208,7 +208,8 @@
                 0 4px 14px  oklch(from var(--color-primary) l c h / 0.18);
     transition: box-shadow 0.3s ease;
 }
-.neon-item:hover {
+.neon-item:hover,
+.neon-item.is-revealed {
     box-shadow: -6px 0 20px oklch(from var(--color-primary) l c h / 0.35),
                 0 6px 20px  oklch(from var(--color-primary) l c h / 0.35);
 }
