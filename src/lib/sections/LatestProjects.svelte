@@ -1,6 +1,7 @@
 <script lang="ts">
     import SplideCarousel from "$lib/components/SplideCarousel.svelte";
     import { projects } from "$lib/data/projects";
+    import { borderDraw } from "$lib/actions/borderDraw.svelte";
 </script>
 
 <section
@@ -21,6 +22,7 @@
             <a
                 href="/projects"
                 class="btn btn-outline btn-draw btn-lg "
+                use:borderDraw
             >
                 View All Projects
                 <svg

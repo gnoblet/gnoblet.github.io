@@ -306,14 +306,38 @@ h2 {
     color: var(--color-primary);
 }
 
-/* Border draw hover effect: a primary-colored line traces the full
-   border clockwise, starting top-left. Two L-shaped elements:
-   ::before draws top (left to right) then right (top to bottom);
-   ::after delayed until ::before finishes, draws bottom (right to left) then left (bottom to top).
-   
-   .btn-draw is the self-contained sibling: same animation plus its own btn/btn-outline base and hover-fix rule further down, so class="btn-draw" alone is enough.
-   
-   .border-draw stays available on its own for reuse on non-button elements. 
+/* Border draw hover effect: a primary-colored line traces the full border
+   clockwise, starting top-left, one edge at a time: top → right → bottom → left.
+
+   Unlike the rest of this file's hover effects, this is NOT driven by CSS
+   `transition-delay` off `:hover`/`:focus-visible` — a fixed delay has no memory
+   of how far the previous (opposite-direction) sweep actually got before being
+   interrupted, which used to produce a visible frozen pause when the mouse left
+   mid-draw. Instead, the src/lib/actions/borderDraw.svelte.ts Svelte action
+   (applied via `use:borderDraw` alongside the class) tweens a single 0→1 "how
+   much of the loop is drawn" number with svelte/motion's Tween and writes it
+   onto the element every frame as the --border-draw-progress custom property.
+   Tween's own retargeting — calling .set() again while a previous .set() is
+   still in flight resumes smoothly from the current interpolated value — is
+   what makes reversal seamless: there's no per-property delay schedule to go
+   stale, just one continuously-moving number.
+
+   ::before draws top (left→right) then right (top→bottom) — progress 0 → 0.5.
+   ::after draws bottom (right→left) then left (bottom→top) — progress 0.5 → 1.
+   Each edge owns a clamped quarter of --border-draw-progress:
+     top [0, .25]   right [.25, .5]   bottom [.5, .75]   left [.75, 1]
+   `clamp(0%, calc(var(--border-draw-progress, 0) * 400% - N00%), 100%)` rescales
+   segment N (0-3) to 0%-100%: pinned at 0% until that edge's turn starts, pinned
+   at 100% once it's done, moving smoothly in between. That's also why reversal
+   stays staggered rather than "all sides at once": whichever edge's quarter
+   currently contains the live progress value is the only one whose clamp()
+   output is moving, in either direction — the other three are pinned at their
+   clamped 0 or 1.
+
+   .btn-draw is the self-contained sibling: same animation plus its own btn/
+   btn-outline base and hover-fix rule further down, so class="btn-draw"
+   use:borderDraw alone is enough. .border-draw stays available on its own for
+   reuse on non-button elements.
 */
 .border-draw,
 .btn-draw {
@@ -329,8 +353,6 @@ h2 {
        (e.g. a figure/badge using position:relative) so the line never gets
        painted over by it */
     z-index: 1;
-    width: 0;
-    height: 0;
     pointer-events: none;
     border: 0 solid transparent;
     /* halo glow: drop-shadow follows the actual rendered/visible pixels same as.neon-icon uses below for the same reason. */
@@ -344,12 +366,18 @@ h2 {
     right: auto;
     bottom: auto;
     border-top-width: 2px;
-    border-right-width: 0;
     border-top-color: var(--color-primary);
     border-right-color: var(--color-primary);
-    /* draw out on hovering out: right shrinks first, then top, which is reverse of draw-in */
-    transition: height 0.2s ease 0.4s, width 0.2s ease 0.6s,
-        border-right-width 0.2s ease 0.4s;
+    /* top edge: segment 0 of 4 */
+    width: clamp(0%, calc(var(--border-draw-progress, 0) * 400%), 100%);
+    /* right edge: segment 1 of 4 — border-right-width mirrors the identical
+       expression (rescaled to 2px instead of 100%) purely to dodge a CSS
+       corner-miter rendering artifact (a visible dot) at the top-right corner
+       that can appear when width/height are both exactly 0. Sharing the
+       expression with height guarantees both cross zero at exactly the same
+       progress value. */
+    height: clamp(0%, calc(var(--border-draw-progress, 0) * 400% - 100%), 100%);
+    border-right-width: clamp(0px, calc(var(--border-draw-progress, 0) * 8px - 2px), 2px);
 }
 .border-draw::after,
 .btn-draw::after {
@@ -358,37 +386,21 @@ h2 {
     top: auto;
     left: auto;
     border-bottom-width: 2px;
-    border-left-width: 0;
     border-bottom-color: var(--color-primary);
     border-left-color: var(--color-primary);
-    /* draw out on hovering out: left shrinks first, then bottom */
-    transition: height 0.2s ease, width 0.2s ease 0.2s,
-        border-left-width 0.2s ease;
-}
-.border-draw:hover::before,
-.border-draw:focus-visible::before,
-.btn-draw:hover::before,
-.btn-draw:focus-visible::before {
-    width: 100%;
-    height: 100%;
-    border-right-width: 2px;
-    /* draw-in: top first, then right */
-    transition: width 0.2s ease, height 0.2s ease 0.2s,
-        border-right-width 0.2s ease 0.2s;
-}
-.border-draw:hover::after,
-.border-draw:focus-visible::after,
-.btn-draw:hover::after,
-.btn-draw:focus-visible::after {
-    width: 100%;
-    height: 100%;
-    border-left-width: 2px;
-    /* draw-in on hover: bottom starts once top-right finish, then left */
-    transition: width 0.2s ease 0.4s, height 0.2s ease 0.6s,
-        border-left-width 0.2s ease 0.6s;
+    /* bottom edge: segment 2 of 4 */
+    width: clamp(0%, calc(var(--border-draw-progress, 0) * 400% - 200%), 100%);
+    /* left edge: segment 3 of 4 — border-left-width paired with height the
+       same way border-right-width is paired above, same corner-dot reason. */
+    height: clamp(0%, calc(var(--border-draw-progress, 0) * 400% - 300%), 100%);
+    border-left-width: clamp(0px, calc(var(--border-draw-progress, 0) * 8px - 6px), 2px);
 }
 
-/* Special case: btn-outline + btn-draw — daisyUI's own :hover rule for btn-outline overrides the above ::before/::after transitions, so below is needed. */
+/* Special case: btn-outline + btn-draw — daisyUI's own :hover rule for
+   btn-outline overrides the ::before/::after above, so this is still needed.
+   Unaffected by the move to JS-driven progress: this is about the button's own
+   chrome, keyed off real :hover/:focus-visible, independent of whatever drives
+   --border-draw-progress. */
 .btn-outline.btn-draw:hover,
 .btn-outline.btn-draw:focus-visible {
     background-color: transparent;

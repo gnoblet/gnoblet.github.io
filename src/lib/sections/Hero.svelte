@@ -1,6 +1,7 @@
 <script lang="ts">
     import SocialLinks from "$lib/components/SocialLinks.svelte";
     import ElevationRidgeMap from "$lib/components/ElevationRidgeMap.svelte";
+    import { borderDraw } from "$lib/actions/borderDraw.svelte";
 </script>
 
 <section class="hero min-h-screen relative">
@@ -52,7 +53,7 @@
             </div>
 
             <div class="flex gap-4 justify-center flex-wrap py-4">
-                <a href="#contact" class="btn btn-outline btn-draw btn-lg">
+                <a href="#contact" class="btn btn-outline btn-draw btn-lg" use:borderDraw>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         class="h-6 w-6"
@@ -69,7 +70,7 @@
                     </svg>
                     Contact Me
                 </a>
-                <a href="#latest-projects" class="btn btn-outline btn-draw btn-lg">
+                <a href="#latest-projects" class="btn btn-outline btn-draw btn-lg" use:borderDraw>
                     View My Projects
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -87,7 +88,7 @@
                     </svg>
                 </a>
 
-                <a href="#about-me" class="btn btn-outline btn-lg btn-draw">
+                <a href="#about-me" class="btn btn-outline btn-lg btn-draw" use:borderDraw>
                     About Me
                 </a>
             </div>

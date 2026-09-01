@@ -2,6 +2,7 @@
     import { portfolioItems } from "$lib/data/portfolio";
     import { Tooltip } from "flowbite-svelte";
     import { slide, scale, blur } from "svelte/transition";
+    import { borderDraw } from "$lib/actions/borderDraw.svelte";
 </script>
 
 <section id="portfolio" class="py-28 px-4 bg-base-200">
@@ -116,6 +117,7 @@
                         ? "noopener noreferrer"
                         : undefined}
                     class="neon-item block relative aspect-square overflow-hidden group hover:scale-103 duration-300 transition-all border border-base-300 border-draw"
+                    use:borderDraw
                 >
                     <img
                         src={item.thumbnailUrl}

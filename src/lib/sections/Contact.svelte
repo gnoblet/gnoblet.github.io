@@ -1,5 +1,6 @@
 <script lang="ts">
     import SocialLinks from "$lib/components/SocialLinks.svelte";
+    import { borderDraw } from "$lib/actions/borderDraw.svelte";
 </script>
 
 <section id="contact" class="py-28 px-4 bg-base-200">
@@ -17,6 +18,7 @@
         <a
             href="mailto:guillaume.noblet@pm.me"
             class="btn btn-outline btn-draw btn-lg"
+            use:borderDraw
         >
             <svg
                 xmlns="http://www.w3.org/2000/svg"

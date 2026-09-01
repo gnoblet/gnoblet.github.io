@@ -1,5 +1,6 @@
 <script lang="ts">
     import type { Project } from "$lib/types/project";
+    import { borderDraw } from "$lib/actions/borderDraw.svelte";
 
     export let project: Project;
     export let showDescription: boolean = true;
@@ -10,6 +11,7 @@
 
 <div
     class={`card neon-item bg-base-100 transition-all duration-300 group overflow-hidden h-full border-2 border-base-300 border-draw ${className}`}
+    use:borderDraw
 >
     <figure
         class="relative overflow-hidden bg-base-200 h-64 flex items-center justify-center p-8"
@@ -70,6 +72,7 @@
                 target="_blank"
                 rel="noopener noreferrer"
                 class="btn btn-outline btn-draw btn-sm text-base"
+                use:borderDraw
             >
                 View Project
                 <svg
