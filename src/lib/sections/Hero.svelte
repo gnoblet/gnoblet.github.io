@@ -8,7 +8,8 @@
     <ElevationRidgeMap />
     <div class="hero-content text-center -mt-16">
         <div
-            class="max-w-5xl bg-base-100/75 p-8 animate-fade-slide-up py-8 hero-frame"
+            class="max-w-5xl bg-base-100/75 p-8 animate-fade-slide-up py-8 border-draw neon-item"
+            use:borderDraw
         >
             <div
                 class="flex flex-col md:flex-row gap-8 items-center md:items-start py-4"
