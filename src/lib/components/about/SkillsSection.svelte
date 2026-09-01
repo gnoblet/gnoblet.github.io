@@ -1,113 +1,36 @@
 <script lang="ts">
-    interface Skill {
-        category: string;
-        items: string[];
-    }
-
-    let skills: Skill[] = [
-        {
-            category: "Research & Analysis",
-            items: [
-                "Statistical Analysis",
-                "Economic Modeling",
-                "Data Structuration",
-                "Quantitative Surveys",
-            ],
-        },
-        {
-            category: "Project Management",
-            items: [
-                "Horizontal Project Management",
-                "Capacity Building",
-                "Training",
-                "Nation-Wide Data Collection",
-            ],
-        },
-        {
-            category: "Programming & Development",
-            items: ["R", "Python", "Package Development", "Data Pipelines"],
-        },
-        {
-            category: "Data Visualization",
-            items: ["ggplot2", "matplotlib", "d3.js", "QGIS"],
-        },
-        {
-            category: "Web Dev & Reporting",
-            items: ["Shiny", "Quarto", "Typst", "Svelte", "React"],
-        },
-        {
-            category: "Tools & Environment",
-            items: ["VS Code", "Positron", "Linux", "Kobo Toolbox"],
-        },
-    ];
+    import { borderDraw } from "$lib/actions/borderDraw.svelte";
 </script>
 
-<div class="space-y-6">
-    <!-- Self-taught intro with hero layout -->
-    <div class="hero bg-base-200 mb-8">
-        <div class="hero-content flex-col lg:flex-row gap-8 py-8">
-            <img
-                src="/images/memes/skills.jpg"
-                alt="Self-taught skills meme showing multiple skills being offered at once"
-                class="max-w-sm shadow-2xl"
-            />
-            <div class="px-6 lg:px-8 py-4">
-                <p class="text-lg">
-                    I love being self-taught, and most of what I know came from
-                    diving in and figuring things out. I'm exceptionally good at
-                    some skills and still developing others, but I'll always
-                    take the time to learn whatever I need to get the job done.
-                    This list might seem overwhelming or incomplete, but it's
-                    genuinely me!
-                </p>
-            </div>
+<div class="bg-base-100/75 p-8 border-draw neon-item" use:borderDraw>
+    <h2 class="card-title text-3xl mb-4">Skills</h2>
+
+    <div class="flex flex-col lg:flex-row gap-8 items-center">
+        <img
+            src="/images/memes/skills.jpg"
+            alt="Self-taught skills meme showing multiple skills being offered at once"
+            class="max-w-sm shadow-2xl"
+        />
+        <div class="space-y-4 text-lg">
+            <p>
+                Mostly self-taught—I'm exceptionally good at some of
+                the below and still developing others. But I'll take the
+                time to learn for every new task.
+            </p>
+            <p>
+                My toolkit runs from
+                <span class="text-highlight">R</span> (a lot) and
+                <span class="text-highlight">Python</span> for statistics,
+                survey design, data pipelines and data viz. I do also love a good map made with <span class="text-highlight">ggplot2</span>! Happily building interactive
+                dashboards (<span class="text-highlight">Shiny</span>,
+                <span class="text-highlight">d3.js</span> more and more, and <span class="text-highlight">Svelte</span>) that make the
+                data tangible for non-technical audiences.
+            </p>
+            <p>
+                I'm just as at home with <span class="text-highlight">Quarto</span> to write reports
+                as I am building
+                small web tools. I used to have a soft spot for LaTeX , but I guess it's time to move on to  <span class="text-highlight">Typst</span>.
+            </p>
         </div>
-    </div>
-
-    <!-- 2x3 Grid Layout -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {#each skills as skillGroup}
-            <div class="card bg-base-100">
-                <div class="card-body">
-                    <h3 class="card-title text-2xl mb-4 flex items-center">
-                        <span class="badge badge-primary badge-lg mr-2"
-                            >{skillGroup.category}</span
-                        >
-                    </h3>
-
-                    <div class="flex flex-wrap gap-3">
-                        {#each skillGroup.items as skill}
-                            <div
-                                class="badge badge-outline badge-md py-4 px-4 hover:badge-primary transition-all cursor-default"
-                            >
-                                {skill}
-                            </div>
-                        {/each}
-                    </div>
-                </div>
-            </div>
-        {/each}
-    </div>
-
-    <!-- Additional Skills Info -->
-    <div class="alert text-accent-content bg-accent">
-        <!-- Heroicon: information-circle -->
-        <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="stroke-current shrink-0 w-6 h-6"
-        >
-            <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z"
-            />
-        </svg>
-        <span>
-            Things I'm good at, enjoy, and feel somewhat passionate about!
-        </span>
     </div>
 </div>
