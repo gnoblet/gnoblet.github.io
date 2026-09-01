@@ -1,6 +1,7 @@
 <script lang="ts">
     import { page } from "$app/stores";
     import HuePicker from "./HuePicker.svelte";
+    import PaletteControls from "./PaletteControls.svelte";
 
     // Check if the link is active
     function isActive(path: string): boolean {
@@ -54,7 +55,7 @@
             </div>
             <ul
                 tabindex="-1"
-                class="menu dropdown-content mt-4 z-1 p-2 shadow bg-base-100 w-42"
+                class="menu dropdown-content mt-4 z-1 p-2 shadow bg-base-100 w-64"
             >
                 <li>
                     <a
@@ -80,9 +81,15 @@
                 <li>
                     <a href="/#contact" class="btn btn-ghost btn-underline"> Contact </a>
                 </li>
+                <li class="menu-title">Pick color</li>
+                <li>
+                    <PaletteControls />
+                </li>
             </ul>
         </div>
 
-        <HuePicker />
+        <div class="hidden md:flex">
+            <HuePicker />
+        </div>
     </div>
 </nav>
