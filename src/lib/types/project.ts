@@ -8,4 +8,5 @@ export interface Project {
   projectUrl: string;
   tags: string[];
   badge?: "new" | "ongoing" | "V1";
+  featured?: boolean;
 }
