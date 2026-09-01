@@ -7,10 +7,10 @@
 </script>
 
 <section id="about-me" class="py-28 px-4 bg-base-100">
-    <div class="container mx-auto max-w-6xl">
+    <div class="section-container">
         <!-- Header Section -->
         <div class="text-center mb-16">
-            <h2 class="text-4xl font-bold mb-4">About Me</h2>
+            <h2 class="section-title">About Me</h2>
         </div>
 
         <!-- Hand-drawn Arrow Guide - Positioned as overlay -->

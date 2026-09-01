@@ -6,9 +6,9 @@
 </script>
 
 <section id="portfolio" class="py-28 px-4 bg-base-200">
-    <div class="container mx-auto max-w-6xl">
-        <h2 class="text-4xl font-bold text-center mb-12">Portfolio</h2>
-        <p class="text-2xl text-center mb-12 max-w-2xl mx-auto">
+    <div class="section-container">
+        <h2 class="section-title">Portfolio</h2>
+        <p class="mb-12 section-subtitle">
             A collection of data visualizations I'm quite happy with since I
             started participating (a bit) to challenges such as the
             #30DayChartChallenge.

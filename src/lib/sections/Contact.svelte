@@ -4,9 +4,9 @@
 </script>
 
 <section id="contact" class="py-28 px-4 bg-base-200">
-    <div class="container mx-auto max-w-4xl text-center">
-        <h2 class="text-4xl font-bold mb-6">Let's Connect</h2>
-        <p class="text-xl mb-8">
+    <div class="section-container text-center">
+        <h2 class="section-title">Let's Connect</h2>
+        <p class="mb-8 section-subtitle">
             Interested in collaborating or just want to say hi? Feel free to
             reach out!
         </p>
