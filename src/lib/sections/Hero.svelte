@@ -14,10 +14,8 @@
             <div
                 class="flex flex-col md:flex-row gap-8 items-center md:items-start py-4"
             >
-                <div class="avatar shrink-0">
-                    <div
-                        class="w-40 ring ring-primary ring-offset-primary-content ring-offset-4"
-                    >
+                <div class="avatar shrink-0 border-draw neon-item p-1 bg-transparent">
+                    <div class="w-40">
                         <img src="/assets/myself.jpg" alt="Guillaume Noblet" />
                     </div>
                 </div>
