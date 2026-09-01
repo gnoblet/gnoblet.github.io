@@ -10,16 +10,14 @@
 </script>
 
 <div
-    class={`card neon-item bg-base-100 transition-all duration-300 group overflow-hidden h-full border-2 border-base-300 border-draw ${className}`}
+    class={`card neon-item bg-base-100 transition-all duration-300 group overflow-hidden h-full border-draw border-l-0 ${className}`}
     use:borderDraw
 >
-    <figure
-        class="relative overflow-hidden bg-base-200 h-64 flex items-center justify-center p-8"
-    >
+    <figure class="relative overflow-hidden bg-base-200 h-48">
         <img
             src={project.imageUrl}
             alt={project.title}
-            class="max-h-full max-w-full object-contain transition-transform duration-500 group-hover:scale-110"
+            class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-150"
             on:error={(e) => {
                 (e.currentTarget as HTMLImageElement).src =
                     'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"%3E%3Crect fill="%23e5e7eb" width="400" height="300"/%3E%3Cpath fill="%239ca3af" d="M0 0h400v300H0z"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="24" fill="%23fff"%3EProject%3C/text%3E%3C/svg%3E';
@@ -43,19 +41,19 @@
     </figure>
 
     <div class="card-body">
-        <h3 class="card-title text-2xl mb-2">
+        <h3 class="card-title text-2xl leading-tight">
             {project.title}
         </h3>
 
         {#if showDescription}
-            <p class="text-lg line-clamp-3 mb-2">
+            <p class="text-lg line-clamp-3">
                 {project.shortDescription ?? project.description}
             </p>
         {/if}
 
         <div class="flex flex-wrap gap-2 mb-4">
             {#each project.tags.slice(0, maxTags) as tag}
-                <span class="badge badge-outline badge-lg text-sm">
+                <span class="badge badge-outline badge-md">
                     {tag}
                 </span>
             {/each}
@@ -71,7 +69,7 @@
                 href={project.projectUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="btn btn-outline btn-draw btn-sm text-base"
+                class="btn btn-ghost btn-draw btn-sm text-base"
                 use:borderDraw
             >
                 View Project
