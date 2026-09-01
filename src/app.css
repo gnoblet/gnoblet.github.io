@@ -8,28 +8,37 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   "Forest" theme — Mycelium Dark palette
+   "Forest" theme — Amethyst Dark palette
 ───────────────────────────────────────────────────────────────────────────── */
 [data-theme="forest"] {
     color-scheme: dark;
 
-    /* ── Surfaces ─────────────────────────────────────────────────── */
-    --color-base-100: oklch(0.14 0.03 195);   /* near-black teal */
-    --color-base-200: oklch(0.22 0.05 188);   /* raised surface */
-    --color-base-300: oklch(0.30 0.06 182);   /* border / divider */
-    --color-base-content: oklch(0.96 0.02 165); /* near-white, faint green tint */
+    /* Single source of truth for the palette's hue and vibrancy. The Navbar
+       picker overrides these directly on this element (see
+       src/lib/stores/palette.svelte.ts) — everything below derives its hue
+       (fixed offset) and chroma (scaled) from them, so the whole palette
+       rotates/fades as one unit; each token's own lightness never moves,
+       and its base chroma amount is only ever scaled, not replaced. */
+    --hue-primary: 310;
+    --chroma-scale: 1;
 
-    /* ── Brand — Phosphor Cyan ────────────────────────────────────── */
-    --color-primary: oklch(0.80 0.28 165);    /* #00D4A0 — neon cyan-green */
-    --color-primary-content: oklch(0.08 0.03 195); /* on-primary: near-black */
-    --color-secondary: oklch(0.38 0.10 175);  /* deep teal */
-    --color-secondary-content: oklch(0.92 0.06 165);
-    --color-accent: oklch(0.88 0.12 162);     /* pale mint highlight */
-    --color-accent-content: oklch(0.08 0.03 195);
+    /* ── Surfaces ─────────────────────────────────────────────────── */
+    --color-base-100: oklch(0.14 calc(0.03 * var(--chroma-scale)) var(--hue-primary));   /* near-black plum */
+    --color-base-200: oklch(0.22 calc(0.05 * var(--chroma-scale)) calc(var(--hue-primary) + 2));   /* raised surface */
+    --color-base-300: oklch(0.30 calc(0.06 * var(--chroma-scale)) calc(var(--hue-primary) + 4));   /* border / divider */
+    --color-base-content: oklch(0.96 calc(0.02 * var(--chroma-scale)) var(--hue-primary)); /* near-white, faint lavender tint */
+
+    /* ── Brand — Amethyst Glow ───────────────────────────────────── */
+    --color-primary: oklch(81.575% calc(0.12394 * var(--chroma-scale)) var(--hue-primary));
+    --color-primary-content: oklch(0.08 calc(0.03 * var(--chroma-scale)) var(--hue-primary)); /* on-primary: near-black */
+    --color-secondary: oklch(0.38 calc(0.10 * var(--chroma-scale)) calc(var(--hue-primary) - 10));  /* deep violet */
+    --color-secondary-content: oklch(0.92 calc(0.06 * var(--chroma-scale)) calc(var(--hue-primary) - 10));
+    --color-accent: oklch(0.88 calc(0.12 * var(--chroma-scale)) calc(var(--hue-primary) + 15));     /* pale orchid highlight */
+    --color-accent-content: oklch(0.08 calc(0.03 * var(--chroma-scale)) calc(var(--hue-primary) + 15));
 
     /* ── Neutral ──────────────────────────────────────────────────── */
-    --color-neutral: oklch(0.20 0.04 190);
-    --color-neutral-content: oklch(0.80 0.08 165);
+    --color-neutral: oklch(0.20 calc(0.04 * var(--chroma-scale)) var(--hue-primary));
+    --color-neutral-content: oklch(0.80 calc(0.08 * var(--chroma-scale)) var(--hue-primary));
 
     /* ── Status ───────────────────────────────────────────────────── */
     --color-info: oklch(0.67 0.09 215);       /* #5BA8C4 */

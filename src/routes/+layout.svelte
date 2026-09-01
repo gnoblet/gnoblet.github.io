@@ -1,14 +1,20 @@
 <script lang="ts">
+    import { onMount } from "svelte";
     import "../app.css";
     import Navbar from "$lib/components/Navbar.svelte";
     import Footer from "$lib/components/Footer.svelte";
     import { loading } from "$lib/stores/loading";
     import { navigating } from "$app/stores";
+    import { initPalette } from "$lib/stores/palette.svelte";
 
     // Scroll to top on navigation
     $: if ($navigating) {
         window.scrollTo(0, 0);
     }
+
+    onMount(() => {
+        initPalette();
+    });
 </script>
 
 <div class="min-h-screen flex flex-col" data-theme="forest">

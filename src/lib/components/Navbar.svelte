@@ -1,5 +1,6 @@
 <script lang="ts">
     import { page } from "$app/stores";
+    import HuePicker from "./HuePicker.svelte";
 
     // Check if the link is active
     function isActive(path: string): boolean {
@@ -81,5 +82,7 @@
                 </li>
             </ul>
         </div>
+
+        <HuePicker />
     </div>
 </nav>
