@@ -344,7 +344,7 @@ h2 {
 
 /* Section container. */
 .section-container {
-    @apply container mx-auto max-w-5xl;
+    @apply container mx-auto max-w-5xl px-8 md:px-4;
 }
 
 /* Border draw hover effect: a primary-colored line traces the full border

@@ -3,7 +3,7 @@
     import { borderDraw } from "$lib/actions/borderDraw.svelte";
 </script>
 
-<section id="contact" class="py-28 px-4 bg-base-200">
+<section id="contact" class="py-28 bg-base-200">
     <div class="section-container text-center">
         <h2 class="section-title">Let's Connect</h2>
         <p class="mb-8 section-subtitle">

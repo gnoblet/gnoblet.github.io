@@ -6,7 +6,7 @@
     import PublicationsSection from "$lib/components/about/PublicationsSection.svelte";
 </script>
 
-<section id="about-me" class="py-28 px-4 bg-base-100">
+<section id="about-me" class="py-28 bg-base-100">
     <div class="section-container">
         <!-- Header Section -->
         <div class="text-center mb-16">

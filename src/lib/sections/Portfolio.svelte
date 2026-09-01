@@ -6,7 +6,7 @@
     import { scrollDraw } from "$lib/actions/scrollDraw.svelte";
 </script>
 
-<section id="portfolio" class="py-28 px-4 bg-base-200">
+<section id="portfolio" class="py-28 bg-base-200">
     <div class="section-container">
         <h2 class="section-title">Portfolio</h2>
         <p class="mb-12 section-subtitle">

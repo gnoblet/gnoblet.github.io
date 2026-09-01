@@ -8,7 +8,7 @@
 
 <section
     id="latest-projects"
-    class="py-20 px-4 bg-base-100 flex items-center justify-center"
+    class="py-20 bg-base-100 flex items-center justify-center"
 >
     <div
         class="section-container transition-all duration-200 ease-out"
