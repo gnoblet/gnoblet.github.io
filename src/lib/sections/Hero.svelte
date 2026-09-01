@@ -32,11 +32,11 @@
 
                     <p class="text-1xl mb-2">
                         I specialize in
-                        <span class="neon-text text-primary font-bold">
+                        <span class="text-highlight">
                             quantitative field research
                         </span>
                         and
-                        <span class="neon-text text-primary font-bold">
+                        <span class="text-highlight">
                             data visualization
                         </span>. I juggle between drafting reports from data
                         wrangling to fine-tuned analyses and implementing
