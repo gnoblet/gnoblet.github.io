@@ -315,6 +315,25 @@ h2 {
     color: var(--color-primary);
 }
 
+/* Section title: thick accent underline. */
+.section-title {
+    @apply relative text-center text-4xl font-bold mb-12;
+}
+.section-title::after {
+    content: "";
+    @apply absolute left-1/2 -translate-x-1/2 -bottom-2.5 w-20 h-1 bg-primary;
+}
+
+/* Pairs with .section-title: the intro paragraph under a section title. */
+.section-subtitle {
+    @apply max-w-4xl mx-auto text-2xl text-center;
+}
+
+/* Section container. */
+.section-container {
+    @apply container mx-auto max-w-5xl;
+}
+
 /* Border draw hover effect: a primary-colored line traces the full border
    clockwise, starting top-left, one edge at a time: top → right → bottom → left.
 
