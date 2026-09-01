@@ -109,6 +109,13 @@
         background-color: var(--color-base-100);
     }
 
+    /* rem is relative to this: scaling it down on small screens shrinks every text and spacing utility across the whole app proportionally. */
+    @media (max-width: 767px) {
+        html {
+            font-size: 85%;
+        }
+    }
+
     body {
         font-family: var(--font-family-body);
         font-size: var(--font-size-base);
