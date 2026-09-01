@@ -20,13 +20,13 @@ export const projects: Project[] = [
     title: "Acute Needs Analysis",
     slug: "ana-app",
     description:
-      "A Svelte web app to screen humanitarian data for Risk of Excess Mortality. Validate, flag, and visualize all units of analysis against reference thresholds — automatically. Upload your data and the Acute Needs Analysis (ANA) app does the rest. This app has been built during a short assignment at IMPACT Initiatives based on lessons learnt conducted with country office teams and the global technical team.",
+      "Built at IMPACT Initiatives based on lessons learnt with country office teams and the global technical team, the ANA app is a browser-based analytical pipeline that ingests raw humanitarian data and outputs flagged data, pre-populated xlsx files, and interactive visualizations against reference thresholds — moving teams away from manual Excel-based processes.",
       shortDescription:
       "Svelte web app to screen humanitarian data for Risk of Excess Mortality.",
     imageUrl: "/images/projects/ana-app.png",
     projectUrl: "https://impact-initiatives.github.io/ana_app/",
     tags: ["Svelte", "humanitarian", "app", "data viz"],
-
+    featured: true,
   },
   {
     id: 3,
