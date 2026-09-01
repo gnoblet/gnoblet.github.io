@@ -221,8 +221,6 @@
     box-shadow: 0 0 8px oklch(from var(--color-primary) l c h / 0.7),
                 0 0 3px oklch(from var(--color-primary) l c h / 1.0);
 }
-.neon-text,
-.text-highlight,
 h1,
 h2 {
     text-shadow: 0 0 8px oklch(from var(--color-primary) l c h / 0.8),
@@ -230,6 +228,9 @@ h2 {
 }
 .text-highlight {
     @apply text-primary font-bold;
+    /* Lighter than h1/h2's glow — a single tight, low-opacity layer so
+       it reads as a subtle shine at body text size instead of a blur. */
+    text-shadow: 0 0 4px oklch(from var(--color-primary) l c h / 0.45);
 }
 
 .badge-primary {
