@@ -6,7 +6,7 @@
 
 <section class="hero min-h-screen relative">
     <ElevationRidgeMap />
-    <div class="hero-content text-center -mt-16">
+    <div class="hero-content text-center md:-mt-16">
         <div
             class="max-w-5xl bg-base-100/75 p-8 animate-fade-slide-up py-8 border-draw neon-item"
             use:borderDraw
