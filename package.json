@@ -33,7 +33,7 @@
     "@types/d3": "^7.4.3",
     "@types/node": "^24.13.3",
     "@types/prismjs": "^1.26.6",
-    "daisyui": "^5.7.22",
+    "daisyui": "^5.7.25",
     "eslint": "^9.39.5",
     "eslint-plugin-svelte": "^2.46.1",
     "flowbite-svelte": "^1.33.1",
