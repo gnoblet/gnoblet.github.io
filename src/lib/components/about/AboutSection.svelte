@@ -1,4 +1,5 @@
 <script lang="ts">
+    import SkillsSection from "./SkillsSection.svelte";
 </script>
 
 <div class="mb-16">
@@ -38,7 +39,7 @@
     </div>
 </div>
 
-<div class="px-10">
+<div class="px-10 mb-16">
     <h3 class="text-2xl font-bold ml-4 mt-1 mb-4">How I Approach Data (my 2 cents)</h3>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 m-4">
@@ -87,3 +88,5 @@
         </div>
     </div>
 </div>
+
+<SkillsSection />
