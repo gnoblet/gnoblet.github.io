@@ -1,5 +1,5 @@
-const DEFAULT_HUE = 310;
-const DEFAULT_CHROMA_SCALE = 1;
+const DEFAULT_HUE = 292;
+const DEFAULT_CHROMA_SCALE = 0.4;
 const HUE_KEY = "hue-primary";
 const CHROMA_KEY = "chroma-scale";
 

@@ -17,10 +17,9 @@
        picker overrides these directly on this element (see
        src/lib/stores/palette.svelte.ts) — everything below derives its hue
        (fixed offset) and chroma (scaled) from them, so the whole palette
-       rotates/fades as one unit; each token's own lightness never moves,
-       and its base chroma amount is only ever scaled, not replaced. */
-    --hue-primary: 310;
-    --chroma-scale: 1;
+       rotates/fades as one unit. */
+    --hue-primary: 292;
+    --chroma-scale: 0.4;
 
     /* ── Surfaces ─────────────────────────────────────────────────── */
     --color-base-100: oklch(0.14 calc(0.03 * var(--chroma-scale)) var(--hue-primary));   /* near-black plum */
