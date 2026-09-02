@@ -73,7 +73,7 @@
 {#if isVisible}
     <button
         on:click={scrollToTop}
-        class="btn btn-square btn-primary fixed bottom-8 right-8 z-50 transition-all duration-300 hover:scale-110"
+        class="btn btn-square btn-primary btn-outline fixed bottom-8 right-8 z-50 transition-all duration-300 hover:scale-110"
         aria-label="Scroll to top"
     >
         <!-- Heroicon: arrow-up -->
