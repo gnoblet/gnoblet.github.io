@@ -1,6 +1,5 @@
 <script lang="ts">
     import AboutSection from "$lib/components/about/AboutSection.svelte";
-    import SkillsSection from "$lib/components/about/SkillsSection.svelte";
     import ExperienceSection from "$lib/components/about/ExperienceSection.svelte";
     import EducationSection from "$lib/components/about/EducationSection.svelte";
     import PublicationsSection from "$lib/components/about/PublicationsSection.svelte";
@@ -17,9 +16,6 @@
         <div class="max-w-6xl mx-auto">
             <div class="mb-20">
                 <AboutSection />
-            </div>
-            <div class="mb-20">
-                <SkillsSection />
             </div>
             <div class="mb-20">
                 <ExperienceSection />
