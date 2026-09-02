@@ -40,26 +40,29 @@
     <div class="container mx-auto max-w-7xl">
         <!-- Header -->
         <div class="text-center mb-16">
-            <h1 class="text-4xl font-bold mb-4">My Projects</h1>
-            <p class="text-2xl opacity-80 max-w-2xl mx-auto">
+            <h1 class="section-title">My Projects</h1>
+            <p class="section-subtitle">
                 Check out a (small) collection of projects I've worked on.
             </p>
         </div>
 
         <!-- Filter Tabs -->
-        <div class="flex justify-center mb-12 max-w-4xl mx-auto">
-            <div role="tablist" class="tabs tabs-box tabs-lg p-2">
+        <div class="max-w-4xl mx-auto mb-12">
+            <p class="text-center text-base  mb-4">
+                Click a tag to filter the list of projects below.
+            </p>
+            <div class="flex flex-wrap justify-center gap-3">
                 <button
-                    role="tab"
-                    class="tab {selectedFilter === 'all' ? 'tab-active' : ''}"
+                    class="badge badge-lg cursor-pointer {selectedFilter === 'all' ? 'badge-primary' : 'badge-outline'}"
+                    aria-pressed={selectedFilter === 'all'}
                     onclick={() => (selectedFilter = 'all')}
                 >
                     All Projects
                 </button>
                 {#each allTags as tag}
                     <button
-                        role="tab"
-                        class="tab {selectedFilter === tag ? 'tab-active' : ''}"
+                        class="badge badge-lg cursor-pointer {selectedFilter === tag ? 'badge-primary' : 'badge-outline'}"
+                        aria-pressed={selectedFilter === tag}
                         onclick={() => (selectedFilter = tag)}
                     >
                         {tag}
@@ -70,7 +73,7 @@
 
         <!-- Projects Grid -->
         {#if filteredProjects.length > 0}
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10">
                 {#each filteredProjects as project (project.id)}
                     <div
                         animate:flip={{ duration: 400, easing: cubicOut }}

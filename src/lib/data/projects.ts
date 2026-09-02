@@ -38,7 +38,7 @@ export const projects: Project[] = [
       "A lightweight utility for installing and using custom fonts in R graphics and documents, with special support for automated font discovery and registration.",
     imageUrl: "https://gnoblet.codeberg.page/AddFonts/logo.png",
     projectUrl: "https://gnoblet.codeberg.page/AddFonts/",
-    tags: ["R", "fonts", "graphics", "utility"],
+    tags: ["R", "fonts", "graphics", "package"],
     badge: "stable",
   },
   {
