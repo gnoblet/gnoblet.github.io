@@ -44,7 +44,7 @@
                 {#if exp.technologies && exp.technologies.length > 0}
                     <div
                         class={index % 2 === 0
-                            ? "flex flex-wrap gap-2 mt-3 justify-end"
+                            ? "flex flex-wrap gap-2 mt-3 md:justify-end"
                             : "flex flex-wrap gap-2 mt-3"}
                     >
                         {#each exp.technologies as tech}
