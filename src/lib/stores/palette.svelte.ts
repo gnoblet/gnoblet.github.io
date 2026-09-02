@@ -13,7 +13,7 @@ const CHROMA_KEY = "chroma-scale";
 export const palette = $state({ hue: DEFAULT_HUE, chromaScale: DEFAULT_CHROMA_SCALE });
 
 function apply() {
-    const el = document.querySelector<HTMLElement>('[data-theme="forest"]');
+    const el = document.querySelector<HTMLElement>('[data-theme="dark"]');
     el?.style.setProperty("--hue-primary", String(palette.hue));
     el?.style.setProperty("--chroma-scale", String(palette.chromaScale));
 }

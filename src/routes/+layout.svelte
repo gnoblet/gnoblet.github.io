@@ -17,7 +17,7 @@
     });
 </script>
 
-<div class="min-h-screen flex flex-col" data-theme="forest">
+<div class="min-h-screen flex flex-col" data-theme="dark">
     {#if $loading}
         <div
             class="fixed inset-0 z-50 flex items-center justify-center bg-base-100"
