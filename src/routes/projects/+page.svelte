@@ -5,6 +5,7 @@
     import { cubicOut } from "svelte/easing";
     import { projects } from "$lib/data/projects";
     import ProjectCard from "$lib/components/ProjectCard.svelte";
+    import { borderDraw } from "$lib/actions/borderDraw.svelte";
     let selectedFilter = "all";
     let filteredProjects = projects;
 
@@ -93,16 +94,17 @@
         {/if}
 
         <!-- Call to Action -->
-        <div class="text-center mt-20 p-10 bg-base-200">
-            <h2 class="text-3xl font-bold mb-4">Want to collaborate?</h2>
-            <p class="text-lg opacity-80 mb-6">
-                I'm always interested in hearing about new projects and
-                opportunities.
-            </p>
-            <a
-                href="mailto:guillaume.noblet@pm.me"
-                class="btn btn-primary btn-lg"
-            >
+        <div
+            class="relative w-screen left-1/2 -translate-x-1/2 bg-base-200 py-15 mt-20 text-center"
+        >
+            <div class="section-container">
+                <h2 class="section-title">Want to collaborate?</h2>
+                <p class="text-lg mb-6">
+                    I'm always interested in hearing about new projects and
+                    opportunities.
+                </p>
+
+                <a href="mailto:guillaume.noblet@pm.me" class="btn btn-outline btn-draw btn-lg" use:borderDraw>
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     class="h-6 w-6"
@@ -118,7 +120,8 @@
                     />
                 </svg>
                 Get in Touch
-            </a>
+                </a>
+            </div>
         </div>
     </div>
 </div>
