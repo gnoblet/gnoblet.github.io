@@ -32,12 +32,12 @@
                 <img src={featured.imageUrl} alt={featured.title} class="w-full h-full object-contain" />
             </figure>
             <div class="card-body p-8 lg:p-10">
-                <div class="badge badge-primary">Featured</div>
-                <h3 class="card-title text-2xl mt-2">{featured.title}</h3>
-                <p class="text-lg">{featured.description}</p>
-                <div class="flex flex-wrap gap-2  mb-4">
+                <div class="badge badge-primary badge-outline">featured</div>
+                <h3 class="card-title text-xl mt-2">{featured.title}</h3>
+                <p class="text-base mb-2">{featured.description}</p>
+                <div class="flex flex-wrap gap-2  mb-6">
                     {#each featured.tags as tag}
-                        <span class="badge badge-outline">{tag}</span>
+                        <span class="badge badge-outline badge-sm">{tag}</span>
                     {/each}
                 </div>
                 <div class="card-actions justify-end">

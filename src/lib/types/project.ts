@@ -7,6 +7,6 @@ export interface Project {
   imageUrl: string;
   projectUrl: string;
   tags: string[];
-  badge?: "new" | "ongoing" | "V1";
+  badge?: string;
   featured?: boolean;
 }

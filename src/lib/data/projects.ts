@@ -27,6 +27,7 @@ export const projects: Project[] = [
     projectUrl: "https://impact-initiatives.github.io/ana_app/",
     tags: ["Svelte", "humanitarian", "app", "data viz"],
     featured: true,
+    badge: "new"
   },
   {
     id: 3,
@@ -38,6 +39,7 @@ export const projects: Project[] = [
     imageUrl: "https://gnoblet.codeberg.page/AddFonts/logo.png",
     projectUrl: "https://gnoblet.codeberg.page/AddFonts/",
     tags: ["R", "fonts", "graphics", "utility"],
+    badge: "stable",
   },
   {
     id: 4,
@@ -87,7 +89,7 @@ export const projects: Project[] = [
       "https://raw.githubusercontent.com/gnoblet/visualizeR/revamp/man/figures/logo.png",
     projectUrl: "https://github.com/gnoblet/visualizeR/tree/revamp",
     tags: ["R", "data viz", "humanitarian", "package"],
-    badge: "ongoing",
+    badge: "discontinued?",
   },
   {
     id: 8,

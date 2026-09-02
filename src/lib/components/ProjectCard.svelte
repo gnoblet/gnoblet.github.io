@@ -25,15 +25,7 @@
         />
         {#if project.badge}
             <div
-                class="absolute top-4 right-4 badge
-                {project.badge === 'new'
-                    ? 'badge-primary'
-                    : project.badge === 'ongoing'
-                      ? 'badge-accent'
-                      : project.badge === 'V1'
-                        ? 'badge-secondary'
-                        : 'badge-info'}
-                badge-lg font-bold uppercase"
+                class="absolute top-4 right-4 badge badge-primary badge-outline badge-md"
             >
                 {project.badge}
             </div>
@@ -41,24 +33,24 @@
     </figure>
 
     <div class="card-body">
-        <h3 class="card-title text-2xl leading-tight">
+        <h3 class="card-title text-xl leading-tight">
             {project.title}
         </h3>
 
         {#if showDescription}
-            <p class="text-lg line-clamp-3">
+            <p class="text-base line-clamp-3">
                 {project.shortDescription ?? project.description}
             </p>
         {/if}
 
         <div class="flex flex-wrap gap-2 mb-4">
             {#each project.tags.slice(0, maxTags) as tag}
-                <span class="badge badge-outline badge-md">
+                <span class="badge badge-outline badge-sm">
                     {tag}
                 </span>
             {/each}
             {#if project.tags.length > maxTags}
-                <span class="badge badge-outline badge-lg text-sm">
+                <span class="badge badge-outline badge-md">
                     +{project.tags.length - maxTags}
                 </span>
             {/if}
