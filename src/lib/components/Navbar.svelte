@@ -13,11 +13,11 @@
 </script>
 
 <nav class="navbar bg-base-100 border-b border-primary/25 sticky top-0 z-50">
-    <div class="navbar-start">
+    <div class="navbar-start w-auto">
         <a href="/" class="btn btn-lg btn-ghost btn-underline text-xl font-bold tracking-widest"> @GNOBLET </a>
     </div>
 
-    <div class="navbar-end gap-4">
+    <div class="navbar-end w-auto ml-auto gap-4">
         <!-- Desktop Navigation Buttons (visible on large screens) -->
         <div class="hidden md:flex gap-2">
             <a href="/" class="btn btn-lg btn-ghost btn-underline" class:btn-underline-active={isActive("/")}>

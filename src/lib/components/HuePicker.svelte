@@ -5,7 +5,7 @@
 </script>
 
 <div class="flex items-center gap-2 pl-8">
-    <span>{label}</span>
+    <span class="whitespace-nowrap">{label}</span>
     <div class="dropdown dropdown-end">
         <div
             tabindex="0"
