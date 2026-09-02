@@ -14,39 +14,40 @@
             <div
                 class="flex flex-col md:flex-row gap-8 items-center md:items-start py-4"
             >
-                <div class="avatar shrink-0 border-draw neon-item p-1 bg-transparent">
+                <div class="avatar shrink-0 border-draw neon-item bg-transparent">
                     <div class="w-40">
                         <img src="/assets/myself.jpg" alt="Guillaume Noblet" />
                     </div>
                 </div>
 
                 <div class="flex-1 text-center md:text-left">
-                    <h1 class="text-3xl font-bold mb-6">
-                        Hey👋, I'm Guillaume Noblet, a quantitative
-                        social-science researcher
+                    <h1 class="text-3xl font-bold mb-6 px-5">
+                        Hey👋, I'm Guillaume Noblet and I'd say I'm a
+                        quantitative social-science researcher, though it's a
+                        bit more chaotic than that.
                     </h1>
 
-                    <div class="mb-8 flex justify-center md:justify-start">
+                    <div class="mb-8 flex justify-center md:justify-start px-5">
                         <SocialLinks size="large" />
                     </div>
 
-                    <p class="text-1xl mb-2">
-                        I specialize in
+                    <p class="text-1xl mb-2 px-5">
+                        These days that means
                         <span class="text-highlight">
-                            quantitative field research
+                            I built data pipelines and visualizations
                         </span>
-                        and
-                        <span class="text-highlight">
-                            data visualization
-                        </span>. I juggle between drafting reports from data
-                        wrangling to fine-tuned analyses and implementing
-                        research projects (and also coming up with good memes!).
-                    </p>
-                    <p class="text-lg mb-2">
-                        Lastly, I was a Data & Research Specialist at <a
+                        at <a
                             href="https://www.impact-initiatives.org/"
                             class="link">IMPACT Initiatives</a
-                        >
+                        > — after a few years
+                        <span class="text-highlight">
+                            running large-scale humanitarian surveys
+                        </span>
+                        across 20+ countries. Before that: maths, economics,
+                        and a long detour into the history of science.
+                    </p>
+                    <p class="text-lg mb-2 px-5">
+                        I'm very much here for data viz, web apps, and good memes.
                     </p>
                 </div>
             </div>
