@@ -36,8 +36,9 @@
     });
 </script>
 
-<footer class="footer footer-center bg-base-100 text-base-content p-10">
-    <aside class="max-w-sm">
+<footer class="footer bg-base-100 text-base-content p-10">
+  <div class="section-container flex flex-col lg:flex-row items-center justify-center lg:justify-between gap-8 text-center">
+    <aside class="w-full lg:w-auto lg:max-w-sm">
         <p class="font-bold text-xl">
             Guillaume Noblet &copy; {currentYear}
         </p>
@@ -60,13 +61,14 @@
         </p>
     </aside>
     <nav class="flex items-center gap-2">
-        <SocialLinks size="large" />
+        <SocialLinks size="small" />
         <a href="mailto:guillaume.noblet@pm.me" class="neon-btn btn-square bg-transparent hover:bg-primary hover:text-primary-content flex items-center justify-center btn-lg" aria-label="Email">
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" class="fill-current">
                 <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"></path>
             </svg>
         </a>
     </nav>
+  </div>
 </footer>
 
 <!-- Scroll to Top Button with Heroicon -->
